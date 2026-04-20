@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://cd6xxqvsr6nwc"]
+
+[ext_resource type="Script" uid="uid://o1yucwnl52yj" path="res://script/grass.gd" id="1_3kunl"]
+[ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_e1kak"]
+[ext_resource type="Shader" uid="uid://b780aaswdvqml" path="res://shaders/grass.gdshader" id="1_yarb5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3kunl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u68v2"]
+noise = SubResource("FastNoiseLite_3kunl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvbpf"]
+shader = ExtResource("1_yarb5")
+shader_parameter/render_noise = false
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_u68v2")
+shader_parameter/amplitude = 0.12
+shader_parameter/time_scale = 0.04
+shader_parameter/noise_scale = 0.001
+shader_parameter/rotation_strength = 0.7
+shader_parameter/rotation_pivot = Vector2(0.5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yarb5"]
+atlas = ExtResource("1_e1kak")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kunl"]
+atlas = ExtResource("1_e1kak")
+region = Rect2(8, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u68v2"]
+atlas = ExtResource("1_e1kak")
+region = Rect2(16, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvbpf"]
+atlas = ExtResource("1_e1kak")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48p3m"]
+atlas = ExtResource("1_e1kak")
+region = Rect2(16, 32, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjw0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yarb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kunl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u68v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvbpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48p3m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="grass" type="Node2D"]
+script = ExtResource("1_3kunl")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_cvbpf")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_qjw0v")
+frame_progress = 0.816793
+speed_scale = 0.0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+scale = Vector2(3.6, 3.6)
