@@ -8,7 +8,7 @@ var randomturning : float = 0
 
 var currentfood : int = 100 #max food = 100
 var currentwater : int = 100 #max water = 100
-var lust : int = 50
+var lust : int = 10
 var updatetick : int = 0
 
 @export var debug : bool = false
@@ -22,12 +22,41 @@ func _ready() -> void:
 	chickenstats = chickenstats.duplicate()
 	chickenstats["size"] *= randf_range(0.8,1.2)
 	chickenstats["tenderness"] *= randf_range(0.8,1.2)
+	add_to_group("chicken")
 
 func _process(delta: float) -> void:
 	
 	if velocity.x > 0: $flip.scale.x = 1
 	elif velocity.x < 0: $flip.scale.x = -1
 	
+	handlestates()
+	
+	match state:
+		0:
+			idlestate()
+		1:
+			wanderstate(delta)
+		2:
+			gobblegobble()
+		3:
+			goonstate(delta)
+	
+	velocity *= 0.85
+	
+	move_and_slide()
+	
+	if debug:
+		print(str(currentfood))
+		print(str(lust))
+		print(str(updatetick))
+	
+	
+	if not state == 2:
+		animations()
+	
+
+
+func handlestates():
 	updatetick -= 1
 	statetime -= 1
 	
@@ -36,7 +65,7 @@ func _process(delta: float) -> void:
 		lust -= 1
 		updatetick = randi_range(20,40)
 		if lust < 0:
-			if randi_range(1,5) == 1: #temptation
+			if randi_range(1,2) == 1: #temptation
 				statetime = 600
 				state = 3
 			else:
@@ -54,28 +83,6 @@ func _process(delta: float) -> void:
 		elif state == 2:
 			statetime = randi_range(50,120)
 			
-	
-	match state:
-		0:
-			idlestate()
-		1:
-			wanderstate(delta)
-		2:
-			gobblegobble()
-	
-	velocity *= 0.85
-	
-	move_and_slide()
-	
-	if debug:
-		print(str(currentfood))
-		print(str(lust))
-		print(str(updatetick))
-	
-	
-	if not state == 2:
-		animations()
-	
 
 
 func animations():
@@ -99,7 +106,11 @@ func wanderstate(delta):
 		statetime = randi_range(30,120)
 
 func goonstate(delta):
-	pass
+	
+	print(str(get_closest_chicken().global_position))
+	$suslook.look_at(get_closest_chicken().global_position)
+	velocity += $suslook.transform.x * speed * delta * 1.5
+	
 
 func gobblegobble():
 	$flip/sprite.play("peck")
@@ -113,3 +124,25 @@ func die():
 	b.scale.x = $flip.scale.x
 	
 	queue_free()
+
+
+func get_closest_chicken() -> Node2D:
+	var bodies = $chickendetector.get_overlapping_bodies()
+	
+	var closest : Node2D = null
+	var closest_dist := INF
+	
+	for b in bodies:
+		if not b.is_in_group("chicken"):
+			continue
+		
+		if b == self:
+			continue
+		
+		var dist = global_position.distance_to(b.global_position)
+		
+		if dist < closest_dist:
+			closest_dist = dist
+			closest = b
+	
+	return closest
