@@ -8,15 +8,20 @@ var randomturning : float = 0
 
 var currentfood : int = 100 #max food = 100
 var currentwater : int = 100 #max water = 100
+var lust : int = 50
 var updatetick : int = 0
 
 @export var debug : bool = false
 
 var chickenstats : Dictionary = { #all stats can reach 100
-	"size" : 67,
-	"tenderness" : 67
+	"size" : randf_range(1,20),
+	"tenderness" : randf_range(1,20)
 }
 
+func _ready() -> void:
+	chickenstats = chickenstats.duplicate()
+	chickenstats["size"] *= randf_range(0.8,1.2)
+	chickenstats["tenderness"] *= randf_range(0.8,1.2)
 
 func _process(delta: float) -> void:
 	
@@ -28,7 +33,14 @@ func _process(delta: float) -> void:
 	
 	if updatetick < 0:
 		currentfood -= 1
+		lust -= 1
 		updatetick = randi_range(20,40)
+		if lust < 0:
+			if randi_range(1,5) == 1: #temptation
+				statetime = 600
+				state = 3
+			else:
+				lust = randi_range(10,60)
 	
 	#random states
 	if statetime < 1:
@@ -57,6 +69,7 @@ func _process(delta: float) -> void:
 	
 	if debug:
 		print(str(currentfood))
+		print(str(lust))
 		print(str(updatetick))
 	
 	
@@ -85,14 +98,18 @@ func wanderstate(delta):
 		state = 0
 		statetime = randi_range(30,120)
 
+func goonstate(delta):
+	pass
+
 func gobblegobble():
 	$flip/sprite.play("peck")
 	currentfood += 1
 
 func die():
 	var b = load("res://scenes/dedchicken.tscn").instantiate()
+	b.chickenstats = chickenstats.duplicate()
 	get_parent().add_child(b)
 	b.position = position
 	b.scale.x = $flip.scale.x
-	b.chickenstats = chickenstats
+	
 	queue_free()

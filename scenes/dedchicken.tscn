@@ -46,6 +46,7 @@ script = ExtResource("1_u2ggf")
 z_index = -1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_u2ggf")
+emitting = false
 texture = ExtResource("1_mixk0")
 lifetime = 15.0
 one_shot = true
