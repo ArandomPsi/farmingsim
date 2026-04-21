@@ -9,8 +9,10 @@ var speed : int = 4000
 var friction : float = 0.85
 var movedir : Vector2
 
+var shakeframes : int = 0
 
 func _process(delta: float) -> void:
+	updateconstantvariables()
 	controls()
 	updatepos(delta)
 	updatevisuals()
@@ -18,6 +20,17 @@ func _process(delta: float) -> void:
 
 func controls():
 	movedir = Input.get_vector("left","right","up","down")
+	
+	$pivot.look_at(get_global_mouse_position())
+	if get_global_mouse_position().x > position.x:
+		$pivot/AnimatedSprite2D.scale.y = 5
+	else:
+		$pivot/AnimatedSprite2D.scale.y = -5
+	
+	if Input.is_action_just_pressed("shoot"):
+		pewpew()
+	
+	
 	
 
 func updatepos(delta : float):
@@ -33,6 +46,17 @@ func updatevisuals():
 	playeranimstuff()
 	
 	
+
+func updateconstantvariables():
+	shakeframes -= 1
+	shakeframes = clamp(shakeframes,0,20)
+
+func pewpew():
+	var b = preload("res://scenes/player/bullet.tscn").instantiate()
+	get_parent().add_child(b)
+	b.position = $pivot/AnimatedSprite2D.global_position
+	b.rotation = $pivot.rotation
+	shakeframes += 5 #feedback
 
 
 func selectionmode():
@@ -54,3 +78,6 @@ func flipstuff():
 
 func camerastuff():
 	camera.position = get_local_mouse_position()/3
+	
+	camera.offset = Vector2(randf_range(-5,5),randf_range(-5,5)) * shakeframes
+	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=21 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bqk4dmdg35hpp" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanWalk.png" id="2_dovo2"]
 [ext_resource type="Shader" uid="uid://cqmcc8rco6og7" path="res://shaders/motionblur.gdshader" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://bo2kvhw2quao3" path="res://assets/glock.png" id="4_75vfm"]
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
@@ -89,6 +90,17 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_p47bc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_75vfm")
+}],
+"loop": false,
+"name": &"glock",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lvxji"]
@@ -109,6 +121,19 @@ position = Vector2(0, -5)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
 animation = &"idle"
+
+[node name="pivot" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -10)
+rotation = 0.183087
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="pivot"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(21, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_p47bc")
+animation = &"glock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dovo2")

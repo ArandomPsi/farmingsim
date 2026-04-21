@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://7txge7tmljk0"]
+
+[ext_resource type="Texture2D" uid="uid://bkmqdq8nb3sne" path="res://assets/dedchicken.png" id="1_mixk0"]
+[ext_resource type="Script" uid="uid://ckao1jvxb7j5g" path="res://script/dedchicken.gd" id="1_u2ggf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u2ggf"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_33s6j"]
+offsets = PackedFloat32Array(0, 0.740566, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ei6mc"]
+gradient = SubResource("Gradient_33s6j")
+
+[sub_resource type="Curve" id="Curve_ho0ys"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0112782, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_atkos"]
+curve = SubResource("Curve_ho0ys")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wldlb"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 22.13
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_atkos")
+color = Color(1, 0, 0.383333, 1)
+color_ramp = SubResource("GradientTexture1D_ei6mc")
+anim_offset_min = 0.2063
+anim_offset_max = 1.0
+
+[node name="dedchicken" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_u2ggf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_u2ggf")
+texture = ExtResource("1_mixk0")
+lifetime = 15.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_wldlb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(0, -6)
+scale = Vector2(5, 5)
+texture = ExtResource("1_mixk0")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)

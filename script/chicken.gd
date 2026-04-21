@@ -12,6 +12,11 @@ var updatetick : int = 0
 
 @export var debug : bool = false
 
+var chickenstats : Dictionary = { #all stats can reach 100
+	"size" : 67,
+	"tenderness" : 67
+}
+
 
 func _process(delta: float) -> void:
 	
@@ -83,3 +88,11 @@ func wanderstate(delta):
 func gobblegobble():
 	$flip/sprite.play("peck")
 	currentfood += 1
+
+func die():
+	var b = load("res://scenes/dedchicken.tscn").instantiate()
+	get_parent().add_child(b)
+	b.position = position
+	b.scale.x = $flip.scale.x
+	b.chickenstats = chickenstats
+	queue_free()
