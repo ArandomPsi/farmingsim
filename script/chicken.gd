@@ -14,8 +14,8 @@ var updatetick : int = 0
 @export var debug : bool = false
 
 var chickenstats : Dictionary = { #all stats can reach 100
-	"size" : randf_range(1,20),
-	"tenderness" : randf_range(1,20)
+	"size": 0,
+	"tenderness": 0
 }
 
 var partnerchickenstats : Dictionary = {} #for mating purposes
@@ -25,6 +25,7 @@ func _ready() -> void:
 	chickenstats["size"] *= randf_range(0.8,1.2)
 	chickenstats["tenderness"] *= randf_range(0.8,1.2)
 	add_to_group("chicken")
+	scale *= max(chickenstats.size / 100, 1)
 
 func _process(delta: float) -> void:
 	
