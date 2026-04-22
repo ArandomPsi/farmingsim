@@ -6,6 +6,8 @@ var chickenstats : Dictionary = {
 var hatchtime : float = chickenstats.size * 0.85
 
 func _ready() -> void:
+	chickenstats["size"] *= randf_range(0.8,1.5)
+	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 	await get_tree().create_timer(hatchtime).timeout
 	hatch()
 
@@ -14,3 +16,4 @@ func hatch():
 	b.global_position = global_position
 	b.chickenstats = chickenstats
 	get_tree().current_scene.add_child(b)
+	queue_free()

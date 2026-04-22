@@ -14,8 +14,8 @@ var updatetick : int = 0
 @export var debug : bool = false
 
 var chickenstats : Dictionary = { #all stats can reach 100
-	"size": 0,
-	"tenderness": 0
+	"size": randi_range(1,20),
+	"tenderness": randi_range(1,20)
 }
 
 var partnerchickenstats : Dictionary = {} #for mating purposes
@@ -57,6 +57,8 @@ func _process(delta: float) -> void:
 	if not state == 2:
 		animations()
 	
+	updatestats()
+	
 
 
 func handlestates():
@@ -79,8 +81,10 @@ func handlestates():
 		
 		if state == 3:
 			layegg()
+			state = 1 #run away after
+		else:
+			state = randi_range(0,2)
 		
-		state = randi_range(0,2)
 		if state == 0:
 			statetime = randi_range(60,300)
 		elif state == 1:
@@ -131,6 +135,8 @@ func layegg():
 	get_parent().add_child(b)
 	b.position = position + Vector2(randf_range(-15,15),randf_range(-15,15))
 
+func updatestats():
+	$stats/Label.text = "chicken stats: \n size - " + str(round(chickenstats["size"])) + "\n tenderness - " + str(round(chickenstats["tenderness"]))
 
 func gobblegobble():
 	$flip/sprite.play("peck")
