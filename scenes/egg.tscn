@@ -8,6 +8,7 @@ script = ExtResource("1_qlus4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(5, 5)
 texture = ExtResource("1_maxla")
 region_enabled = true
 region_rect = Rect2(49, 10, 6, 5)

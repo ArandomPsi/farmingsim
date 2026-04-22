@@ -18,6 +18,8 @@ var chickenstats : Dictionary = { #all stats can reach 100
 	"tenderness" : randf_range(1,20)
 }
 
+var partnerchickenstats : Dictionary = {} #for mating purposes
+
 func _ready() -> void:
 	chickenstats = chickenstats.duplicate()
 	chickenstats["size"] *= randf_range(0.8,1.2)
@@ -73,6 +75,10 @@ func handlestates():
 	
 	#random states
 	if statetime < 1:
+		
+		if state == 3:
+			layegg()
+		
 		state = randi_range(0,2)
 		if state == 0:
 			statetime = randi_range(60,300)
@@ -109,8 +115,21 @@ func goonstate(delta):
 	
 	print(str(get_closest_chicken().global_position))
 	$suslook.look_at(get_closest_chicken().global_position)
-	velocity += $suslook.transform.x * speed * delta * 1.5
 	
+	if position.distance_to(get_closest_chicken().global_position) < 20:
+		get_closest_chicken().state = 3
+		get_closest_chicken().statetime = statetime
+		partnerchickenstats = get_closest_chicken().chickenstats
+	else:
+		velocity += $suslook.transform.x * speed * delta * 1.5
+
+
+func layegg():
+	var b = load("res://scenes/egg.tscn").instantiate()
+	b.chickenstats = average_stats(chickenstats,partnerchickenstats)
+	get_parent().add_child(b)
+	b.position = position + Vector2(randf_range(-15,15),randf_range(-15,15))
+
 
 func gobblegobble():
 	$flip/sprite.play("peck")
@@ -146,3 +165,16 @@ func get_closest_chicken() -> Node2D:
 			closest = b
 	
 	return closest
+
+func average_stats(a: Dictionary, b: Dictionary) -> Dictionary:
+	var result := {}
+	
+	for key in a.keys():
+		result[key] = (a[key] + b[key]) * 0.5
+	
+	return result
+
+
+func bounce(body: Node2D) -> void:
+	$suslook.look_at(body.global_position)
+	velocity = $suslook.transform.x * -300

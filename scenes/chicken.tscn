@@ -125,3 +125,12 @@ visible = false
 shape = SubResource("CircleShape2D_rc7ma")
 
 [node name="suslook" type="Node2D" parent="."]
+
+[node name="bouncearea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bouncearea"]
+shape = SubResource("CircleShape2D_8lku0")
+
+[connection signal="body_entered" from="bouncearea" to="." method="bounce"]
