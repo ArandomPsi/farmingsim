@@ -68,6 +68,10 @@ func _process(delta: float) -> void:
 	
 	updatestats()
 	
+	if global_position.distance_squared_to(global.playerpos) <= pow(100, 2) or global_position.distance_squared_to(get_global_mouse_position()) <= pow(25, 2):
+		$stats.visible = true # if player is near chicken or mouse is hovering over chicken, show stats (please delete one of these liam)
+	else:
+		$stats.visible = false
 	
 	
 	

@@ -95,6 +95,7 @@ shape = SubResource("CircleShape2D_8lku0")
 [node name="randomlook" type="Node2D" parent="."]
 
 [node name="stats" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(3.8147e-06, -57)
 scale = Vector2(5, 5)

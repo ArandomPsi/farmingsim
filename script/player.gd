@@ -10,6 +10,7 @@ var friction : float = 0.85
 var movedir : Vector2
 
 var shakeframes : int = 0
+var ropeamount : int = 1 # actual amount - 1
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
@@ -74,7 +75,8 @@ func createrope():
 				$ropes.get_child(i).queue_free()
 				return
 		
-		
+		if $ropes.get_child_count() > ropeamount:
+			return
 		var b = preload("res://scenes/player/rope.tscn").instantiate()
 		$ropes.add_child(b)
 		 #its an array
