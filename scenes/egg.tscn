@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx5kmhttxo7vg"]
+[gd_scene load_steps=4 format=3 uid="uid://dx5kmhttxo7vg"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_maxla"]
 [ext_resource type="Script" uid="uid://cajwck3x4nmlo" path="res://script/egg.gd" id="1_qlus4"]
+[ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_34461"]
 
 [node name="egg" type="Node2D"]
 script = ExtResource("1_qlus4")
@@ -12,3 +13,6 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_maxla")
 region_enabled = true
 region_rect = Rect2(49, 10, 6, 5)
+
+[node name="shadow" parent="Sprite2D" instance=ExtResource("3_34461")]
+position = Vector2(0, -0.6)

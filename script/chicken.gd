@@ -15,6 +15,8 @@ var updatetick : int = 0
 
 @export var debug : bool = false
 
+var ropecrash = null
+
 var chickenstats : Dictionary = { #all stats can reach 100
 	"size": randi_range(1,20),
 	"tenderness": randi_range(1,20)
@@ -68,10 +70,15 @@ func _process(delta: float) -> void:
 	
 	updatestats()
 	
-	if global_position.distance_squared_to(global.playerpos) <= pow(100, 2) or global_position.distance_squared_to(get_global_mouse_position()) <= pow(25, 2):
+	if global_position.distance_squared_to(get_global_mouse_position()) <= pow(25, 2):
 		$stats.visible = true # if player is near chicken or mouse is hovering over chicken, show stats (please delete one of these liam)
 	else:
 		$stats.visible = false
+	
+	if $hider.has_overlapping_areas():
+		visible = false
+	else:
+		visible = true
 	
 	
 	
@@ -161,7 +168,9 @@ func gobblegobble():
 
 func die():
 	var b = load("res://scenes/dedchicken.tscn").instantiate()
-	b.chickenstats = chickenstats.duplicate()
+	b.chickenstats = chickenstats.duplicate() #so that babies don't have empty dictionaries and stuff
+	if is_instance_valid(ropecrash):
+		ropecrash.queue_free()
 	get_parent().add_child(b)
 	b.position = position
 	b.scale.x = $flip.scale.x
@@ -202,3 +211,6 @@ func average_stats(a: Dictionary, b: Dictionary) -> Dictionary:
 func bounce(body: Node2D) -> void:
 	$suslook.look_at(body.global_position)
 	velocity = $suslook.transform.x * -300
+
+func rememberrope(rope):
+	ropecrash = rope

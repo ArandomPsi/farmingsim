@@ -82,6 +82,8 @@ func createrope():
 		 #its an array
 		b.tetheredbody = thingy[0]
 		thingy[0].tethered = true
+		thing.rememberrope(b) #to prevent a bug 
+		
 
 
 func selectionmode():

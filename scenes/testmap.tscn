@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://btyphwqd0sgua"]
+[gd_scene load_steps=22 format=4 uid="uid://btyphwqd0sgua"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_5wgtu"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="1_kwcxs"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken.tscn" id="4_efggw"]
 [ext_resource type="Texture2D" uid="uid://cmfx1bbqjp7ey" path="res://assets/grasses.png" id="4_s36se"]
 [ext_resource type="Texture2D" uid="uid://cpsik28x8xlcx" path="res://assets/rocktexture.png" id="7_mxay4"]
+[ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="8_8qn3e"]
+[ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="9_6m7oc"]
+[ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="10_wj07n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efggw"]
 texture = ExtResource("1_5wgtu")
@@ -112,6 +115,9 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8qn3e"]
 gradient = SubResource("Gradient_s36se")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m7oc"]
+size = Vector2(2323, 20)
+
 [node name="testmap" type="Node2D"]
 y_sort_enabled = true
 
@@ -176,3 +182,16 @@ position = Vector2(370, 226)
 
 [node name="chicken6" parent="." instance=ExtResource("4_efggw")]
 position = Vector2(574, 334)
+
+[node name="chickenhouse" parent="." instance=ExtResource("8_8qn3e")]
+position = Vector2(683, 191)
+
+[node name="dayandnightmodu" type="CanvasModulate" parent="."]
+script = ExtResource("9_6m7oc")
+gradient = ExtResource("10_wj07n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1151.5, 0)
+shape = SubResource("RectangleShape2D_6m7oc")

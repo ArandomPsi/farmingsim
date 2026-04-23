@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4iv6dr4xxkvm"]
+
+[ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_16gv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16gv3"]
+size = Vector2(80, 71)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_16gv3"]
+radius = 465.039
+
+[node name="chickenhouse" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_16gv3")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 22)
+
+[node name="shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.47451)
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(0, 1.2)
+scale = Vector2(1, 1)
+texture = ExtResource("1_16gv3")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 22)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_16gv3")
+
+[node name="chickenattractor" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chickenattractor"]
+shape = SubResource("CircleShape2D_16gv3")
+
+[node name="chickenhider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="chickenhider"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_16gv3")

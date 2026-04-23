@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://by4pvoj44uikr"]
+[gd_scene load_steps=16 format=3 uid="uid://by4pvoj44uikr"]
 
 [ext_resource type="Script" uid="uid://b33xl6dehrkv3" path="res://script/chicken.gd" id="1_1yv3s"]
 [ext_resource type="Texture2D" uid="uid://cy03b22bqkgv2" path="res://assets/chickenonly.png" id="3_0du8g"]
+[ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_bti8l"]
 [ext_resource type="Texture2D" uid="uid://bgyil6c51oxl6" path="res://assets/bo.png" id="3_nutj5"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="4_rc7ma"]
 
@@ -75,6 +76,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rc7ma"]
 radius = 1949.18
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0du8g"]
+radius = 15.0
+
 [node name="chicken" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
@@ -88,6 +92,12 @@ position = Vector2(0, -10)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_rc7ma")
 animation = &"walk"
+
+[node name="shadow" parent="flip/sprite" instance=ExtResource("3_bti8l")]
+position = Vector2(-0.6, 3.8)
+scale = Vector2(0.775, 1)
+region_enabled = true
+region_rect = Rect2(0, 6, 8, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8lku0")
@@ -132,5 +142,12 @@ collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="bouncearea"]
 shape = SubResource("CircleShape2D_8lku0")
+
+[node name="hider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hider"]
+shape = SubResource("CircleShape2D_0du8g")
 
 [connection signal="body_entered" from="bouncearea" to="." method="bounce"]

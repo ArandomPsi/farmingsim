@@ -10,7 +10,7 @@ func _ready() -> void:
 	print(str(chickenstats))
 	chickenstats["size"] *= randf_range(0.8,1.5)
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
-	await get_tree().create_timer(hatchtime).timeout
+	await get_tree().create_timer(30).timeout #instant hatch bug?
 	hatch()
 
 func hatch():

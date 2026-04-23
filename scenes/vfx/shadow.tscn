@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgyn5vkoxjq6c"]
+
+[ext_resource type="Texture2D" uid="uid://yc0flgnxsdak" path="res://assets/shadowthing.png" id="1_etlq3"]
+
+[node name="shadow" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.513726)
+show_behind_parent = true
+z_as_relative = false
+texture_filter = 1
+texture = ExtResource("1_etlq3")
