@@ -6,6 +6,8 @@ var chickenstats : Dictionary = {
 var hatchtime : float = chickenstats.size * 0.85
 
 func _ready() -> void:
+	if chickenstats.is_empty(): print("error - " + str(position)); queue_free() #saftey
+	print(str(chickenstats))
 	chickenstats["size"] *= randf_range(0.8,1.5)
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 	await get_tree().create_timer(hatchtime).timeout

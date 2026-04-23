@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	controls()
 	updatepos(delta)
 	updatevisuals()
+	global.playerpos = position
 	
 
 func controls():
@@ -29,6 +30,10 @@ func controls():
 	
 	if Input.is_action_just_pressed("shoot"):
 		pewpew()
+	
+	if Input.is_action_just_pressed("addrope"):
+		$ropearea.global_position = get_global_mouse_position()
+		createrope()
 	
 	
 	
@@ -57,6 +62,24 @@ func pewpew():
 	b.position = $pivot/AnimatedSprite2D.global_position
 	b.rotation = $pivot.rotation
 	shakeframes += 5 #feedback
+
+func createrope():
+	if $ropearea.has_overlapping_bodies():
+		var thingy : Array = $ropearea.get_overlapping_bodies()
+		var thing = thingy[0]
+		
+		for i in range($ropes.get_child_count()):
+			if $ropes.get_child(i).tetheredbody == thing: #if rope is connected to the body
+				$ropes.get_child(i).tetheredbody.tethered = false
+				$ropes.get_child(i).queue_free()
+				return
+		
+		
+		var b = preload("res://scenes/player/rope.tscn").instantiate()
+		$ropes.add_child(b)
+		 #its an array
+		b.tetheredbody = thingy[0]
+		thingy[0].tethered = true
 
 
 func selectionmode():

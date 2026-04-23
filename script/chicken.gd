@@ -11,6 +11,8 @@ var currentwater : int = 100 #max water = 100
 var lust : int = 10
 var updatetick : int = 0
 
+@export var tethered : bool = false
+
 @export var debug : bool = false
 
 var chickenstats : Dictionary = { #all stats can reach 100
@@ -26,6 +28,8 @@ func _ready() -> void:
 	chickenstats["tenderness"] *= randf_range(0.8,1.2)
 	add_to_group("chicken")
 	scale *= max(chickenstats.size / 100, 1)
+	partnerchickenstats.clear()
+	
 
 func _process(delta: float) -> void:
 	
@@ -46,6 +50,11 @@ func _process(delta: float) -> void:
 	
 	velocity *= 0.85
 	
+	if tethered and position.distance_to(global.playerpos) > 200:
+		$suslook.look_at(global.playerpos)
+		velocity += $suslook.transform.x * 100
+	
+	
 	move_and_slide()
 	
 	if debug:
@@ -58,6 +67,9 @@ func _process(delta: float) -> void:
 		animations()
 	
 	updatestats()
+	
+	
+	
 	
 
 
@@ -80,7 +92,8 @@ func handlestates():
 	if statetime < 1:
 		
 		if state == 3:
-			layegg()
+			if not partnerchickenstats.is_empty():
+				layegg()
 			state = 1 #run away after
 		else:
 			state = randi_range(0,2)
@@ -117,23 +130,23 @@ func wanderstate(delta):
 		statetime = randi_range(30,120)
 
 func goonstate(delta):
-	
-	print(str(get_closest_chicken().global_position))
 	$suslook.look_at(get_closest_chicken().global_position)
 	
 	if position.distance_to(get_closest_chicken().global_position) < 20:
 		get_closest_chicken().state = 3
 		get_closest_chicken().statetime = statetime
-		partnerchickenstats = get_closest_chicken().chickenstats
+		partnerchickenstats = get_closest_chicken().chickenstats.duplicate()
 	else:
 		velocity += $suslook.transform.x * speed * delta * 1.5
 
 
 func layegg():
-	var b = load("res://scenes/egg.tscn").instantiate()
-	b.chickenstats = average_stats(chickenstats,partnerchickenstats)
-	get_parent().add_child(b)
-	b.position = position + Vector2(randf_range(-15,15),randf_range(-15,15))
+	if not partnerchickenstats.is_empty(): #if you restrained them
+		var b = load("res://scenes/egg.tscn").instantiate()
+		b.chickenstats = average_stats(chickenstats,partnerchickenstats)
+		partnerchickenstats.clear()
+		get_parent().add_child(b)
+		b.position = position + Vector2(randf_range(-15,15),randf_range(-15,15))
 
 func updatestats():
 	$stats/Label.text = "chicken stats: \n size - " + str(round(chickenstats["size"])) + "\n tenderness - " + str(round(chickenstats["tenderness"]))
