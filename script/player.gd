@@ -11,8 +11,11 @@ var movedir : Vector2
 
 var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
+var eggspace : int = 3 # max eggs to carry
+var eggs : int = 0 # current eggs carrying
 
 func _process(delta: float) -> void:
+	print(eggs)
 	updateconstantvariables()
 	controls()
 	updatepos(delta)
@@ -36,7 +39,8 @@ func controls():
 		$ropearea.global_position = get_global_mouse_position()
 		createrope()
 	
-	
+	if Input.is_action_just_pressed("interact"):
+		pickupegg()
 	
 
 func updatepos(delta : float):
@@ -108,3 +112,13 @@ func camerastuff():
 	
 	camera.offset = Vector2(randf_range(-5,5),randf_range(-5,5)) * shakeframes
 	
+func pickupegg():
+	if eggs >= eggspace:
+		return
+	
+	if global.the_egg != null and is_instance_valid(global.the_egg):
+		if global_position.distance_squared_to(global.the_egg.global_position) <= pow(25, 2):
+			global.the_egg.queue_free()
+			global.the_egg = null
+			global.egg_visible = false
+			eggs += 1

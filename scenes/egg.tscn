@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx5kmhttxo7vg"]
+[gd_scene load_steps=5 format=3 uid="uid://dx5kmhttxo7vg"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_maxla"]
 [ext_resource type="Script" uid="uid://cajwck3x4nmlo" path="res://script/egg.gd" id="1_qlus4"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_34461"]
 
-[node name="egg" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_34461"]
+font_size = 51
+font_color = Color(0, 0, 0, 1)
+
+[node name="egg" type="Node2D" groups=["egg"]]
 script = ExtResource("1_qlus4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,3 +20,27 @@ region_rect = Rect2(49, 10, 6, 5)
 
 [node name="shadow" parent="Sprite2D" instance=ExtResource("3_34461")]
 position = Vector2(0, -0.6)
+
+[node name="Popup" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="Popup"]
+offset_left = -22.0
+offset_top = -66.0
+offset_right = 24.0
+offset_bottom = -20.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+offset_left = -19.0
+offset_top = -63.0
+offset_right = 21.0
+offset_bottom = -23.0
+
+[node name="Label" type="Label" parent="Popup"]
+offset_left = -14.0
+offset_top = -79.0
+offset_right = 18.0
+offset_bottom = -2.0
+text = "E"
+label_settings = SubResource("LabelSettings_34461")

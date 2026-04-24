@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://btyphwqd0sgua"]
+[gd_scene load_steps=23 format=4 uid="uid://btyphwqd0sgua"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_5wgtu"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="1_kwcxs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="8_8qn3e"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="9_6m7oc"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="10_wj07n"]
+[ext_resource type="PackedScene" uid="uid://dx5kmhttxo7vg" path="res://scenes/egg.tscn" id="11_wj07n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efggw"]
 texture = ExtResource("1_5wgtu")
@@ -195,3 +196,9 @@ gradient = ExtResource("10_wj07n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1151.5, 0)
 shape = SubResource("RectangleShape2D_6m7oc")
+
+[node name="egg" parent="." instance=ExtResource("11_wj07n")]
+position = Vector2(803, 99)
+
+[node name="egg2" parent="." instance=ExtResource("11_wj07n")]
+position = Vector2(829, 130)

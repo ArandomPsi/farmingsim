@@ -2,6 +2,9 @@ extends Node
 var playerpos : Vector2
 
 
+var egg_visible : bool = false # only 1 egg can be shown at a time for pickup
+var the_egg : Node = null
+
 var time = 0
 var prevtime = time
 const MINUTES_PER_DAY = 1440
@@ -33,8 +36,7 @@ func _process(delta):
 	if time >= 12:
 		time = 0
 		
-		
-	
+
 	
 func recalculate_time() -> void:
 	var total_minutes = int(time/ ingame_to_real_minute_duration)
