@@ -7,6 +7,8 @@ var hatchtime : float = chickenstats.size * 0.85
 var eggtimer : float = hatchtime
 var timemult : float = 0.8 # for chicken coop speeding up
 #var picked_up : bool = false # debug bc not working without it
+@onready var popup: Node2D = $Popup
+
 
 
 func _ready() -> void:
@@ -16,7 +18,7 @@ func _ready() -> void:
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 
 func _process(delta: float) -> void:
-	var in_range = global_position.distance_squared_to(global.playerpos) <= pow(25, 2)
+	var in_range = global_position.distance_squared_to(global.playerpos) <= pow(30, 2)
 
 	if in_range:
 		if global.the_egg == null or not is_instance_valid(global.the_egg):
@@ -41,5 +43,5 @@ func egg_popup(status : bool): # open = true, close = false, not in use rn
 	global.egg_visible = status
 	var e = self if status else null
 	global.the_egg = e
-	$Popup.visible = status
+	popup.visible = status
 	

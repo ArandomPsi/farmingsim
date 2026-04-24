@@ -1,4 +1,5 @@
 extends Node
+var player : Node #for convenience
 var playerpos : Vector2
 
 

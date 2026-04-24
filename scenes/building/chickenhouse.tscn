@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4iv6dr4xxkvm"]
+[gd_scene load_steps=7 format=3 uid="uid://c4iv6dr4xxkvm"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_16gv3"]
+[ext_resource type="Script" uid="uid://dv76m45ag7n1o" path="res://scenes/building/chickenhouse.gd" id="1_ijjhn"]
+[ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_dotcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16gv3"]
 size = Vector2(80, 71)
@@ -8,8 +10,12 @@ size = Vector2(80, 71)
 [sub_resource type="CircleShape2D" id="CircleShape2D_16gv3"]
 radius = 465.039
 
+[sub_resource type="LabelSettings" id="LabelSettings_l7fy3"]
+font_size = 51
+
 [node name="chickenhouse" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_ijjhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -25,7 +31,6 @@ z_index = -1
 z_as_relative = false
 texture_filter = 1
 position = Vector2(0, 1.2)
-scale = Vector2(1, 1)
 texture = ExtResource("1_16gv3")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 22)
@@ -52,3 +57,25 @@ collision_mask = 0
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="chickenhider"]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_16gv3")
+
+[node name="Popup" type="Node2D" parent="."]
+visible = false
+
+[node name="egglabel" type="Label" parent="Popup"]
+offset_left = -37.0
+offset_top = -111.0
+offset_right = 41.0
+offset_bottom = -41.0
+text = "0/5"
+label_settings = SubResource("LabelSettings_l7fy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Popup"]
+texture_filter = 1
+position = Vector2(-57, -77)
+scale = Vector2(4.89487, 5.475)
+texture = ExtResource("1_16gv3")
+region_enabled = true
+region_rect = Rect2(49, 10, 6, 5)
+
+[node name="shadow" parent="Popup/Sprite2D" instance=ExtResource("3_dotcv")]
+position = Vector2(0, -0.6)
