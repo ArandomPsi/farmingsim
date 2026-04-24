@@ -141,6 +141,7 @@ func wanderstate(delta):
 		statetime = randi_range(30,120)
 
 func goonstate(delta):
+	$Heart.visible = true
 	var cc = get_closest_chicken()
 	if is_instance_valid(cc):
 		$suslook.look_at(cc.global_position)
@@ -151,6 +152,7 @@ func goonstate(delta):
 			partnerchickenstats = cc.chickenstats.duplicate()
 		else:
 			velocity += $suslook.transform.x * speed * delta * 1.5
+			$Heart/AnimationPlayer.play("float")
 
 
 func layegg():
