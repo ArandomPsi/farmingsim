@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 	
 	updatestats()
 	
-	if global_position.distance_squared_to(get_global_mouse_position()) <= pow(25, 2):
+	if global_position.distance_squared_to(get_global_mouse_position()) <= pow(30, 2):
 		$stats.visible = true # if player is near chicken or mouse is hovering over chicken, show stats (please delete one of these liam)
 	else:
 		$stats.visible = false
@@ -141,14 +141,16 @@ func wanderstate(delta):
 		statetime = randi_range(30,120)
 
 func goonstate(delta):
-	$suslook.look_at(get_closest_chicken().global_position)
+	var cc = get_closest_chicken()
+	if is_instance_valid(cc):
+		$suslook.look_at(cc.global_position)
 	
-	if position.distance_to(get_closest_chicken().global_position) < 20:
-		get_closest_chicken().state = 3
-		get_closest_chicken().statetime = statetime
-		partnerchickenstats = get_closest_chicken().chickenstats.duplicate()
-	else:
-		velocity += $suslook.transform.x * speed * delta * 1.5
+		if position.distance_to(cc.global_position) < 20:
+			cc.state = 3
+			cc.statetime = statetime
+			partnerchickenstats = cc.chickenstats.duplicate()
+		else:
+			velocity += $suslook.transform.x * speed * delta * 1.5
 
 
 func layegg():

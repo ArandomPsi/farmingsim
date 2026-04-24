@@ -14,6 +14,8 @@ var ropeamount : int = 1 # actual amount - 1
 var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
 
+var currency : int = 0
+
 func _ready() -> void:
 	global.player = self
 

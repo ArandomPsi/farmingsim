@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7txge7tmljk0"]
+[gd_scene load_steps=10 format=3 uid="uid://7txge7tmljk0"]
 
 [ext_resource type="Texture2D" uid="uid://bkmqdq8nb3sne" path="res://assets/dedchicken.png" id="1_mixk0"]
 [ext_resource type="Script" uid="uid://ckao1jvxb7j5g" path="res://script/dedchicken.gd" id="1_u2ggf"]
@@ -38,6 +38,10 @@ color_ramp = SubResource("GradientTexture1D_ei6mc")
 anim_offset_min = 0.2063
 anim_offset_max = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_u2ggf"]
+font_size = 51
+font_color = Color(0, 0, 0, 1)
+
 [node name="dedchicken" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_u2ggf")
@@ -63,3 +67,27 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_mixk0")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
+
+[node name="Popup" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="Popup"]
+offset_left = -22.0
+offset_top = -66.0
+offset_right = 24.0
+offset_bottom = -20.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+offset_left = -19.0
+offset_top = -63.0
+offset_right = 21.0
+offset_bottom = -23.0
+
+[node name="Label" type="Label" parent="Popup"]
+offset_left = -14.0
+offset_top = -79.0
+offset_right = 18.0
+offset_bottom = -2.0
+text = "E"
+label_settings = SubResource("LabelSettings_u2ggf")
