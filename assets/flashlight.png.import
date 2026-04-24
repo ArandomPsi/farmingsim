@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c631lwf82fxbs"
-path="res://.godot/imported/chickenmap.png-4b575aaf051800dece009d50e2ee7a51.ctex"
+uid="uid://t0hu3uk6w85h"
+path="res://.godot/imported/flashlight.png-50b4953a7b90a11dc7f02488b081336e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chickenmap.png"
-dest_files=["res://.godot/imported/chickenmap.png-4b575aaf051800dece009d50e2ee7a51.ctex"]
+source_file="res://assets/flashlight.png"
+dest_files=["res://.godot/imported/flashlight.png-50b4953a7b90a11dc7f02488b081336e.ctex"]
 
 [params]
 

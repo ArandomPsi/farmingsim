@@ -32,9 +32,9 @@ func controls():
 	
 	$pivot.look_at(get_global_mouse_position())
 	if get_global_mouse_position().x > position.x:
-		$pivot/AnimatedSprite2D.scale.y = 5
+		$pivot/guns.scale.y = 5
 	else:
-		$pivot/AnimatedSprite2D.scale.y = -5
+		$pivot/guns.scale.y = -5
 	
 	if Input.is_action_just_pressed("shoot"):
 		pewpew()
@@ -58,6 +58,7 @@ func updatevisuals():
 	flipstuff()
 	camerastuff()
 	playeranimstuff()
+	effectsandstuff()
 	
 	
 
@@ -68,7 +69,7 @@ func updateconstantvariables():
 func pewpew():
 	var b = preload("res://scenes/player/bullet.tscn").instantiate()
 	get_parent().add_child(b)
-	b.position = $pivot/AnimatedSprite2D.global_position
+	b.position = $pivot/guns.global_position
 	b.rotation = $pivot.rotation
 	shakeframes += 5 #feedback
 
@@ -104,6 +105,10 @@ func playeranimstuff():
 		sprite.play("walk")
 	else:
 		sprite.play("idle")
+
+func effectsandstuff():
+	$pivot/guns/light.visible = global.isnight
+
 
 func flipstuff():
 	if get_global_mouse_position().x > position.x:

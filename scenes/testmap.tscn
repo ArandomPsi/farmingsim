@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://btyphwqd0sgua"]
 
-[ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickenmap.png" id="1_5wgtu"]
+[ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_5wgtu"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="1_kwcxs"]
 [ext_resource type="Shader" uid="uid://b5pwkw2ryewj2" path="res://shaders/grasswind.gdshader" id="2_efggw"]
 [ext_resource type="Shader" uid="uid://b780aaswdvqml" path="res://shaders/grass.gdshader" id="3_6fk1w"]

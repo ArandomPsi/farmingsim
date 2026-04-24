@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch8x8s3pc0epf"
-path="res://.godot/imported/wheatandchicken.png-6a8b16672ebf7e8482e5318562ae8110.ctex"
+uid="uid://cj5fe1bq7evlo"
+path="res://.godot/imported/flashlightlight.svg-60481a65f4b0249db8cd43030dda1078.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wheatandchicken.png"
-dest_files=["res://.godot/imported/wheatandchicken.png-6a8b16672ebf7e8482e5318562ae8110.ctex"]
+source_file="res://assets/flashlightlight.svg"
+dest_files=["res://.godot/imported/flashlightlight.svg-60481a65f4b0249db8cd43030dda1078.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

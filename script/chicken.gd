@@ -9,6 +9,7 @@ var randomturning : float = 0
 var currentfood : int = 100 #max food = 100
 var currentwater : int = 100 #max water = 100
 var lust : int = 10
+var dominant : bool = false #laying one egg only
 var updatetick : int = 0
 
 @export var tethered : bool = false
@@ -50,6 +51,12 @@ func _process(delta: float) -> void:
 		3:
 			goonstate(delta)
 	
+	if not state == 3:
+		$flip/sprite/heartpar.emitting = false
+		dominant = false
+	
+	
+	
 	velocity *= 0.85
 	
 	if tethered and position.distance_to(global.playerpos) > 200:
@@ -71,7 +78,7 @@ func _process(delta: float) -> void:
 	updatestats()
 	
 	if global_position.distance_squared_to(get_global_mouse_position()) <= pow(30, 2):
-		$stats.visible = true # if player is near chicken or mouse is hovering over chicken, show stats (please delete one of these liam)
+		$stats.visible = true # if mouse is hovering over chicken, show stats
 	else:
 		$stats.visible = false
 	
@@ -94,6 +101,7 @@ func handlestates():
 		updatetick = randi_range(20,40)
 		if lust < 0:
 			if randi_range(1,2) == 1: #temptation
+				dominant = true #they are the rapist in this situation
 				statetime = 600
 				state = 3
 			else:
@@ -141,7 +149,7 @@ func wanderstate(delta):
 		statetime = randi_range(30,120)
 
 func goonstate(delta):
-	$Heart.visible = true
+	
 	var cc = get_closest_chicken()
 	if is_instance_valid(cc):
 		$suslook.look_at(cc.global_position)
@@ -152,11 +160,11 @@ func goonstate(delta):
 			partnerchickenstats = cc.chickenstats.duplicate()
 		else:
 			velocity += $suslook.transform.x * speed * delta * 1.5
-			$Heart/AnimationPlayer.play("float")
+			$flip/sprite/heartpar.emitting = true
 
 
 func layegg():
-	if not partnerchickenstats.is_empty(): #if you restrained them
+	if not partnerchickenstats.is_empty() and dominant: #domininat is the one who provoked the pound town
 		var b = load("res://scenes/egg.tscn").instantiate()
 		b.chickenstats = average_stats(chickenstats,partnerchickenstats)
 		partnerchickenstats.clear()

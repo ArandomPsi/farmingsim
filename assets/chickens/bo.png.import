@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy03b22bqkgv2"
-path="res://.godot/imported/chickenonly.png-9a1ab01616db403e221ee7e1db8e021d.ctex"
+uid="uid://bgyil6c51oxl6"
+path="res://.godot/imported/bo.png-e44dde124b076dc8d15493d7cd8d4ed6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chickenonly.png"
-dest_files=["res://.godot/imported/chickenonly.png-9a1ab01616db403e221ee7e1db8e021d.ctex"]
+source_file="res://assets/chickens/bo.png"
+dest_files=["res://.godot/imported/bo.png-e44dde124b076dc8d15493d7cd8d4ed6.ctex"]
 
 [params]
 

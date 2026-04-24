@@ -18,6 +18,9 @@ var INITIAL_HOUR = 0:
 		time = ingame_to_real_minute_duration * INITIAL_HOUR * MINUTES_PER_HOUR
 
 var days = 0
+var truetime : float = 0
+var isnight : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	time = ingame_to_real_minute_duration * INITIAL_HOUR * 60
@@ -28,17 +31,23 @@ func _process(delta):
 	
 	if time >= 5.5 and prevtime < 5.5:
 		days += 1
-	if time >= 11 and prevtime < 11:
-		days += 1
 	
 	prevtime = time
 	#time stuff
 	time += delta / INGAME_SPEED
-	if time >= 12:
+	if time >= 6:
 		time = 0
-		
-
 	
+	truetime = time * 4 #lasts 6 for some reason, so mult by 4
+	print(str(truetime)) #basically true time
+	
+	#for night detection
+	isnight = (truetime > 20 or truetime < 4)
+	
+	
+	
+
+
 func recalculate_time() -> void:
 	var total_minutes = int(time/ ingame_to_real_minute_duration)
 	

@@ -13,7 +13,6 @@ var timemult : float = 0.8 # for chicken coop speeding up
 
 func _ready() -> void:
 	if chickenstats.is_empty(): print("error - " + str(position)); queue_free() #saftey
-	print(str(chickenstats))
 	chickenstats["size"] *= randf_range(0.8,1.5)
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 
