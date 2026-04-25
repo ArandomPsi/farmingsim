@@ -53,6 +53,7 @@ func controls():
 		if currentweapon >= weapons.size():
 			currentweapon = 0
 	
+	$CollisionShape2D.disabled = not global.editing
 	
 
 func updatepos(delta : float):

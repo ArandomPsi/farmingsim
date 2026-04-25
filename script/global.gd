@@ -2,6 +2,7 @@ extends Node
 var player : Node #for convenience
 var playerpos : Vector2
 
+var editing : bool = false
 
 var egg_visible : bool = false # only 1 egg can be shown at a time for pickup
 var the_egg : Node = null
@@ -126,3 +127,7 @@ func recalculate_time() -> void:
 	#
 	#var hour = int(current_day_minutes / MINUTES_PER_HOUR)
 	#var minute = int(current_day_minutes % MINUTES_PER_HOUR)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("edit"):
+		editing = not editing
