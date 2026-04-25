@@ -13,6 +13,8 @@ var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
 var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
+var weapons : Array = ["flashlight", "glock"]
+var currentweapon : int = 0
 
 var currency : int = 0
 
@@ -36,7 +38,7 @@ func controls():
 	else:
 		$pivot/guns.scale.y = -5
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and not weapons[currentweapon] == "flashlight":
 		pewpew()
 	
 	if Input.is_action_just_pressed("addrope"):
@@ -45,6 +47,12 @@ func controls():
 	
 	if Input.is_action_just_pressed("interact"):
 		pickupegg()
+	
+	if Input.is_action_just_pressed("swapweapon"):
+		currentweapon += 1
+		if currentweapon >= weapons.size():
+			currentweapon = 0
+	
 	
 
 func updatepos(delta : float):
@@ -105,9 +113,14 @@ func playeranimstuff():
 		sprite.play("walk")
 	else:
 		sprite.play("idle")
+	
+	#glocks and stuff
+	$pivot/guns.play(weapons[currentweapon]) #clean code ig
+	
+	
 
 func effectsandstuff():
-	$pivot/guns/light.visible = global.isnight
+	$pivot/guns/light.visible = $pivot/guns.animation == "flashlight"
 
 
 func flipstuff():

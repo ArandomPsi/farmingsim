@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4iv6dr4xxkvm"]
+[gd_scene load_steps=8 format=3 uid="uid://c4iv6dr4xxkvm"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_16gv3"]
 [ext_resource type="Script" uid="uid://dv76m45ag7n1o" path="res://scenes/building/chickenhouse.gd" id="1_ijjhn"]
@@ -13,8 +13,10 @@ radius = 465.039
 [sub_resource type="LabelSettings" id="LabelSettings_l7fy3"]
 font_size = 51
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ijjhn"]
+polygon = PackedVector2Array(-1, -10, -2, -10, -2, -9, -3, -9, -3, -8, -5, -8, -5, -7, -6, -7, -6, -6, -7, -6, -7, -5, -8, -5, -8, 11, -7, 11, -7, 10, -6, 10, -6, 9, -3, 9, -3, 11, 3, 11, 3, 9, 6, 9, 6, 10, 7, 10, 7, 11, 8, 11, 8, -5, 7, -5, 7, -6, 6, -6, 6, -7, 5, -7, 5, -8, 3, -8, 3, -9, 2, -9, 2, -10, 1, -10, 1, -11, -1, -11)
+
 [node name="chickenhouse" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_ijjhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -79,3 +81,7 @@ region_rect = Rect2(49, 10, 6, 5)
 
 [node name="shadow" parent="Popup/Sprite2D" instance=ExtResource("3_dotcv")]
 position = Vector2(0, -0.6)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(5, 5)
+occluder = SubResource("OccluderPolygon2D_ijjhn")
