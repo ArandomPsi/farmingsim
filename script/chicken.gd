@@ -8,7 +8,7 @@ var randomturning : float = 0
 
 var currentfood : int = 100 #max food = 100
 var currentwater : int = 100 #max water = 100
-var lust : int = 10
+var lust : int = 200
 var dominant : bool = false #laying one egg only
 var updatetick : int = 0
 
@@ -100,7 +100,7 @@ func handlestates():
 		lust -= 1
 		updatetick = randi_range(20,40)
 		if lust < 0:
-			if randi_range(1,2) == 1: #temptation
+			if randi_range(1,8) == 1: #temptation
 				dominant = true #they are the rapist in this situation
 				statetime = 600
 				state = 3

@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 	controls()
 	updatepos(delta)
 	updatevisuals()
+	updatehud()
 	global.playerpos = position
 	
 
@@ -69,6 +70,11 @@ func updatevisuals():
 	playeranimstuff()
 	effectsandstuff()
 	
+	
+
+func updatehud():
+	
+	$hud/Panel/coinlabel.text = str(currency)
 	
 
 func updateconstantvariables():
