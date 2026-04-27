@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo2kvhw2quao3"
-path="res://.godot/imported/glock.png-f87e6b5fee9c5c7d31985383c1565f99.ctex"
+uid="uid://dn0nl7l1fxvup"
+path="res://.godot/imported/lightthing.svg-39649c7b1c9c01d6c7ee4a1d6ca7fb27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glock.png"
-dest_files=["res://.godot/imported/glock.png-f87e6b5fee9c5c7d31985383c1565f99.ctex"]
+source_file="res://assets/playerstuff/lightthing.svg"
+dest_files=["res://.godot/imported/lightthing.svg-39649c7b1c9c01d6c7ee4a1d6ca7fb27.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mwc7wg2ykqfq"
-path="res://.godot/imported/rope1.png-59e9358924a116511a2d37593cb7637a.ctex"
+uid="uid://t0hu3uk6w85h"
+path="res://.godot/imported/flashlight.png-7ef7a371a84887184c47cde5cdf6627c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rope1.png"
-dest_files=["res://.godot/imported/rope1.png-59e9358924a116511a2d37593cb7637a.ctex"]
+source_file="res://assets/playerstuff/flashlight.png"
+dest_files=["res://.godot/imported/flashlight.png-7ef7a371a84887184c47cde5cdf6627c.ctex"]
 
 [params]
 

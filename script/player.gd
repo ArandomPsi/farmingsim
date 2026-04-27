@@ -13,8 +13,13 @@ var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
 var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
-var weapons : Array = ["flashlight", "glock"]
+
+var weapons : Array = ["flashlight", "glock", "shotgun"]
+var magsizes : Array = [6,2,1] #sniper,glock,shotgun
+var currentmagsize : int = 6
 var currentweapon : int = 0
+var currentweaponname : String
+var reloadingframes : int = 0
 
 var currency : int = 0
 var overlappingshopkeeper = null
@@ -45,7 +50,9 @@ func controls():
 		$pivot/guns.scale.y = -5
 	
 	if Input.is_action_just_pressed("shoot") and not weapons[currentweapon] == "flashlight":
-		pewpew()
+		if currentmagsize > 0 and reloadingframes < 1:
+			pewpew()
+			currentmagsize -= 1
 	
 	if Input.is_action_just_pressed("addrope"):
 		$ropearea.global_position = get_global_mouse_position()
@@ -66,6 +73,28 @@ func controls():
 		currentweapon += 1
 		if currentweapon >= weapons.size():
 			currentweapon = 0
+		
+		currentweaponname = weapons[currentweapon]
+		
+		match currentweaponname:
+			"glock":
+				currentmagsize = magsizes[0]
+			"shotgun":
+				currentmagsize = magsizes[1]
+			"sniper":
+				currentmagsize = magsizes[2]
+		
+		
+	
+	if Input.is_action_just_pressed("reload") and not currentweaponname == "flashlight":
+		reloadingframes = 30
+		match currentweaponname:
+			"glock":
+				currentmagsize = magsizes[0]
+			"shotgun":
+				currentmagsize = magsizes[1]
+			"sniper":
+				currentmagsize = magsizes[2]
 	
 	
 	
@@ -79,7 +108,6 @@ func talkingcontrols():
 		$hud/text/text.text = textqueue[0]
 		if Input.is_action_just_pressed("interact"):
 			textqueue.pop_front()
-			$hud/text/text.visible_ratio = 0.0 #for smoothing
 		if textqueue[0] == "shop":
 			$hud/shop.visible = true
 			textqueue.clear()
@@ -114,18 +142,47 @@ func updatehud():
 	
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
-	if $hud/text.visible: $hud/text/text.visible_ratio = lerpf($hud/text/text.visible_ratio,1.1,0.03)
+	if not currentweaponname == "flashlight":
+		$hud/bulletamount.text = str(currentmagsize) + "/" + str(magsizes[currentweapon-1])
+		$hud/bulletamount.visible = true
+	else:
+		$hud/bulletamount.visible = false
+	
+	$hud/inventory/currentslotthing.position.x = currentweapon * 46.0
+	
 
 func updateconstantvariables():
 	shakeframes -= 1
 	shakeframes = clamp(shakeframes,0,20)
+	reloadingframes -= 1
+	currentweaponname = weapons[currentweapon]
 
 func pewpew():
-	var b = preload("res://scenes/player/bullet.tscn").instantiate()
-	get_parent().add_child(b)
-	b.position = $pivot/guns.global_position
-	b.rotation = $pivot.rotation
-	shakeframes += 5 #feedback
+	match currentweaponname:
+		"glock":
+			var b = preload("res://scenes/player/bullet.tscn").instantiate()
+			get_parent().add_child(b)
+			b.position = $pivot/guns.global_position
+			b.rotation = $pivot.rotation
+			shakeframes += 5 #feedback
+		"shotgun":
+			for i in range(8):
+				var b = preload("res://scenes/player/bullet.tscn").instantiate()
+				get_parent().add_child(b)
+				b.position = $pivot/guns.global_position
+				b.rotation = $pivot.rotation
+				b.rotation_degrees += randf_range(-10,10)
+				b.speed *= randf_range(0.7,1.2)
+				b.frames = 40
+			shakeframes += 8 #feedback
+		"sniper":
+			var b = preload("res://scenes/player/bullet.tscn").instantiate()
+			get_parent().add_child(b)
+			b.position = $pivot/guns.global_position
+			b.rotation = $pivot.rotation
+			shakeframes += 10 #feedback
+	
+	
 
 func createrope():
 	if $ropearea.has_overlapping_bodies():
@@ -162,11 +219,17 @@ func playeranimstuff():
 	
 	#glocks and stuff
 	$pivot/guns.play(weapons[currentweapon]) #clean code ig
+	if reloadingframes > 1:
+		$pivot/guns.rotation_degrees -= 24 * ($pivot/guns.scale.y/5)
+	else:
+		$pivot/guns.rotation = lerp_angle($pivot/guns.rotation,0.0,0.15)
+	
 	
 	
 
 func effectsandstuff():
 	$pivot/guns/light.visible = $pivot/guns.animation == "flashlight"
+	$nightlight.visible = global.isnight
 
 
 func flipstuff():

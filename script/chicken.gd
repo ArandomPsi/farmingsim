@@ -17,6 +17,7 @@ var updatetick : int = 0
 @export var debug : bool = false
 
 var ropecrash = null
+var nearestcoop = null
 
 var chickenstats : Dictionary = { #all stats can reach 100
 	"size": randi_range(1,20),
@@ -50,6 +51,8 @@ func _process(delta: float) -> void:
 			gobblegobble()
 		3:
 			goonstate(delta)
+		4:
+			chasestate(nearestcoop.global_position,delta)
 	
 	if not state == 3:
 		$flip/sprite/heartpar.emitting = false
@@ -114,6 +117,17 @@ func handlestates():
 			if not partnerchickenstats.is_empty():
 				layegg()
 			state = 1 #run away after
+		elif global.isnight:
+			var coops = $coopchecker.get_overlapping_areas()
+			if not coops.is_empty():
+				state = 4
+				statetime = 300
+				nearestcoop = coops[0]
+			else:
+				state = 1
+				statetime = randi_range(30,500)
+				$randomlook.rotation = randi_range(0,2*PI)
+				randomturning = randi_range(-15,15)
 		else:
 			state = randi_range(0,2)
 		
@@ -161,6 +175,10 @@ func goonstate(delta):
 		else:
 			velocity += $suslook.transform.x * speed * delta * 1.5
 			$flip/sprite/heartpar.emitting = true
+
+func chasestate(targetposition : Vector2, delta):
+	velocity += $randomlook.transform.x * speed * delta
+	$randomlook.look_at(targetposition)
 
 
 func layegg():

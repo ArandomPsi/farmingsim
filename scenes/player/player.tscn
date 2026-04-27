@@ -1,16 +1,18 @@
-[gd_scene load_steps=31 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=38 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bqk4dmdg35hpp" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanWalk.png" id="2_dovo2"]
 [ext_resource type="Shader" uid="uid://cqmcc8rco6og7" path="res://shaders/motionblur.gdshader" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="4_0owmy"]
-[ext_resource type="Texture2D" uid="uid://bo2kvhw2quao3" path="res://assets/glock.png" id="4_75vfm"]
+[ext_resource type="Texture2D" uid="uid://bo2kvhw2quao3" path="res://assets/playerstuff/glock.png" id="4_75vfm"]
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
-[ext_resource type="Texture2D" uid="uid://t0hu3uk6w85h" path="res://assets/flashlight.png" id="5_5gtgg"]
-[ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/flashlighthing.svg" id="7_5gtgg"]
-[ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/coin.png" id="10_h17s1"]
+[ext_resource type="Texture2D" uid="uid://t0hu3uk6w85h" path="res://assets/playerstuff/flashlight.png" id="5_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://bvg3lpw471q5t" path="res://assets/playerstuff/shotgun.png" id="7_fm80t"]
+[ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
+[ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -112,6 +114,14 @@ animations = [{
 "loop": false,
 "name": &"glock",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fm80t")
+}],
+"loop": true,
+"name": &"shotgun",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
@@ -139,12 +149,36 @@ metadata/_snap_enabled = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 15.0333
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h17s1"]
-bg_color = Color(0, 0, 0, 0.435294)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_je7p5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je7p5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm80t"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugbui"]
+bg_color = Color(0.27, 0.27, 0.27, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx1jg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.43, 0.43, 0.43, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcs02"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
 [node name="player" type="CharacterBody2D"]
@@ -175,7 +209,7 @@ texture_filter = 1
 position = Vector2(21, 0)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"flashlight"
+animation = &"shotgun"
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
 position = Vector2(-22.3588, -0.4)
@@ -234,10 +268,10 @@ shape = SubResource("CircleShape2D_je7p5")
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="hud"]
-offset_top = 548.0
+offset_top = 532.0
 offset_right = 200.0
-offset_bottom = 588.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_h17s1")
+offset_bottom = 571.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_je7p5")
 
 [node name="coin" type="Sprite2D" parent="hud/Panel"]
 texture_filter = 1
@@ -248,13 +282,21 @@ texture = ExtResource("10_h17s1")
 
 [node name="coinlabel" type="Label" parent="hud/Panel"]
 layout_mode = 0
-offset_left = 27.0
-offset_right = 197.0
+offset_left = 32.0
+offset_right = 202.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("11_je7p5")
 text = " 67"
-horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="hpbar" type="ProgressBar" parent="hud"]
+offset_top = 571.0
+offset_right = 254.0
+offset_bottom = 598.0
+theme_override_styles/background = SubResource("StyleBoxFlat_je7p5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fm80t")
+value = 100.0
+show_percentage = false
 
 [node name="text" type="Panel" parent="hud"]
 visible = false
@@ -382,3 +424,71 @@ size_flags_vertical = 2
 focus_mode = 0
 text = "cfdgzsaf"
 alignment = 0
+
+[node name="inventory" type="Panel" parent="hud"]
+offset_top = 600.0
+offset_right = 132.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ugbui")
+
+[node name="slot1" type="Panel" parent="hud/inventory"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gx1jg")
+script = ExtResource("13_gx1jg")
+
+[node name="sprite" type="AnimatedSprite2D" parent="hud/inventory/slot1"]
+texture_filter = 1
+position = Vector2(20, 20)
+rotation = -0.447966
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_p47bc")
+animation = &"flashlight"
+
+[node name="slot2" type="Panel" parent="hud/inventory"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gx1jg")
+script = ExtResource("13_gx1jg")
+slot = 1
+
+[node name="sprite" type="AnimatedSprite2D" parent="hud/inventory/slot2"]
+texture_filter = 1
+position = Vector2(20, 20)
+rotation = -0.447966
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_p47bc")
+animation = &"flashlight"
+
+[node name="slot3" type="Panel" parent="hud/inventory"]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 132.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gx1jg")
+script = ExtResource("13_gx1jg")
+slot = 2
+
+[node name="sprite" type="AnimatedSprite2D" parent="hud/inventory/slot3"]
+texture_filter = 1
+position = Vector2(20, 20)
+rotation = -0.447966
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_p47bc")
+animation = &"flashlight"
+
+[node name="currentslotthing" type="Panel" parent="hud/inventory"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fcs02")
+
+[node name="bulletamount" type="Label" parent="hud"]
+offset_left = 257.0
+offset_top = 573.0
+offset_right = 297.0
+offset_bottom = 596.0
+text = "5/5"

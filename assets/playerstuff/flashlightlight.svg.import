@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn0nl7l1fxvup"
-path="res://.godot/imported/lightthing.svg-017a6cf8240a2baba18e7f50a5e97ddb.ctex"
+uid="uid://cj5fe1bq7evlo"
+path="res://.godot/imported/flashlightlight.svg-a2e0a2bb7e79a27c94481f3a728962c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lightthing.svg"
-dest_files=["res://.godot/imported/lightthing.svg-017a6cf8240a2baba18e7f50a5e97ddb.ctex"]
+source_file="res://assets/playerstuff/flashlightlight.svg"
+dest_files=["res://.godot/imported/flashlightlight.svg-a2e0a2bb7e79a27c94481f3a728962c9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj5fe1bq7evlo"
-path="res://.godot/imported/flashlightlight.svg-60481a65f4b0249db8cd43030dda1078.ctex"
+uid="uid://bvg3lpw471q5t"
+path="res://.godot/imported/shotgun.png-39f3b3023382e8b0c20ccd79f8f2b1e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flashlightlight.svg"
-dest_files=["res://.godot/imported/flashlightlight.svg-60481a65f4b0249db8cd43030dda1078.ctex"]
+source_file="res://assets/playerstuff/shotgun.png"
+dest_files=["res://.godot/imported/shotgun.png-39f3b3023382e8b0c20ccd79f8f2b1e9.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
