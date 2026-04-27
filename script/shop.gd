@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var textstuff : PackedStringArray = ["Yo whats good bro?", "Do you want the bananas?"]
+@export var textstuff : PackedStringArray = ["Yo whats good bro?", "Do you want the bananas?", "shop"]
 
 
 func _process(delta: float) -> void:

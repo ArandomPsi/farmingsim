@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dnl2fymqbuwo3"]
+[gd_scene load_steps=26 format=3 uid="uid://dnl2fymqbuwo3"]
 
 [ext_resource type="Script" uid="uid://cec7nd6vyw2sq" path="res://script/shop.gd" id="1_032fp"]
 [ext_resource type="Texture2D" uid="uid://dw07h57flj1bv" path="res://assets/chickens/shops.png" id="1_lx5au"]
@@ -139,6 +139,9 @@ shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.745098)
 shadow_offset = Vector2(0, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_032fp"]
+size = Vector2(80, 20)
+
 [node name="shop" type="Node2D"]
 script = ExtResource("1_032fp")
 
@@ -198,3 +201,9 @@ text = "E"
 label_settings = SubResource("LabelSettings_032fp")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_032fp")

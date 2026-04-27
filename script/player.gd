@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
-	if textqueue.size() > 0:
+	if textqueue.size() > 0 or $hud/shop.visible:
 		talkingcontrols()
 	else:
 		controls()
@@ -75,10 +75,22 @@ func controls():
 
 func talkingcontrols():
 	
-	$hud/text/text.text = textqueue[0]
+	if not textqueue.is_empty():
+		$hud/text/text.text = textqueue[0]
+		if Input.is_action_just_pressed("interact"):
+			textqueue.pop_front()
+			$hud/text/text.visible_ratio = 0.0 #for smoothing
+		if textqueue[0] == "shop":
+			$hud/shop.visible = true
+			textqueue.clear()
 	
-	if Input.is_action_just_pressed("interact"):
-		textqueue.pop_front()
+	
+	
+	if Input.is_action_just_pressed("exit"):
+		textqueue.clear()
+		$hud/shop.visible = false
+	
+	
 	
 	
 
@@ -102,6 +114,7 @@ func updatehud():
 	
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
+	if $hud/text.visible: $hud/text/text.visible_ratio = lerpf($hud/text/text.visible_ratio,1.1,0.03)
 
 func updateconstantvariables():
 	shakeframes -= 1
