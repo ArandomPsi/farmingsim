@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=31 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -136,6 +136,9 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.2)
 metadata/_snap_enabled = true
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
+radius = 15.0333
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h17s1"]
 bg_color = Color(0, 0, 0, 0.435294)
 border_width_left = 2
@@ -221,6 +224,13 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_h17s1")
 texture_scale = 2.61
 
+[node name="textarea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="textarea"]
+shape = SubResource("CircleShape2D_je7p5")
+
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="hud"]
@@ -245,3 +255,30 @@ theme_override_fonts/font = ExtResource("11_je7p5")
 text = " 67"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="text" type="Panel" parent="hud"]
+visible = false
+offset_left = 712.0
+offset_top = 483.0
+offset_right = 1154.0
+offset_bottom = 651.0
+
+[node name="text" type="Label" parent="hud/text"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 34.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello Bro"
+
+[node name="name" type="Label" parent="hud/text"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 147.0
+offset_bottom = 32.0
+text = "Joe Mama"

@@ -17,13 +17,18 @@ var weapons : Array = ["flashlight", "glock"]
 var currentweapon : int = 0
 
 var currency : int = 0
+var overlappingshopkeeper = null
+var textqueue : Array = []
 
 func _ready() -> void:
 	global.player = self
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
-	controls()
+	if textqueue.size() > 0:
+		talkingcontrols()
+	else:
+		controls()
 	updatepos(delta)
 	updatevisuals()
 	updatehud()
@@ -47,15 +52,36 @@ func controls():
 		createrope()
 	
 	if Input.is_action_just_pressed("interact"):
-		pickupegg()
+		if not $textarea.has_overlapping_areas():
+			pickupegg()
+		else:
+			var allareas : Array = $textarea.get_overlapping_areas()
+			overlappingshopkeeper = allareas[0].get_parent()
+			textqueue = overlappingshopkeeper.textstuff
+			
+			
+			
 	
 	if Input.is_action_just_pressed("swapweapon"):
 		currentweapon += 1
 		if currentweapon >= weapons.size():
 			currentweapon = 0
 	
+	
+	
+	
 	$CollisionShape2D.disabled = not global.editing
 	
+
+func talkingcontrols():
+	
+	$hud/text/text.text = textqueue[0]
+	
+	if Input.is_action_just_pressed("interact"):
+		textqueue.pop_front()
+	
+	
+
 
 func updatepos(delta : float):
 	velocity += movedir.normalized() * speed * delta
@@ -75,7 +101,7 @@ func updatevisuals():
 func updatehud():
 	
 	$hud/Panel/coinlabel.text = str(currency)
-	
+	$hud/text.visible = textqueue.size() > 0
 
 func updateconstantvariables():
 	shakeframes -= 1
