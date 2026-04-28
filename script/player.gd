@@ -14,7 +14,7 @@ var ropeamount : int = 1 # actual amount - 1
 var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
 
-var weapons : Array = ["flashlight", "glock", "shotgun"]
+var weapons : Array = ["sniper", "glock", "shotgun"]
 var magsizes : Array = [6,2,1] #sniper,glock,shotgun
 var currentmagsize : int = 6
 var currentweapon : int = 0
@@ -187,14 +187,18 @@ func pewpew():
 				b.rotation = $pivot.rotation
 				b.rotation_degrees += randf_range(-10,10)
 				b.speed *= randf_range(0.7,1.2)
-				b.frames = 40
+				b.frames = 10
 			shakeframes += 8 #feedback
 		"sniper":
 			var b = preload("res://scenes/player/bullet.tscn").instantiate()
 			get_parent().add_child(b)
 			b.position = $pivot/guns.global_position
 			b.rotation = $pivot.rotation
-			shakeframes += 10 #feedback
+			shakeframes += 15 #feedback
+			b.frames = 300
+			b.speed *= 1.25
+			b.scale.x *= 2
+			b.damage = 20
 	
 	
 
@@ -239,6 +243,9 @@ func playeranimstuff():
 		$pivot/guns.rotation = lerp_angle($pivot/guns.rotation,0.0,0.15)
 	
 	
+	$pivot/guns/scope.visible = currentweaponname == "sniper" and not reloadingframes > 1
+	
+	
 	
 
 func effectsandstuff():
@@ -253,7 +260,13 @@ func flipstuff():
 		flip.scale.x = -1
 
 func camerastuff():
-	camera.position = get_local_mouse_position()/3
+	
+	var divisor : float = 3
+	
+	if currentweaponname == "sniper":
+		divisor = 2
+	
+	camera.position = get_local_mouse_position()/divisor
 	
 	camera.offset = Vector2(randf_range(-5,5),randf_range(-5,5)) * shakeframes
 	

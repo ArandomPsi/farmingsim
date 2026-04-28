@@ -2,7 +2,7 @@ extends Node
 var player : Node #for convenience
 var playerpos : Vector2
 
-var editing : bool = false
+var editing : bool = true
 
 var egg_visible : bool = false # only 1 egg can be shown at a time for pickup
 var the_egg : Node = null

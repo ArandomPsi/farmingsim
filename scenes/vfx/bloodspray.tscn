@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dd0mda8hq0l6h"]
+
+[ext_resource type="Texture2D" uid="uid://bkmqdq8nb3sne" path="res://assets/chickens/dedchicken.png" id="1_ov5dr"]
+[ext_resource type="Script" uid="uid://can0xt4bkyknk" path="res://script/vfx/particles.gd" id="2_ei62h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ei62h"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ahjv5"]
+offsets = PackedFloat32Array(0, 0.740566, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ei6mc"]
+gradient = SubResource("Gradient_ahjv5")
+
+[sub_resource type="Curve" id="Curve_ud4yd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0112782, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_atkos"]
+curve = SubResource("Curve_ud4yd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_64330"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 22.13
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_atkos")
+color = Color(1, 0, 0.383333, 1)
+color_ramp = SubResource("GradientTexture1D_ei6mc")
+anim_offset_min = 0.2063
+anim_offset_max = 1.0
+
+[node name="bloodspray" type="GPUParticles2D"]
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_ei62h")
+emitting = false
+texture = ExtResource("1_ov5dr")
+lifetime = 15.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_64330")
+script = ExtResource("2_ei62h")

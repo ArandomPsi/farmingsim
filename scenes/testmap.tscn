@@ -187,7 +187,7 @@ position = Vector2(370, 226)
 position = Vector2(574, 334)
 
 [node name="chicken7" parent="." instance=ExtResource("4_efggw")]
-position = Vector2(1062, 76)
+position = Vector2(1993, 242)
 mutations = PackedStringArray("terrorist")
 
 [node name="explodingmutation" parent="chicken7" instance=ExtResource("8_vfccl")]

@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	var cam_pos = player.camera.global_position
 	var cam_vel = (cam_pos - prevcampos) / delta * 1.5
 	
-	var blur_dir = (player.velocity + cam_vel) * 0.000003
+	var blur_dir = (player.velocity + cam_vel) * 0.000004
 	
 	$motionblur.material.set_shader_parameter("dir", blur_dir)
 	
