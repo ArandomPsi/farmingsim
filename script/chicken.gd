@@ -19,6 +19,10 @@ var updatetick : int = 0
 var ropecrash = null
 var nearestcoop = null
 
+@export var mutations : PackedStringArray
+@export var hp : int = 1
+
+
 var chickenstats : Dictionary = { #all stats can reach 100
 	"size": randi_range(1,20),
 	"tenderness": randi_range(1,20)
@@ -33,6 +37,10 @@ func _ready() -> void:
 	add_to_group("chicken")
 	scale *= max(chickenstats.size / 100, 1)
 	partnerchickenstats.clear()
+	
+	if not mutations.is_empty(): #mutations make chicken naturally tankier
+		hp *= randf_range(6,30)
+	
 	
 
 func _process(delta: float) -> void:
@@ -139,7 +147,14 @@ func handlestates():
 			randomturning = randi_range(-15,15)
 		elif state == 2:
 			statetime = randi_range(50,120)
-			
+	
+	if mutations.has("terrorist"): #they always run towards the nearest chickens
+		state = 3
+		dominant = true
+		statetime = 600
+		state = 3
+	
+	
 
 
 func animations():
@@ -197,15 +212,17 @@ func gobblegobble():
 	currentfood += 1
 
 func die():
-	var b = load("res://scenes/dedchicken.tscn").instantiate()
-	b.chickenstats = chickenstats.duplicate() #so that babies don't have empty dictionaries and stuff
-	if is_instance_valid(ropecrash):
-		ropecrash.queue_free()
-	get_parent().add_child(b)
-	b.position = position
-	b.scale.x = $flip.scale.x
-	
-	queue_free()
+	hp -= 1
+	if hp < 1:
+		var b = load("res://scenes/dedchicken.tscn").instantiate()
+		b.chickenstats = chickenstats.duplicate() #so that babies don't have empty dictionaries and stuff
+		if is_instance_valid(ropecrash):
+			ropecrash.queue_free()
+		get_parent().add_child(b)
+		b.position = position
+		b.scale.x = $flip.scale.x
+		
+		queue_free()
 
 
 func get_closest_chicken() -> Node2D:

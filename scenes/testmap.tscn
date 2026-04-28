@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://btyphwqd0sgua"]
+[gd_scene load_steps=25 format=4 uid="uid://btyphwqd0sgua"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_5wgtu"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="1_kwcxs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cmfx1bbqjp7ey" path="res://assets/grasses.png" id="4_s36se"]
 [ext_resource type="Texture2D" uid="uid://cpsik28x8xlcx" path="res://assets/rocktexture.png" id="7_mxay4"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="8_8qn3e"]
+[ext_resource type="PackedScene" uid="uid://wjbm0id6nnrb" path="res://scenes/chicken/explodingmutation.tscn" id="8_vfccl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="9_6m7oc"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="10_wj07n"]
 [ext_resource type="PackedScene" uid="uid://dx5kmhttxo7vg" path="res://scenes/egg.tscn" id="11_wj07n"]
@@ -184,6 +185,12 @@ position = Vector2(370, 226)
 
 [node name="chicken6" parent="." instance=ExtResource("4_efggw")]
 position = Vector2(574, 334)
+
+[node name="chicken7" parent="." instance=ExtResource("4_efggw")]
+position = Vector2(1062, 76)
+mutations = PackedStringArray("terrorist")
+
+[node name="explodingmutation" parent="chicken7" instance=ExtResource("8_vfccl")]
 
 [node name="chickenhouse" parent="." instance=ExtResource("8_8qn3e")]
 position = Vector2(683, 191)
