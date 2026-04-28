@@ -74,17 +74,31 @@ func controls():
 		if currentweapon >= weapons.size():
 			currentweapon = 0
 		
-		currentweaponname = weapons[currentweapon]
+		updateweapon()
+	
+	if Input.is_action_just_pressed("swapweapon2"):
+		currentweapon -= 1
+		if currentweapon < 0:
+			currentweapon = 2
 		
-		match currentweaponname:
-			"glock":
-				currentmagsize = magsizes[0]
-			"shotgun":
-				currentmagsize = magsizes[1]
-			"sniper":
-				currentmagsize = magsizes[2]
+		updateweapon()
 		
-		
+	
+	if Input.is_action_just_pressed("weapon1"):
+		currentweapon = 0
+		updateweapon()
+	if Input.is_action_just_pressed("weapon2"):
+		currentweapon = 1
+		updateweapon()
+	if Input.is_action_just_pressed("weapon3"):
+		currentweapon = 2
+		updateweapon()
+	
+	
+	
+	
+	
+	
 	
 	if Input.is_action_just_pressed("reload") and not currentweaponname == "flashlight":
 		reloadingframes = 30
@@ -254,3 +268,14 @@ func pickupegg():
 			global.the_egg = null
 			global.egg_visible = false
 			
+
+func updateweapon():
+	currentweaponname = weapons[currentweapon]
+	
+	match currentweaponname:
+		"glock":
+			currentmagsize = magsizes[0]
+		"shotgun":
+			currentmagsize = magsizes[1]
+		"sniper":
+			currentmagsize = magsizes[2]

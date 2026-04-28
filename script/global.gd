@@ -40,7 +40,6 @@ func _process(delta):
 		time = 0
 	
 	truetime = time * 4 #lasts 6 for some reason, so mult by 4
-	print(str(truetime)) #basically true time
 	
 	#for night detection
 	isnight = (truetime > 20 or truetime < 4)
