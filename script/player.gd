@@ -19,6 +19,7 @@ var magsizes : Array = [6,2,1] #sniper,glock,shotgun
 var currentmagsize : int = 6
 var currentweapon : int = 0
 var currentweaponname : String
+var pastweaponname : String # for optimization; past frame
 var reloadingframes : int = 0
 
 var currency : int = 0
@@ -27,6 +28,9 @@ var textqueue : Array = []
 
 func _ready() -> void:
 	global.player = self
+	$hud/Backpack.toggled.connect(_open_backpack) # HOLA SOY DORA
+	$hud/Backpack.mouse_entered.connect(_show_backpack_tab.bind(true)) # you can simplify this into single line of code but i think this is optimized idk you do what is best pls ty
+	$hud/Backpack.mouse_exited.connect(_show_backpack_tab.bind(false))
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
@@ -284,11 +288,28 @@ func pickupegg():
 
 func updateweapon():
 	currentweaponname = weapons[currentweapon]
-	
+	var a : float
 	match currentweaponname:
 		"glock":
 			currentmagsize = magsizes[0]
+			a = 1.5
 		"shotgun":
 			currentmagsize = magsizes[1]
+			a = 1.6
 		"sniper":
 			currentmagsize = magsizes[2]
+			a = 1.2
+	if not currentweaponname == pastweaponname:
+		camzoomtween(a)
+	pastweaponname = currentweaponname
+
+func camzoomtween(amount : float):
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "zoom", amount * Vector2.ONE, 0.2)
+	print(camera.zoom)
+	await tween.finished
+
+func _open_backpack(pressed : bool):
+	$hud/Backpack/Inv.visible = pressed
+func _show_backpack_tab(hovered : bool):
+	$hud/Backpack/Label.visible = hovered

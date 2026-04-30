@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=46 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="8_ugbui"]
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
+[ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
+[ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -166,6 +168,21 @@ metadata/_snap_enabled = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 15.0333
 
+[sub_resource type="InputEventKey" id="InputEventKey_fcs02"]
+device = -1
+keycode = 4194306
+
+[sub_resource type="Shortcut" id="Shortcut_myrg7"]
+events = [SubResource("InputEventKey_fcs02")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fcs02"]
+font_size = 20
+outline_size = 10
+outline_color = Color(0.42, 0.42, 0.42, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.745098)
+shadow_offset = Vector2(0, 5)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_je7p5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je7p5"]
@@ -248,7 +265,6 @@ offset = Vector2(50, 0)
 
 [node name="PointLight2D2" type="PointLight2D" parent="pivot/guns/scope"]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(1, 1)
 color = Color(1, 0, 0, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_fcs02")
@@ -299,6 +315,169 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_je7p5")
 
 [node name="hud" type="CanvasLayer" parent="."]
+
+[node name="Backpack" type="TextureButton" parent="hud"]
+custom_minimum_size = Vector2(75, 104.05)
+offset_left = 1092.0
+offset_top = 584.0
+offset_right = 1167.0
+offset_bottom = 688.05
+scale = Vector2(0.515, 0.515)
+toggle_mode = true
+shortcut = SubResource("Shortcut_myrg7")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("12_fcs02")
+texture_pressed = ExtResource("13_myrg7")
+ignore_texture_size = true
+
+[node name="Inv" type="Panel" parent="hud/Backpack"]
+visible = false
+layout_mode = 0
+offset_left = -1380.58
+offset_top = -867.961
+offset_right = -567.583
+offset_bottom = -297.961
+
+[node name="Panel2" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 40.7767
+offset_top = 34.9514
+offset_right = 143.777
+offset_bottom = 140.951
+
+[node name="Panel3" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 242.718
+offset_top = 36.8932
+offset_right = 345.718
+offset_bottom = 142.893
+
+[node name="Panel4" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 425.243
+offset_top = 36.8932
+offset_right = 528.243
+offset_bottom = 142.893
+
+[node name="Panel5" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 633.01
+offset_top = 36.8932
+offset_right = 736.01
+offset_bottom = 142.893
+
+[node name="Panel6" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 50.4854
+offset_top = 170.874
+offset_right = 153.485
+offset_bottom = 276.874
+
+[node name="Panel7" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 252.427
+offset_top = 172.816
+offset_right = 355.427
+offset_bottom = 278.816
+
+[node name="Panel8" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 434.952
+offset_top = 172.816
+offset_right = 537.952
+offset_bottom = 278.816
+
+[node name="Panel9" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 642.719
+offset_top = 172.816
+offset_right = 745.719
+offset_bottom = 278.816
+
+[node name="Panel10" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 56.3107
+offset_top = 300.971
+offset_right = 159.311
+offset_bottom = 406.971
+
+[node name="Panel11" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 258.252
+offset_top = 302.913
+offset_right = 361.252
+offset_bottom = 408.913
+
+[node name="Panel12" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 440.777
+offset_top = 302.913
+offset_right = 543.777
+offset_bottom = 408.913
+
+[node name="Panel13" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 648.544
+offset_top = 302.913
+offset_right = 751.544
+offset_bottom = 408.913
+
+[node name="Panel14" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 66.0194
+offset_top = 436.893
+offset_right = 169.019
+offset_bottom = 542.893
+
+[node name="Panel15" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 267.961
+offset_top = 438.835
+offset_right = 370.961
+offset_bottom = 544.835
+
+[node name="Panel16" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 450.485
+offset_top = 438.835
+offset_right = 553.485
+offset_bottom = 544.835
+
+[node name="Panel17" type="TextureRect" parent="hud/Backpack/Inv"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 658.253
+offset_top = 438.835
+offset_right = 761.253
+offset_bottom = 544.835
+
+[node name="Label" type="Label" parent="hud/Backpack"]
+visible = false
+texture_filter = 1
+offset_left = 7.76698
+offset_top = -64.0777
+offset_right = 67.767
+offset_bottom = 12.9223
+theme_override_fonts/font = ExtResource("11_je7p5")
+text = "TAB"
+label_settings = SubResource("LabelSettings_fcs02")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="hud"]
 offset_top = 532.0
