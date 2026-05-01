@@ -6,6 +6,8 @@ var editing : bool = true
 
 var egg_visible : bool = false # only 1 egg can be shown at a time for pickup
 var the_egg : Node = null
+var inventoryslotprefix : String = "invenslot"
+var stopfuncinvloop : int = 0
 
 var time = 0
 var prevtime = time
@@ -43,7 +45,7 @@ func _process(delta):
 	
 	#for night detection
 	isnight = (truetime > 20 or truetime < 4)
-	
+	stopfuncinvloop = 0
 	
 	
 
@@ -130,3 +132,15 @@ func recalculate_time() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("edit"):
 		editing = not editing
+
+func insert_into_next_available_inv_slot(item, region : Dictionary):
+	stopfuncinvloop += 1
+	if stopfuncinvloop > 1:
+		return
+	for d in player.backpackinv:
+		if d["currentitem"] == null:
+			player.update_main_inventory(item.sprite.texture, player.backpackinv.find(d), region)
+			d["currentitem"] = item
+			break
+	print(player.backpackinv)
+	print("Max Inventory Reached")

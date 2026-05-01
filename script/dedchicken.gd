@@ -3,8 +3,10 @@ extends Node2D
 var chickenstats : Dictionary = { #all stats can reach 100
 	
 }
+@onready var sprite: Sprite2D = $Sprite2D
 
 var chickenvalue : int = 0
+var pickedup : bool = false
 
 func _ready() -> void:
 	$GPUParticles2D.emitting = true
@@ -17,9 +19,13 @@ func _process(delta: float) -> void:
 	var in_range = global_position.distance_squared_to(global.playerpos) <= pow(30, 2)
 	$Popup.visible = in_range
 	$Popup.scale.x = -1 if scale.x < 0 else 1
-	if Input.is_action_just_pressed("interact") and in_range:
-		sell()
+	if Input.is_action_just_pressed("interact") and in_range and not pickedup:
+		pickup()
 
-func sell():
-	global.player.currency += chickenvalue
+func pickup():
+	pickedup = true
+	global.insert_into_next_available_inv_slot(self, {
+		"enabled": true,
+		"rect": Rect2(0, 0, 8.0, 8.0)
+	})
 	queue_free()

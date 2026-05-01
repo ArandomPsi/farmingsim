@@ -13,6 +13,12 @@ var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
 var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
+var backpackinv : Array[Dictionary] = [ # example index incominggg:
+#	{
+#		name of inventory slot: inventory slot scene (for modifying), # find inventory slot through key name not value
+#		"currentitem": current item in the inventory slot
+#	}
+]
 
 var weapons : Array = ["sniper", "glock", "shotgun"]
 var magsizes : Array = [6,2,1] #sniper,glock,shotgun
@@ -31,6 +37,9 @@ func _ready() -> void:
 	$hud/Backpack.toggled.connect(_open_backpack) # HOLA SOY DORA
 	$hud/Backpack.mouse_entered.connect(_show_backpack_tab.bind(true)) # you can simplify this into single line of code but i think this is optimized idk you do what is best pls ty
 	$hud/Backpack.mouse_exited.connect(_show_backpack_tab.bind(false))
+	$hud/shop/ExitShop.pressed.connect(_exit_shop)
+	generate_main_inventory()
+	#print(backpackinv)
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
@@ -130,11 +139,6 @@ func talkingcontrols():
 			$hud/shop.visible = true
 			textqueue.clear()
 	
-	
-	
-	if Input.is_action_just_pressed("exit"):
-		textqueue.clear()
-		$hud/shop.visible = false
 	
 	
 	
@@ -311,5 +315,29 @@ func camzoomtween(amount : float):
 
 func _open_backpack(pressed : bool):
 	$hud/Backpack/Inv.visible = pressed
+	$hud/Backpack.release_focus()
 func _show_backpack_tab(hovered : bool):
 	$hud/Backpack/Label.visible = hovered
+func _exit_shop():
+	textqueue.clear()
+	$hud/shop.visible = false
+
+func generate_main_inventory():
+	for i in range(4):
+		for j in range(4):
+			var s = Sprite2D.new()
+			s.scale = Vector2.ONE * 15.0
+			s.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			$hud/Backpack/Inv.add_child(s)
+			s.position = Vector2(j * 225, i * 150) + Vector2.ONE * 20
+			s.position.x += 35
+			s.name = global.inventoryslotprefix + str(i + j)
+			backpackinv.append({
+				s.name: s,
+				"currentitem": null
+			})
+
+func update_main_inventory(txtr : Texture2D, slot_num : int, reg : Dictionary):
+	backpackinv[slot_num][global.inventoryslotprefix + str(slot_num)].texture = txtr
+	backpackinv[slot_num][global.inventoryslotprefix + str(slot_num)].region_enabled = reg["enabled"]
+	backpackinv[slot_num][global.inventoryslotprefix + str(slot_num)].region_rect = reg["rect"]
