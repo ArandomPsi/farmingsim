@@ -22,6 +22,10 @@ global="*res://script/global.gd"
 
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
 [input]
 
 left={
