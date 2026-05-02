@@ -8,6 +8,7 @@ var egg_visible : bool = false # only 1 egg can be shown at a time for pickup
 var the_egg : Node = null
 var inventoryslotprefix : String = "invenslot"
 var stopfuncinvloop : int = 0
+var slotnum : int = 0
 
 var time = 0
 var prevtime = time
@@ -139,7 +140,8 @@ func insert_into_next_available_inv_slot(item, region : Dictionary):
 		return
 	for d in player.backpackinv:
 		if d["currentitem"] == null:
-			player.update_main_inventory(item.sprite.texture, player.backpackinv.find(d), region)
+			player.update_main_inventory(item.sprite.texture, slotnum, region)
+			slotnum += 1
 			d["currentitem"] = item
 			break
 	print(player.backpackinv)
