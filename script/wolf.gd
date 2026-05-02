@@ -8,6 +8,10 @@ var statetime : int = 0
 
 var randomturning : float = 0
 
+var hp : int = 6
+
+
+
 func _process(delta: float) -> void:
 	
 	if velocity.x > 0: $flip.scale.x = 1
@@ -118,3 +122,19 @@ func get_closest_body(array) -> Node2D:
 func _on_chickenkiller_body_entered(body: Node2D) -> void:
 	body.die()
 	velocity *= -1.5
+	if hp < 12:
+		hp += 1 #can gain up to 12 hp
+
+func damage(amount):
+	hp -= amount
+	
+	if hp < 1:
+		var b = preload("res://scenes/monsters/dedwolf.tscn").instantiate()
+		get_parent().add_child(b)
+		b.position = position
+		scale.x = $flip.scale.x
+		queue_free()
+	else:
+		var b = load("res://scenes/vfx/bloodspray.tscn").instantiate()
+		b.position = global_position
+		get_parent().add_child(b)

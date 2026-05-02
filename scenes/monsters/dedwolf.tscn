@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2jm6mg6fvt4o"]
+
+[ext_resource type="Script" uid="uid://bdiu02xknapjf" path="res://script/dedwolf.gd" id="1_yauhw"]
+[ext_resource type="Texture2D" uid="uid://w3t8wodysr06" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDie.png" id="2_qt2ue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s2jq"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ebqx"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kplc"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltss8"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcjqr"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il7sh"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f661l"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ni5j"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56w5f"]
+atlas = ExtResource("2_qt2ue")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fs4b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s2jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ebqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kplc")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_ltss8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcjqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il7sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f661l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ni5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56w5f")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[node name="dedwolf" type="Node2D"]
+script = ExtResource("1_yauhw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_fs4b3")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 8
+frame_progress = 1.0
+
+[node name="sprite2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 0.568627)
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(0, 2)
+scale = Vector2(1, 0.625)
+sprite_frames = SubResource("SpriteFrames_fs4b3")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 8
+frame_progress = 1.0

@@ -13,4 +13,18 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	for i in range(damage):
 		body.die()
+	createhiteffect()
 	queue_free()
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	body.damage(damage)
+	createhiteffect()
+	queue_free()
+
+func createhiteffect():
+	var b = preload("res://scenes/vfx/hiteffects.tscn").instantiate()
+	get_tree().current_scene.add_child(b)
+	b.position = position
+	b.rotation = rotation
+	b.scale.x  *= damage
