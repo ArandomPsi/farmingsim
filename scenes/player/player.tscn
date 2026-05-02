@@ -348,6 +348,7 @@ offset_bottom = -297.961
 [node name="Label" type="Label" parent="hud/Backpack"]
 visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 7.76698
 offset_top = -64.0777
 offset_right = 67.767
