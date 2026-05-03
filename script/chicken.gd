@@ -227,7 +227,7 @@ func die():
 		var b = load("res://scenes/vfx/bloodspray.tscn").instantiate()
 		b.position = global_position
 		get_parent().add_child(b)
-		print("added")
+		
 
 
 func get_closest_chicken() -> Node2D:

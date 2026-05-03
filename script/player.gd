@@ -8,6 +8,7 @@ extends CharacterBody2D
 var speed : int = 4000
 var friction : float = 0.85
 var movedir : Vector2
+var hp : int = 100
 
 var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
@@ -139,8 +140,9 @@ func talkingcontrols():
 			$hud/shop.visible = true
 			textqueue.clear()
 	
-	
-	
+	if Input.is_action_just_pressed("exit"):
+		$hud/shop.visible = false
+		textqueue.clear()
 	
 	
 
@@ -341,3 +343,7 @@ func update_main_inventory(txtr : Texture2D, slot_num : int, reg : Dictionary):
 	backpackinv[slot_num][global.inventoryslotprefix + str(slot_num)].texture = txtr
 	backpackinv[slot_num][global.inventoryslotprefix + str(slot_num)].region_enabled = reg["enabled"]
 	backpackinv[slot_num][global.inventoryslotprefix + str(slot_num)].region_rect = reg["rect"]
+
+func damage(amount):
+	hp -= amount
+	

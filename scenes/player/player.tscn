@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=51 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
+[ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
+[ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -203,6 +205,14 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_kvlxm"]
 events = [SubResource("InputEventKey_myrg7")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myrg7"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugbui"]
 bg_color = Color(0.27, 0.27, 0.27, 1)
 
@@ -264,7 +274,7 @@ texture_scale = 0.2
 
 [node name="scope" type="Sprite2D" parent="pivot/guns"]
 visible = false
-modulate = Color(1, 0, 0, 0.317647)
+modulate = Color(1, 0, 0, 0)
 position = Vector2(-33.6, -1.6)
 scale = Vector2(1.91875, 0.0125)
 texture = SubResource("GradientTexture2D_fcs02")
@@ -273,6 +283,7 @@ offset = Vector2(50, 0)
 [node name="PointLight2D2" type="PointLight2D" parent="pivot/guns/scope"]
 modulate = Color(1, 0, 0, 1)
 color = Color(1, 0, 0, 1)
+energy = 0.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_fcs02")
 offset = Vector2(50, 0)
@@ -418,7 +429,6 @@ offset_bottom = 32.0
 text = "Joe Mama"
 
 [node name="shop" type="Panel" parent="hud"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -428,8 +438,10 @@ offset_right = -4.0
 offset_bottom = -121.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("16_kvlxm")
 
 [node name="ExitShop" type="Button" parent="hud/shop"]
+visible = false
 layout_mode = 0
 offset_left = 366.0
 offset_top = 13.0
@@ -463,69 +475,119 @@ layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/v_separation = 50
 
-[node name="Button" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="dagger" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
 text = "dagger"
 alignment = 0
+script = ExtResource("17_uf5tr")
+costs = 200
+description = "A simple dagger that does high damage but has low range"
 
-[node name="Button2" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="shotgun" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
 text = "shotgun"
 alignment = 0
+script = ExtResource("17_uf5tr")
+texture = "res://assets/playerstuff/shotgun.png"
+costs = 700
+childcount = 1
+description = "Shotguns are a well rounded high burst damage gun."
 
-[node name="Button3" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="rifle" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
 text = "rifle"
 alignment = 0
+script = ExtResource("17_uf5tr")
+texture = "res://assets/playerstuff/shotgun.png"
+costs = 700
+childcount = 2
+description = "Fast firerate and high damage. Only problem is the ammo consumption"
 
-[node name="Button4" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="sniper" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
 text = "sniper"
 alignment = 0
+script = ExtResource("17_uf5tr")
+texture = "res://assets/playerstuff/sniper.png"
+costs = 1500
+description = "One shot stopper with the longest range out of all weapons."
 
-[node name="Button5" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="torch" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
-text = "cfdgzsaf"
+text = "Torch"
 alignment = 0
+script = ExtResource("17_uf5tr")
+costs = 5
+description = "Lights up stuff"
 
-[node name="Button6" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="ammo" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
-text = "cfdgzsaf"
+text = "Ammo"
 alignment = 0
+script = ExtResource("17_uf5tr")
+costs = 20
+description = "5 rounds."
 
 [node name="Button7" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
-text = "cfdgzsaf"
+text = "baby oil"
 alignment = 0
+script = ExtResource("17_uf5tr")
 
 [node name="Button8" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
 text = "cfdgzsaf"
 alignment = 0
+script = ExtResource("17_uf5tr")
+
+[node name="info" type="RichTextLabel" parent="hud/shop"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 234.0
+offset_right = 414.0
+offset_bottom = 513.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_myrg7")
+text = "Big black cock suck "
+
+[node name="preview" type="Sprite2D" parent="hud/shop"]
+texture_filter = 1
+position = Vector2(252, 127)
+rotation = -0.271697
+scale = Vector2(19.4112, 19.4112)
+texture = ExtResource("10_h17s1")
+
+[node name="cost" type="Label" parent="hud/shop"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 483.0
+offset_right = 409.0
+offset_bottom = 506.0
+text = "Cost - 67"
+horizontal_alignment = 2
 
 [node name="inventory" type="Panel" parent="hud"]
 offset_top = 600.0

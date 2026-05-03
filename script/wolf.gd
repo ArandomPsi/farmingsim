@@ -10,6 +10,8 @@ var randomturning : float = 0
 
 var hp : int = 6
 
+var jumpingplayer : bool = false
+
 
 
 func _process(delta: float) -> void:
@@ -85,7 +87,11 @@ func omnomnom(delta):
 	if dinnermenu.is_empty():
 		statetime = 0
 		return
-	$randomlook.look_at(get_closest_body(dinnermenu).global_position)
+	if not jumpingplayer:
+		$randomlook.look_at(get_closest_body(dinnermenu).position)
+	else:
+		
+		$randomlook.look_at(global.playerpos)
 	velocity += speed * $randomlook.transform.x * delta
 	
 	
@@ -138,3 +144,15 @@ func damage(amount):
 		var b = load("res://scenes/vfx/bloodspray.tscn").instantiate()
 		b.position = global_position
 		get_parent().add_child(b)
+
+
+func bounce(body: Node2D) -> void:
+	var randomlookrota = $randomlook.rotation
+	$randomlook.look_at(body.global_position)
+	velocity = -$randomlook.transform.x * speed/4
+	$randomlook.rotation = randomlookrota
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("controls"): #check if its player
+		jumpingplayer = true

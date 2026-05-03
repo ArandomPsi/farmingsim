@@ -16,7 +16,7 @@ const MINUTES_PER_DAY = 1440
 const MINUTES_PER_HOUR = 60
 const ingame_to_real_minute_duration = (2*PI) / MINUTES_PER_DAY
 var INGAME_SPEED = 20
-var INITIAL_HOUR = 0:
+var INITIAL_HOUR = 5:
 	set(h):
 		INITIAL_HOUR = h
 		time = ingame_to_real_minute_duration * INITIAL_HOUR * MINUTES_PER_HOUR

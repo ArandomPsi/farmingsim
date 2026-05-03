@@ -217,3 +217,9 @@ position = Vector2(715, 403)
 
 [node name="wolf" parent="." instance=ExtResource("14_vcl1g")]
 position = Vector2(1726, 480)
+
+[node name="wolf2" parent="." instance=ExtResource("14_vcl1g")]
+position = Vector2(1534, 558)
+
+[node name="wolf3" parent="." instance=ExtResource("14_vcl1g")]
+position = Vector2(1771, 557)
