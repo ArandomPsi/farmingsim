@@ -133,16 +133,3 @@ func recalculate_time() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("edit"):
 		editing = not editing
-
-func insert_into_next_available_inv_slot(item, region : Dictionary):
-	stopfuncinvloop += 1
-	if stopfuncinvloop > 1:
-		return
-	for d in player.backpackinv:
-		if d["currentitem"] == null:
-			player.update_main_inventory(item.sprite.texture, slotnum, region)
-			slotnum += 1
-			d["currentitem"] = item
-			break
-	print(player.backpackinv)
-	print("Max Inventory Reached")

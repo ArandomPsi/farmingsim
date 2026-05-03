@@ -24,8 +24,4 @@ func _process(delta: float) -> void:
 
 func pickup():
 	pickedup = true
-	global.insert_into_next_available_inv_slot(self, {
-		"enabled": true,
-		"rect": Rect2(0, 0, 8.0, 8.0)
-	})
 	queue_free()
