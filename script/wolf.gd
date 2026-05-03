@@ -110,8 +110,7 @@ func get_closest_body(array) -> Node2D:
 	var closest_dist := INF
 	
 	for b in bodies:
-		if not b.is_in_group("chicken"):
-			continue
+		
 		
 		if b == self:
 			continue
@@ -154,5 +153,4 @@ func bounce(body: Node2D) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("controls"): #check if its player
-		jumpingplayer = true
+	pass

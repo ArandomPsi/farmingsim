@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="9_6m7oc"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="10_wj07n"]
 [ext_resource type="PackedScene" uid="uid://dx5kmhttxo7vg" path="res://scenes/egg.tscn" id="11_wj07n"]
-[ext_resource type="PackedScene" path="res://scenes/shop.tscn" id="12_foqph"]
+[ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/shop.tscn" id="12_foqph"]
 [ext_resource type="PackedScene" uid="uid://bp563f1vvhj8e" path="res://scenes/monsters/wolf.tscn" id="14_vcl1g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efggw"]
