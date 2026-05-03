@@ -264,10 +264,10 @@ func flipstuff():
 
 func camerastuff():
 	
-	var divisor : float = 3
+	var divisor : float = 4
 	
 	if currentweaponname == "sniper":
-		divisor = 2
+		divisor = 3
 	
 	camera.position = get_local_mouse_position()/divisor
 	
