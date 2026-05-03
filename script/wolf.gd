@@ -12,6 +12,8 @@ var hp : int = 6
 
 var jumpingplayer : bool = false
 
+var attackanimframes : int = 0
+
 
 
 func _process(delta: float) -> void:
@@ -20,6 +22,7 @@ func _process(delta: float) -> void:
 	elif velocity.x < 0: $flip.scale.x = -1
 	
 	statetime -= 1
+	attackanimframes -= 1
 	if statetime < 1:
 		updatestates()
 	else:
@@ -98,10 +101,14 @@ func omnomnom(delta):
 
 
 func animations():
-	if round(velocity/10) == Vector2.ZERO:
-		$flip/sprite.play("idle")
+	if attackanimframes > 1:
+		$flip/sprite.play("attack")
 	else:
-		$flip/sprite.play("run")
+		if round(velocity/10) == Vector2.ZERO:
+			$flip/sprite.play("idle")
+		else:
+			
+			$flip/sprite.play("run")
 
 func get_closest_body(array) -> Node2D:
 	var bodies = array
@@ -126,6 +133,7 @@ func get_closest_body(array) -> Node2D:
 
 func _on_chickenkiller_body_entered(body: Node2D) -> void:
 	body.die()
+	attackanimframes = 20
 	velocity *= -1.5
 	if hp < 12:
 		hp += 1 #can gain up to 12 hp
