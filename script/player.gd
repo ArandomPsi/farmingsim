@@ -16,11 +16,12 @@ var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
 	
 
-var weapons : Array = ["sniper", "glock", "shotgun"]
-var magsizes : Array = [6,2,1] #sniper,glock,shotgun
+var weapons : Array = ["sniper", "glock", "uzi"] #uzi
+var magsizes : Array = [6,2,1,60] #sniper,glock,shotgun, uzi
 var currentmagsize : int = 6
 var currentweapon : int = 0
 var currentweaponname : String
+var currentweaponcooldown : int = 1
 var pastweaponname : String # for optimization; past frame
 var reloadingframes : int = 0
 
@@ -56,10 +57,30 @@ func controls():
 	else:
 		$pivot/guns.scale.y = -5
 	
-	if Input.is_action_just_pressed("shoot") and not weapons[currentweapon] == "flashlight":
-		if currentmagsize > 0 and reloadingframes < 1:
-			pewpew()
-			currentmagsize -= 1
+	var guntype : bool = false
+	
+	if currentweaponname == "uzi": #rapid guns
+		guntype = true
+	
+	if guntype and not weapons[currentweapon] == "flashlight":
+		
+		#brrrrrrrrrr
+		if Input.is_action_pressed("shoot") :
+			if currentmagsize > 0 and reloadingframes < 1 and currentweaponcooldown < 1:
+				pewpew()
+				currentmagsize -= 1
+				currentweaponcooldown = 2
+	elif not currentweaponname == "flashlight":
+		
+		#pew pew
+		if Input.is_action_just_pressed("shoot"):
+			if currentmagsize > 0 and reloadingframes < 1:
+				pewpew()
+				currentmagsize -= 1
+	
+	
+	
+	
 	
 	if Input.is_action_just_pressed("addrope"):
 		$ropearea.global_position = get_global_mouse_position()
@@ -116,6 +137,8 @@ func controls():
 				currentmagsize = magsizes[1]
 			"sniper":
 				currentmagsize = magsizes[2]
+			"uzi":
+				currentmagsize = magsizes[3]
 	
 	
 	
@@ -172,6 +195,7 @@ func updateconstantvariables():
 	shakeframes -= 1
 	shakeframes = clamp(shakeframes,0,20)
 	reloadingframes -= 1
+	currentweaponcooldown -= 1
 	currentweaponname = weapons[currentweapon]
 
 func pewpew():
@@ -202,6 +226,14 @@ func pewpew():
 			b.speed *= 1.25
 			b.scale.x *= 2
 			b.damage = 20
+		"uzi":
+			var b = preload("res://scenes/player/bullet.tscn").instantiate()
+			get_parent().add_child(b)
+			b.position = $pivot/guns.global_position
+			b.rotation = $pivot.rotation
+			b.position += b.transform.x * 30
+			b.rotation_degrees += randf_range(-2,2)
+			shakeframes += 2 #feedback
 	
 	
 
@@ -298,6 +330,10 @@ func updateweapon():
 		"sniper":
 			currentmagsize = magsizes[2]
 			a = 1.2
+		"uzi":
+			a = 1.6
+			currentmagsize = magsizes[3]
+	
 	if not currentweaponname == pastweaponname:
 		camzoomtween(a)
 	pastweaponname = currentweaponname

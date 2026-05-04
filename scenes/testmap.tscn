@@ -223,3 +223,4 @@ position = Vector2(1534, 558)
 
 [node name="wolf3" parent="." instance=ExtResource("14_vcl1g")]
 position = Vector2(1771, 557)
+alpha = true

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed : float = 1500
+var speed : float = 1250
 var friciton : float = 0.95
 
 var state : int = 0 #idle, wander, sleep, chase
@@ -14,6 +14,14 @@ var jumpingplayer : bool = false
 
 var attackanimframes : int = 0
 
+
+@export var alpha : bool = false
+
+func _ready() -> void:
+	if alpha:
+		speed *= 1.2
+		hp *= 30
+		scale *= 1.25
 
 
 func _process(delta: float) -> void:

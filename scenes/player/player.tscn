@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=52 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://bvg3lpw471q5t" path="res://assets/playerstuff/shotgun.png" id="7_fm80t"]
 [ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="8_ugbui"]
+[ext_resource type="Texture2D" uid="uid://pg231v0xrfbs" path="res://assets/playerstuff/uzi.png" id="9_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
@@ -134,6 +135,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"sniper",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_lgqa7")
+}],
+"loop": true,
+"name": &"uzi",
 "speed": 5.0
 }]
 
@@ -260,7 +269,7 @@ texture_filter = 1
 position = Vector2(21, 0)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"sniper"
+animation = &"uzi"
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
 position = Vector2(-22.3588, -0.4)
