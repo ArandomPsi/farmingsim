@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cmfx1bbqjp7ey" path="res://assets/grasses.png" id="4_s36se"]
 [ext_resource type="Texture2D" uid="uid://cpsik28x8xlcx" path="res://assets/rocktexture.png" id="7_mxay4"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="8_8qn3e"]
-[ext_resource type="PackedScene" uid="uid://wjbm0id6nnrb" path="res://scenes/chicken/explodingmutation.tscn" id="8_vfccl"]
+[ext_resource type="PackedScene" uid="uid://wjbm0id6nnrb" path="res://scenes/explodingmutation.tscn" id="8_vfccl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="9_6m7oc"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="10_wj07n"]
 [ext_resource type="PackedScene" uid="uid://dx5kmhttxo7vg" path="res://scenes/egg.tscn" id="11_wj07n"]
