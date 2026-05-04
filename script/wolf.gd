@@ -132,13 +132,13 @@ func get_closest_body(array) -> Node2D:
 
 
 func _on_chickenkiller_body_entered(body: Node2D) -> void:
-	body.die()
+	body.gethit(1)
 	attackanimframes = 20
 	velocity *= -1.5
-	if hp < 12:
+	if hp < 6:
 		hp += 1 #can gain up to 12 hp
 
-func damage(amount):
+func gethit(amount):
 	hp -= amount
 	
 	if hp < 1:

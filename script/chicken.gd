@@ -211,8 +211,8 @@ func gobblegobble():
 	$flip/sprite.play("peck")
 	currentfood += 1
 
-func die():
-	hp -= 1
+func gethit(damage):
+	hp -= damage
 	if hp < 1:
 		var b = load("res://scenes/dedchicken.tscn").instantiate()
 		b.chickenstats = chickenstats.duplicate() #so that babies don't have empty dictionaries and stuff

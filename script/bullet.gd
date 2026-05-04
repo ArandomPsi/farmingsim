@@ -11,8 +11,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	for i in range(damage):
-		body.die()
+	
+	body.gethit(damage)
 	createhiteffect()
 	queue_free()
 
