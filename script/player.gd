@@ -16,8 +16,8 @@ var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
 	
 
-var weapons : Array = ["sniper", "glock", "uzi"] #uzi
-var magsizes : Array = [6,2,1,60] #sniper,glock,shotgun, uzi
+var weapons : Array = ["dagger", "glock", "uzi"] #uzi
+var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
 var currentmagsize : int = 6
 var currentweapon : int = 0
 var currentweaponname : String
@@ -75,7 +75,9 @@ func controls():
 		
 		#pew pew
 		if Input.is_action_just_pressed("shoot"):
-			if currentmagsize > 0 and reloadingframes < 1:
+			if currentweaponname == "dagger" and currentmagsize > 0:
+				pewpew()
+			elif currentmagsize > 0 and reloadingframes < 1:
 				pewpew()
 				currentmagsize -= 1
 	
@@ -241,6 +243,11 @@ func pewpew():
 			b.position = $pivot/guns.global_position
 			b.rotation = $pivot.rotation
 			b.position += b.transform.x * 30
+			b.frames = 7
+			b.speed = 1000
+			b.visible = false
+			b.damage = 15
+			dagger_tween()
 	
 
 func createrope():
@@ -339,6 +346,9 @@ func updateweapon():
 		"uzi":
 			a = 1.6
 			currentmagsize = magsizes[3]
+		"dagger":
+			a = 1.8
+			currentmagsize = magsizes[4]
 	
 	if not currentweaponname == pastweaponname:
 		camzoomtween(a)
@@ -361,4 +371,13 @@ func _exit_shop():
 
 func damage(amount):
 	hp -= amount
-	
+
+func dagger_tween():
+	currentmagsize = 0
+	var g = $pivot/guns
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	var og = g.position
+	tween.tween_property(g, "position", g.transform.x * Engine.get_frames_per_second() / 5 + g.position, 0.12).set_ease(Tween.EASE_IN)
+	tween.tween_property(g, "position", og, 0.2).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	currentmagsize = 100
