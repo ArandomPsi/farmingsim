@@ -24,6 +24,7 @@ var currentweaponname : String
 var currentweaponcooldown : int = 1
 var pastweaponname : String # for optimization; past frame
 var reloadingframes : int = 0
+var melee : bool = false
 
 var currency : int = 0
 var overlappingshopkeeper = null
@@ -234,7 +235,12 @@ func pewpew():
 			b.position += b.transform.x * 30
 			b.rotation_degrees += randf_range(-2,2)
 			shakeframes += 2 #feedback
-	
+		"dagger":
+			var b = preload("res://scenes/player/bullet.tscn").instantiate()
+			get_parent().add_child(b)
+			b.position = $pivot/guns.global_position
+			b.rotation = $pivot.rotation
+			b.position += b.transform.x * 30
 	
 
 func createrope():

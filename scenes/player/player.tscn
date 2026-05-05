@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=53 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bo2kvhw2quao3" path="res://assets/playerstuff/glock.png" id="4_75vfm"]
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
 [ext_resource type="Texture2D" uid="uid://t0hu3uk6w85h" path="res://assets/playerstuff/flashlight.png" id="5_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://bseqw2c3fwon" path="res://assets/playerstuff/dagger.png" id="5_8ydkj"]
 [ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://bvg3lpw471q5t" path="res://assets/playerstuff/shotgun.png" id="7_fm80t"]
 [ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="8_ugbui"]
@@ -17,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
-[ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
-[ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
+[ext_resource type="Script" path="res://script/ui/shop.gd" id="16_kvlxm"]
+[ext_resource type="Script" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -105,6 +106,14 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p47bc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8ydkj")
+}],
+"loop": true,
+"name": &"dagger",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_5gtgg")
@@ -269,7 +278,7 @@ texture_filter = 1
 position = Vector2(21, 0)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"uzi"
+animation = &"dagger"
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
 position = Vector2(-22.3588, -0.4)
