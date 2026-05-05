@@ -185,7 +185,7 @@ func updatehud():
 	
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
-	if not currentweaponname == "flashlight":
+	if not currentweaponname in ["flashlight", "dagger"] :
 		$hud/bulletamount.text = str(currentmagsize) + "/" + str(magsizes[currentweapon-1])
 		$hud/bulletamount.visible = true
 	else:
@@ -338,6 +338,7 @@ func pickupegg():
 func updateweapon():
 	currentweaponname = weapons[currentweapon]
 	var a : float
+	var h : bool = false
 	match currentweaponname:
 		"glock":
 			currentmagsize = magsizes[0]
@@ -353,8 +354,10 @@ func updateweapon():
 			currentmagsize = magsizes[3]
 		"dagger":
 			a = 1.8
+			h = true
 			currentmagsize = magsizes[4]
-	
+	$hud/bulletamount.visible = not h
+
 	if not currentweaponname == pastweaponname:
 		camzoomtween(a)
 	pastweaponname = currentweaponname
