@@ -248,6 +248,11 @@ func pewpew():
 			b.visible = false
 			b.damage = 15
 			dagger_tween()
+			var c = preload("res://scenes/vfx/daggereffect.tscn").instantiate()
+			add_child(c)
+			c.global_position = $pivot/guns.global_position
+			c.global_rotation = $pivot.rotation
+			c.global_position += c.global_transform.x * 60
 	
 
 func createrope():
@@ -377,7 +382,7 @@ func dagger_tween():
 	var g = $pivot/guns
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	var og = g.position
-	tween.tween_property(g, "position", g.transform.x * Engine.get_frames_per_second() / 5 + g.position, 0.12).set_ease(Tween.EASE_IN)
+	tween.tween_property(g, "position", g.transform.x * Engine.get_frames_per_second() / 5 + g.position, 0.05).set_ease(Tween.EASE_IN)
 	tween.tween_property(g, "position", og, 0.2).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	currentmagsize = 100

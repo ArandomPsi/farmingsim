@@ -20,7 +20,7 @@ var attackanimframes : int = 0
 func _ready() -> void:
 	if alpha:
 		speed *= 1.2
-		hp *= 30
+		hp *= 4
 		scale *= 1.25
 
 

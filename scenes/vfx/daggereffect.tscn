@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://w540v1oybfee"]
+
+[ext_resource type="Texture2D" uid="uid://fp35wo3d10mh" path="res://assets/playerstuff/knifestab1.svg" id="1_xjibk"]
+[ext_resource type="Texture2D" uid="uid://bof7vpdt7dpe6" path="res://assets/playerstuff/knifestab2.svg" id="2_awmfi"]
+[ext_resource type="Texture2D" uid="uid://2tqmlieapq4k" path="res://assets/playerstuff/knifestab3.svg" id="3_774s7"]
+[ext_resource type="Texture2D" uid="uid://d2x1vlybrltjw" path="res://assets/playerstuff/knifestab4.svg" id="4_4pcso"]
+[ext_resource type="Texture2D" uid="uid://dxv2m6leolgrc" path="res://assets/playerstuff/knifestab5.svg" id="5_hux5j"]
+[ext_resource type="Script" uid="uid://b0kaaejd8gvhc" path="res://script/vfx/daggereffect.gd" id="6_5m611"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okldd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xjibk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_awmfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_774s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4pcso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hux5j")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="daggereffect" type="AnimatedSprite2D"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_okldd")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("6_5m611")
