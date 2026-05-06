@@ -8,6 +8,7 @@ var open : bool = false
 @onready var player = get_parent().get_parent()
 
 func _ready() -> void:
+	playerinventory.update.connect(updateslots())
 	updateslots()
 	close()
 
