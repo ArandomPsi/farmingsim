@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://j6wls73qf3cn"]
+
+[ext_resource type="Script" uid="uid://b67r0gaynngqj" path="res://script/dedhomeless.gd" id="1_t8aro"]
+[ext_resource type="Texture2D" uid="uid://bwsulpnwm6yq4" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanSpinDie.png" id="2_t8aro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yue3n"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yntp"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idhwx"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il8u3"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fq4u"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u4vk"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru6qw"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoe7s"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo4hp"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npmp3"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esoup"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e3l4"]
+atlas = ExtResource("2_t8aro")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fs4b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yue3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yntp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idhwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il8u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fq4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u4vk")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_ru6qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoe7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo4hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npmp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esoup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e3l4")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[node name="dedhomeless" type="Node2D"]
+script = ExtResource("1_t8aro")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_fs4b3")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 11
+frame_progress = 1.0
+
+[node name="sprite2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+modulate = Color(0, 0, 0, 0.568627)
+show_behind_parent = true
+texture_filter = 1
+scale = Vector2(1, 0.625)
+sprite_frames = SubResource("SpriteFrames_fs4b3")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 11
+frame_progress = 1.0
