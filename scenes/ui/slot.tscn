@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgrttobxg53a1"]
+
+[ext_resource type="Script" uid="uid://d4fuk6be3jkqq" path="res://script/ui/slot.gd" id="1_c886m"]
+[ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="1_jkamp"]
+[ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="2_sad2q"]
+
+[node name="slot" type="Panel"]
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_c886m")
+
+[node name="slot" type="NinePatchRect" parent="."]
+self_modulate = Color(0.11, 0.11, 0.11, 1)
+texture_filter = 1
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("1_jkamp")
+region_rect = Rect2(3757, 285, 22, 22)
+
+[node name="display" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(10, 11)
+rotation = -0.515979
+scale = Vector2(2, 2)
+texture = ExtResource("2_sad2q")

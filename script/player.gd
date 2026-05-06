@@ -14,8 +14,11 @@ var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
 var eggspace : int = 3 # max eggs to carry
 var eggs : Array[Node] = [] # eggs currently carrying
-	
 
+
+@export var playerinventory : inventory
+
+#first 3 slots in inventory
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
 var currentmagsize : int = 6
@@ -36,6 +39,7 @@ func _ready() -> void:
 	$hud/Backpack.mouse_entered.connect(_show_backpack_tab.bind(true)) # you can simplify this into single line of code but i think this is optimized idk you do what is best pls ty
 	$hud/Backpack.mouse_exited.connect(_show_backpack_tab.bind(false))
 	$hud/shop/ExitShop.pressed.connect(_exit_shop)
+
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
@@ -192,7 +196,10 @@ func updatehud():
 		$hud/bulletamount.visible = false
 	
 	$hud/inventory/currentslotthing.position.x = currentweapon * 46.0
-	
+
+func updatehotbar():
+	pass
+
 
 func updateconstantvariables():
 	shakeframes -= 1
@@ -342,10 +349,10 @@ func updateweapon():
 	match currentweaponname:
 		"glock":
 			currentmagsize = magsizes[0]
-			a = 1.5
+			a = 1.45
 		"shotgun":
 			currentmagsize = magsizes[1]
-			a = 1.6
+			a = 1.47
 		"sniper":
 			currentmagsize = magsizes[2]
 			a = 1.2
@@ -353,9 +360,11 @@ func updateweapon():
 			a = 1.6
 			currentmagsize = magsizes[3]
 		"dagger":
-			a = 1.8
+			a = 1.5
 			h = true
 			currentmagsize = magsizes[4]
+		"flashlight":
+			a = 1.5
 	$hud/bulletamount.visible = not h
 
 	if not currentweaponname == pastweaponname:

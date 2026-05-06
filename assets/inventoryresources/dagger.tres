@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://o1y0gtjj2j4e"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_cbx6c"]
+[ext_resource type="Texture2D" uid="uid://c38xx7mwukk0v" path="res://assets/inventoryicons/daggercolorpallate.png" id="2_au1fv"]
+
+[resource]
+script = ExtResource("1_cbx6c")
+name = "dagger"
+texture = ExtResource("2_au1fv")
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

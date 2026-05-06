@@ -1,8 +1,9 @@
-[gd_scene load_steps=53 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=55 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bqk4dmdg35hpp" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanWalk.png" id="2_dovo2"]
+[ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
 [ext_resource type="Shader" uid="uid://cqmcc8rco6og7" path="res://shaders/motionblur.gdshader" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="4_0owmy"]
 [ext_resource type="Texture2D" uid="uid://bo2kvhw2quao3" path="res://assets/playerstuff/glock.png" id="4_75vfm"]
@@ -18,8 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
-[ext_resource type="Script" path="res://script/ui/shop.gd" id="16_kvlxm"]
-[ext_resource type="Script" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
+[ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
+[ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
+[ext_resource type="PackedScene" uid="uid://tdjc0nfwxtkw" path="res://scenes/ui/inventoryui.tscn" id="26_6cv16"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -255,6 +257,7 @@ y_sort_enabled = true
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_lvxji")
+playerinventory = ExtResource("2_yj68g")
 
 [node name="flip" type="Node2D" parent="."]
 
@@ -672,3 +675,5 @@ offset_top = 573.0
 offset_right = 297.0
 offset_bottom = 596.0
 text = "5/5"
+
+[node name="inventoryui" parent="hud" instance=ExtResource("26_6cv16")]
