@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://btfdk4vlhu0qj"]
+
+[ext_resource type="Script" uid="uid://can0xt4bkyknk" path="res://script/vfx/particles.gd" id="1_8i0ob"]
+[ext_resource type="Script" uid="uid://comrxmjblcrpq" path="res://script/vfx/lightflash.gd" id="2_wk5qp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8i0ob"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_1vdwk"]
+offsets = PackedFloat32Array(0, 0.666667)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8i0ob"]
+gradient = SubResource("Gradient_1vdwk")
+
+[sub_resource type="Curve" id="Curve_wk5qp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.898323, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jw5u3"]
+curve = SubResource("Curve_wk5qp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bqyqr"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 56.739
+initial_velocity_min = 76.59
+initial_velocity_max = 304.25
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_jw5u3")
+color = Color(1, 0.9, 0, 1)
+color_ramp = SubResource("GradientTexture1D_8i0ob")
+
+[sub_resource type="Gradient" id="Gradient_8i0ob"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wk5qp"]
+gradient = SubResource("Gradient_8i0ob")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.2)
+metadata/_snap_enabled = true
+
+[node name="shot" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_8i0ob")
+emitting = false
+lifetime = 0.6
+one_shot = true
+preprocess = 0.2
+speed_scale = 2.0
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_bqyqr")
+script = ExtResource("1_8i0ob")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.904, 0.52, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_wk5qp")
+texture_scale = 0.8
+script = ExtResource("2_wk5qp")

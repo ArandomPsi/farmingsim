@@ -12,6 +12,7 @@ script = ExtResource("1_c886m")
 [node name="slot" type="NinePatchRect" parent="."]
 self_modulate = Color(0.11, 0.11, 0.11, 1)
 texture_filter = 1
+layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
 texture = ExtResource("1_jkamp")

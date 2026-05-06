@@ -3,6 +3,7 @@ var speed : int = 2500
 var frames : int = 120
 var damage : int = 1
 func _process(delta: float) -> void:
+	$Area2D.damage = damage
 	position += transform.x * speed * delta
 	if frames < 1:
 		queue_free()

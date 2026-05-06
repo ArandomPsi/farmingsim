@@ -216,6 +216,7 @@ func pewpew():
 			b.position = $pivot/guns.global_position
 			b.rotation = $pivot.rotation
 			shakeframes += 5 #feedback
+			createshoteffect(b.global_position)
 		"shotgun":
 			for i in range(8):
 				var b = preload("res://scenes/player/bullet.tscn").instantiate()
@@ -225,6 +226,7 @@ func pewpew():
 				b.rotation_degrees += randf_range(-10,10)
 				b.speed *= randf_range(0.7,1.2)
 				b.frames = 10
+			createshoteffect($pivot/guns.global_position)
 			shakeframes += 8 #feedback
 		"sniper":
 			var b = preload("res://scenes/player/bullet.tscn").instantiate()
@@ -236,14 +238,17 @@ func pewpew():
 			b.speed *= 1.25
 			b.scale.x *= 2
 			b.damage = 20
+			createshoteffect(b.global_position)
 		"uzi":
 			var b = preload("res://scenes/player/bullet.tscn").instantiate()
 			get_parent().add_child(b)
 			b.position = $pivot/guns.global_position
 			b.rotation = $pivot.rotation
 			b.position += b.transform.x * 30
+			b.position += b.transform.y * randf_range(-8,8)
 			b.rotation_degrees += randf_range(-2,2)
 			shakeframes += 2 #feedback
+			createshoteffect($pivot/guns.global_position)
 		"dagger":
 			var b = preload("res://scenes/player/bullet.tscn").instantiate()
 			get_parent().add_child(b)
@@ -261,6 +266,13 @@ func pewpew():
 			c.global_rotation = $pivot.rotation
 			c.global_position += c.global_transform.x * 60
 	
+
+
+func createshoteffect(pos):
+	var b = preload("res://scenes/vfx/shot.tscn").instantiate()
+	get_parent().add_child(b)
+	b.position = pos
+	b.rotation = $pivot.global_rotation
 
 func createrope():
 	if $ropearea.has_overlapping_bodies():

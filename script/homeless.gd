@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed : float = 650
+var speed : float = 300
 var friciton : float = 0.98
 
 var state : int = 0 #idle, wander, sleep, chase
@@ -8,20 +8,16 @@ var statetime : int = 0
 
 var randomturning : float = 0
 
-var hp : int = 15
+var hp : int = 1
 
 var jumpingplayer : bool = false
 
 var attackanimframes : int = 0
 
+var rangerdangerframes : int = 0
 
-@export var alpha : bool = false
 
-func _ready() -> void:
-	if alpha:
-		speed *= 1.2
-		hp *= 4
-		scale *= 1.25
+
 
 
 func _process(delta: float) -> void:
@@ -30,6 +26,8 @@ func _process(delta: float) -> void:
 	elif velocity.x < 0: $flip.scale.x = -1
 	
 	statetime -= 1
+	if position.distance_to(global.playerpos) > 300:
+		rangerdangerframes -= 1
 	attackanimframes -= 1
 	if statetime < 1:
 		updatestates()
@@ -46,7 +44,9 @@ func _process(delta: float) -> void:
 
 func updatestates():
 	
-	
+	if rangerdangerframes > 1:
+		state = 4
+		statetime = 300
 	if $Area2D.has_overlapping_bodies():
 		state = 3
 		statetime = 200
@@ -73,6 +73,8 @@ func handlestates(delta):
 			idlestate() #for now
 		3:
 			omnomnom(delta)
+		4:
+			runaway(delta)
 		
 		
 	
@@ -110,7 +112,13 @@ func omnomnom(delta):
 		$randomlook.look_at(global.playerpos)
 	velocity += speed * $randomlook.transform.x * delta
 	
+
+func runaway(delta):
 	
+	$randomlook.look_at(global.playerpos)
+	$randomlook.rotation += PI
+	
+	velocity += speed * $randomlook.transform.x * delta
 
 
 func animations():
@@ -153,7 +161,9 @@ func _on_chickenkiller_body_entered(body: Node2D) -> void:
 
 func gethit(amount):
 	hp -= amount
-	
+	rangerdangerframes = 120
+	state = 4
+	statetime = 120
 	if hp < 1:
 		var b = preload("res://scenes/monsters/dedhomeless.tscn").instantiate()
 		get_parent().add_child(b)

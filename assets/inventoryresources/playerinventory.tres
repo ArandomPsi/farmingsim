@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="inventory" load_steps=6 format=3 uid="uid://d0s8ix1acjygb"]
+[gd_resource type="Resource" script_class="inventory" load_steps=7 format=3 uid="uid://d0s8ix1acjygb"]
 
 [ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_wx8oq"]
-[ext_resource type="Resource" uid="uid://o1y0gtjj2j4e" path="res://assets/inventoryresources/dagger.tres" id="2_fyvoc"]
-[ext_resource type="Resource" uid="uid://bu6c0x7fgdrxr" path="res://assets/inventoryresources/flashlight.tres" id="3_g5q63"]
+[ext_resource type="Resource" uid="uid://bibsero8cr4u1" path="res://assets/inventoryresources/shotgun.tres" id="2_fyvoc"]
+[ext_resource type="Resource" uid="uid://g73g1d0xu330" path="res://assets/inventoryresources/uzi.tres" id="3_fyvoc"]
+[ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="4_fyvoc"]
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="4_rj2uk"]
 [ext_resource type="Script" uid="uid://hbo17umc4rvp" path="res://script/inventory/inventory.gd" id="5_qnkbh"]
 
 [resource]
 script = ExtResource("5_qnkbh")
-items = Array[ExtResource("1_wx8oq")]([ExtResource("2_fyvoc"), ExtResource("3_g5q63"), ExtResource("4_rj2uk"), null, null, null, null, null, null, null, null, null])
+items = Array[ExtResource("1_wx8oq")]([ExtResource("2_fyvoc"), ExtResource("3_fyvoc"), ExtResource("4_fyvoc"), ExtResource("4_rj2uk"), null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://hbo17umc4rvp"
