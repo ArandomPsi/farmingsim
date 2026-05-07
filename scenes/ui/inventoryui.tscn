@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tdjc0nfwxtkw"]
+[gd_scene load_steps=5 format=3 uid="uid://tdjc0nfwxtkw"]
 
 [ext_resource type="Script" uid="uid://dgdyuomuq06f" path="res://script/inventory/inventoryui.gd" id="1_jrxbu"]
 [ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="2_lgvsm"]
 [ext_resource type="PackedScene" uid="uid://cgrttobxg53a1" path="res://scenes/ui/slot.tscn" id="3_xqbms"]
+[ext_resource type="Script" uid="uid://3pvf2rw6c4nm" path="res://script/ui/phantomitemthingy.gd" id="4_vheev"]
 
 [node name="inventoryui" type="Control"]
 layout_mode = 3
@@ -16,10 +17,19 @@ script = ExtResource("1_jrxbu")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 self_modulate = Color(0.109804, 0.109804, 0.109804, 1)
 texture_filter = 1
-layout_mode = 0
-offset_right = 155.0
-offset_bottom = 54.0
-scale = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -306.0
+offset_right = -174.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
 texture = ExtResource("2_lgvsm")
 region_rect = Rect2(3760, 160, 48, 48)
 patch_margin_left = 20
@@ -42,38 +52,56 @@ theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 25
 columns = 6
 
-[node name="slot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot2" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot3" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot4" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot5" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot6" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot7" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot8" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot9" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot10" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot11" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
 
-[node name="slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("3_xqbms")]
+[node name="slot12" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+parent = NodePath("../../..")
+
+[node name="phantomitemthingy" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = -0.516617
+scale = Vector2(5, 5)
+script = ExtResource("4_vheev")

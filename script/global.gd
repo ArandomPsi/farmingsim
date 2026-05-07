@@ -10,6 +10,9 @@ var inventoryslotprefix : String = "invenslot"
 var stopfuncinvloop : int = 0
 var slotnum : int = 0
 
+var phantomitem : invitem = null
+var phantomowner : Control = null
+
 var time = 0
 var prevtime = time
 const MINUTES_PER_DAY = 1440

@@ -8,7 +8,7 @@ var open : bool = false
 @onready var player = get_parent().get_parent()
 
 func _ready() -> void:
-	playerinventory.update.connect(updateslots())
+	playerinventory.update.connect(updateslots)
 	updateslots()
 	close()
 
@@ -16,9 +16,12 @@ func updateslots():
 	for i in range(min(playerinventory.items.size(),slots.size())):
 		slots[i].update(playerinventory.items[i])
 	
-	player.weapons[0] = playerinventory.items[0].name
-	player.weapons[1] = playerinventory.items[1].name
-	player.weapons[2] = playerinventory.items[2].name
+	#yooo I changed this so that its more modular. Sets the player weapons and stuff
+	for i in range(3):
+		if playerinventory.items[i] != null:
+			player.weapons[i] = playerinventory.items[i].name
+		else:
+			player.weapons[i] = ""
 	
 
 func _process(delta: float) -> void:
