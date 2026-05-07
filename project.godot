@@ -130,5 +130,6 @@ openinventory={
 2d_physics/layer_4="onlychickensperv"
 2d_physics/layer_5="chickenhider"
 2d_physics/layer_6="shopkeepers"
+2d_physics/layer_7="chickencoops"
 2d_physics/layer_8="attractschickens"
 2d_physics/layer_9="monsters"

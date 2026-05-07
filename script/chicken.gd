@@ -88,7 +88,7 @@ func _process(delta: float) -> void:
 	
 	updatestats()
 	
-	if global_position.distance_squared_to(get_global_mouse_position()) <= pow(30, 2):
+	if global_position.distance_squared_to(get_global_mouse_position()) <= pow(30, 2) and global.scanner: #only if you have a scanner
 		$stats.visible = true # if mouse is hovering over chicken, show stats
 	else:
 		$stats.visible = false

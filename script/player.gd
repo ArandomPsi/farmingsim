@@ -94,15 +94,12 @@ func controls():
 		createrope()
 	
 	if Input.is_action_just_pressed("interact"):
-		if not $textarea.has_overlapping_areas():
-			pickupegg()
-		else:
-			var allareas : Array = $textarea.get_overlapping_areas()
+		var allareas : Array = $textarea.get_overlapping_areas()
+		if not allareas.is_empty(): #for chickens and stuff
 			overlappingshopkeeper = allareas[0].get_parent()
 			textqueue = overlappingshopkeeper.textstuff
-			
-			
-			
+		
+		
 	
 	if Input.is_action_just_pressed("swapweapon"):
 		currentweapon += 1
@@ -265,6 +262,16 @@ func pewpew():
 			c.global_position = $pivot/guns.global_position
 			c.global_rotation = $pivot.rotation
 			c.global_position += c.global_transform.x * 60
+		"basicegg":
+			if $coopchecker.has_overlapping_areas():
+				playerinventory.items.pop_at(currentweapon) #clear the spot
+				$hud/inventoryui.updateslots()
+				var b = load("res://scenes/egg.tscn").instantiate()
+				get_parent().add_child(b)
+				var areas = $coopchecker.get_overlapping_areas()
+				b.position = areas[0].global_position
+				b.visible = false
+				
 	
 
 
@@ -308,7 +315,10 @@ func playeranimstuff():
 		sprite.play("idle")
 	
 	#glocks and stuff
-	$pivot/guns.play(weapons[currentweapon]) #clean code ig
+	if not currentweaponname == "":
+		$pivot/guns.play(weapons[currentweapon]) #clean code ig
+	else:
+		$pivot/guns.play("new_animation")
 	if reloadingframes > 1:
 		$pivot/guns.rotation_degrees -= 24 * ($pivot/guns.scale.y/5)
 	else:
@@ -342,17 +352,6 @@ func camerastuff():
 	
 	camera.offset = Vector2(randf_range(-5,5),randf_range(-5,5)) * shakeframes
 	
-func pickupegg():
-	if len(eggs) >= eggspace:
-		return
-	
-	if global.the_egg != null and is_instance_valid(global.the_egg):
-		if global_position.distance_squared_to(global.the_egg.global_position) <= pow(25, 2):
-			eggs.append(global.the_egg)
-			get_tree().current_scene.remove_child(global.the_egg)
-			global.the_egg = null
-			global.egg_visible = false
-			
 
 func updateweapon():
 	currentweaponname = weapons[currentweapon]
@@ -376,6 +375,8 @@ func updateweapon():
 			h = true
 			currentmagsize = magsizes[4]
 		"flashlight":
+			a = 1.5
+		_:
 			a = 1.5
 	$hud/bulletamount.visible = not h
 

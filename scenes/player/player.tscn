@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=57 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
 [ext_resource type="Texture2D" uid="uid://t0hu3uk6w85h" path="res://assets/playerstuff/flashlight.png" id="5_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://doqi2r4vfogw4" path="res://assets/playerstuff/daggercolorpallate.png" id="5_8ydkj"]
+[ext_resource type="Texture2D" uid="uid://yx6ej2v1n7id" path="res://assets/inventoryicons/egginventory.png" id="6_ioxgp"]
 [ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://bvg3lpw471q5t" path="res://assets/playerstuff/shotgun.png" id="7_fm80t"]
 [ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="8_ugbui"]
@@ -110,6 +111,14 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_ioxgp")
+}],
+"loop": true,
+"name": &"basicegg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_8ydkj")
 }],
 "loop": true,
@@ -130,6 +139,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"glock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{
@@ -173,7 +190,7 @@ shader_parameter/dir = Vector2(0, 0)
 shader_parameter/quality = 10
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75vfm"]
-radius = 51.0098
+radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_5gtgg"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -189,6 +206,9 @@ metadata/_snap_enabled = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
 radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ioxgp"]
+radius = 20.025
 
 [sub_resource type="InputEventKey" id="InputEventKey_fcs02"]
 device = -1
@@ -281,7 +301,7 @@ texture_filter = 1
 position = Vector2(21, 0)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"dagger"
+animation = &"basicegg"
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
 position = Vector2(-22.3588, -0.4)
@@ -314,6 +334,7 @@ shape = SubResource("RectangleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_left = 0
 limit_top = 0
 
 [node name="shaders" type="CanvasLayer" parent="."]
@@ -351,6 +372,13 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="textarea"]
 shape = SubResource("CircleShape2D_je7p5")
+
+[node name="coopchecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coopchecker"]
+shape = SubResource("CircleShape2D_ioxgp")
 
 [node name="hud" type="CanvasLayer" parent="."]
 
@@ -449,6 +477,7 @@ offset_bottom = 32.0
 text = "Joe Mama"
 
 [node name="shop" type="Panel" parent="hud"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -677,3 +706,4 @@ offset_bottom = 596.0
 text = "5/5"
 
 [node name="inventoryui" parent="hud" instance=ExtResource("26_6cv16")]
+visible = false

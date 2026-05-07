@@ -4,6 +4,8 @@ var playerpos : Vector2
 
 var editing : bool = true
 
+var scanner : bool = false
+
 var egg_visible : bool = false # only 1 egg can be shown at a time for pickup
 var the_egg : Node = null
 var inventoryslotprefix : String = "invenslot"

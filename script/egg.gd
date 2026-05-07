@@ -39,8 +39,10 @@ func hatch():
 func egg_popup(status : bool): # open = true, close = false, not in use rn
 	#if picked_up: return
 	
-	global.egg_visible = status
-	var e = self if status else null
-	global.the_egg = e
-	popup.visible = status
+	pass
+	
+	#global.egg_visible = status
+	#var e = self if status else null
+	#global.the_egg = e
+	#popup.visible = status
 	

@@ -23,5 +23,5 @@ func _process(delta: float) -> void:
 		pickup()
 
 func pickup():
-	pickedup = true
+	global.player.currency += chickenvalue
 	queue_free()

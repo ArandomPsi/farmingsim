@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://cytmg2o00ayey"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_1ht01"]
+[ext_resource type="Texture2D" uid="uid://yx6ej2v1n7id" path="res://assets/inventoryicons/egginventory.png" id="2_7asq1"]
+
+[resource]
+script = ExtResource("1_1ht01")
+name = "basicegg"
+texture = ExtResource("2_7asq1")
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

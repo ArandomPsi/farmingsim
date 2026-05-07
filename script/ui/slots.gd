@@ -5,4 +5,7 @@ func _ready() -> void:
 	sprite.sprite_frames = sprite.sprite_frames.duplicate()
 
 func _process(delta: float) -> void:
-	sprite.play(global.player.weapons[slot])
+	if global.player.weapons[slot] != "":
+		sprite.play(global.player.weapons[slot])
+	else:
+		sprite.play("new_animation")
