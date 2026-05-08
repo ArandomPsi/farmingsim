@@ -35,9 +35,7 @@ var textqueue : Array = []
 
 func _ready() -> void:
 	global.player = self
-	$hud/Backpack.toggled.connect(_open_backpack) # HOLA SOY DORA
-	$hud/Backpack.mouse_entered.connect(_show_backpack_tab.bind(true)) # you can simplify this into single line of code but i think this is optimized idk you do what is best pls ty
-	$hud/Backpack.mouse_exited.connect(_show_backpack_tab.bind(false))
+
 	$hud/shop/ExitShop.pressed.connect(_exit_shop)
 
 
@@ -79,7 +77,7 @@ func controls():
 		
 		#pew pew
 		if Input.is_action_just_pressed("shoot"):
-			if currentweaponname == "dagger" and currentmagsize > 0:
+			if currentweaponname in ["dagger","pickaxe"]  and currentmagsize > 0:
 				pewpew()
 			elif currentmagsize > 0 and reloadingframes < 1:
 				pewpew()
@@ -151,7 +149,7 @@ func controls():
 	
 
 func talkingcontrols():
-	
+	movedir = Vector2.ZERO
 	if not textqueue.is_empty():
 		$hud/text/text.text = textqueue[0]
 		if Input.is_action_just_pressed("interact"):
@@ -186,7 +184,7 @@ func updatehud():
 	
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
-	if not currentweaponname in ["flashlight", "dagger"] :
+	if not currentweaponname in ["flashlight", "dagger", "pickaxe"] :
 		$hud/bulletamount.text = str(currentmagsize) + "/" + str(magsizes[currentweapon-1])
 		$hud/bulletamount.visible = true
 	else:
@@ -271,7 +269,8 @@ func pewpew():
 				var areas = $coopchecker.get_overlapping_areas()
 				b.position = areas[0].global_position
 				b.visible = false
-				
+		"pickaxe":
+			$pivot/guns.rotation_degrees += 80 * $pivot/guns.scale.y
 	
 
 
@@ -323,6 +322,7 @@ func playeranimstuff():
 		$pivot/guns.rotation_degrees -= 24 * ($pivot/guns.scale.y/5)
 	else:
 		$pivot/guns.rotation = lerp_angle($pivot/guns.rotation,0.0,0.15)
+	
 	
 	
 	$pivot/guns/scope.visible = currentweaponname == "sniper" and not reloadingframes > 1
@@ -390,11 +390,7 @@ func camzoomtween(amount : float):
 	print(camera.zoom)
 	await tween.finished
 
-func _open_backpack(pressed : bool):
-	$hud/Backpack/Inv.visible = pressed
-	$hud/Backpack.release_focus()
-func _show_backpack_tab(hovered : bool):
-	$hud/Backpack/Label.visible = hovered
+
 func _exit_shop():
 	textqueue.clear()
 	$hud/shop.visible = false

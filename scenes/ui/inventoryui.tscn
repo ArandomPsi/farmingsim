@@ -23,13 +23,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -329.0
-offset_top = -306.0
-offset_right = -174.0
-offset_bottom = -252.0
+offset_left = -549.0
+offset_top = -318.0
+offset_right = -471.0
+offset_bottom = -247.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("2_lgvsm")
 region_rect = Rect2(3760, 160, 48, 48)
 patch_margin_left = 20
@@ -37,9 +37,8 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+[node name="GridContainer" type="Control" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.006
 anchor_top = 0.033
 anchor_right = 1.0
@@ -48,56 +47,100 @@ offset_left = 4.004
 offset_top = 3.218
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
-columns = 6
 
 [node name="slot" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_top = 66.689
+offset_right = 0.0
+offset_bottom = 66.689
 parent = NodePath("../../..")
 
 [node name="slot2" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 25.0
+offset_top = 66.689
+offset_right = 25.0
+offset_bottom = 66.689
 parent = NodePath("../../..")
 
 [node name="slot3" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 50.0
+offset_top = 66.689
+offset_right = 50.0
+offset_bottom = 66.689
 parent = NodePath("../../..")
 
 [node name="slot4" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = -0.222
+offset_top = -3.193
+offset_right = -0.222
+offset_bottom = -3.193
 parent = NodePath("../../..")
 
 [node name="slot5" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 24.778
+offset_top = -3.193
+offset_right = 24.778
+offset_bottom = -3.193
 parent = NodePath("../../..")
 
 [node name="slot6" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 49.778
+offset_top = -3.193
+offset_right = 49.778
+offset_bottom = -3.193
 parent = NodePath("../../..")
 
 [node name="slot7" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = -0.222
+offset_top = 18.807
+offset_right = -0.222
+offset_bottom = 18.807
 parent = NodePath("../../..")
 
 [node name="slot8" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 24.778
+offset_top = 18.807
+offset_right = 24.778
+offset_bottom = 18.807
 parent = NodePath("../../..")
 
 [node name="slot9" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 49.778
+offset_top = 18.807
+offset_right = 49.778
+offset_bottom = 18.807
 parent = NodePath("../../..")
 
 [node name="slot10" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = -0.222
+offset_top = 40.807
+offset_right = -0.222
+offset_bottom = 40.807
 parent = NodePath("../../..")
 
 [node name="slot11" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 24.778
+offset_top = 40.807
+offset_right = 24.778
+offset_bottom = 40.807
 parent = NodePath("../../..")
 
 [node name="slot12" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
+offset_left = 49.778
+offset_top = 40.807
+offset_right = 49.778
+offset_bottom = 40.807
 parent = NodePath("../../..")
 
 [node name="phantomitemthingy" type="Sprite2D" parent="."]
