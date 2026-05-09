@@ -19,5 +19,9 @@ func insert(item : invitem):
 
 
 func additem(item : invitem):
-	items.push_back(item)
-	update.emit()
+	for i in range(items.size()):
+		if items[i] == null:
+			items[i] = item
+			update.emit()
+			return true
+	print("yea")

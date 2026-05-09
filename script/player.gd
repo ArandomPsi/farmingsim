@@ -19,8 +19,12 @@ var eggs : Array[Node] = [] # eggs currently carrying
 @export var playerinventory : inventory
 
 #first 3 slots in inventory
+var guns : Array = ["glock", "shotgun", "sniper","uzi"]
+
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
+
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
+var rounds : int = 10
 var currentmagsize : int = 6
 var currentweapon : int = 0
 var currentweaponname : String
@@ -41,7 +45,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
-	if textqueue.size() > 0 or $hud/shop.visible:
+	if textqueue.size() > 0 or $hud/shop.visible or $hud/inventoryui.visible:
 		talkingcontrols()
 	else:
 		controls()
@@ -77,7 +81,7 @@ func controls():
 		
 		#pew pew
 		if Input.is_action_just_pressed("shoot"):
-			if currentweaponname in ["dagger","pickaxe"]  and currentmagsize > 0:
+			if currentweaponname in ["dagger","pickaxe"]:
 				pewpew()
 			elif currentmagsize > 0 and reloadingframes < 1:
 				pewpew()
@@ -130,8 +134,9 @@ func controls():
 	
 	
 	
-	if Input.is_action_just_pressed("reload") and not currentweaponname == "flashlight":
+	if Input.is_action_just_pressed("reload") and currentweaponname in guns and rounds > 0:
 		reloadingframes = 30
+		rounds -= 1
 		match currentweaponname:
 			"glock":
 				currentmagsize = magsizes[0]
@@ -185,7 +190,7 @@ func updatehud():
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
 	if not currentweaponname in ["flashlight", "dagger", "pickaxe"] :
-		$hud/bulletamount.text = str(currentmagsize) + "/" + str(magsizes[currentweapon-1])
+		$hud/bulletamount.text = str(currentmagsize) + "/" + str(rounds)
 		$hud/bulletamount.visible = true
 	else:
 		$hud/bulletamount.visible = false
@@ -401,6 +406,7 @@ func damage(amount):
 func dagger_tween():
 	currentmagsize = 0
 	var g = $pivot/guns
+	g.position.x = 21.0
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	var og = g.position
 	tween.tween_property(g, "position", g.transform.x * Engine.get_frames_per_second() / 5 + g.position, 0.05).set_ease(Tween.EASE_IN)
