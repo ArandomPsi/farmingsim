@@ -3,6 +3,7 @@ var player : Node #for convenience
 var playerpos : Vector2
 
 var editing : bool = true
+var current_edit : Node
 
 var scanner : bool = false
 

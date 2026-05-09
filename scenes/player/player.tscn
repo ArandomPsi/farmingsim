@@ -410,14 +410,6 @@ texture_normal = ExtResource("12_fcs02")
 texture_pressed = ExtResource("13_myrg7")
 ignore_texture_size = true
 
-[node name="Inv" type="Panel" parent="hud/Backpack"]
-visible = false
-layout_mode = 0
-offset_left = -1380.58
-offset_top = -867.961
-offset_right = -567.583
-offset_bottom = -297.961
-
 [node name="Label" type="Label" parent="hud/Backpack"]
 visible = false
 texture_filter = 1

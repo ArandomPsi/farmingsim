@@ -1,5 +1,10 @@
 extends Node2D
 var frames : int = 50
+
+func _ready() -> void:
+	get_parent().hp *= randi_range(6, 30)
+	get_parent().chickenstats["explosiveness"] = randi_range(50, 100)
+
 func _process(delta: float) -> void:
 	frames -= 1
 	if frames < 1:

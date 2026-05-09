@@ -8,7 +8,7 @@ var texture : Texture2D = preload("res://assets/playerstuff/coin.png")
 
 @export var childcount : int = 0
 
-@export var description : String = "blah blah blah"
+@export_multiline var description : String = "blah blah blah"
 
 @onready var shop = get_parent().get_parent().get_parent()
 
@@ -19,4 +19,5 @@ func _ready() -> void:
 
 func boop():
 	shop.currentselection = childcount
+	shop.preview.texture = texture
 	shop.updateshop()

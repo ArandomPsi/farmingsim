@@ -2,7 +2,10 @@ extends Node2D
 
 var eggspace : int = 5 # max amount of eggs coop can hold
 var eggs : Array = []
+var upgrade_cost : int = 67
 
+func _ready() -> void:
+	pass
 
 func insert_egg():
 	if len(eggs) >= eggspace:

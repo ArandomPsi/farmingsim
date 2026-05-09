@@ -5,6 +5,8 @@ var textures : Array = [Texture2D]
 var costs : Array = []
 var descriptions : Array = []
 var currentselection : int = 0
+@onready var preview: Sprite2D = $preview
+
 
 
 @onready var items = $ScrollContainer/VBoxContainer as VBoxContainer
@@ -24,7 +26,6 @@ func updateshop():
 	if currentselection < 0 or currentselection >= textures.size():
 		return
 	
-	$preview.texture = textures[currentselection]
 	$cost.text = "cost - " + str(costs[currentselection])
 	$info.text = descriptions[currentselection]
 	

@@ -8,7 +8,7 @@ var randomturning : float = 0
 
 var currentfood : int = 100 #max food = 100
 var currentwater : int = 100 #max water = 100
-var lust : int = 200
+var lust : int = 10
 var dominant : bool = false #laying one egg only
 var updatetick : int = 0
 
@@ -19,18 +19,19 @@ var updatetick : int = 0
 var ropecrash = null
 var nearestcoop = null
 
-@export var mutations : PackedStringArray
 @export var hp : int = 1
 
 
 var chickenstats : Dictionary = { #all stats can reach 100
 	"size": randi_range(1,20),
-	"tenderness": randi_range(1,20)
+	"tenderness": randi_range(1,20),
+	"explosiveness": 75
 }
 
 var partnerchickenstats : Dictionary = {} #for mating purposes
 
 func _ready() -> void:
+	
 	chickenstats = chickenstats.duplicate()
 	chickenstats["size"] *= randf_range(0.8,1.2)
 	chickenstats["tenderness"] *= randf_range(0.8,1.2)
@@ -38,8 +39,7 @@ func _ready() -> void:
 	scale *= max(chickenstats.size / 100, 1)
 	partnerchickenstats.clear()
 	
-	if not mutations.is_empty(): #mutations make chicken naturally tankier
-		hp *= randf_range(6,30)
+
 	
 	
 
@@ -148,7 +148,7 @@ func handlestates():
 		elif state == 2:
 			statetime = randi_range(50,120)
 	
-	if mutations.has("terrorist"): #they always run towards the nearest chickens
+	if chickenstats["explosiveness"] >= 50: #they always run towards the nearest chickens
 		state = 3
 		dominant = true
 		statetime = 600
@@ -221,7 +221,7 @@ func gethit(damage):
 		get_parent().add_child(b)
 		b.position = position
 		b.scale.x = $flip.scale.x
-		b.chickenvalue *= mutations.size() + 1
+		b.chickenvalue *= (chickenstats.size() - 2) + 1
 		queue_free()
 	else:
 		var b = load("res://scenes/vfx/bloodspray.tscn").instantiate()
