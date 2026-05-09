@@ -1,6 +1,8 @@
 extends Button
 
-@export var texture : String = "res://assets/playerstuff/coin.png"
+var texture : Texture2D = preload("res://assets/playerstuff/coin.png")
+
+@export var item : invitem
 @export var costs : int = 67
 
 
@@ -11,6 +13,7 @@ extends Button
 @onready var shop = get_parent().get_parent().get_parent()
 
 func _ready() -> void:
+	texture = item.texture
 	pressed.connect(boop)
 
 

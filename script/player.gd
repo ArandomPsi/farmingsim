@@ -253,7 +253,7 @@ func pewpew():
 			b.frames = 7
 			b.speed = 1000
 			b.visible = false
-			b.damage = 15
+			b.damage = 2
 			dagger_tween()
 			var c = preload("res://scenes/vfx/daggereffect.tscn").instantiate()
 			add_child(c)

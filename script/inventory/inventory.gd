@@ -16,3 +16,8 @@ func insert(item : invitem):
 		if not emptyslots.is_empty():
 			emptyslots[0].item = item
 	update.emit()
+
+
+func additem(item : invitem):
+	items.push_back(item)
+	update.emit()

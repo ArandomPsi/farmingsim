@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=63 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
@@ -23,7 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
 [ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
+[ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="23_28m0y"]
+[ext_resource type="Resource" uid="uid://bibsero8cr4u1" path="res://assets/inventoryresources/shotgun.tres" id="24_uniwh"]
+[ext_resource type="Resource" uid="uid://g73g1d0xu330" path="res://assets/inventoryresources/uzi.tres" id="25_iqsei"]
 [ext_resource type="PackedScene" uid="uid://tdjc0nfwxtkw" path="res://scenes/ui/inventoryui.tscn" id="26_6cv16"]
+[ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
+[ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="27_uniwh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -486,7 +491,6 @@ offset_bottom = 32.0
 text = "Joe Mama"
 
 [node name="shop" type="Panel" parent="hud"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -532,17 +536,17 @@ layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/v_separation = 50
 
-[node name="dagger" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="pistol" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
-text = "dagger"
+text = "pistol
+"
 alignment = 0
 script = ExtResource("17_uf5tr")
-texture = "res://assets/inventoryicons/daggercolorpallate.png"
-costs = 200
-description = "A simple dagger that does high damage but has low range"
+item = ExtResource("23_28m0y")
+description = "your basic ahh gun that go pew pew. BRRRR skrrrrt lol"
 
 [node name="shotgun" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -552,10 +556,9 @@ focus_mode = 0
 text = "shotgun"
 alignment = 0
 script = ExtResource("17_uf5tr")
-texture = "res://assets/playerstuff/shotgun.png"
-costs = 700
+item = ExtResource("24_uniwh")
 childcount = 1
-description = "Shotguns are a well rounded high burst damage gun."
+description = "Shotguns are a well rounded high burst damage gun. BANG BANG ha ha ha I just 200 pumped u b*tch"
 
 [node name="rifle" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -565,8 +568,7 @@ focus_mode = 0
 text = "rifle"
 alignment = 0
 script = ExtResource("17_uf5tr")
-texture = "res://assets/playerstuff/shotgun.png"
-costs = 700
+item = ExtResource("25_iqsei")
 childcount = 2
 description = "Fast firerate and high damage. Only problem is the ammo consumption"
 
@@ -578,9 +580,8 @@ focus_mode = 0
 text = "sniper"
 alignment = 0
 script = ExtResource("17_uf5tr")
-texture = "res://assets/playerstuff/sniper.png"
-costs = 1500
-description = "One shot stopper with the longest range out of all weapons."
+item = ExtResource("26_tffgl")
+description = "One shot stopper with the longest range out of all weapons. I fucking hate the guys that play the weapon in any video game, damn campers."
 
 [node name="torch" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -590,7 +591,7 @@ focus_mode = 0
 text = "Torch"
 alignment = 0
 script = ExtResource("17_uf5tr")
-costs = 5
+item = ExtResource("27_uniwh")
 description = "Lights up stuff"
 
 [node name="ammo" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
@@ -601,7 +602,7 @@ focus_mode = 0
 text = "Ammo"
 alignment = 0
 script = ExtResource("17_uf5tr")
-costs = 20
+item = ExtResource("27_uniwh")
 description = "5 rounds."
 
 [node name="Button7" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
@@ -612,6 +613,7 @@ focus_mode = 0
 text = "baby oil"
 alignment = 0
 script = ExtResource("17_uf5tr")
+item = ExtResource("27_uniwh")
 
 [node name="Button8" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -621,6 +623,7 @@ focus_mode = 0
 text = "cfdgzsaf"
 alignment = 0
 script = ExtResource("17_uf5tr")
+item = ExtResource("27_uniwh")
 
 [node name="info" type="RichTextLabel" parent="hud/shop"]
 layout_mode = 0
@@ -629,7 +632,7 @@ offset_top = 234.0
 offset_right = 414.0
 offset_bottom = 513.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_myrg7")
-text = "Big black cock suck "
+text = "select something to buy"
 
 [node name="preview" type="Sprite2D" parent="hud/shop"]
 texture_filter = 1
@@ -646,6 +649,15 @@ offset_right = 409.0
 offset_bottom = 506.0
 text = "Cost - 67"
 horizontal_alignment = 2
+
+[node name="buy" type="Button" parent="hud/shop"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 475.0
+offset_right = 338.0
+offset_bottom = 501.0
+focus_mode = 0
+text = "BUY"
 
 [node name="inventory" type="Panel" parent="hud"]
 offset_top = 600.0
@@ -717,3 +729,5 @@ text = "5/5"
 
 [node name="inventoryui" parent="hud" instance=ExtResource("26_6cv16")]
 visible = false
+
+[connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]
