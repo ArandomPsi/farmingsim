@@ -1,0 +1,442 @@
+[gd_scene load_steps=31 format=3 uid="uid://bv14ycm77qnl5"]
+
+[ext_resource type="Script" uid="uid://c0g50xerqp7fy" path="res://script/chicken/chickenhostile.gd" id="1_ngpdv"]
+[ext_resource type="Texture2D" uid="uid://bc3nqyjcc8o8y" path="res://assets/chickens/chickenfight.png" id="2_io7f4"]
+[ext_resource type="Texture2D" uid="uid://cy03b22bqkgv2" path="res://assets/chickens/chickenonly.png" id="2_m8m8r"]
+[ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_io7f4"]
+[ext_resource type="Texture2D" uid="uid://cjndiqs8o3c0w" path="res://assets/chickens/hearthingy.png" id="4_phx1t"]
+[ext_resource type="Texture2D" uid="uid://bgyil6c51oxl6" path="res://assets/chickens/bo.png" id="5_gly68"]
+[ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_4cr1r"]
+[ext_resource type="Texture2D" uid="uid://bhdmgbli1pm5b" path="res://assets/playerstuff/heart.png" id="7_6ap6w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phx1t"]
+atlas = ExtResource("2_io7f4")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gly68"]
+atlas = ExtResource("2_io7f4")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8m8r"]
+atlas = ExtResource("2_io7f4")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc7ma"]
+atlas = ExtResource("2_m8m8r")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bti8l"]
+atlas = ExtResource("2_m8m8r")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pep2a"]
+atlas = ExtResource("2_m8m8r")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aah5"]
+atlas = ExtResource("2_m8m8r")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0du8g"]
+atlas = ExtResource("2_m8m8r")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sgx4"]
+atlas = ExtResource("2_m8m8r")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rc7ma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phx1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gly68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8m8r")
+}],
+"loop": false,
+"name": &"fight",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc7ma")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bti8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pep2a")
+}],
+"loop": true,
+"name": &"peck",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aah5")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0du8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sgx4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_5sgx4"]
+offsets = PackedFloat32Array(0.570755, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8aah5"]
+gradient = SubResource("Gradient_5sgx4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fwex"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 17.222
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_8aah5")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pep2a"]
+polygon = PackedVector2Array(-10, -5, 10, -5, 5, 14, -10, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lku0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rc7ma"]
+radius = 1949.18
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0du8g"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pep2a"]
+
+[sub_resource type="Animation" id="Animation_5sgx4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-19, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pep2a"]
+resource_name = "float"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.318182, -0.25, 0, 0.25, 0, 0.038, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.318182, -0.25, 0, 0.25, 0, 0.038, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0, 21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-19, -0.25, 0, 0.25, 0, -35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8aah5"]
+_data = {
+&"RESET": SubResource("Animation_5sgx4"),
+&"float": SubResource("Animation_pep2a")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8m8r"]
+radius = 27.074
+
+[node name="chicken" type="CharacterBody2D"]
+visible = false
+y_sort_enabled = true
+collision_layer = 4
+script = ExtResource("1_ngpdv")
+
+[node name="flip" type="Node2D" parent="."]
+
+[node name="sprite" type="AnimatedSprite2D" parent="flip"]
+texture_filter = 1
+position = Vector2(0, -10)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_rc7ma")
+animation = &"fight"
+frame = 2
+frame_progress = 1.0
+
+[node name="shadow" parent="flip/sprite" instance=ExtResource("3_io7f4")]
+position = Vector2(-0.6, 3.8)
+scale = Vector2(0.775, 1)
+region_enabled = true
+region_rect = Rect2(0, 6, 8, 2)
+
+[node name="heartpar" type="GPUParticles2D" parent="flip/sprite"]
+visible = false
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(1.6, 0.8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_phx1t")
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_1fwex")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="flip/sprite"]
+position = Vector2(0, 2)
+scale = Vector2(0.2, 0.2)
+occluder = SubResource("OccluderPolygon2D_pep2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8lku0")
+
+[node name="randomlook" type="Node2D" parent="."]
+
+[node name="stats" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(3.8147e-06, -57)
+scale = Vector2(5, 5)
+texture = ExtResource("5_gly68")
+
+[node name="Label" type="Label" parent="stats"]
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 133.0
+offset_bottom = 131.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.494118, 0.145098, 0.32549, 1)
+theme_override_fonts/font = ExtResource("6_4cr1r")
+theme_override_font_sizes/font_size = 12
+text = "chicken stats:
+weight
+blah 
+blah"
+autowrap_mode = 3
+
+[node name="chickendetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 262
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chickendetector"]
+visible = false
+shape = SubResource("CircleShape2D_rc7ma")
+
+[node name="suslook" type="Node2D" parent="."]
+
+[node name="bouncearea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bouncearea"]
+shape = SubResource("CircleShape2D_8lku0")
+
+[node name="hider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hider"]
+shape = SubResource("CircleShape2D_0du8g")
+
+[node name="coopchecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coopchecker"]
+shape = SubResource("CircleShape2D_pep2a")
+
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(15, -19)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("7_6ap6w")
+region_enabled = true
+region_rect = Rect2(0, 0, 48.6182, 44.5558)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Heart"]
+libraries = {
+&"": SubResource("AnimationLibrary_8aah5")
+}
+
+[node name="peck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 262
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="peck"]
+shape = SubResource("CircleShape2D_m8m8r")
+
+[connection signal="body_entered" from="bouncearea" to="." method="bounce"]
+[connection signal="body_entered" from="peck" to="." method="_on_peck_body_entered"]

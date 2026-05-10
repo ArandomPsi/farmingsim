@@ -1,27 +1,23 @@
 extends CharacterBody2D
 
-var speed : float = 1250
-var friciton : float = 0.95
+var speed : float = 300
+var friciton : float = 0.98
 
 var state : int = 0 #idle, wander, sleep, chase
 var statetime : int = 0
 
 var randomturning : float = 0
 
-var hp : int = 6
+var hp : int = 1
 
 var jumpingplayer : bool = false
 
 var attackanimframes : int = 0
 
+var rangerdangerframes : int = 0
 
-@export var alpha : bool = false
 
-func _ready() -> void:
-	if alpha:
-		speed *= 1.2
-		hp *= 4
-		scale *= 1.25
+
 
 
 func _process(delta: float) -> void:
@@ -30,6 +26,8 @@ func _process(delta: float) -> void:
 	elif velocity.x < 0: $flip.scale.x = -1
 	
 	statetime -= 1
+	if position.distance_to(global.playerpos) > 300:
+		rangerdangerframes -= 1
 	attackanimframes -= 1
 	if statetime < 1:
 		updatestates()
@@ -46,7 +44,9 @@ func _process(delta: float) -> void:
 
 func updatestates():
 	
-	
+	if rangerdangerframes > 1:
+		state = 4
+		statetime = 300
 	if $Area2D.has_overlapping_bodies():
 		state = 3
 		statetime = 200
@@ -73,6 +73,8 @@ func handlestates(delta):
 			idlestate() #for now
 		3:
 			omnomnom(delta)
+		4:
+			runaway(delta)
 		
 		
 	
@@ -99,13 +101,24 @@ func omnomnom(delta):
 		statetime = 0
 		return
 	if not jumpingplayer:
-		$randomlook.look_at(get_closest_body(dinnermenu).position)
+		var c = get_closest_body(dinnermenu)
+		if c == null:
+			statetime = 0
+			return
+		else:
+			$randomlook.look_at(c.position)
 	else:
 		
 		$randomlook.look_at(global.playerpos)
 	velocity += speed * $randomlook.transform.x * delta
 	
+
+func runaway(delta):
 	
+	$randomlook.look_at(global.playerpos)
+	$randomlook.rotation += PI
+	
+	velocity += speed * $randomlook.transform.x * delta
 
 
 func animations():
@@ -127,7 +140,7 @@ func get_closest_body(array) -> Node2D:
 	for b in bodies:
 		
 		
-		if b == self:
+		if b in [self, global.player]:
 			continue
 		
 		var dist = global_position.distance_to(b.global_position)
@@ -140,17 +153,19 @@ func get_closest_body(array) -> Node2D:
 
 
 func _on_chickenkiller_body_entered(body: Node2D) -> void:
-	body.gethit(1)
+	body.damage(1)
 	attackanimframes = 20
 	velocity *= -1.5
 	if hp < 6:
 		hp += 1 #can gain up to 12 hp
 
-func gethit(amount):
+func damage(amount):
 	hp -= amount
-	
+	rangerdangerframes = 120
+	state = 4
+	statetime = 120
 	if hp < 1:
-		var b = preload("res://scenes/monsters/dedwolf.tscn").instantiate()
+		var b = preload("res://scenes/monsters/dedhomeless.tscn").instantiate()
 		get_parent().add_child(b)
 		b.position = position
 		scale.x = $flip.scale.x

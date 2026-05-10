@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b2jm6mg6fvt4o"]
 
-[ext_resource type="Script" uid="uid://bdiu02xknapjf" path="res://script/dedwolf.gd" id="1_yauhw"]
+[ext_resource type="Script" uid="uid://bdiu02xknapjf" path="res://script/monsters/dedwolf.gd" id="1_yauhw"]
 [ext_resource type="Texture2D" uid="uid://w3t8wodysr06" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDie.png" id="2_qt2ue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2s2jq"]

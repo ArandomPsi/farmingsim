@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://7txge7tmljk0"]
 
 [ext_resource type="Texture2D" uid="uid://bkmqdq8nb3sne" path="res://assets/chickens/dedchicken.png" id="1_mixk0"]
-[ext_resource type="Script" uid="uid://ckao1jvxb7j5g" path="res://script/dedchicken.gd" id="1_u2ggf"]
+[ext_resource type="Script" uid="uid://ckao1jvxb7j5g" path="res://script/chicken/dedchicken.gd" id="1_u2ggf"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="3_33s6j"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u2ggf"]

@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=21 format=4 uid="uid://cjf2as4jtjrgf"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_mrjnl"]
 [ext_resource type="Shader" uid="uid://b5pwkw2ryewj2" path="res://shaders/grasswind.gdshader" id="2_rqo2c"]
 [ext_resource type="Shader" uid="uid://b780aaswdvqml" path="res://shaders/grass.gdshader" id="4_58ndj"]
 [ext_resource type="Texture2D" uid="uid://cmfx1bbqjp7ey" path="res://assets/grasses.png" id="5_nykyp"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="6_uclq6"]
-[ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken.tscn" id="7_30ska"]
+[ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken/chicken.tscn" id="7_30ska"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="9_omedl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="10_3xi6f"]
+[ext_resource type="PackedScene" uid="uid://bv14ycm77qnl5" path="res://scenes/chicken/hostilechicken.tscn" id="11_b56te"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="11_xks3a"]
-[ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/shop.tscn" id="13_2kc6l"]
+[ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrjnl"]
 texture = ExtResource("1_mrjnl")
@@ -152,6 +153,7 @@ position = Vector2(292, 283)
 
 [node name="chicken2" parent="." instance=ExtResource("7_30ska")]
 position = Vector2(490, 224)
+debug = true
 
 [node name="chickenhouse" parent="." instance=ExtResource("9_omedl")]
 position = Vector2(683, 191)
@@ -168,3 +170,7 @@ shape = SubResource("RectangleShape2D_6m7oc")
 
 [node name="shop" parent="." instance=ExtResource("13_2kc6l")]
 position = Vector2(715, 403)
+
+[node name="chicken3" parent="." instance=ExtResource("11_b56te")]
+visible = true
+position = Vector2(452, 136)

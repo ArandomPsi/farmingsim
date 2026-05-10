@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		hatch()
 
 func hatch():
-	var b = preload("res://scenes/chicken.tscn").instantiate()
+	var b = preload("res://scenes/chicken/chicken.tscn").instantiate()
 	b.global_position = global_position
 	b.chickenstats = chickenstats
 	get_tree().current_scene.add_child(b)

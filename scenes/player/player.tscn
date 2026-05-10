@@ -1,7 +1,7 @@
 [gd_scene load_steps=63 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
-[ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player.gd" id="1_lvxji"]
+[ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bqk4dmdg35hpp" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanWalk.png" id="2_dovo2"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
 [ext_resource type="Shader" uid="uid://cqmcc8rco6og7" path="res://shaders/motionblur.gdshader" id="3_gmlin"]

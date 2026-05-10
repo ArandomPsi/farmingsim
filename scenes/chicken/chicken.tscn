@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://by4pvoj44uikr"]
 
-[ext_resource type="Script" uid="uid://b33xl6dehrkv3" path="res://script/chicken.gd" id="1_1yv3s"]
+[ext_resource type="Script" uid="uid://dxufyb60wjikc" path="res://script/chicken/chickenpassive.gd" id="1_pep2a"]
 [ext_resource type="Texture2D" uid="uid://cy03b22bqkgv2" path="res://assets/chickens/chickenonly.png" id="3_0du8g"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_bti8l"]
 [ext_resource type="Texture2D" uid="uid://bgyil6c51oxl6" path="res://assets/chickens/bo.png" id="3_nutj5"]
@@ -296,7 +296,10 @@ _data = {
 [node name="chicken" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
-script = ExtResource("1_1yv3s")
+script = ExtResource("1_pep2a")
+hp = null
+tethered = null
+debug = null
 
 [node name="flip" type="Node2D" parent="."]
 

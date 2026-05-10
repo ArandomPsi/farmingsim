@@ -34,6 +34,7 @@ func updateshop():
 func _on_buy_pressed() -> void:
 	if costs[currentselection] <= global.player.currency: #no stealing here dumbass
 		global.player.currency -= costs[currentselection] #buy the item
+		
 		global.player.playerinventory.additem($ScrollContainer/VBoxContainer.get_child(currentselection).item) #add the item
 		
 	

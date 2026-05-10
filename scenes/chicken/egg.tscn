@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dx5kmhttxo7vg"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_maxla"]
-[ext_resource type="Script" uid="uid://cajwck3x4nmlo" path="res://script/egg.gd" id="1_qlus4"]
+[ext_resource type="Script" uid="uid://cajwck3x4nmlo" path="res://script/chicken/egg.gd" id="1_qlus4"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_34461"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="4_ifgqj"]
 

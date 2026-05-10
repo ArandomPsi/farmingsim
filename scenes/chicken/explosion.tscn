@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://brsw7t7qf0p8l"]
 
 [ext_resource type="Script" uid="uid://can0xt4bkyknk" path="res://script/vfx/particles.gd" id="1_1cqi4"]
-[ext_resource type="Script" uid="uid://y0erp7b8osbw" path="res://script/chickenkiller.gd" id="2_f0hn1"]
+[ext_resource type="Script" uid="uid://y0erp7b8osbw" path="res://script/chicken/chickenkiller.gd" id="2_f0hn1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1cqi4"]
 blend_mode = 1

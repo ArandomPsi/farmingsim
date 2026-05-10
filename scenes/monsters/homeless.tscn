@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://bvf3qlrjkevie"]
 
-[ext_resource type="Script" uid="uid://bh38w166h2wrq" path="res://script/homeless.gd" id="1_mg6t4"]
+[ext_resource type="Script" uid="uid://bh38w166h2wrq" path="res://script/monsters/homeless.gd" id="1_mg6t4"]
 [ext_resource type="Texture2D" uid="uid://cuck6tpnliom3" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanAttack.png" id="2_7qeoh"]
 [ext_resource type="Texture2D" uid="uid://bwsulpnwm6yq4" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanSpinDie.png" id="3_mfytg"]
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="4_tgxxj"]

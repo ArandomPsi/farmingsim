@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://j6wls73qf3cn"]
 
-[ext_resource type="Script" uid="uid://b67r0gaynngqj" path="res://script/dedhomeless.gd" id="1_t8aro"]
+[ext_resource type="Script" uid="uid://b67r0gaynngqj" path="res://script/monsters/dedhomeless.gd" id="1_t8aro"]
 [ext_resource type="Texture2D" uid="uid://bwsulpnwm6yq4" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanSpinDie.png" id="2_t8aro"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yue3n"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://57j3fqff8x6g"]
 
-[ext_resource type="Script" uid="uid://cq2eqp7y2rkkr" path="res://script/bullet.gd" id="1_2as5g"]
+[ext_resource type="Script" uid="uid://cq2eqp7y2rkkr" path="res://script/attacks/bullet.gd" id="1_2as5g"]
 [ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="2_j5eos"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2as5g"]

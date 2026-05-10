@@ -165,6 +165,7 @@ func talkingcontrols():
 	
 	if Input.is_action_just_pressed("exit"):
 		$hud/shop.visible = false
+		$hud/inventoryui.close()
 		textqueue.clear()
 	
 	
@@ -303,7 +304,7 @@ func createrope():
 		 #its an array
 		b.tetheredbody = thingy[0]
 		thingy[0].tethered = true
-		thing.rememberrope(b) #to prevent a bug 
+		thing.createrope(b) #to prevent a bug
 		
 
 
