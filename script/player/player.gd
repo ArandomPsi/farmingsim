@@ -8,7 +8,7 @@ extends CharacterBody2D
 var speed : int = 4000
 var friction : float = 0.85
 var movedir : Vector2
-var hp : int = 100
+var hp : float = 100
 
 var shakeframes : int = 0
 var ropeamount : int = 1 # actual amount - 1
@@ -187,7 +187,7 @@ func updatevisuals():
 	
 
 func updatehud():
-	
+	$hud/hpbar.value = hp
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
 	if not currentweaponname in ["flashlight", "dagger", "pickaxe"] :
@@ -403,6 +403,17 @@ func _exit_shop():
 
 func damage(amount):
 	hp -= amount
+	var b = preload("res://scenes/vfx/bloodspray.tscn").instantiate()
+	get_parent().add_child(b)
+	b.position = position
+	hitstop(0.2)
+
+func hitstop(amount : float):
+	var b = preload("res://scenes/vfx/hitstop.tscn").instantiate()
+	b.time = amount
+	get_tree().current_scene.add_child(b)
+	
+
 
 func dagger_tween():
 	currentmagsize = 0
@@ -410,7 +421,7 @@ func dagger_tween():
 	g.position.x = 21.0
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	var og = g.position
-	tween.tween_property(g, "position", g.transform.x * Engine.get_frames_per_second() / 5 + g.position, 0.05).set_ease(Tween.EASE_IN)
+	tween.tween_property(g, "position", Vector2(60,0), 0.05).set_ease(Tween.EASE_IN)
 	tween.tween_property(g, "position", og, 0.2).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	currentmagsize = 100

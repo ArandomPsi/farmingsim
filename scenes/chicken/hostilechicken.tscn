@@ -324,7 +324,6 @@ _data = {
 radius = 27.074
 
 [node name="chicken" type="CharacterBody2D"]
-visible = false
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_ngpdv")

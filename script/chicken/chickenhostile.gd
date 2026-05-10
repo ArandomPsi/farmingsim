@@ -202,3 +202,12 @@ func _on_peck_body_entered(body: Node2D) -> void:
 		var b = preload("res://scenes/vfx/daggereffect.tscn").instantiate()
 		add_child(b)
 		b.look_at(body.global_position)
+		createhiteffect(body.position)
+
+func createhiteffect(pos):
+	var b = preload("res://scenes/vfx/hiteffects.tscn").instantiate()
+	get_tree().current_scene.add_child(b)
+	b.position = position
+	b.rotation = rotation
+	b.scale.x  *= 1.5
+	b.look_at(pos)

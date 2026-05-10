@@ -172,5 +172,4 @@ shape = SubResource("RectangleShape2D_6m7oc")
 position = Vector2(715, 403)
 
 [node name="chicken3" parent="." instance=ExtResource("11_b56te")]
-visible = true
 position = Vector2(452, 136)

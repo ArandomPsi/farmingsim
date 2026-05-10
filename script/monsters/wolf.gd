@@ -140,9 +140,10 @@ func get_closest_body(array) -> Node2D:
 
 
 func _on_chickenkiller_body_entered(body: Node2D) -> void:
-	body.damage(1)
+	body.damage(8)
 	attackanimframes = 20
 	velocity *= -1.5
+	createhiteffect(body.position)
 	if hp < 6:
 		hp += 1 #can gain up to 12 hp
 
@@ -170,3 +171,11 @@ func bounce(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	pass
+
+func createhiteffect(pos):
+	var b = preload("res://scenes/vfx/hiteffects.tscn").instantiate()
+	get_tree().current_scene.add_child(b)
+	b.position = position
+	b.rotation = rotation
+	b.scale.x  *= 1.2
+	b.look_at(pos)

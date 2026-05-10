@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	
 	body.damage(damage)
 	createhiteffect()
 	queue_free()
@@ -29,3 +28,10 @@ func createhiteffect():
 	b.position = position
 	b.rotation = rotation
 	b.scale.x  *= damage
+	hitstop(0.08 * (1 + damage/8))
+	global.player.shakeframes = 6 * (1 + damage/10)
+
+func hitstop(amount : float):
+	var b = preload("res://scenes/vfx/hitstop.tscn").instantiate()
+	b.time = amount
+	get_tree().current_scene.add_child(b)

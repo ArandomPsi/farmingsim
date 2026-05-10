@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://84o1swid8x1i"]
+
+[ext_resource type="Script" uid="uid://wawerb1748qg" path="res://script/vfx/hitstop.gd" id="1_8k3cc"]
+
+[node name="hitstop" type="Node"]
+script = ExtResource("1_8k3cc")
