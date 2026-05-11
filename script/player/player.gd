@@ -277,8 +277,14 @@ func pewpew():
 				b.visible = false
 		"pickaxe":
 			$pivot/guns.rotation_degrees += 80 * $pivot/guns.scale.y
+			if $orechecker.has_overlapping_areas():
+				mineore()
+			
+			
 	
 
+func mineore():
+	pass
 
 func createshoteffect(pos):
 	var b = preload("res://scenes/vfx/shot.tscn").instantiate()

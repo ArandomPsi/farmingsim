@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=64 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -224,6 +224,9 @@ radius = 15.0333
 [sub_resource type="CircleShape2D" id="CircleShape2D_ioxgp"]
 radius = 20.025
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uniwh"]
+radius = 50.04
+
 [sub_resource type="InputEventKey" id="InputEventKey_fcs02"]
 device = -1
 keycode = 4194306
@@ -393,6 +396,14 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coopchecker"]
 shape = SubResource("CircleShape2D_ioxgp")
+
+[node name="orechecker" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="orechecker"]
+shape = SubResource("CircleShape2D_uniwh")
 
 [node name="hud" type="CanvasLayer" parent="."]
 
