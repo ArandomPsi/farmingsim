@@ -7,6 +7,8 @@ const STATE_HOSTILE = 3
 
 var animframes : int = 0
 
+var attackrange : float = 60
+
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -15,6 +17,10 @@ func _ready() -> void:
 	chickenstats["tenderness"] *= randf_range(2,4)
 	chickenstats["strength"] *= randf_range(1,3)
 	speed *= randf_range(1.3,2)
+	
+	if chickenmutations.has("bigpeck"):
+		$peck/CollisionShape2D.scale *= 3
+	
 	
 
 func _process(delta: float) -> void:
@@ -178,6 +184,11 @@ func chasestate(targetposition: Vector2, delta):
 	$randomlook.look_at(targetposition)
 	
 	velocity += $randomlook.transform.x * speed * delta
+	
+	if targetposition.distance_to(position) < attackrange:
+		pass
+	
+
 
 
 func get_nearest_area(areas):
@@ -202,6 +213,9 @@ func _on_peck_body_entered(body: Node2D) -> void:
 		var b = preload("res://scenes/vfx/daggereffect.tscn").instantiate()
 		add_child(b)
 		b.look_at(body.global_position)
+		if chickenmutations.has("bigpeck"):
+			b.scale *= 3
+			velocity *= 5
 		createhiteffect(body.position)
 
 func createhiteffect(pos):
@@ -211,3 +225,4 @@ func createhiteffect(pos):
 	b.rotation = rotation
 	b.scale.x  *= 1.5
 	b.look_at(pos)
+	

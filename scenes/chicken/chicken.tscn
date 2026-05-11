@@ -297,9 +297,6 @@ _data = {
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_pep2a")
-hp = null
-tethered = null
-debug = null
 
 [node name="flip" type="Node2D" parent="."]
 

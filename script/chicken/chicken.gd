@@ -43,7 +43,14 @@ var chickenstats : Dictionary = {
 	"strength" : randi_range(1,5)
 }
 
-var chickenmutations : Array = []
+@export var chickenmutations : PackedStringArray = []
+
+#chicken mutations:
+#Exploding - Osama's chickens
+#Big Peck - Toucan ahhh
+#alpaca - hawctua spit on that thing
+
+
 
 var partnerchickenstats : Dictionary = {}
 
@@ -178,7 +185,8 @@ func get_closest_chicken() -> Node2D:
 
 func bounce(body: Node2D) -> void:
 	$suslook.look_at(body.global_position)
-	velocity = $suslook.transform.x * -300
+	velocity = $suslook.transform.x * -800
+
 
 
 func createrope(rope):
