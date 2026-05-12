@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://c6aynamh88je7"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_edm64"]
+[ext_resource type="Texture2D" uid="uid://cf7u10oj5506p" path="res://assets/inventoryicons/wood.png" id="2_17tvb"]
+
+[resource]
+script = ExtResource("1_edm64")
+name = "wood"
+texture = ExtResource("2_17tvb")
+stackable = true
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

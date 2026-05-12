@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://x7uyc4xymitu"]
+[gd_scene load_steps=5 format=3 uid="uid://x7uyc4xymitu"]
 
 [ext_resource type="Texture2D" uid="uid://cmimksp7fryvd" path="res://assets/buildings/ores.png" id="1_4g76m"]
+[ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_fdhle"]
+[ext_resource type="Resource" uid="uid://dojf2kbqwp0w4" path="res://assets/inventoryresources/rock.tres" id="2_jy1yd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g76m"]
 radius = 22.0907
 
 [node name="ironore" type="Node2D"]
+script = ExtResource("1_fdhle")
+helditem = ExtResource("2_jy1yd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(5, 5)
 texture = ExtResource("1_4g76m")

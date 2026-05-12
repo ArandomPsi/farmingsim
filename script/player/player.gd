@@ -23,6 +23,7 @@ var guns : Array = ["glock", "shotgun", "sniper","uzi"]
 
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
 
+
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
 var rounds : int = 10
 var currentmagsize : int = 6
@@ -283,8 +284,17 @@ func pewpew():
 			
 	
 
+#trees count as ores :P
 func mineore():
-	pass
+	#checks all the ores
+	#stuff array holds all the minables
+	var stuff = [mineable]
+	shakeframes += 5
+	stuff = $orechecker.get_overlapping_areas()
+	for i in range(stuff.size()):
+		var thingy = stuff[i].get_parent() as mineable #blah blah blah
+		playerinventory.additem(thingy.helditem) #add that item
+		thingy.getmined()
 
 func createshoteffect(pos):
 	var b = preload("res://scenes/vfx/shot.tscn").instantiate()

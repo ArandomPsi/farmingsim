@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=69 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -18,12 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://ceye3fmr6gc6j" path="res://assets/playerstuff/picaxe.png" id="10_cnsyf"]
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
+[ext_resource type="Texture2D" uid="uid://dcgdpunpcbby7" path="res://assets/inventoryicons/rock.png" id="11_tffgl"]
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
+[ext_resource type="Texture2D" uid="uid://cf7u10oj5506p" path="res://assets/inventoryicons/wood.png" id="15_pk8ii"]
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
 [ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
 [ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="23_28m0y"]
+[ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="23_pk8ii"]
 [ext_resource type="Resource" uid="uid://bibsero8cr4u1" path="res://assets/inventoryresources/shotgun.tres" id="24_uniwh"]
 [ext_resource type="Resource" uid="uid://g73g1d0xu330" path="res://assets/inventoryresources/uzi.tres" id="25_iqsei"]
 [ext_resource type="PackedScene" uid="uid://tdjc0nfwxtkw" path="res://scenes/ui/inventoryui.tscn" id="26_6cv16"]
@@ -165,6 +168,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("11_tffgl")
+}],
+"loop": true,
+"name": &"rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("7_fm80t")
 }],
 "loop": true,
@@ -185,6 +196,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"uzi",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_pk8ii")
+}],
+"loop": true,
+"name": &"wood",
 "speed": 5.0
 }]
 
@@ -262,6 +281,30 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_kvlxm"]
 events = [SubResource("InputEventKey_myrg7")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk8ii"]
+bg_color = Color(0.51, 0.328525, 0.1989, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mf0n"]
+bg_color = Color(0.33, 0.212575, 0.1287, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myrg7"]
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
@@ -271,7 +314,7 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugbui"]
-bg_color = Color(0.27, 0.27, 0.27, 1)
+bg_color = Color(0.27, 0.27, 0.27, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx1jg"]
 bg_color = Color(0, 0, 0, 1)
@@ -318,7 +361,7 @@ texture_filter = 1
 position = Vector2(21, 0)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"pickaxe"
+animation = &"rock"
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
 position = Vector2(-22.3588, -0.4)
@@ -493,32 +536,45 @@ offset_right = 147.0
 offset_bottom = 32.0
 text = "Joe Mama"
 
-[node name="shop" type="Panel" parent="hud"]
+[node name="shop" type="NinePatchRect" parent="hud"]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 720.0
-offset_top = 3.0
-offset_right = -4.0
-offset_bottom = -121.0
+offset_left = 708.0
+offset_top = -6.0
+offset_right = -355.0
+offset_bottom = -527.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("23_pk8ii")
+region_rect = Rect2(112, 160, 48, 48)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
 script = ExtResource("16_kvlxm")
 
 [node name="ExitShop" type="Button" parent="hud/shop"]
 layout_mode = 0
-offset_left = 366.0
-offset_top = 13.0
-offset_right = 408.0
-offset_bottom = 55.0
+offset_left = 72.0
+offset_top = 6.0
+offset_right = 114.0
+offset_bottom = 48.0
+scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 24
 shortcut = SubResource("Shortcut_kvlxm")
 text = "X"
 
 [node name="Label" type="Label" parent="hud/shop"]
 layout_mode = 0
-offset_right = 428.0
-offset_bottom = 23.0
+offset_left = 2.8
+offset_top = 7.8
+offset_right = 430.8
+offset_bottom = 30.8
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("11_je7p5")
 text = "Shop"
 horizontal_alignment = 1
 
@@ -528,15 +584,19 @@ anchors_preset = -1
 anchor_top = 0.074
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.776
+offset_left = -55.0
+offset_top = 4.602
+offset_right = 585.0
+offset_bottom = 426.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.2, 0.2)
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="GridContainer" parent="hud/shop/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 theme_override_constants/v_separation = 50
 
 [node name="pistol" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
@@ -544,6 +604,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "pistol
 "
 alignment = 0
@@ -556,6 +622,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "shotgun"
 alignment = 0
 script = ExtResource("17_uf5tr")
@@ -568,6 +640,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "rifle"
 alignment = 0
 script = ExtResource("17_uf5tr")
@@ -580,6 +658,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "sniper"
 alignment = 0
 script = ExtResource("17_uf5tr")
@@ -591,6 +675,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "Torch"
 alignment = 0
 script = ExtResource("17_uf5tr")
@@ -602,6 +692,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "Ammo"
 alignment = 0
 script = ExtResource("17_uf5tr")
@@ -613,6 +709,12 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "baby oil"
 alignment = 0
 script = ExtResource("17_uf5tr")
@@ -623,43 +725,58 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "cfdgzsaf"
 alignment = 0
 script = ExtResource("17_uf5tr")
 item = ExtResource("27_uniwh")
 
+[node name="preview" type="Sprite2D" parent="hud/shop"]
+texture_filter = 1
+position = Vector2(57.8, 42)
+rotation = -0.271697
+scale = Vector2(3, 3)
+texture = ExtResource("10_h17s1")
+
 [node name="info" type="RichTextLabel" parent="hud/shop"]
 layout_mode = 0
-offset_left = 125.0
-offset_top = 234.0
-offset_right = 414.0
-offset_bottom = 513.0
+offset_left = 32.8
+offset_top = 65.4
+offset_right = 306.8
+offset_bottom = 350.4
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/normal_font = ExtResource("11_je7p5")
+theme_override_font_sizes/normal_font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_myrg7")
 text = "select something to buy"
 
-[node name="preview" type="Sprite2D" parent="hud/shop"]
-texture_filter = 1
-position = Vector2(252, 127)
-rotation = -0.271697
-scale = Vector2(19.4112, 19.4112)
-texture = ExtResource("10_h17s1")
-
 [node name="cost" type="Label" parent="hud/shop"]
 layout_mode = 0
-offset_left = 278.0
-offset_top = 483.0
-offset_right = 409.0
-offset_bottom = 506.0
+offset_left = 58.0
+offset_top = 114.4
+offset_right = 195.0
+offset_bottom = 137.4
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
 text = "Cost - 67"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="buy" type="Button" parent="hud/shop"]
 layout_mode = 0
-offset_left = 135.0
-offset_top = 475.0
-offset_right = 338.0
-offset_bottom = 501.0
+offset_left = 36.0
+offset_top = 113.4
+offset_right = 146.0
+offset_bottom = 144.4
+scale = Vector2(0.2, 0.2)
 focus_mode = 0
+theme_override_fonts/font = ExtResource("11_je7p5")
 text = "BUY"
 
 [node name="inventory" type="Panel" parent="hud"]

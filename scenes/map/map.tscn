@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken/chicken.tscn" id="7_30ska"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="9_omedl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="10_3xi6f"]
-[ext_resource type="PackedScene" uid="uid://bv14ycm77qnl5" path="res://scenes/chicken/hostilechicken.tscn" id="11_b56te"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="11_xks3a"]
-[ext_resource type="PackedScene" uid="uid://bp563f1vvhj8e" path="res://scenes/monsters/wolf.tscn" id="12_x2kg6"]
+[ext_resource type="PackedScene" uid="uid://x7uyc4xymitu" path="res://scenes/building/ironore.tscn" id="12_x2kg6"]
 [ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
+[ext_resource type="PackedScene" uid="uid://crehgls71g1ae" path="res://scenes/building/tree.tscn" id="13_cumk7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrjnl"]
 texture = ExtResource("1_mrjnl")
@@ -172,9 +172,20 @@ shape = SubResource("RectangleShape2D_6m7oc")
 [node name="shop" parent="." instance=ExtResource("13_2kc6l")]
 position = Vector2(715, 403)
 
-[node name="chicken3" parent="." instance=ExtResource("11_b56te")]
-position = Vector2(452, 136)
+[node name="tree" parent="." instance=ExtResource("13_cumk7")]
+position = Vector2(503, 589)
 
-[node name="wolf" parent="." instance=ExtResource("12_x2kg6")]
-position = Vector2(1652, 285)
-alpha = true
+[node name="tree2" parent="." instance=ExtResource("13_cumk7")]
+position = Vector2(754, 638)
+
+[node name="ironore" parent="." instance=ExtResource("12_x2kg6")]
+position = Vector2(480, 692)
+
+[node name="ironore2" parent="." instance=ExtResource("12_x2kg6")]
+position = Vector2(758, 743)
+
+[node name="ironore3" parent="." instance=ExtResource("12_x2kg6")]
+position = Vector2(945, 669)
+
+[node name="ironore4" parent="." instance=ExtResource("12_x2kg6")]
+position = Vector2(1066, 708)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://crehgls71g1ae"]
+
+[ext_resource type="Texture2D" uid="uid://2y5gm6fj4hcy" path="res://assets/buildings/tree.png" id="1_ayxhm"]
+[ext_resource type="Shader" uid="uid://b780aaswdvqml" path="res://shaders/grass.gdshader" id="1_dtwdb"]
+[ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_n7jdo"]
+[ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="2_molp8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n7jdo"]
+noise_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_molp8"]
+noise = SubResource("FastNoiseLite_n7jdo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1h6h"]
+shader = ExtResource("1_dtwdb")
+shader_parameter/render_noise = false
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_molp8")
+shader_parameter/amplitude = 0.45
+shader_parameter/time_scale = 0.04
+shader_parameter/noise_scale = 0.0005
+shader_parameter/rotation_strength = 1.0
+shader_parameter/rotation_pivot = Vector2(0.5, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7jdo"]
+radius = 22.0227
+
+[node name="tree" type="Node2D"]
+script = ExtResource("1_n7jdo")
+helditem = ExtResource("2_molp8")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_c1h6h")
+scale = Vector2(5, 5)
+texture = ExtResource("1_ayxhm")
+offset = Vector2(0, -14)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_n7jdo")

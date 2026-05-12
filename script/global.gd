@@ -13,7 +13,7 @@ var inventoryslotprefix : String = "invenslot"
 var stopfuncinvloop : int = 0
 var slotnum : int = 0
 
-var phantomitem : invitem = null
+var phantomitem : invslot = null
 var phantomowner : Control = null
 
 var time = 0

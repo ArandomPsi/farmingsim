@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 #no matrixs bc they hurt my head lowk
 var textures : Array = [Texture2D]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://dojf2kbqwp0w4"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_p35k2"]
+[ext_resource type="Texture2D" uid="uid://dcgdpunpcbby7" path="res://assets/inventoryicons/rock.png" id="2_lj2fn"]
+
+[resource]
+script = ExtResource("1_p35k2")
+name = "rock"
+texture = ExtResource("2_lj2fn")
+stackable = true
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

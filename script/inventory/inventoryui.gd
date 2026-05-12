@@ -13,16 +13,19 @@ func _ready() -> void:
 	close()
 
 func updateslots():
-	for i in range(min(playerinventory.items.size(),slots.size())):
+
+	for i in range(min(playerinventory.items.size(), slots.size())):
 		slots[i].update(playerinventory.items[i])
 	
-	#yooo I changed this so that its more modular. Sets the player weapons and stuff
+	#bruuuh why does it keep breaking devworm? Am I just a bad coder? To be fair I'm more of a vfx artist
 	for i in range(3):
-		if playerinventory.items[i] != null:
-			player.weapons[i] = playerinventory.items[i].name
+	
+		var slot = playerinventory.items[i]
+	
+		if slot != null and slot.item != null:
+			player.weapons[i] = slot.item.name
 		else:
 			player.weapons[i] = ""
-	
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("openinventory"):

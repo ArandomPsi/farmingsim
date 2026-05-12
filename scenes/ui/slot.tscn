@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgrttobxg53a1"]
+[gd_scene load_steps=6 format=3 uid="uid://cgrttobxg53a1"]
 
 [ext_resource type="Script" uid="uid://d4fuk6be3jkqq" path="res://script/ui/slot.gd" id="1_c886m"]
 [ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="1_jkamp"]
 [ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="2_sad2q"]
+[ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="4_2sr5m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c886m"]
 
@@ -44,5 +45,15 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_c886m")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_c886m")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_c886m")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_c886m")
+
+[node name="amount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 37.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("4_2sr5m")
+text = "67"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
