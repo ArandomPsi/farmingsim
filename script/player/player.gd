@@ -40,7 +40,7 @@ var textqueue : Array = []
 
 func _ready() -> void:
 	global.player = self
-
+	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
 	$hud/shop/ExitShop.pressed.connect(_exit_shop)
 
 
@@ -137,7 +137,7 @@ func controls():
 	
 	if Input.is_action_just_pressed("reload") and currentweaponname in guns and rounds > 0:
 		reloadingframes = 30
-		rounds -= 1
+		playerinventory.removeitem(load("res://assets/inventoryresources/round.tres"),1) #remove rounds
 		match currentweaponname:
 			"glock":
 				currentmagsize = magsizes[0]
@@ -191,19 +191,26 @@ func updatehud():
 	$hud/hpbar.value = hp
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
-	if not currentweaponname in ["flashlight", "dagger", "pickaxe"] :
+	if currentweaponname in guns:
 		$hud/bulletamount.text = str(currentmagsize) + "/" + str(rounds)
 		$hud/bulletamount.visible = true
 	else:
 		$hud/bulletamount.visible = false
 	
 	$hud/inventory/currentslotthing.position.x = currentweapon * 46.0
+	
+	#terrible optimization lol
+	
+	
+	
+	
 
 func updatehotbar():
 	pass
 
 
 func updateconstantvariables():
+	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
 	shakeframes -= 1
 	shakeframes = clamp(shakeframes,0,20)
 	reloadingframes -= 1
@@ -409,7 +416,7 @@ func updateweapon():
 func camzoomtween(amount : float):
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(camera, "zoom", amount * Vector2.ONE, 0.2)
-	print(camera.zoom)
+	#print(camera.zoom)
 	await tween.finished
 
 

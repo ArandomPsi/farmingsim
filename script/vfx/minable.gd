@@ -5,6 +5,10 @@ var hp : int = 5
 func getmined():
 	hp -= 1
 	shake()
+	var b = preload("res://scenes/vfx/breakpar.tscn").instantiate()
+	b.texture = helditem.texture
+	get_parent().add_child(b)
+	b.position = position
 	if hp < 0:
 		queue_free()
 

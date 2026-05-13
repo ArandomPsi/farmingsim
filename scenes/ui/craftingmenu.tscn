@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cglt3v5bjm13"]
+
+[ext_resource type="PackedScene" uid="uid://brskmhpippkmj" path="res://scenes/ui/craftingoption.tscn" id="1_qfvej"]
+[ext_resource type="Resource" uid="uid://o1y0gtjj2j4e" path="res://assets/inventoryresources/dagger.tres" id="2_kjdnd"]
+[ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="2_ph73f"]
+[ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="3_27mhi"]
+[ext_resource type="Resource" uid="uid://dojf2kbqwp0w4" path="res://assets/inventoryresources/rock.tres" id="4_p57f4"]
+[ext_resource type="Resource" uid="uid://p8rs6c7eiqtd" path="res://assets/inventoryresources/round.tres" id="5_p57f4"]
+
+[node name="craftingmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 101.0
+offset_right = 1166.0
+offset_bottom = 652.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="craftingoption1" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_qfvej")]
+layout_mode = 2
+item = ExtResource("2_kjdnd")
+prerequisite1 = ExtResource("3_27mhi")
+prerequisite2 = ExtResource("4_p57f4")
+desc = "one wood and one rock. It go staby staby"
+
+[node name="craftingoption2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_qfvej")]
+layout_mode = 2
+item = ExtResource("5_p57f4")
+prerequisite1 = ExtResource("4_p57f4")
+prerequisite2 = ExtResource("4_p57f4")
+prerequisite2amount = 0
+desc = "one rock for 5 rounds"
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 750.0
+offset_top = 21.0
+offset_right = 1091.0
+offset_bottom = 84.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.529412)
+theme_override_constants/shadow_offset_x = 8
+theme_override_fonts/font = ExtResource("2_ph73f")
+theme_override_font_sizes/font_size = 30
+text = "Crafting lol"

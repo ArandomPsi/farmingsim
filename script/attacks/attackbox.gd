@@ -7,4 +7,4 @@ class_name attackbox
 
 
 func _on_body_entered(body):
-	body.gethit(damage)
+	body.damage(damage)

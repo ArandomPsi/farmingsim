@@ -19,7 +19,7 @@ func _ready() -> void:
 		costs.push_back($ScrollContainer/VBoxContainer.get_child(i-1).costs)
 		descriptions.push_back($ScrollContainer/VBoxContainer.get_child(i-1).description)
 		$ScrollContainer/VBoxContainer.get_child(i).childcount = i
-	print(str(textures))
+	
 
 
 func updateshop():

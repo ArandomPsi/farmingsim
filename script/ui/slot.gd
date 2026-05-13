@@ -20,10 +20,12 @@ func update(item: invslot):
 	display.visible = true
 	display.texture = item.item.texture
 	currentitem = item.item
-	
-	$amount.visible = item.item.stackable
 	amount.text = str(item.amount)
 	
+	$amount.visible = item.item.stackable
+	
+
+
 
 #bru so much simplier
 func _on_button_pressed() -> void:
