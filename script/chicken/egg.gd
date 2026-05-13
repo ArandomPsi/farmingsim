@@ -31,13 +31,17 @@ func _process(delta: float) -> void:
 		hatch()
 
 func hatch():
-	var b = preload("res://scenes/chicken/chicken.tscn").instantiate()
-	b.global_position = global_position
+	#random stuff
+	var rabidchance : int = 20 #change later
+	var currentchicken = "res://scenes/chicken/chicken.tscn"
+	if randi_range(0,100) <= rabidchance:
+		currentchicken = "res://scenes/chicken/hostilechicken.tscn"
+	
+	#gg ez
+	var b = load(currentchicken).instantiate() #so for some reason it was loading circularly. Egg preload then chicken and stuff. Since chicken is a complex scene, you need load. This problem occured because chickenpassive was based on chicken class yada yada yada.
+	get_parent().add_child(b)
+	b.position = position
 	b.chickenstats = chickenstats
-	get_tree().current_scene.add_child(b)
-	if chickenstats["explosiveness"] >= 50:
-		var c = preload("res://scenes/explodingmutation.tscn").instantiate()
-		b.add_child(c)
 	queue_free()
 
 func egg_popup(status : bool): # open = true, close = false, not in use rn

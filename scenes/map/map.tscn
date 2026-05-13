@@ -169,6 +169,11 @@ gradient = ExtResource("11_xks3a")
 position = Vector2(1151.5, 0)
 shape = SubResource("RectangleShape2D_6m7oc")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 1150)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_6m7oc")
+
 [node name="shop" parent="." instance=ExtResource("13_2kc6l")]
 position = Vector2(715, 403)
 
