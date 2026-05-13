@@ -4,7 +4,6 @@ var hp : int = 5
 @export var helditem : invitem
 func getmined():
 	hp -= 1
-	shake()
 	var b = preload("res://scenes/vfx/breakpar.tscn").instantiate()
 	b.texture = helditem.texture
 	get_parent().add_child(b)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=76 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -33,6 +33,11 @@
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
 [ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="27_uniwh"]
 [ext_resource type="PackedScene" uid="uid://cglt3v5bjm13" path="res://scenes/ui/craftingmenu.tscn" id="33_5mf0n"]
+[ext_resource type="AudioStream" uid="uid://b8aqqixfhbn3u" path="res://assets/sounds/music/wind.wav" id="34_4hvnv"]
+[ext_resource type="AudioStream" uid="uid://bt5oxugfmo7b0" path="res://assets/sounds/sfx/break.wav" id="35_bbmj2"]
+[ext_resource type="AudioStream" uid="uid://c0woog3fdplnc" path="res://assets/sounds/sfx/hit2.wav" id="36_5q8fn"]
+[ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
+[ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -275,6 +280,8 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mf0n"]
+
 [sub_resource type="InputEventKey" id="InputEventKey_myrg7"]
 device = -1
 keycode = 4194305
@@ -347,7 +354,7 @@ texture_filter = 1
 position = Vector2(0, -5)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"idle"
+animation = &"walk"
 
 [node name="shadow" parent="flip/sprite" instance=ExtResource("4_0owmy")]
 position = Vector2(-2.98023e-08, -0.4)
@@ -565,9 +572,27 @@ offset_top = 6.0
 offset_right = 114.0
 offset_bottom = 48.0
 scale = Vector2(0.2, 0.2)
+focus_mode = 0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5mf0n")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5mf0n")
 shortcut = SubResource("Shortcut_kvlxm")
-text = "X"
+
+[node name="Sprite2D" type="Sprite2D" parent="hud/shop/ExitShop"]
+position = Vector2(21, 21)
+scale = Vector2(5, 5)
+texture = ExtResource("23_pk8ii")
+region_enabled = true
+region_rect = Rect2(228, 20, 8, 8)
 
 [node name="Label" type="Label" parent="hud/shop"]
 layout_mode = 0
@@ -855,4 +880,33 @@ visible = false
 [node name="craftingmenu" parent="hud/inventoryui" instance=ExtResource("33_5mf0n")]
 layout_mode = 1
 
+[node name="globalaudio" type="Node" parent="."]
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="globalaudio"]
+stream = ExtResource("34_4hvnv")
+volume_db = -10.0
+autoplay = true
+bus = &"reverb"
+
+[node name="localaudio" type="Node2D" parent="."]
+
+[node name="break" type="AudioStreamPlayer2D" parent="localaudio"]
+stream = ExtResource("35_bbmj2")
+volume_db = 8.0
+
+[node name="hit" type="AudioStreamPlayer2D" parent="localaudio"]
+stream = ExtResource("36_5q8fn")
+volume_db = 8.0
+
+[node name="reload" type="AudioStreamPlayer2D" parent="localaudio"]
+stream = ExtResource("37_wva7c")
+volume_db = 8.0
+
+[node name="step" type="AudioStreamPlayer2D" parent="localaudio"]
+stream = ExtResource("38_7obkq")
+volume_db = 3.0
+max_polyphony = 30
+bus = &"step"
+
+[connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]

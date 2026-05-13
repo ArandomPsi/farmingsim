@@ -34,6 +34,8 @@ var pastweaponname : String # for optimization; past frame
 var reloadingframes : int = 0
 var melee : bool = false
 
+var stepframes : int = 0
+
 var currency : int = 0
 var overlappingshopkeeper = null
 var textqueue : Array = []
@@ -137,6 +139,7 @@ func controls():
 	
 	if Input.is_action_just_pressed("reload") and currentweaponname in guns and rounds > 0:
 		reloadingframes = 30
+		$localaudio/reload.play()
 		playerinventory.removeitem(load("res://assets/inventoryresources/round.tres"),1) #remove rounds
 		match currentweaponname:
 			"glock":
@@ -210,6 +213,7 @@ func updatehotbar():
 
 
 func updateconstantvariables():
+	
 	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
 	shakeframes -= 1
 	shakeframes = clamp(shakeframes,0,20)
@@ -293,6 +297,7 @@ func pewpew():
 
 #trees count as ores :P
 func mineore():
+	$localaudio/break.play()
 	#checks all the ores
 	#stuff array holds all the minables
 	var stuff = [mineable]
@@ -448,3 +453,9 @@ func dagger_tween():
 	tween.tween_property(g, "position", og, 0.2).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	currentmagsize = 100
+
+
+func _on_sprite_frame_changed() -> void:
+	if $flip/sprite.animation == "walk":
+		if $flip/sprite.frame == 0 or $flip/sprite.frame == 2:
+			$localaudio/step.play()
