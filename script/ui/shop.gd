@@ -17,7 +17,7 @@ func _ready() -> void:
 		#set all of the variables here
 		textures.push_back($ScrollContainer/VBoxContainer.get_child(i-1).texture)
 		costs.push_back($ScrollContainer/VBoxContainer.get_child(i-1).costs)
-		descriptions.push_back($ScrollContainer/VBoxContainer.get_child(i-1).description)
+		descriptions.push_back($ScrollContainer/VBoxContainer.get_child(i).description)
 		$ScrollContainer/VBoxContainer.get_child(i).childcount = i
 	
 
@@ -28,6 +28,7 @@ func updateshop():
 	
 	$cost.text = "cost - " + str(costs[currentselection])
 	$info.text = descriptions[currentselection]
+	
 	
 
 

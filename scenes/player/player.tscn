@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=69 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -6,23 +6,14 @@
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
 [ext_resource type="Shader" uid="uid://cqmcc8rco6og7" path="res://shaders/motionblur.gdshader" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="4_0owmy"]
-[ext_resource type="Texture2D" uid="uid://bo2kvhw2quao3" path="res://assets/playerstuff/glock.png" id="4_75vfm"]
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
-[ext_resource type="Texture2D" uid="uid://t0hu3uk6w85h" path="res://assets/playerstuff/flashlight.png" id="5_5gtgg"]
-[ext_resource type="Texture2D" uid="uid://doqi2r4vfogw4" path="res://assets/playerstuff/daggercolorpallate.png" id="5_8ydkj"]
-[ext_resource type="Texture2D" uid="uid://yx6ej2v1n7id" path="res://assets/inventoryicons/egginventory.png" id="6_ioxgp"]
 [ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
-[ext_resource type="Texture2D" uid="uid://bvg3lpw471q5t" path="res://assets/playerstuff/shotgun.png" id="7_fm80t"]
-[ext_resource type="Texture2D" uid="uid://dwwqqwkjqbbgr" path="res://assets/playerstuff/sniper.png" id="8_ugbui"]
-[ext_resource type="Texture2D" uid="uid://pg231v0xrfbs" path="res://assets/playerstuff/uzi.png" id="9_lgqa7"]
-[ext_resource type="Texture2D" uid="uid://ceye3fmr6gc6j" path="res://assets/playerstuff/picaxe.png" id="10_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://doqi2r4vfogw4" path="res://assets/inventoryicons/daggercolorpallate.png" id="7_iqsei"]
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
-[ext_resource type="Texture2D" uid="uid://dcgdpunpcbby7" path="res://assets/inventoryicons/rock.png" id="11_tffgl"]
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
-[ext_resource type="Texture2D" uid="uid://cf7u10oj5506p" path="res://assets/inventoryicons/wood.png" id="15_pk8ii"]
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
 [ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
 [ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="23_28m0y"]
@@ -32,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://tdjc0nfwxtkw" path="res://scenes/ui/inventoryui.tscn" id="26_6cv16"]
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
 [ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="27_uniwh"]
+[ext_resource type="Shader" uid="uid://cnt43oe6ws5ac" path="res://shaders/outline.gdshader" id="31_wva7c"]
 [ext_resource type="PackedScene" uid="uid://cglt3v5bjm13" path="res://scenes/ui/craftingmenu.tscn" id="33_5mf0n"]
 [ext_resource type="AudioStream" uid="uid://b8aqqixfhbn3u" path="res://assets/sounds/music/wind.wav" id="34_4hvnv"]
 [ext_resource type="AudioStream" uid="uid://bt5oxugfmo7b0" path="res://assets/sounds/sfx/break.wav" id="35_bbmj2"]
@@ -122,96 +114,11 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p47bc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_ioxgp")
-}],
-"loop": true,
-"name": &"basicegg",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_8ydkj")
-}],
-"loop": true,
-"name": &"dagger",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_5gtgg")
-}],
-"loop": true,
-"name": &"flashlight",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_75vfm")
-}],
-"loop": false,
-"name": &"glock",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": null
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_cnsyf")
-}],
-"loop": true,
-"name": &"pickaxe",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_tffgl")
-}],
-"loop": true,
-"name": &"rock",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_fm80t")
-}],
-"loop": true,
-"name": &"shotgun",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_ugbui")
-}],
-"loop": true,
-"name": &"sniper",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_lgqa7")
-}],
-"loop": true,
-"name": &"uzi",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_pk8ii")
-}],
-"loop": true,
-"name": &"wood",
-"speed": 5.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wva7c"]
+shader = ExtResource("31_wva7c")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
 
 [sub_resource type="Gradient" id="Gradient_ugbui"]
 offsets = PackedFloat32Array(0, 0.983333)
@@ -313,6 +220,12 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 3.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7obkq"]
+shader = ExtResource("31_wva7c")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myrg7"]
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
@@ -363,13 +276,13 @@ position = Vector2(-2.98023e-08, -0.4)
 y_sort_enabled = true
 position = Vector2(0, -10)
 
-[node name="guns" type="AnimatedSprite2D" parent="pivot"]
+[node name="guns" type="Sprite2D" parent="pivot"]
 y_sort_enabled = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_wva7c")
 position = Vector2(21, 0)
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"rock"
+texture = ExtResource("7_iqsei")
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
 position = Vector2(-22.3588, -0.4)
@@ -601,6 +514,8 @@ offset_top = 7.8
 offset_right = 430.8
 offset_bottom = 30.8
 scale = Vector2(0.2, 0.2)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("11_je7p5")
 text = "Shop"
 horizontal_alignment = 1
@@ -765,6 +680,7 @@ item = ExtResource("27_uniwh")
 
 [node name="preview" type="Sprite2D" parent="hud/shop"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_7obkq")
 position = Vector2(57.8, 42)
 rotation = -0.271697
 scale = Vector2(3, 3)
@@ -819,13 +735,11 @@ offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gx1jg")
 script = ExtResource("13_gx1jg")
 
-[node name="sprite" type="AnimatedSprite2D" parent="hud/inventory/slot1"]
+[node name="sprite" type="Sprite2D" parent="hud/inventory/slot1"]
 texture_filter = 1
 position = Vector2(20, 20)
 rotation = -0.447966
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"flashlight"
 
 [node name="slot2" type="Panel" parent="hud/inventory"]
 layout_mode = 0
@@ -836,13 +750,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gx1jg")
 script = ExtResource("13_gx1jg")
 slot = 1
 
-[node name="sprite" type="AnimatedSprite2D" parent="hud/inventory/slot2"]
+[node name="sprite" type="Sprite2D" parent="hud/inventory/slot2"]
 texture_filter = 1
 position = Vector2(20, 20)
 rotation = -0.447966
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"flashlight"
 
 [node name="slot3" type="Panel" parent="hud/inventory"]
 layout_mode = 0
@@ -853,13 +765,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gx1jg")
 script = ExtResource("13_gx1jg")
 slot = 2
 
-[node name="sprite" type="AnimatedSprite2D" parent="hud/inventory/slot3"]
+[node name="sprite" type="Sprite2D" parent="hud/inventory/slot3"]
 texture_filter = 1
 position = Vector2(20, 20)
 rotation = -0.447966
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_p47bc")
-animation = &"flashlight"
 
 [node name="currentslotthing" type="Panel" parent="hud/inventory"]
 layout_mode = 0

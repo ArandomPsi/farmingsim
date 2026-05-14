@@ -56,12 +56,14 @@ func handle_states():
 	
 	#THe dark urge :p
 	elif lust < 0:
-		if randi_range(1, 8) == 1:
+		if randi_range(1, 4) == 1:
 			dominant = true
 			state = STATE_MATE
 			statetime = 600
 		else:
-			lust = randi_range(10, 60)
+			lust = randi_range(10, 30)
+	
+	
 	
 	if statetime < 1:
 	

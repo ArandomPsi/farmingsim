@@ -4,7 +4,7 @@ var chickenstats : Dictionary = {
 	"tenderness" : randf_range(1,20),
 	"explosiveness": 75
 }
-var hatchtime : float = chickenstats.size * 0.85
+var hatchtime : float = 40
 var eggtimer : float = hatchtime
 var timemult : float = 0.8 # for chicken coop speeding up
 #var picked_up : bool = false # debug bc not working without it

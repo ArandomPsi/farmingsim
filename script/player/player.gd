@@ -219,7 +219,14 @@ func updateconstantvariables():
 	shakeframes = clamp(shakeframes,0,20)
 	reloadingframes -= 1
 	currentweaponcooldown -= 1
-	currentweaponname = weapons[currentweapon]
+	weapons[0] = $hud/inventoryui.hotbarslot1.currentitem
+	weapons[1] = $hud/inventoryui.hotbarslot2.currentitem
+	weapons[2] = $hud/inventoryui.hotbarslot3.currentitem
+	if weapons[currentweapon] != null:
+		currentweaponname = weapons[currentweapon].name
+	else:
+		currentweaponname = ""
+	
 
 func pewpew():
 	match currentweaponname:
@@ -348,10 +355,10 @@ func playeranimstuff():
 		sprite.play("idle")
 	
 	#glocks and stuff
-	if not currentweaponname == "":
-		$pivot/guns.play(weapons[currentweapon]) #clean code ig
+	if not weapons[currentweapon] == null:
+		$pivot/guns.set_texture(weapons[currentweapon].texture) #clean code ig
 	else:
-		$pivot/guns.play("new_animation")
+		$pivot/guns.texture = null
 	if reloadingframes > 1:
 		$pivot/guns.rotation_degrees -= 24 * ($pivot/guns.scale.y/5)
 	else:
@@ -365,7 +372,7 @@ func playeranimstuff():
 	
 
 func effectsandstuff():
-	$pivot/guns/light.visible = $pivot/guns.animation == "flashlight"
+	$pivot/guns/light.visible = currentweaponname == "flashlight"
 	$nightlight.visible = global.isnight
 
 
@@ -388,7 +395,6 @@ func camerastuff():
 	
 
 func updateweapon():
-	currentweaponname = weapons[currentweapon]
 	var a : float
 	var h : bool = false
 	match currentweaponname:

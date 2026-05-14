@@ -1,11 +1,11 @@
 extends Panel
-@onready var sprite = $sprite as AnimatedSprite2D
+@onready var sprite = $sprite as Sprite2D
 @export var slot : int = 0
-func _ready() -> void:
-	sprite.sprite_frames = sprite.sprite_frames.duplicate()
+
+
 
 func _process(delta: float) -> void:
-	if global.player.weapons[slot] != "":
-		sprite.play(global.player.weapons[slot])
+	if global.player.weapons[slot] != null:
+		$sprite.set_texture(global.player.weapons[slot].texture)
 	else:
-		sprite.play("new_animation")
+		sprite.texture = null

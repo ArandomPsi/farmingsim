@@ -7,6 +7,10 @@ var open : bool = false
 
 @onready var player = get_parent().get_parent()
 
+@onready var hotbarslot1 = $NinePatchRect/GridContainer/slot
+@onready var hotbarslot2 = $NinePatchRect/GridContainer/slot2
+@onready var hotbarslot3 = $NinePatchRect/GridContainer/slot3
+
 func _ready() -> void:
 	playerinventory.update.connect(updateslots)
 	updateslots()
@@ -18,14 +22,7 @@ func updateslots():
 		slots[i].update(playerinventory.items[i])
 	
 	#bruuuh why does it keep breaking devworm? Am I just a bad coder? To be fair I'm more of a vfx artist
-	for i in range(3):
 	
-		var slot = playerinventory.items[i]
-	
-		if slot != null and slot.item != null:
-			player.weapons[i] = slot.item.name
-		else:
-			player.weapons[i] = ""
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("openinventory"):
