@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://by4pvoj44uikr"]
+[gd_scene load_steps=27 format=3 uid="uid://by4pvoj44uikr"]
 
 [ext_resource type="Script" uid="uid://dxufyb60wjikc" path="res://script/chicken/chickenpassive.gd" id="1_pep2a"]
 [ext_resource type="Texture2D" uid="uid://cy03b22bqkgv2" path="res://assets/chickens/chickenonly.png" id="3_0du8g"]
@@ -293,10 +293,14 @@ _data = {
 &"float": SubResource("Animation_pep2a")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_i53ga"]
+radius = 351.07
+
 [node name="chicken" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_pep2a")
+reactionstate = 5
 
 [node name="flip" type="Node2D" parent="."]
 
@@ -397,5 +401,13 @@ region_rect = Rect2(0, 0, 48.6182, 44.5558)
 libraries = {
 &"": SubResource("AnimationLibrary_8aah5")
 }
+
+[node name="monsterdetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="monsterdetector"]
+visible = false
+shape = SubResource("CircleShape2D_i53ga")
 
 [connection signal="body_entered" from="bouncearea" to="." method="bounce"]

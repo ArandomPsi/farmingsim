@@ -17,7 +17,7 @@ var speed : float = 1500.0
 @export var debug : bool = false
 
 
-
+@export var reactionstate : int = 2
 
 var state : int = 0
 var statetime : int = 0
@@ -61,6 +61,7 @@ var partnerchickenstats : Dictionary = {}
 
 func _ready() -> void:
 	randomize_stats()
+	addmutations()
 	$flip/sprite.modulate = chickenstats["color"]
 	
 	add_to_group("chicken")
@@ -76,7 +77,6 @@ func randomize_stats():
 	chickenstats["size"] *= randf_range(0.8, 1.2)
 	chickenstats["tenderness"] *= randf_range(0.8, 1.2)
 	chickenstats["strength"] *= randf_range(0.8,1.2)
-	chickenstats["color"] *= randf_range(0.9,1.1)
 	
 	hp *= chickenstats["strength"]
 	
@@ -87,10 +87,13 @@ func addmutations():
 		match chickenmutations[i]:
 			"exploding":
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
+				add_child(b)
 			"alpaca":
 				var b = load("res://scenes/chicken/alpaca.tscn").instantiate()
+				add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
+				add_child(b)
 	
 
 #UUUUUUH
@@ -145,6 +148,9 @@ func gobblegobble():
 func damage(damage):
 	hp -= damage
 	crashingout = true
+	state = reactionstate
+	print(state)
+	statetime = 300
 	if hp <= 0:
 		die()
 	else:
@@ -204,7 +210,7 @@ func get_closest_chicken() -> Node2D:
 
 func bounce(body: Node2D) -> void:
 	$suslook.look_at(body.global_position)
-	velocity = $suslook.transform.x * -800
+	velocity = $suslook.transform.x * -400 * speed/1500 #for bouncing and stuff
 
 
 

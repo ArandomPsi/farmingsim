@@ -5,6 +5,7 @@ const STATE_WANDER = 1
 const STATE_EAT = 2
 const STATE_MATE = 3
 const STATE_COOP = 4
+const STATE_RUN = 5
 
 
 func _process(delta: float) -> void:
@@ -22,18 +23,21 @@ func handle_behavior(delta):
 	match state:
 		STATE_IDLE:
 			idlestate()
-
+	
 		STATE_WANDER:
 			wanderstate(delta)
-
+	
 		STATE_EAT:
 			gobblegobble()
-
+		
 		STATE_MATE:
 			goonstate(delta)
-
+	
 		STATE_COOP:
 			chasestate(nearestcoop.global_position, delta)
+		
+		STATE_RUN:
+			corre(delta)
 
 
 func handle_states():
@@ -187,10 +191,23 @@ func goonstate(delta):
 	else:
 		velocity += $suslook.transform.x * speed * delta * 1.5
 
+func corre(delta):
+	if not chickenmutations.has("exploding"):
+		var bros = $monsterdetector.get_overlapping_bodies()
+		if bros.size() > 0:
+			bros = bros[0].global_position
+		else:
+			bros = global.playerpos
+		$suslook.look_at(bros)
+		
+		velocity += $suslook.transform.x * speed * delta * -1.5
+	else:
+		goonstate(delta)
+
 
 func chasestate(targetposition: Vector2, delta):
 	$randomlook.look_at(targetposition)
-
+	
 	velocity += $randomlook.transform.x * speed * delta
 
 
