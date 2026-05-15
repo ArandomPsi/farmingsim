@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=23 format=4 uid="uid://cjf2as4jtjrgf"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_mrjnl"]
 [ext_resource type="Shader" uid="uid://b5pwkw2ryewj2" path="res://shaders/grasswind.gdshader" id="2_rqo2c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmfx1bbqjp7ey" path="res://assets/grasses.png" id="5_nykyp"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="6_uclq6"]
 [ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken/chicken.tscn" id="7_30ska"]
+[ext_resource type="PackedScene" uid="uid://b758lr8rm628v" path="res://scenes/chicken/poisonmutation.tscn" id="7_cumk7"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="9_omedl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="10_3xi6f"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="11_xks3a"]
@@ -155,6 +156,8 @@ position = Vector2(292, 283)
 [node name="chicken2" parent="." instance=ExtResource("7_30ska")]
 position = Vector2(490, 224)
 debug = true
+
+[node name="poisonmutation" parent="chicken2" instance=ExtResource("7_cumk7")]
 
 [node name="chickenhouse" parent="." instance=ExtResource("9_omedl")]
 position = Vector2(683, 191)

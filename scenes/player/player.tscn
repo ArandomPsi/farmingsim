@@ -1,10 +1,11 @@
-[gd_scene load_steps=69 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=82 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://bqk4dmdg35hpp" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanWalk.png" id="2_dovo2"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
 [ext_resource type="Shader" uid="uid://cqmcc8rco6og7" path="res://shaders/motionblur.gdshader" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://bwsulpnwm6yq4" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanSpinDie.png" id="3_tffgl"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="4_0owmy"]
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
 [ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
@@ -30,6 +31,54 @@
 [ext_resource type="AudioStream" uid="uid://c0woog3fdplnc" path="res://assets/sounds/sfx/hit2.wav" id="36_5q8fn"]
 [ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
 [ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk8ii"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mf0n"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbmj2"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxw46"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qxvo"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q8fn"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wva7c"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo27k"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_genst"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niom3"]
+atlas = ExtResource("3_tffgl")
+region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -73,6 +122,50 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5gtgg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk8ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mf0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbmj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxw46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q8fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wva7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7obkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo27k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_genst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niom3")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dovo2")
@@ -267,10 +360,20 @@ texture_filter = 1
 position = Vector2(0, -5)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"walk"
+animation = &"idle"
 
 [node name="shadow" parent="flip/sprite" instance=ExtResource("4_0owmy")]
 position = Vector2(-2.98023e-08, -0.4)
+
+[node name="deathbg" type="ColorRect" parent="flip/sprite"]
+visible = false
+show_behind_parent = true
+offset_left = -402.0
+offset_top = -139.0
+offset_right = 442.0
+offset_bottom = 179.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="pivot" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -372,6 +475,7 @@ shape = SubResource("CircleShape2D_uniwh")
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="Backpack" type="TextureButton" parent="hud"]
+visible = false
 custom_minimum_size = Vector2(75, 104.05)
 offset_left = 1092.0
 offset_top = 584.0
@@ -413,10 +517,12 @@ scale = Vector2(4, 4)
 texture = ExtResource("10_h17s1")
 
 [node name="coinlabel" type="Label" parent="hud/Panel"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 32.0
 offset_right = 202.0
 offset_bottom = 40.0
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("11_je7p5")
 text = " 67"
 vertical_alignment = 1
@@ -778,10 +884,13 @@ offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fcs02")
 
 [node name="bulletamount" type="Label" parent="hud"]
+texture_filter = 1
 offset_left = 257.0
 offset_top = 573.0
 offset_right = 297.0
 offset_bottom = 596.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("11_je7p5")
 text = "5/5"
 
 [node name="inventoryui" parent="hud" instance=ExtResource("26_6cv16")]
@@ -789,6 +898,46 @@ visible = false
 
 [node name="craftingmenu" parent="hud/inventoryui" instance=ExtResource("33_5mf0n")]
 layout_mode = 1
+
+[node name="youdied" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="youdied"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -239.0
+offset_right = 59.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.576471, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.839216, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+text = "you died"
+
+[node name="Label2" type="Label" parent="youdied"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -196.0
+offset_right = 156.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.576471, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.839216, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+text = "holy shit you suck at the game"
+horizontal_alignment = 1
 
 [node name="globalaudio" type="Node" parent="."]
 

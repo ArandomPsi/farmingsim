@@ -48,12 +48,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	updateconstantvariables()
-	if textqueue.size() > 0 or $hud/shop.visible or $hud/inventoryui.visible:
-		talkingcontrols()
-	else:
-		controls()
-	updatepos(delta)
-	updatevisuals()
+	if hp > 0:
+		if textqueue.size() > 0 or $hud/shop.visible or $hud/inventoryui.visible:
+			talkingcontrols()
+		else:
+			controls()
+		updatepos(delta)
+		updatevisuals()
 	updatehud()
 	global.playerpos = position
 	
@@ -397,6 +398,7 @@ func camerastuff():
 func updateweapon():
 	var a : float
 	var h : bool = false
+	currentweaponname = weapons[currentweapon].name
 	match currentweaponname:
 		"glock":
 			currentmagsize = magsizes[0]
@@ -436,17 +438,47 @@ func _exit_shop():
 	$hud/shop.visible = false
 
 func damage(amount):
-	hp -= amount
-	var b = preload("res://scenes/vfx/bloodspray.tscn").instantiate()
-	get_parent().add_child(b)
-	b.position = position
-	hitstop(0.2)
+	if hp >= 1: #can't die anymore
+		hp -= amount
+		var b = preload("res://scenes/vfx/bloodspray.tscn").instantiate()
+		get_parent().add_child(b)
+		b.position = position
+		if amount > 1:
+			hitstop(0.2)
+		if hp < 1:
+			die()
 
 func hitstop(amount : float):
 	var b = preload("res://scenes/vfx/hitstop.tscn").instantiate()
 	b.time = amount
 	get_tree().current_scene.add_child(b)
 	
+
+func die():
+	sprite.play("die")
+	sprite.z_index += 10
+	$hud.visible = false
+	tweendeathzoom()
+	$flip/sprite/deathbg.visible = true
+	$flip/sprite/deathbg.modulate.a = 0
+	var tween = create_tween()
+	tween.tween_property($flip/sprite/deathbg,"modulate",Color(1,1,1,1),0.5)
+	var timer = get_tree().create_timer(2)
+	await timer.timeout
+	$youdied.visible = true
+	var deathmessages : PackedStringArray = ["holy shit you fucking suck at this", "you stupid fucking looser", "l bozo", "your dumbass couldn't handle it", "suck my fucking cock pussy"]
+	$youdied/Label2.text = deathmessages[randi_range(0,deathmessages.size()-1)]
+	$youdied/Label2.visible_ratio = 0.0
+	var tween2 = create_tween()
+	tween2.tween_property($youdied/Label2,"visible_ratio",1.0,0.8).set_delay(0.8)
+	
+	
+
+
+func tweendeathzoom():
+	var tween = create_tween()
+	tween.tween_property($Camera2D,"position",Vector2.ZERO,0.8).set_trans(Tween.TRANS_CUBIC)
+	tween.parallel().tween_property($Camera2D,"zoom",Vector2(3,3),0.8).set_trans(Tween.TRANS_CUBIC)
 
 
 func dagger_tween():
