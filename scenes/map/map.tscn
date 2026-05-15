@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=23 format=4 uid="uid://cjf2as4jtjrgf"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_mrjnl"]
 [ext_resource type="Shader" uid="uid://b5pwkw2ryewj2" path="res://shaders/grasswind.gdshader" id="2_rqo2c"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://x7uyc4xymitu" path="res://scenes/building/ironore.tscn" id="12_x2kg6"]
 [ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
 [ext_resource type="PackedScene" uid="uid://crehgls71g1ae" path="res://scenes/building/tree.tscn" id="13_cumk7"]
+[ext_resource type="PackedScene" uid="uid://dx5kmhttxo7vg" path="res://scenes/chicken/egg.tscn" id="13_mgs8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrjnl"]
 texture = ExtResource("1_mrjnl")
@@ -194,3 +195,7 @@ position = Vector2(945, 669)
 
 [node name="ironore4" parent="." instance=ExtResource("12_x2kg6")]
 position = Vector2(1066, 708)
+
+[node name="egg" parent="." instance=ExtResource("13_mgs8m")]
+position = Vector2(874, 312)
+mutations = ["exploding", "alpaca"]

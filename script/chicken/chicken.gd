@@ -38,10 +38,13 @@ var crashingout : bool = false
 
 
 var chickenstats : Dictionary = {
-	"size": randi_range(1, 20),
-	"tenderness": randi_range(1, 20),
-	"strength" : randi_range(1,5)
+	"size": randf_range(1, 20),
+	"tenderness": randf_range(1, 20),
+	"strength" : randf_range(1,5),
+	"color" : Color(1,1,1)
 }
+
+
 
 @export var chickenmutations : PackedStringArray = []
 
@@ -58,11 +61,12 @@ var partnerchickenstats : Dictionary = {}
 
 func _ready() -> void:
 	randomize_stats()
-
+	$flip/sprite.modulate = chickenstats["color"]
+	
 	add_to_group("chicken")
-
+	
 	scale *= max(chickenstats["size"] / 100.0, 1.0)
-
+	
 	partnerchickenstats.clear()
 
 
@@ -72,10 +76,22 @@ func randomize_stats():
 	chickenstats["size"] *= randf_range(0.8, 1.2)
 	chickenstats["tenderness"] *= randf_range(0.8, 1.2)
 	chickenstats["strength"] *= randf_range(0.8,1.2)
+	chickenstats["color"] *= randf_range(0.9,1.1)
 	
 	hp *= chickenstats["strength"]
 	
 
+
+func addmutations():
+	for i in range(chickenmutations.size()):
+		match chickenmutations[i]:
+			"exploding":
+				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
+			"alpaca":
+				var b = load("res://scenes/chicken/alpaca.tscn").instantiate()
+			_:
+				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
+	
 
 #UUUUUUH
 
@@ -92,9 +108,12 @@ func layegg():
 		chickenstats,
 		partnerchickenstats
 	)
-
+	
+	
+	egg.mutations = chickenmutations.duplicate() #only the dominant chicken's genes survive
+	
 	get_parent().add_child(egg)
-
+	
 	egg.position = position + Vector2(
 		randf_range(-15, 15),
 		randf_range(-15, 15)

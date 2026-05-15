@@ -72,7 +72,7 @@ func controls():
 	if currentweaponname == "uzi": #rapid guns
 		guntype = true
 	
-	if guntype and not weapons[currentweapon] == "flashlight":
+	if guntype and not currentweaponname == "flashlight":
 		
 		#brrrrrrrrrr
 		if Input.is_action_pressed("shoot") :

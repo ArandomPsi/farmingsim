@@ -16,6 +16,8 @@ var slotnum : int = 0
 var phantomitem : invslot = null
 var phantomowner : Control = null
 
+var allmutations : PackedStringArray = ["exploding","bigpeck","alpaca"]
+
 var time = 0
 var prevtime = time
 const MINUTES_PER_DAY = 1440

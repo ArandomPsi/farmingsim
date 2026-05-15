@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dnl2fymqbuwo3"]
+[gd_scene load_steps=23 format=3 uid="uid://dnl2fymqbuwo3"]
 
 [ext_resource type="Script" uid="uid://cec7nd6vyw2sq" path="res://script/shop.gd" id="1_032fp"]
 [ext_resource type="Texture2D" uid="uid://dw07h57flj1bv" path="res://assets/chickens/shops.png" id="1_lx5au"]
@@ -36,18 +36,6 @@ region = Rect2(192, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_heatd"]
 atlas = ExtResource("1_xfvoa")
 region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1v8qu"]
-atlas = ExtResource("1_xfvoa")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_44xle"]
-atlas = ExtResource("1_xfvoa")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_24it5"]
-atlas = ExtResource("1_xfvoa")
-region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mqwv"]
 atlas = ExtResource("1_xfvoa")
@@ -97,15 +85,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_heatd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1v8qu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_44xle")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_24it5")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7mqwv")
 }, {
 "duration": 1.0,
@@ -122,7 +101,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xfvoa"]
@@ -150,6 +129,8 @@ texture_filter = 1
 position = Vector2(0, 6)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_yuijs")
+autoplay = "default"
+frame_progress = 0.537958
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
