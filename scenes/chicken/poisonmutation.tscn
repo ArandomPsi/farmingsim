@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://b758lr8rm628v"]
+
+[ext_resource type="Script" uid="uid://ctl31dfpf3kwj" path="res://script/chicken/poisonmutation.gd" id="1_0oh3u"]
+[ext_resource type="Texture2D" uid="uid://b57oxi5w1r8tp" path="res://assets/chickens/Aura_Poison.png" id="1_dw1mr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oh3u"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxyo2"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfhvs"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdcjd"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y01di"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g52wc"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31nol"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaua0"]
+atlas = ExtResource("1_dw1mr")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qed6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oh3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxyo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfhvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdcjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y01di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g52wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31nol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaua0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw1mr"]
+radius = 95.4254
+
+[node name="poisonmutation" type="Node2D"]
+script = ExtResource("1_0oh3u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_4qed6")
+autoplay = "default"
+frame_progress = 0.623049
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dw1mr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

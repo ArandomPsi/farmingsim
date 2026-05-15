@@ -91,6 +91,9 @@ func addmutations():
 			"alpaca":
 				var b = load("res://scenes/chicken/alpaca.tscn").instantiate()
 				add_child(b)
+			"covid":
+				var b = load("res://scenes/chicken/poisonmutation.tscn").instantiate()
+				add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)

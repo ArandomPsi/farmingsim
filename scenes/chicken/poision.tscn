@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://dss54vbmw1br5"]
+
+[ext_resource type="Texture2D" uid="uid://ns2kh0xhc2i0" path="res://assets/chickens/Tileable_Poison.png" id="1_ghw37"]
+[ext_resource type="Script" uid="uid://y0uc8hua5pt7" path="res://script/chicken/poision.gd" id="1_istmw"]
+[ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="3_i3lgv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_istmw"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3lgv"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjyhv"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(24, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f5xs"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmv43"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(40, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j81kp"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(48, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cicdi"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(56, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kv3n"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukkp4"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nug2c"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(16, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilcv1"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(24, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or8ql"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(32, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02a76"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(40, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu5e8"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(48, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enhly"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(56, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t75fe"]
+atlas = ExtResource("1_ghw37")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1pxbp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_istmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3lgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjyhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f5xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmv43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j81kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cicdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kv3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukkp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nug2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilcv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or8ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02a76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu5e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enhly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t75fe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjyhv"]
+
+[node name="poision" type="Node2D"]
+script = ExtResource("1_istmw")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -5)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_1pxbp")
+autoplay = "default"
+frame_progress = 0.527558
+
+[node name="attackbox" type="Area2D" parent="."]
+script = ExtResource("3_i3lgv")
+damage = 9999
+hitstop = 0.1
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
+shape = SubResource("CircleShape2D_sjyhv")
+disabled = true
