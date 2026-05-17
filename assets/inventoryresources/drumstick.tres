@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://ivt6x7j0a8cl"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_3niop"]
+[ext_resource type="Texture2D" uid="uid://0unku7tre7ad" path="res://assets/inventoryicons/chickenmeat.png" id="2_r0ux2"]
+
+[resource]
+script = ExtResource("1_3niop")
+name = "drumstick"
+texture = ExtResource("2_r0ux2")
+stackable = true
+consumable = true
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

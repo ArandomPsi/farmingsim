@@ -22,6 +22,7 @@ var eggs : Array[Node] = [] # eggs currently carrying
 var guns : Array = ["glock", "shotgun", "sniper","uzi"]
 
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
+var consumables : Array = ["drumstick"]
 
 
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
@@ -33,6 +34,7 @@ var currentweaponcooldown : int = 1
 var pastweaponname : String # for optimization; past frame
 var reloadingframes : int = 0
 var melee : bool = false
+var consumingframes : int = 0
 
 var stepframes : int = 0
 
@@ -73,24 +75,35 @@ func controls():
 	if currentweaponname == "uzi": #rapid guns
 		guntype = true
 	
-	if guntype and not currentweaponname == "flashlight":
+	if not consumables.has(currentweaponname):
+		if guntype and not currentweaponname == "flashlight":
+			
+			#brrrrrrrrrr
+			if Input.is_action_pressed("shoot") :
+				if currentmagsize > 0 and reloadingframes < 1 and currentweaponcooldown < 1:
+					pewpew()
+					currentmagsize -= 1
+					currentweaponcooldown = 2
+		elif not currentweaponname == "flashlight":
+			
+			#pew pew
+			if Input.is_action_just_pressed("shoot"):
+				if currentweaponname in ["dagger","pickaxe"]:
+					pewpew()
+				elif currentmagsize > 0 and reloadingframes < 1:
+					pewpew()
+					currentmagsize -= 1
+	else:
+		#eating
 		
-		#brrrrrrrrrr
-		if Input.is_action_pressed("shoot") :
-			if currentmagsize > 0 and reloadingframes < 1 and currentweaponcooldown < 1:
-				pewpew()
-				currentmagsize -= 1
-				currentweaponcooldown = 2
-	elif not currentweaponname == "flashlight":
-		
-		#pew pew
-		if Input.is_action_just_pressed("shoot"):
-			if currentweaponname in ["dagger","pickaxe"]:
-				pewpew()
-			elif currentmagsize > 0 and reloadingframes < 1:
-				pewpew()
-				currentmagsize -= 1
+		if Input.is_action_pressed("shoot"):
+			consumingframes += 1
+			if consumingframes > 80:
+				omnomnom()
+				consumingframes = 0
 	
+	if not Input.is_action_pressed("shoot"):
+		consumingframes = 0
 	
 	
 	
@@ -303,6 +316,15 @@ func pewpew():
 			
 	
 
+func omnomnom():
+	match currentweaponname:
+		"drumstick":
+			hp = 100
+	
+	playerinventory.removeitem(weapons[currentweapon],1)
+	
+
+
 #trees count as ores :P
 func mineore():
 	$localaudio/break.play()
@@ -369,6 +391,14 @@ func playeranimstuff():
 	
 	$pivot/guns/scope.visible = currentweaponname == "sniper" and not reloadingframes > 1
 	
+	if consumingframes > 1:
+		$pivot/guns.position = Vector2(2 * $flip.scale.x,14)
+		$pivot.rotation = 0
+		$pivot/guns.scale.x = $flip.scale.x * 5
+	else:
+		$pivot/guns.scale.x = 5
+		$pivot/guns.position = Vector2(21,0)
+	
 	
 	
 
@@ -398,7 +428,8 @@ func camerastuff():
 func updateweapon():
 	var a : float
 	var h : bool = false
-	currentweaponname = weapons[currentweapon].name
+	if not weapons[currentweapon] == null:
+		currentweaponname = weapons[currentweapon].name
 	match currentweaponname:
 		"glock":
 			currentmagsize = magsizes[0]

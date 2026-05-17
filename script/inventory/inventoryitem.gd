@@ -5,3 +5,4 @@ class_name invitem
 @export var name : String = ""
 @export var texture : Texture2D
 @export var stackable : bool = false
+@export var consumable : bool = false

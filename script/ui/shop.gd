@@ -15,8 +15,8 @@ func _ready() -> void:
 	await get_tree().process_frame
 	for i in range($ScrollContainer/VBoxContainer.get_child_count()):
 		#set all of the variables here
-		textures.push_back($ScrollContainer/VBoxContainer.get_child(i-1).texture)
-		costs.push_back($ScrollContainer/VBoxContainer.get_child(i-1).costs)
+		textures.push_back($ScrollContainer/VBoxContainer.get_child(i).texture)
+		costs.push_back($ScrollContainer/VBoxContainer.get_child(i).costs)
 		descriptions.push_back($ScrollContainer/VBoxContainer.get_child(i).description)
 		$ScrollContainer/VBoxContainer.get_child(i).childcount = i
 	

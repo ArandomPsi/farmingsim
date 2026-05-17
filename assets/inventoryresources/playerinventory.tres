@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="inventory" load_steps=19 format=3 uid="uid://d0s8ix1acjygb"]
+[gd_resource type="Resource" script_class="inventory" load_steps=20 format=3 uid="uid://d0s8ix1acjygb"]
 
 [ext_resource type="Script" uid="uid://f3f1c1nx8mu7" path="res://script/inventory/inventoryslot.gd" id="1_467vf"]
 [ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="2_wx8oq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="4_wx8oq"]
 [ext_resource type="Resource" uid="uid://p8rs6c7eiqtd" path="res://assets/inventoryresources/round.tres" id="5_fyvoc"]
 [ext_resource type="Script" uid="uid://hbo17umc4rvp" path="res://script/inventory/inventory.gd" id="5_qnkbh"]
+[ext_resource type="Resource" uid="uid://ivt6x7j0a8cl" path="res://assets/inventoryresources/drumstick.tres" id="6_g5q63"]
 
 [sub_resource type="Resource" id="Resource_e1hjy"]
 script = ExtResource("1_467vf")
@@ -33,6 +34,7 @@ metadata/_custom_type_script = "uid://f3f1c1nx8mu7"
 
 [sub_resource type="Resource" id="Resource_rj2uk"]
 script = ExtResource("1_467vf")
+item = ExtResource("6_g5q63")
 amount = 1
 metadata/_custom_type_script = "uid://f3f1c1nx8mu7"
 
