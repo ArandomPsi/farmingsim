@@ -527,7 +527,7 @@ func die():
 	var timer = get_tree().create_timer(2)
 	await timer.timeout
 	$youdied.visible = true
-	var deathmessages : PackedStringArray = ["holy shit you fucking suck at this", "you stupid fucking looser", "l bozo", "your dumbass couldn't handle it", "suck my fucking cock pussy"]
+	var deathmessages : PackedStringArray = ["holy shit you fucking suck at this", "you stupid fucking looser", "l bozo", "your dumbass couldn't handle it", "suck my fucking cock pussy", "yo yo yo. u suck", "awwww a little bitch died... who the fuck cares?"]
 	$youdied/Label2.text = deathmessages[randi_range(0,deathmessages.size()-1)]
 	$youdied/Label2.visible_ratio = 0.0
 	var tween2 = create_tween()
