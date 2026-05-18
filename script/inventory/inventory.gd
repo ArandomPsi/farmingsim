@@ -80,6 +80,25 @@ func removeitem(item : invitem, amount : int = 0): #basically the same as the ch
 			return #then return so tha there are no bugs
 	update.emit()
 
+func get_data(item : invitem, data_wanted : Array[int]) -> Dictionary: #no idea what's going on in inventory has lol so delete this if u want
+	var data : Dictionary = {}
+	for i in data_wanted:
+		match i:
+			0:
+				data["name"] = item.name
+			1:
+				data["texture"] = item.texture
+			2:
+				data["stackable"] = item.stackable
+			3:
+				data["consumable"] = item.consumable
+			4:
+				data["building"] = item.building
+			5:
+				data["phantom_texture"] = item.phantom_texture
+			6:
+				data["phantom_scale"] = item.phantom_scale
+	return data
 
 #func additem(item : invitem):
 	#for i in range(items.size()):

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=4 format=3 uid="uid://k287gt68b62u"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_v6phy"]
+[ext_resource type="Texture2D" uid="uid://bejol81nj8qu3" path="res://assets/buildings/fence.png" id="2_nhaqp"]
+[ext_resource type="Texture2D" uid="uid://0ukjipgpy3hl" path="res://assets/inventoryicons/fenceicon.png" id="2_v6phy"]
+
+[resource]
+script = ExtResource("1_v6phy")
+name = "fence"
+texture = ExtResource("2_v6phy")
+stackable = true
+consumable = false
+building = true
+phantom_texture = ExtResource("2_nhaqp")
+phantom_scale = Vector2(7, 7)
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

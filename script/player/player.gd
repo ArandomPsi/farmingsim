@@ -23,6 +23,7 @@ var guns : Array = ["glock", "shotgun", "sniper","uzi"]
 
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
 var consumables : Array = ["drumstick"]
+var buildings : Array = ["fence"]
 
 
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
@@ -35,6 +36,7 @@ var pastweaponname : String # for optimization; past frame
 var reloadingframes : int = 0
 var melee : bool = false
 var consumingframes : int = 0
+var current_phantom_building : Sprite2D
 
 var stepframes : int = 0
 
@@ -75,7 +77,7 @@ func controls():
 	if currentweaponname == "uzi": #rapid guns
 		guntype = true
 	
-	if not consumables.has(currentweaponname):
+	if not consumables.has(currentweaponname) and not buildings.has(currentweaponname):
 		if guntype and not currentweaponname == "flashlight":
 			
 			#brrrrrrrrrr
@@ -93,6 +95,8 @@ func controls():
 				elif currentmagsize > 0 and reloadingframes < 1:
 					pewpew()
 					currentmagsize -= 1
+	elif buildings.has(currentweaponname):
+		handle_building(Input.is_action_just_pressed("shoot"))
 	else:
 		#eating
 		
@@ -312,17 +316,43 @@ func pewpew():
 			$pivot/guns.rotation_degrees += 80 * $pivot/guns.scale.y
 			if $orechecker.has_overlapping_areas():
 				mineore()
-			
-			
-	
+
+		
 
 func omnomnom():
 	match currentweaponname:
 		"drumstick":
 			hp = 100
-	
 	playerinventory.removeitem(weapons[currentweapon],1)
 	
+
+func handle_building(place : bool):
+	match currentweaponname:
+		"fence":
+			if place:
+				var b = load("res://scenes/building/fence.tscn").instantiate()
+				b.global_position = get_global_mouse_position()
+				b.rotation_degrees = snappedf($pivot.rotation_degrees, 90)
+				get_parent().add_child(b)
+			else:
+				if current_phantom_building != null:
+					current_phantom_building.queue_free()
+					current_phantom_building = null
+				var phantom = Sprite2D.new()
+				phantom.texture = playerinventory.get_data(weapons[currentweapon], [5]).phantom_texture
+				phantom.scale = playerinventory.get_data(weapons[currentweapon], [6]).phantom_scale
+				phantom.global_position = get_global_mouse_position()
+				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+				phantom.rotation_degrees = snappedf($pivot.rotation_degrees, 90)
+				phantom.modulate.a = 0.5
+				get_parent().add_child(phantom)
+				if current_phantom_building == null:
+					current_phantom_building = phantom
+	if place:
+		playerinventory.removeitem(weapons[currentweapon], 1)
+		current_phantom_building.queue_free()
+		current_phantom_building = null
+
 
 
 #trees count as ores :P
