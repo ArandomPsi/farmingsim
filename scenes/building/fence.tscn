@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcansat13jeje"]
+[gd_scene load_steps=5 format=3 uid="uid://dcansat13jeje"]
 
 [ext_resource type="Texture2D" uid="uid://bejol81nj8qu3" path="res://assets/buildings/fence.png" id="1_m0u22"]
+[ext_resource type="Shader" uid="uid://cnt43oe6ws5ac" path="res://shaders/outline.gdshader" id="1_vs7qp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67lcc"]
+shader = ExtResource("1_vs7qp")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs7qp"]
 size = Vector2(147, 28)
@@ -9,6 +16,7 @@ size = Vector2(147, 28)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_67lcc")
 scale = Vector2(7, 7)
 texture = ExtResource("1_m0u22")
 

@@ -332,20 +332,24 @@ func handle_building(place : bool):
 			if place:
 				var b = load("res://scenes/building/fence.tscn").instantiate()
 				b.global_position = get_global_mouse_position()
-				b.rotation_degrees = snappedf($pivot.rotation_degrees, 90)
+				b.rotation_degrees = snappedf($pivot.rotation_degrees, 90) - 90
 				get_parent().add_child(b)
 			else:
+				
+				#holy crap couldn't you have just created a new sprite
 				if current_phantom_building != null:
 					current_phantom_building.queue_free()
 					current_phantom_building = null
 				var phantom = Sprite2D.new()
+				phantom.rotation_degrees = (snappedf($pivot.rotation_degrees, 90) - 90 + 180) #trying to fix something
+				print(str(phantom.rotation))
 				phantom.texture = playerinventory.get_data(weapons[currentweapon], [5]).phantom_texture
 				phantom.scale = playerinventory.get_data(weapons[currentweapon], [6]).phantom_scale
 				phantom.global_position = get_global_mouse_position()
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-				phantom.rotation_degrees = snappedf($pivot.rotation_degrees, 90)
 				phantom.modulate.a = 0.5
 				get_parent().add_child(phantom)
+				
 				if current_phantom_building == null:
 					current_phantom_building = phantom
 	if place:
