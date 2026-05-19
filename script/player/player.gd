@@ -327,6 +327,7 @@ func omnomnom():
 	
 
 func handle_building(place : bool):
+	var clampedangle = (($pivot.rotation_degrees % 360) + 360) % 360
 	match currentweaponname:
 		"fence":
 			if place:
@@ -341,9 +342,11 @@ func handle_building(place : bool):
 					current_phantom_building.queue_free()
 					current_phantom_building = null
 				var phantom = Sprite2D.new()
-				phantom.rotation_degrees = (snappedf($pivot.rotation_degrees, 90) - 90 + 180) #trying to fix something
+				phantom.rotation_degrees = (snappedf(clampedangle, 90) - 90 + 180) #trying to fix something
 				print(str(phantom.rotation))
-				phantom.texture = playerinventory.get_data(weapons[currentweapon], [5]).phantom_texture
+				#if the rotation is 90 or 270, then make the texture the vertical texture
+				#else make it the original texture
+				phantom.texture = weapons[currentweapon].texture # if angle == 90 or angle == 270 else other_texture
 				phantom.scale = playerinventory.get_data(weapons[currentweapon], [6]).phantom_scale
 				phantom.global_position = get_global_mouse_position()
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
