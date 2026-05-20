@@ -1025,5 +1025,8 @@ volume_db = 3.0
 max_polyphony = 30
 bus = &"step"
 
+[node name="phantom" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.490196)
+
 [connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]

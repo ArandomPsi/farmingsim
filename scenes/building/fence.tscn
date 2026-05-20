@@ -1,22 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcansat13jeje"]
+[gd_scene load_steps=4 format=3 uid="uid://dcansat13jeje"]
 
 [ext_resource type="Texture2D" uid="uid://bejol81nj8qu3" path="res://assets/buildings/fence.png" id="1_m0u22"]
-[ext_resource type="Shader" uid="uid://cnt43oe6ws5ac" path="res://shaders/outline.gdshader" id="1_vs7qp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_67lcc"]
-shader = ExtResource("1_vs7qp")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/blink_color = Color(1, 1, 1, 1)
-shader_parameter/blink_time_scale = 0.0
+[ext_resource type="Texture2D" uid="uid://b4l21tu8qbucs" path="res://icon.svg" id="2_vs7qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs7qp"]
-size = Vector2(147, 28)
+size = Vector2(164, 28)
 
 [node name="fence" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_67lcc")
 scale = Vector2(7, 7)
 texture = ExtResource("1_m0u22")
 
@@ -24,8 +17,13 @@ texture = ExtResource("1_m0u22")
 collision_mask = 262
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-3.5, -7)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_vs7qp")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+scale = Vector2(1.29688, 0.203125)
+texture = ExtResource("2_vs7qp")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-1, -3.5)

@@ -64,6 +64,7 @@ func _process(delta: float) -> void:
 	
 
 func controls():
+	
 	movedir = Input.get_vector("left","right","up","down")
 	
 	$pivot.look_at(get_global_mouse_position())
@@ -327,38 +328,44 @@ func omnomnom():
 	
 
 func handle_building(place : bool):
-	var clampedangle = (($pivot.rotation_degrees % 360) + 360) % 360
+	
+	var clampedangle = rad_to_deg(
+	wrapf($pivot.rotation, 0.0, TAU)
+	)
 	match currentweaponname:
 		"fence":
 			if place:
 				var b = load("res://scenes/building/fence.tscn").instantiate()
 				b.global_position = get_global_mouse_position()
-				b.rotation_degrees = snappedf($pivot.rotation_degrees, 90) - 90
+				b.get_child(0).texture = $phantom.texture
+				b.rotation_degrees = snapped(wrapf($pivot.rotation_degrees, 0.0, 360.0), 90.0) + 90
+				b.get_child(0).global_rotation_degrees = 0
 				get_parent().add_child(b)
 			else:
 				
-				#holy crap couldn't you have just created a new sprite
-				if current_phantom_building != null:
-					current_phantom_building.queue_free()
-					current_phantom_building = null
-				var phantom = Sprite2D.new()
-				phantom.rotation_degrees = (snappedf(clampedangle, 90) - 90 + 180) #trying to fix something
-				print(str(phantom.rotation))
+				var phantom = $phantom as Sprite2D
+				phantom.visible = true
+				phantom.rotation_degrees = clampedangle #trying to fix something
+				phantom.rotation_degrees = snapped(wrapf($pivot.rotation_degrees, 0.0, 360.0), 90.0) #snapping
+				print(str(phantom.rotation_degrees))
 				#if the rotation is 90 or 270, then make the texture the vertical texture
 				#else make it the original texture
-				phantom.texture = weapons[currentweapon].texture # if angle == 90 or angle == 270 else other_texture
+				if phantom.rotation_degrees == 180 or phantom.rotation_degrees == 0 or phantom.rotation_degrees == 360:
+					phantom.texture = load("res://assets/buildings/verticalfence.png")
+				else:
+					phantom.texture = load("res://assets/buildings/fence.png")
+				
+				phantom.rotation = 0
+				
+				
 				phantom.scale = playerinventory.get_data(weapons[currentweapon], [6]).phantom_scale
 				phantom.global_position = get_global_mouse_position()
+				var maxdist : float = 300
+				phantom.global_position = clamp(phantom.global_position, position - Vector2(maxdist,maxdist), position + Vector2(maxdist,maxdist))
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 				phantom.modulate.a = 0.5
-				get_parent().add_child(phantom)
 				
-				if current_phantom_building == null:
-					current_phantom_building = phantom
-	if place:
-		playerinventory.removeitem(weapons[currentweapon], 1)
-		current_phantom_building.queue_free()
-		current_phantom_building = null
+				
 
 
 
@@ -424,7 +431,7 @@ func playeranimstuff():
 	else:
 		$pivot/guns.rotation = lerp_angle($pivot/guns.rotation,0.0,0.15)
 	
-	
+	$phantom.visible = buildings.has(currentweaponname)
 	
 	$pivot/guns/scope.visible = currentweaponname == "sniper" and not reloadingframes > 1
 	
