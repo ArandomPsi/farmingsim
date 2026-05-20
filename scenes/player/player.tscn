@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=87 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -375,6 +375,9 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mf0n"]
+size = Vector2(64, 64)
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -1028,6 +1031,12 @@ bus = &"step"
 
 [node name="phantom" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.490196)
+
+[node name="buildingchecker" type="Area2D" parent="phantom"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phantom/buildingchecker"]
+shape = SubResource("RectangleShape2D_5mf0n")
 
 [connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]
