@@ -35,6 +35,14 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_ayxhm")
 offset = Vector2(0, -14)
 
+[node name="shadow" type="Sprite2D" parent="sprite"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+position = Vector2(-14, 4.4)
+scale = Vector2(1, -1)
+skew = 1.31423
+texture = ExtResource("1_ayxhm")
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 512
 collision_mask = 0

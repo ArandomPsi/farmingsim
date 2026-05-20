@@ -438,5 +438,14 @@ collision_mask = 262
 [node name="CollisionShape2D" type="CollisionShape2D" parent="peck"]
 shape = SubResource("CircleShape2D_m8m8r")
 
+[node name="shadow" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+position = Vector2(-13, 14)
+scale = Vector2(5, -5)
+skew = 1.31423
+sprite_frames = SubResource("SpriteFrames_rc7ma")
+animation = &"fight"
+
 [connection signal="body_entered" from="bouncearea" to="." method="bounce"]
 [connection signal="body_entered" from="peck" to="." method="_on_peck_body_entered"]

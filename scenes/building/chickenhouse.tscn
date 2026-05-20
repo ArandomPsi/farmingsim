@@ -31,6 +31,7 @@ region_enabled = true
 region_rect = Rect2(32, 0, 16, 22)
 
 [node name="shadow" type="Sprite2D" parent="Sprite2D"]
+visible = false
 modulate = Color(0, 0, 0, 0.47451)
 z_index = -1
 z_as_relative = false
@@ -39,6 +40,16 @@ position = Vector2(0, 1.2)
 texture = ExtResource("1_16gv3")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 22)
+
+[node name="shadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+position = Vector2(-10, 13.4)
+scale = Vector2(1, -1)
+skew = 1.31423
+texture = ExtResource("1_16gv3")
+region_enabled = true
+region_rect = Rect2(33, 0, 15, 22)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 9

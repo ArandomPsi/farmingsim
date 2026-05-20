@@ -123,12 +123,18 @@ func handle_animation():
 		$flip/sprite.play("idle")
 	else:
 		$flip/sprite.play("walk")
+	
+	$shadow.animation = $flip/sprite.animation
+	$shadow.frame = $flip/sprite.frame
 
 	if velocity.x > 0:
 		$flip.scale.x = 1
 	elif velocity.x < 0:
 		$flip.scale.x = -1
-
+	
+	$shadow.animation = $flip/sprite.animation
+	$shadow.frame = $flip/sprite.frame
+	
 
 func handle_visuals():
 	# mating hearts
@@ -137,7 +143,7 @@ func handle_visuals():
 	else:
 		$flip/sprite/heartpar.emitting = false
 		dominant = false
-
+	
 	# hide in grass
 	visible = not $hider.has_overlapping_areas()
 

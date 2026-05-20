@@ -426,6 +426,9 @@ func playeranimstuff():
 	else:
 		sprite.play("idle")
 	
+	$shadow2.animation = sprite.animation
+	$shadow2.frame = sprite.frame
+	
 	#glocks and stuff
 	if not weapons[currentweapon] == null:
 		$pivot/guns.set_texture(weapons[currentweapon].texture) #clean code ig

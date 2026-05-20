@@ -140,6 +140,16 @@ texture = ExtResource("1_lx5au")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
+[node name="shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+position = Vector2(-6.2, 9.4)
+scale = Vector2(1, -1)
+skew = 1.31423
+texture = ExtResource("1_lx5au")
+region_enabled = true
+region_rect = Rect2(0, 3, 16, 13)
+
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(0, -10)
 scale = Vector2(5, 5)

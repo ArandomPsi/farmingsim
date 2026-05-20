@@ -27,5 +27,5 @@ func createtree(pos : Vector2):
 	var b = preload("res://scenes/building/tree.tscn").instantiate()
 	add_child(b)
 	b.position = pos
-	b.position += Vector2(randf_range(-randomoffset,randomoffset),randf_range(-randomoffset,randomoffset))
+	b.position += Vector2(randf_range(-randomoffset,randomoffset),randf_range(-randomoffset * 1.5,randomoffset * 1.5))
 	
