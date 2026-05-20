@@ -336,7 +336,7 @@ func handle_building(place : bool):
 		"fence":
 			if place:
 				var b = load("res://scenes/building/fence.tscn").instantiate()
-				b.global_position = get_global_mouse_position()
+				b.global_position = $phantom.global_position
 				b.get_child(0).texture = $phantom.texture
 				b.rotation_degrees = snapped(wrapf($pivot.rotation_degrees, 0.0, 360.0), 90.0) + 90
 				b.get_child(0).global_rotation_degrees = 0
@@ -359,9 +359,14 @@ func handle_building(place : bool):
 				
 				
 				phantom.scale = playerinventory.get_data(weapons[currentweapon], [6]).phantom_scale
-				phantom.global_position = get_global_mouse_position()
-				var maxdist : float = 300
-				phantom.global_position = clamp(phantom.global_position, position - Vector2(maxdist,maxdist), position + Vector2(maxdist,maxdist))
+				phantom.global_position = round(get_global_mouse_position() / 14) * 14
+				var maxdist : float = 180
+				var offset = phantom.global_position - global_position
+				
+				if offset.length() > maxdist:
+					offset = offset.normalized() * maxdist
+				
+				phantom.global_position = global_position + offset
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 				phantom.modulate.a = 0.5
 				

@@ -64,10 +64,18 @@ text = "item"
 vertical_alignment = 1
 
 [node name="prerequisites" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_top = 90.0
-offset_right = 444.0
-offset_bottom = 113.0
+offset_left = 18.0
+offset_top = 65.0
+offset_right = 322.0
+offset_bottom = 88.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.45098)
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/font = ExtResource("2_y0qtg")
+theme_override_font_sizes/font_size = 8
+text = "fadf"
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0

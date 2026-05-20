@@ -1,6 +1,6 @@
 extends Node2D
 class_name mineable
-var hp : int = 5
+@export var hp : int = 5
 @export var helditem : invitem
 func getmined():
 	hp -= 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cglt3v5bjm13"]
+[gd_scene load_steps=8 format=3 uid="uid://cglt3v5bjm13"]
 
 [ext_resource type="PackedScene" uid="uid://brskmhpippkmj" path="res://scenes/ui/craftingoption.tscn" id="1_qfvej"]
 [ext_resource type="Resource" uid="uid://o1y0gtjj2j4e" path="res://assets/inventoryresources/dagger.tres" id="2_kjdnd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="3_27mhi"]
 [ext_resource type="Resource" uid="uid://dojf2kbqwp0w4" path="res://assets/inventoryresources/rock.tres" id="4_p57f4"]
 [ext_resource type="Resource" uid="uid://p8rs6c7eiqtd" path="res://assets/inventoryresources/round.tres" id="5_p57f4"]
+[ext_resource type="Resource" uid="uid://k287gt68b62u" path="res://assets/inventoryresources/fence.tres" id="6_uvhgi"]
 
 [node name="craftingmenu" type="Control"]
 layout_mode = 3
@@ -44,6 +45,16 @@ prerequisite1 = ExtResource("4_p57f4")
 prerequisite2 = ExtResource("4_p57f4")
 prerequisite2amount = 0
 desc = "one rock for 5 rounds"
+
+[node name="craftingoption3" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_qfvej")]
+custom_minimum_size = Vector2(30, 80)
+layout_mode = 2
+item = ExtResource("6_uvhgi")
+prerequisite1 = ExtResource("3_27mhi")
+prerequisite1amount = 5
+prerequisite2 = ExtResource("3_27mhi")
+prerequisite2amount = 0
+desc = "5 wood.box people like a fish"
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1

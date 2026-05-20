@@ -6,7 +6,7 @@ var chickenstats : Dictionary = {
 	"color" : Color(1,1,1,1)
 }
 
-@export var mutations = []
+@export var mutations : Array
 
 var hatchtime : float = 30
 var eggtimer : float = hatchtime

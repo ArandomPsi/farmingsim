@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcansat13jeje"]
+[gd_scene load_steps=7 format=3 uid="uid://dcansat13jeje"]
 
+[ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_67lcc"]
 [ext_resource type="Texture2D" uid="uid://bejol81nj8qu3" path="res://assets/buildings/fence.png" id="1_m0u22"]
+[ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="2_72btj"]
 [ext_resource type="Texture2D" uid="uid://b4l21tu8qbucs" path="res://icon.svg" id="2_vs7qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs7qp"]
 size = Vector2(164, 28)
 
-[node name="fence" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_72btj"]
+radius = 22.0227
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="fence" type="Node2D"]
+script = ExtResource("1_67lcc")
+helditem = ExtResource("2_72btj")
+
+[node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(7, 7)
 texture = ExtResource("1_m0u22")
@@ -28,3 +35,10 @@ texture = ExtResource("2_vs7qp")
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-1, -3.5)
 scale = Vector2(8.1, 3.05)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_72btj")
