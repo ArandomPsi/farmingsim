@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=88 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://tdjc0nfwxtkw" path="res://scenes/ui/inventoryui.tscn" id="26_6cv16"]
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
 [ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="27_uniwh"]
+[ext_resource type="Script" uid="uid://cs3av03m2lixa" path="res://script/debug/fps.gd" id="29_4hvnv"]
 [ext_resource type="Shader" uid="uid://cnt43oe6ws5ac" path="res://shaders/outline.gdshader" id="31_wva7c"]
 [ext_resource type="PackedScene" uid="uid://cglt3v5bjm13" path="res://scenes/ui/craftingmenu.tscn" id="33_5mf0n"]
 [ext_resource type="AudioStream" uid="uid://b8aqqixfhbn3u" path="res://assets/sounds/music/wind.wav" id="34_4hvnv"]
@@ -961,6 +962,12 @@ offset_left = 803.0
 offset_top = -2.0
 offset_right = 20.0
 offset_bottom = -2.0
+
+[node name="fps" type="Label" parent="hud"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fps :"
+script = ExtResource("29_4hvnv")
 
 [node name="youdied" type="CanvasLayer" parent="."]
 visible = false

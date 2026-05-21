@@ -12,7 +12,6 @@ config_version=5
 
 config/name="farminggame"
 config/features=PackedStringArray("4.4", "Forward Plus")
-run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,6 +21,7 @@ global="*res://script/global.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=2
 
 [editor_plugins]
 
