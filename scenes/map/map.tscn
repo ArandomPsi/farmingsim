@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken/chicken.tscn" id="7_30ska"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="9_omedl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="10_3xi6f"]
-[ext_resource type="Script" uid="uid://cup5rk5qt2np3" path="res://script/forestgenerator.gd" id="11_b56te"]
+[ext_resource type="Script" path="res://script/forestgenerator.gd" id="11_b56te"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="11_xks3a"]
 [ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
 

@@ -52,6 +52,7 @@ var chickenstats : Dictionary = {
 #Exploding - Osama's chickens
 #Big Peck - Toucan ahhh
 #alpaca - hawctua spit on that thing
+#dagger feathers - put it in me daddy
 
 
 

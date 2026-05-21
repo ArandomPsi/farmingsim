@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://btyphwqd0sgua"]
+[gd_scene load_steps=28 format=4 uid="uid://btyphwqd0sgua"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_5wgtu"]
 [ext_resource type="PackedScene" uid="uid://belfiknsknubu" path="res://scenes/player/player.tscn" id="1_kwcxs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cmfx1bbqjp7ey" path="res://assets/grasses.png" id="4_s36se"]
 [ext_resource type="Texture2D" uid="uid://cpsik28x8xlcx" path="res://assets/rocktexture.png" id="7_mxay4"]
 [ext_resource type="PackedScene" uid="uid://c4iv6dr4xxkvm" path="res://scenes/building/chickenhouse.tscn" id="8_8qn3e"]
+[ext_resource type="PackedScene" uid="uid://cqjoup6l8hltf" path="res://scenes/chicken/daggerfeathermutation.tscn" id="8_odhm6"]
 [ext_resource type="PackedScene" uid="uid://wjbm0id6nnrb" path="res://scenes/explodingmutation.tscn" id="8_vfccl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="9_6m7oc"]
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="10_wj07n"]
@@ -171,7 +172,10 @@ tile_set = SubResource("TileSet_6m7oc")
 position = Vector2(921, 148)
 
 [node name="chicken" parent="." instance=ExtResource("4_efggw")]
-position = Vector2(292, 283)
+position = Vector2(1009, 117)
+hp = 1000000
+
+[node name="daggerfeathermutation" parent="chicken" instance=ExtResource("8_odhm6")]
 
 [node name="chicken2" parent="." instance=ExtResource("4_efggw")]
 position = Vector2(490, 224)

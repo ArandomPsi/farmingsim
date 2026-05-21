@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwknkmko1vsy1"]
+
+[ext_resource type="Script" uid="uid://8innqlevp0nn" path="res://script/chicken/daggerfeather.gd" id="1_gvd86"]
+[ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="3_c8ue6"]
+[ext_resource type="Texture2D" uid="uid://tnoi6i814ss2" path="res://assets/chickens/horriblesubfeather.png" id="3_l5ajd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8hny"]
+radius = 29.4279
+
+[node name="daggerfeather" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_gvd86")
+
+[node name="attackbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_c8ue6")
+damage = 5
+knockback = 50.0
+hitstop = 0.03
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
+shape = SubResource("CircleShape2D_c8hny")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.654498
+scale = Vector2(2.695, 2.695)
+texture = ExtResource("3_l5ajd")

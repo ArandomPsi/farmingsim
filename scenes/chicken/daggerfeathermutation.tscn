@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqjoup6l8hltf"]
+
+[ext_resource type="Script" uid="uid://dbsfbw6tneg1y" path="res://script/chicken/daggerfeathermutation.gd" id="1_wkwj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkwj0"]
+radius = 236.136
+
+[node name="daggerfeathermutation" type="Node2D"]
+script = ExtResource("1_wkwj0")
+
+[node name="enemydetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemydetector"]
+shape = SubResource("CircleShape2D_wkwj0")
