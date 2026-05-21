@@ -38,7 +38,7 @@ process_material = SubResource("ParticleProcessMaterial_n288e")
 collision_layer = 0
 collision_mask = 258
 script = ExtResource("2_wckjc")
-damage = 40
+damage = 5
 metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]

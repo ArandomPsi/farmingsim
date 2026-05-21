@@ -124,16 +124,16 @@ func handle_animation():
 	else:
 		$flip/sprite.play("walk")
 	
-	$shadow.animation = $flip/sprite.animation
-	$shadow.frame = $flip/sprite.frame
+	$flip/sprite/shadow2.animation = $flip/sprite.animation
+	$flip/sprite/shadow2.frame = $flip/sprite.frame
 
 	if velocity.x > 0:
 		$flip.scale.x = 1
 	elif velocity.x < 0:
 		$flip.scale.x = -1
 	
-	$shadow.animation = $flip/sprite.animation
-	$shadow.frame = $flip/sprite.frame
+	$flip/sprite/shadow2.animation = $flip/sprite.animation
+	$flip/sprite/shadow2.frame = $flip/sprite.frame
 	
 
 func handle_visuals():

@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dnl2fymqbuwo3"]
+[gd_scene load_steps=24 format=3 uid="uid://dnl2fymqbuwo3"]
 
 [ext_resource type="Script" uid="uid://cec7nd6vyw2sq" path="res://script/shop.gd" id="1_032fp"]
 [ext_resource type="Texture2D" uid="uid://dw07h57flj1bv" path="res://assets/chickens/shops.png" id="1_lx5au"]
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_xfvoa"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="3_1l46r"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="4_fimbb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1l46r"]
 atlas = ExtResource("1_xfvoa")
@@ -143,12 +144,14 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="shadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.568627)
 z_index = -1
-position = Vector2(-6.2, 9.4)
+position = Vector2(-0.200003, 7.6)
 scale = Vector2(1, -1)
 skew = 1.31423
 texture = ExtResource("1_lx5au")
+offset = Vector2(0, -6)
 region_enabled = true
 region_rect = Rect2(0, 3, 16, 13)
+script = ExtResource("4_fimbb")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(0, -10)

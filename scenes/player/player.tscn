@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=89 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://cglt3v5bjm13" path="res://scenes/ui/craftingmenu.tscn" id="33_5mf0n"]
 [ext_resource type="AudioStream" uid="uid://b8aqqixfhbn3u" path="res://assets/sounds/music/wind.wav" id="34_4hvnv"]
 [ext_resource type="AudioStream" uid="uid://bt5oxugfmo7b0" path="res://assets/sounds/sfx/break.wav" id="35_bbmj2"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="35_kxw46"]
 [ext_resource type="AudioStream" uid="uid://c0woog3fdplnc" path="res://assets/sounds/sfx/hit2.wav" id="36_5q8fn"]
 [ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
 [ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
@@ -410,6 +411,18 @@ offset_bottom = 179.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="shadow2" type="AnimatedSprite2D" parent="flip/sprite"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+texture_filter = 1
+position = Vector2(0.400001, 3)
+scale = Vector2(1, -1)
+skew = 1.31423
+sprite_frames = SubResource("SpriteFrames_5gtgg")
+animation = &"die"
+offset = Vector2(0, -3)
+script = ExtResource("35_kxw46")
+
 [node name="pivot" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -10)
@@ -453,8 +466,6 @@ shape = SubResource("RectangleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
-limit_left = 0
-limit_top = 0
 
 [node name="shaders" type="CanvasLayer" parent="."]
 script = ExtResource("4_p47bc")
@@ -1045,15 +1056,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="phantom/buildingchecker"]
 shape = SubResource("RectangleShape2D_5mf0n")
-
-[node name="shadow2" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.568627)
-z_index = -1
-position = Vector2(-13, 14)
-scale = Vector2(5, -5)
-skew = 1.31423
-sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"die"
 
 [connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]

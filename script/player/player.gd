@@ -426,8 +426,8 @@ func playeranimstuff():
 	else:
 		sprite.play("idle")
 	
-	$shadow2.animation = sprite.animation
-	$shadow2.frame = sprite.frame
+	$flip/sprite/shadow2.animation = sprite.animation
+	$flip/sprite/shadow2.frame = sprite.frame
 	
 	#glocks and stuff
 	if not weapons[currentweapon] == null:

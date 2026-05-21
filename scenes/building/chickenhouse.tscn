@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4iv6dr4xxkvm"]
+[gd_scene load_steps=10 format=3 uid="uid://c4iv6dr4xxkvm"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_16gv3"]
 [ext_resource type="Script" uid="uid://dv76m45ag7n1o" path="res://scenes/building/chickenhouse.gd" id="1_ijjhn"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_dotcv"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="3_l7fy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16gv3"]
 size = Vector2(80, 71)
@@ -44,12 +45,14 @@ region_rect = Rect2(32, 0, 16, 22)
 [node name="shadow2" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.568627)
 z_index = -1
-position = Vector2(-10, 13.4)
+position = Vector2(-2, 10.4)
 scale = Vector2(1, -1)
 skew = 1.31423
 texture = ExtResource("1_16gv3")
+offset = Vector2(0, -8)
 region_enabled = true
 region_rect = Rect2(33, 0, 15, 22)
+script = ExtResource("3_l7fy3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 9

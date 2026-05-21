@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://crehgls71g1ae"]
+[gd_scene load_steps=11 format=3 uid="uid://crehgls71g1ae"]
 
 [ext_resource type="Texture2D" uid="uid://2y5gm6fj4hcy" path="res://assets/buildings/tree.png" id="1_ayxhm"]
 [ext_resource type="Shader" uid="uid://b780aaswdvqml" path="res://shaders/grass.gdshader" id="1_dtwdb"]
 [ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_n7jdo"]
 [ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="2_molp8"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="5_c1h6h"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n7jdo"]
 noise_type = 4
@@ -24,6 +25,9 @@ shader_parameter/rotation_pivot = Vector2(0.5, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7jdo"]
 radius = 22.0227
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c1h6h"]
+polygon = PackedVector2Array(-25, 5, -15, 10, 15, 10, 25, 5, 25, 0, 20, -5, 4, -8, -4, -8, -20, -5, -25, 0)
+
 [node name="tree" type="Node2D"]
 script = ExtResource("1_n7jdo")
 helditem = ExtResource("2_molp8")
@@ -38,10 +42,12 @@ offset = Vector2(0, -14)
 [node name="shadow" type="Sprite2D" parent="sprite"]
 modulate = Color(0, 0, 0, 0.568627)
 z_index = -1
-position = Vector2(-14, 4.4)
+position = Vector2(1.19209e-07, 0.6)
 scale = Vector2(1, -1)
-skew = 1.31423
+skew = 1.30202
 texture = ExtResource("1_ayxhm")
+offset = Vector2(0, -15)
+script = ExtResource("5_c1h6h")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 512
@@ -52,4 +58,7 @@ shape = SubResource("CircleShape2D_n7jdo")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, -50.5)
-scale = Vector2(5.1, 6.35)
+scale = Vector2(14.5, 14.15)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_c1h6h")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://x7uyc4xymitu"]
+[gd_scene load_steps=6 format=3 uid="uid://x7uyc4xymitu"]
 
 [ext_resource type="Texture2D" uid="uid://cmimksp7fryvd" path="res://assets/buildings/ores.png" id="1_4g76m"]
 [ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_fdhle"]
 [ext_resource type="Resource" uid="uid://dojf2kbqwp0w4" path="res://assets/inventoryresources/rock.tres" id="2_jy1yd"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="4_5d3p0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g76m"]
 radius = 22.0907
@@ -21,12 +22,14 @@ region_rect = Rect2(0, 0, 8, 8)
 [node name="shadow" type="Sprite2D" parent="sprite"]
 modulate = Color(0, 0, 0, 0.568627)
 z_index = -1
-position = Vector2(-3, 3.6)
+position = Vector2(-5.60283e-07, 2.8)
 scale = Vector2(1, -1)
 skew = 1.31423
 texture = ExtResource("1_4g76m")
+offset = Vector2(0, -3)
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
+script = ExtResource("4_5d3p0")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 3)

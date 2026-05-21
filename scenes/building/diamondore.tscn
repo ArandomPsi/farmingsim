@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dadkl07luj4r5"]
+[gd_scene load_steps=6 format=3 uid="uid://dadkl07luj4r5"]
 
 [ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_rvsth"]
 [ext_resource type="Resource" uid="uid://vmwb0r3h710o" path="res://assets/inventoryresources/diamond.tres" id="2_rvsth"]
 [ext_resource type="Texture2D" uid="uid://cmimksp7fryvd" path="res://assets/buildings/ores.png" id="3_oh3ds"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="4_dbg51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g76m"]
 radius = 22.0907
@@ -21,12 +22,14 @@ region_rect = Rect2(24, 0, 8, 8)
 [node name="shadow" type="Sprite2D" parent="sprite"]
 modulate = Color(0, 0, 0, 0.568627)
 z_index = -1
-position = Vector2(-3.2, 3.8)
+position = Vector2(-0.2, 3)
 scale = Vector2(1, -1)
 skew = 1.31423
 texture = ExtResource("3_oh3ds")
+offset = Vector2(0, -3)
 region_enabled = true
 region_rect = Rect2(24, 0, 8, 7)
+script = ExtResource("4_dbg51")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 3)
@@ -38,4 +41,4 @@ shape = SubResource("CircleShape2D_4g76m")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, 4)
-scale = Vector2(2, 1)
+scale = Vector2(4, 3.3)
