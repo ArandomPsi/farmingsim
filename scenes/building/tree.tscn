@@ -58,7 +58,7 @@ shape = SubResource("CircleShape2D_n7jdo")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(0, -50.5)
-scale = Vector2(14.5, 14.15)
+scale = Vector2(24.2, 24.15)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_c1h6h")
