@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://vmwb0r3h710o"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_lvyhe"]
+[ext_resource type="Texture2D" uid="uid://b014i68ml31cd" path="res://assets/inventoryicons/diamond.png" id="2_rd3xk"]
+
+[resource]
+script = ExtResource("1_lvyhe")
+name = "diamond"
+texture = ExtResource("2_rd3xk")
+stackable = true
+consumable = false
+building = false
+phantom_scale = Vector2(0, 0)
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

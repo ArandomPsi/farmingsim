@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dcansat13jeje"]
 
-[ext_resource type="Script" path="res://script/fence.gd" id="1_72btj"]
+[ext_resource type="Script" uid="uid://cc1ms1qo741n4" path="res://script/fence.gd" id="1_72btj"]
 [ext_resource type="Texture2D" uid="uid://bejol81nj8qu3" path="res://assets/buildings/fence.png" id="1_m0u22"]
 [ext_resource type="Texture2D" uid="uid://b4l21tu8qbucs" path="res://icon.svg" id="2_vs7qp"]
 [ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="2_xhiq4"]

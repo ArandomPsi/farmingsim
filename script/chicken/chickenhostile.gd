@@ -44,7 +44,8 @@ func handle_behavior(delta):
 		STATE_EAT:
 			gobblegobble()
 		STATE_HOSTILE:
-			chasestate(get_closest_chicken().global_position, delta)
+			if not get_closest_chicken() == null:
+				chasestate(get_closest_chicken().global_position, delta)
 
 
 
