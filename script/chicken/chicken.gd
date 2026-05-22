@@ -79,7 +79,14 @@ func randomize_stats():
 	chickenstats["tenderness"] *= randf_range(0.8, 1.2)
 	chickenstats["strength"] *= randf_range(0.8,1.2)
 	
+	chickenstats["color"].r *= randf_range(0.5,1.5)
+	chickenstats["color"].g *= randf_range(0.8,1.1)
+	chickenstats["color"].b *= randf_range(0.8,1.1)
+	
 	hp *= chickenstats["strength"]
+	
+	$flip/sprite.modulate = chickenstats["color"]
+	print(str($flip/sprite.modulate))
 	
 
 
@@ -94,6 +101,9 @@ func addmutations():
 				add_child(b)
 			"covid":
 				var b = load("res://scenes/chicken/poisonmutation.tscn").instantiate()
+				add_child(b)
+			"daggers":
+				var b = load("res://scenes/chicken/daggerfeathermutation.tscn").instantiate()
 				add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()

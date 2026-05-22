@@ -8,7 +8,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	frames -= 1
 	if frames < 1:
-		frames = randi_range(30,180)
+		frames = randi_range(120,180)
 		global.player.shakeframes += 10000 / position.distance_to(global.playerpos)
 		var b = preload("res://scenes/chicken/explosion.tscn").instantiate()
 		b.global_position = global_position
