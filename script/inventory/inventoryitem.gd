@@ -9,3 +9,4 @@ class_name invitem
 @export var building : bool = false
 @export var phantom_texture : Texture2D #if building
 @export var phantom_scale : Vector2
+@export var weight_mult : float = 1

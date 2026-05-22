@@ -11,4 +11,5 @@ stackable = true
 consumable = false
 building = false
 phantom_scale = Vector2(0, 0)
+weight_mult = 1.3
 metadata/_custom_type_script = "uid://crrj4roi22rhi"

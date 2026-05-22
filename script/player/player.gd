@@ -5,7 +5,8 @@ extends CharacterBody2D
 @onready var flip = $flip as Node2D
 @onready var tilemap = get_parent().get_child(0).get_child(0) as TileMapLayer
 
-var speed : int = 4000
+var base_speed : int = 4000
+var speed : int = base_speed
 var friction : float = 0.85
 var movedir : Vector2
 var hp : float = 100
@@ -195,6 +196,10 @@ func talkingcontrols():
 
 
 func updatepos(delta : float):
+	if is_instance_valid(weapons[currentweapon]):
+		speed = base_speed * weapons[currentweapon].weight_mult
+	else:
+		speed = base_speed
 	velocity += movedir.normalized() * speed * delta
 	velocity *= friction
 	move_and_slide()

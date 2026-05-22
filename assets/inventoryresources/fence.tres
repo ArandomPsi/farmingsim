@@ -13,4 +13,5 @@ consumable = false
 building = true
 phantom_texture = ExtResource("2_nhaqp")
 phantom_scale = Vector2(7, 7)
+weight_mult = 0.7
 metadata/_custom_type_script = "uid://crrj4roi22rhi"

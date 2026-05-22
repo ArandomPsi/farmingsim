@@ -7,4 +7,9 @@
 script = ExtResource("1_vaowg")
 name = "sniper"
 texture = ExtResource("2_ikrp4")
+stackable = false
+consumable = false
+building = false
+phantom_scale = Vector2(0, 0)
+weight_mult = 0.8
 metadata/_custom_type_script = "uid://crrj4roi22rhi"
