@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=27 format=4 uid="uid://cjf2as4jtjrgf"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_mrjnl"]
 [ext_resource type="Shader" uid="uid://b5pwkw2ryewj2" path="res://shaders/grasswind.gdshader" id="2_rqo2c"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ifm7p07253o" path="res://script/vfx/daynightcycle-gradient-texture.tres" id="11_xks3a"]
 [ext_resource type="Script" uid="uid://cp53xbuuxscoe" path="res://script/stonegenerator.gd" id="12_x2kg6"]
 [ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
+[ext_resource type="Script" uid="uid://chhr0j0015t7o" path="res://script/monsters/wolfspawner.gd" id="14_mgs8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrjnl"]
 texture = ExtResource("1_mrjnl")
@@ -532,5 +533,16 @@ mapsize = Vector2(6900, 5750)
 density = 16
 randomoffset = 300.0
 
+[node name="wolfspawner" type="Node2D" parent="."]
+position = Vector2(4292, 6121)
+script = ExtResource("14_mgs8m")
+presetlocations = PackedVector2Array(99, 1456, 2661, 647, 4970, 784, 7101, 1598, 6092, 3145, 6528, 4496, 5065, 4348, 2967, 4343, 1017, 4900, 4292, 6121)
+
+[node name="Timer" type="Timer" parent="wolfspawner"]
+wait_time = 30.0
+autostart = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mgs8m")
+
+[connection signal="timeout" from="wolfspawner/Timer" to="wolfspawner" method="_on_timer_timeout"]

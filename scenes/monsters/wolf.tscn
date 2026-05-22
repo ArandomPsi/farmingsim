@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://w3t8wodysr06" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDie.png" id="2_t6anv"]
 [ext_resource type="Texture2D" uid="uid://cye0plh4h66xm" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfIdle.png" id="3_hl0c1"]
 [ext_resource type="Texture2D" uid="uid://b6ybretwxlql5" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfWalk.png" id="4_mtmg0"]
-[ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="5_kuyex"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="6_t6anv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7cg2"]
 atlas = ExtResource("1_o2hoc")
@@ -199,13 +199,19 @@ script = ExtResource("1_t6anv")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_kdjvj")
-animation = &"attack"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 
-[node name="shadow" parent="flip" instance=ExtResource("5_kuyex")]
-position = Vector2(-4, -1)
-scale = Vector2(8.25, 5)
+[node name="shadow" type="AnimatedSprite2D" parent="flip/sprite"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+texture_filter = 1
+position = Vector2(-1.01328e-06, 3)
+scale = Vector2(1, -1)
+skew = 1.31423
+sprite_frames = SubResource("SpriteFrames_kdjvj")
+animation = &"idle"
+offset = Vector2(0, -3)
+script = ExtResource("6_t6anv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2y11e")

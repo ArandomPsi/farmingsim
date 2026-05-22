@@ -56,7 +56,6 @@ func _process(delta):
 	isnight = (truetime > 20 or truetime < 4)
 	stopfuncinvloop = 0
 	
-	print(str((sin(time - PI / 2)+ 1.0 ) / 2.0))
 	
 	
 

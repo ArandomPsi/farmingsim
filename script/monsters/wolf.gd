@@ -20,7 +20,7 @@ var attackanimframes : int = 0
 func _ready() -> void:
 	if alpha:
 		speed *= 1.2
-		hp *= 4
+		hp *= 2
 		scale *= 1.25
 
 
@@ -41,6 +41,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	animations()
+	$flip/sprite/shadow.animation = $flip/sprite.animation
+	$flip/sprite/shadow.frame = $flip/sprite.frame
 	
 
 
