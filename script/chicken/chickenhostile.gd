@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	animframes -= 1
 	handle_states()
 	handle_behavior(delta)
-	handle_movement()
+	handle_movement(delta)
 	handle_animation()
 	handle_visuals()
 	handle_ui()
@@ -89,8 +89,8 @@ func start_wander():
 	randomturning = randf_range(-15, 15)
 
 
-func handle_movement():
-	velocity *= 0.9
+func handle_movement(delta):
+	velocity *= pow(0.9, delta * 60.0)
 	velocity = velocity.limit_length(speed * 2)
 
 	# tether pull

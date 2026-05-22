@@ -201,7 +201,7 @@ func updatepos(delta : float):
 	else:
 		speed = base_speed
 	velocity += movedir.normalized() * speed * delta
-	velocity *= friction
+	velocity *= pow(friction, delta * 60.0)
 	move_and_slide()
 
 func updatevisuals():
