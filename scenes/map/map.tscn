@@ -424,7 +424,7 @@ sources/1 = SubResource("TileSetAtlasSource_mxay4")
 shader = ExtResource("4_cumk7")
 shader_parameter/intensity = 1.0
 shader_parameter/base_water_color = Color(0, 0.45, 1, 1)
-shader_parameter/highlight_scale = 1.974
+shader_parameter/highlight_scale = 0.874
 shader_parameter/clarity = 1.0
 
 [sub_resource type="Gradient" id="Gradient_cumk7"]
