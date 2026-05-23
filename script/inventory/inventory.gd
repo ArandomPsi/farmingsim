@@ -64,6 +64,7 @@ func inventoryhas(item : invitem, amount : int = 1, returnamount : bool = false)
 	
 
 func removeitem(item : invitem, amount : int = 0): #basically the same as the checker, but it takes away items
+	update.emit()
 	for slot in items:
 		if slot == null:
 			continue
@@ -77,6 +78,7 @@ func removeitem(item : invitem, amount : int = 0): #basically the same as the ch
 			slot.amount -= amount
 			if slot.amount < 1:
 				slot.item = null
+				update.emit()
 			return #then return so tha there are no bugs
 	update.emit()
 

@@ -191,9 +191,10 @@ func goonstate(delta):
 	if position.distance_to(cc.global_position) < 20:
 		cc.state = STATE_MATE
 		cc.statetime = statetime
-
+		
 		partnerchickenstats = cc.chickenstats.duplicate()
-
+		partnerchickenmutations = cc.chickenmutations.duplicate()
+		
 	else:
 		velocity += $suslook.transform.x * speed * delta * 1.5
 

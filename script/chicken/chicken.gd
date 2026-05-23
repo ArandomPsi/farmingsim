@@ -46,17 +46,19 @@ var chickenstats : Dictionary = {
 
 
 
-@export var chickenmutations : PackedStringArray = []
+@export var chickenmutations : Array = []
 
 #chicken mutations:
 #Exploding - Osama's chickens
 #Big Peck - Toucan ahhh
 #alpaca - hawctua spit on that thing
 #dagger feathers - put it in me daddy
+#tentacles - that one mhanwa :) 
 
 
 
 var partnerchickenstats : Dictionary = {}
+var partnerchickenmutations : Array = []
 
 
 
@@ -105,6 +107,11 @@ func addmutations():
 			"daggers":
 				var b = load("res://scenes/chicken/daggerfeathermutation.tscn").instantiate()
 				add_child(b)
+			"tentacle":
+				var b = load("res://scenes/chicken/tentaclemutation.tscn").instantiate()
+				add_child(b)
+				speed *= 2
+				b.hp *= 5
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)
@@ -115,7 +122,7 @@ func addmutations():
 func layegg():
 	if partnerchickenstats.is_empty():
 		return
-
+	
 	if not dominant:
 		return
 
@@ -125,6 +132,7 @@ func layegg():
 		chickenstats,
 		partnerchickenstats
 	)
+	egg.mutations = combine_arrays(chickenmutations,partnerchickenmutations)
 	
 	
 	egg.mutations = chickenmutations.duplicate() #only the dominant chicken's genes survive
@@ -148,6 +156,9 @@ func average_stats(a: Dictionary, b: Dictionary) -> Dictionary:
 
 	return result
 
+func combine_arrays(a: Array, b: Array) -> Array:
+	a.append_array(b)
+	return a
 
 #omnomom
 

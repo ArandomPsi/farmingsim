@@ -528,6 +528,7 @@ position = Vector2(379, 448)
 
 [node name="chicken" parent="." instance=ExtResource("7_30ska")]
 position = Vector2(292, 283)
+chickenmutations = ["tentacle"]
 
 [node name="chicken2" parent="." instance=ExtResource("7_30ska")]
 position = Vector2(490, 224)

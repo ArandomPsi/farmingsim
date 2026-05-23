@@ -45,13 +45,12 @@ region_rect = Rect2(32, 0, 16, 22)
 [node name="shadow2" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.568627)
 z_index = -1
-position = Vector2(-2, 10.4)
+position = Vector2(0, 8.6)
 scale = Vector2(1, -1)
-skew = 1.31423
 texture = ExtResource("1_16gv3")
-offset = Vector2(0, -8)
+offset = Vector2(0, -11)
 region_enabled = true
-region_rect = Rect2(33, 0, 15, 22)
+region_rect = Rect2(32, 0, 16, 22)
 script = ExtResource("3_l7fy3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

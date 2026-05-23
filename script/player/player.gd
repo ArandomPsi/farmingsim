@@ -345,6 +345,7 @@ func handle_building(place : bool):
 				b.get_child(0).texture = $phantom.texture
 				b.rotation_degrees = snapped(wrapf($pivot.rotation_degrees, 0.0, 360.0), 90.0) + 90
 				b.get_child(0).global_rotation_degrees = 0
+				playerinventory.removeitem(weapons[currentweapon],1)
 				get_parent().add_child(b)
 			else:
 				
@@ -517,7 +518,7 @@ func updateweapon():
 func camzoomtween(amount : float):
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(camera, "zoom", amount * Vector2.ONE, 0.2)
-	#print(camera.zoom)
+	#(camera.zoom)
 	await tween.finished
 
 

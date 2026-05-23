@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc8iexotcas7j"]
+
+[ext_resource type="Script" uid="uid://bv5c84s61ysnp" path="res://script/chicken/tentaclemutation.gd" id="1_0kdno"]
+[ext_resource type="Script" uid="uid://dslnog8k30fm3" path="res://script/chicken/tentacles.gd" id="2_7y4mn"]
+[ext_resource type="Texture2D" uid="uid://c638mkn5klpse" path="res://assets/chickens/feathertentacle.png" id="2_sxb6l"]
+[ext_resource type="Script" uid="uid://c6pmkkvk4es4w" path="res://script/chicken/tentaclesandstuff.gd" id="3_7y4mn"]
+
+[sub_resource type="Curve" id="Curve_sxb6l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.70983, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.223465), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="tentaclemutation" type="Node2D"]
+show_behind_parent = true
+script = ExtResource("1_0kdno")
+
+[node name="segment" type="Line2D" parent="." node_paths=PackedStringArray("endpos")]
+modulate = Color(0.77, 0.77, 0.77, 1)
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+width = 30.0
+width_curve = SubResource("Curve_sxb6l")
+texture = ExtResource("2_sxb6l")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("2_7y4mn")
+endpos = NodePath("../Node/tentacle1")
+
+[node name="segment2" type="Line2D" parent="." node_paths=PackedStringArray("endpos")]
+modulate = Color(0.77, 0.77, 0.77, 1)
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+width = 30.0
+width_curve = SubResource("Curve_sxb6l")
+texture = ExtResource("2_sxb6l")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("2_7y4mn")
+endpos = NodePath("../Node/tentacle2")
+
+[node name="segment3" type="Line2D" parent="." node_paths=PackedStringArray("endpos")]
+modulate = Color(0.77, 0.77, 0.77, 1)
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+width = 30.0
+width_curve = SubResource("Curve_sxb6l")
+texture = ExtResource("2_sxb6l")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("2_7y4mn")
+endpos = NodePath("../Node/tentacle3")
+
+[node name="segment4" type="Line2D" parent="." node_paths=PackedStringArray("endpos")]
+modulate = Color(0.77, 0.77, 0.77, 1)
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+width = 30.0
+width_curve = SubResource("Curve_sxb6l")
+texture = ExtResource("2_sxb6l")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("2_7y4mn")
+endpos = NodePath("../Node/tentacle4")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="tentacle1" type="Node2D" parent="Node"]
+position = Vector2(20, 20)
+script = ExtResource("3_7y4mn")
+ogpos = Vector2(20, 20)
+
+[node name="tentacle2" type="Node2D" parent="Node"]
+position = Vector2(-20, 20)
+script = ExtResource("3_7y4mn")
+ogpos = Vector2(-20, 20)
+
+[node name="tentacle3" type="Node2D" parent="Node"]
+position = Vector2(-20, -20)
+script = ExtResource("3_7y4mn")
+ogpos = Vector2(-20, -20)
+
+[node name="tentacle4" type="Node2D" parent="Node"]
+position = Vector2(20, -20)
+script = ExtResource("3_7y4mn")
+ogpos = Vector2(20, -20)
