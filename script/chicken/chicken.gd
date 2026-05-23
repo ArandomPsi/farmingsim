@@ -106,7 +106,7 @@ func addmutations():
 			"daggers":
 				var b = load("res://scenes/chicken/daggerfeathermutation.tscn").instantiate()
 				add_child(b)
-			"tentacle":
+			"tentacles":
 				var b = load("res://scenes/chicken/tentaclemutation.tscn").instantiate()
 				add_child(b)
 				speed *= 2
