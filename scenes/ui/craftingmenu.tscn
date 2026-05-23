@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cglt3v5bjm13"]
+[gd_scene load_steps=11 format=3 uid="uid://cglt3v5bjm13"]
 
 [ext_resource type="PackedScene" uid="uid://brskmhpippkmj" path="res://scenes/ui/craftingoption.tscn" id="1_qfvej"]
 [ext_resource type="Resource" uid="uid://o1y0gtjj2j4e" path="res://assets/inventoryresources/dagger.tres" id="2_kjdnd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://k287gt68b62u" path="res://assets/inventoryresources/fence.tres" id="6_uvhgi"]
 [ext_resource type="Resource" uid="uid://bu6c0x7fgdrxr" path="res://assets/inventoryresources/flashlight.tres" id="7_iu7h8"]
 [ext_resource type="Resource" uid="uid://vmwb0r3h710o" path="res://assets/inventoryresources/diamond.tres" id="8_qvyfr"]
+[ext_resource type="Resource" uid="uid://bhl0eob83h2ta" path="res://assets/inventoryresources/coop.tres" id="9_qvyfr"]
 
 [node name="craftingmenu" type="Control"]
 layout_mode = 3
@@ -66,6 +67,16 @@ prerequisite1 = ExtResource("4_p57f4")
 prerequisite1amount = 4
 prerequisite2 = ExtResource("8_qvyfr")
 desc = "4 rocks, 1 diamond. I think you need to light up"
+
+[node name="craftingoption5" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_qfvej")]
+custom_minimum_size = Vector2(30, 80)
+layout_mode = 2
+item = ExtResource("9_qvyfr")
+prerequisite1 = ExtResource("4_p57f4")
+prerequisite1amount = 8
+prerequisite2 = ExtResource("3_27mhi")
+prerequisite2amount = 20
+desc = "20 wood, 8 rocks. keeps chickens safe at night"
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1

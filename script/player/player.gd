@@ -24,7 +24,7 @@ var guns : Array = ["glock", "shotgun", "sniper","uzi"]
 
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
 var consumables : Array = ["drumstick"]
-var buildings : Array = ["fence"]
+var buildings : Array = ["fence", "coop"]
 
 
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
@@ -376,6 +376,34 @@ func handle_building(place : bool):
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 				phantom.modulate.a = 0.5
 				
+		"coop":
+			if place:
+				var b = load("res://scenes/building/chickenhouse.tscn").instantiate()
+				b.global_position = $phantom.global_position
+				playerinventory.removeitem(weapons[currentweapon],1)
+				get_parent().add_child(b)
+				print("placed")
+			else:
+				
+				var phantom = $phantom as Sprite2D
+				phantom.visible = true
+				phantom.texture = load("res://assets/buildings/coop.png")
+				
+				phantom.rotation = 0
+				
+				
+				phantom.scale = Vector2(5,5)
+				phantom.global_position = round(get_global_mouse_position() / 14) * 14
+				var maxdist : float = 180
+				var offset = phantom.global_position - global_position
+				
+				if offset.length() > maxdist:
+					offset = offset.normalized() * maxdist
+				
+				phantom.global_position = global_position + offset
+				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+				phantom.modulate.a = 0.5
+				
 				
 
 
@@ -491,24 +519,24 @@ func updateweapon():
 	match currentweaponname:
 		"glock":
 			currentmagsize = magsizes[0]
-			a = 1.45
+			a = 1.12
 		"shotgun":
 			currentmagsize = magsizes[1]
-			a = 1.47
+			a = 1.28
 		"sniper":
 			currentmagsize = magsizes[2]
-			a = 1.2
+			a = 0.9
 		"uzi":
-			a = 1.6
+			a = 1.34
 			currentmagsize = magsizes[3]
 		"dagger":
-			a = 1.5
+			a = 1.18
 			h = true
 			currentmagsize = magsizes[4]
 		"flashlight":
-			a = 1.5
+			a = 1.2
 		_:
-			a = 1.5
+			a = 1.2
 	$hud/bulletamount.visible = not h
 
 	if not currentweaponname == pastweaponname:

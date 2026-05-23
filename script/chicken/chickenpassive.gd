@@ -51,9 +51,9 @@ func handle_states():
 		updatetick = randi_range(20, 40)
 	
 	#UUUUHHH
-	if chickenmutations.has("explosiveness"):
+	if chickenmutations.has("exploding"):
 		dominant = true
-	
+		
 		if state != STATE_MATE:
 			state = STATE_MATE
 			statetime = 600

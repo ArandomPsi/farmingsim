@@ -65,7 +65,6 @@ var partnerchickenmutations : Array = []
 func _ready() -> void:
 	randomize_stats()
 	addmutations()
-	$flip/sprite.modulate = chickenstats["color"]
 	
 	add_to_group("chicken")
 	
@@ -88,7 +87,6 @@ func randomize_stats():
 	hp *= chickenstats["strength"]
 	
 	$flip/sprite.modulate = chickenstats["color"]
-	print(str($flip/sprite.modulate))
 	
 
 
@@ -96,8 +94,9 @@ func addmutations():
 	for i in range(chickenmutations.size()):
 		match chickenmutations[i]:
 			"exploding":
-				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
+				var b = load("res://scenes/chicken/explodingmutation.tscn").instantiate()
 				add_child(b)
+				hp *= 9
 			"alpaca":
 				var b = load("res://scenes/chicken/alpaca.tscn").instantiate()
 				add_child(b)
@@ -111,7 +110,11 @@ func addmutations():
 				var b = load("res://scenes/chicken/tentaclemutation.tscn").instantiate()
 				add_child(b)
 				speed *= 2
-				b.hp *= 5
+				hp *= 3
+			"golden":
+				$flip/sprite.modulate = Color("f9ff4a")
+				var b = load("res://scenes/chicken/goldenmutation.tscn").instantiate()
+				add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)
@@ -205,6 +208,9 @@ func die():
 
 	# optional value scaling
 	body.chickenvalue *= max(chickenstats["size"] - 2, 1)
+	body.modulate = $flip/sprite.modulate
+	if chickenmutations.has("golden"):
+		body.chickenvalue *= 67
 
 	queue_free()
 

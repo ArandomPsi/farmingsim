@@ -1,4 +1,4 @@
-extends Node2D
+extends mineable
 
 var eggspace : int = 5 # max amount of eggs coop can hold
 var eggs : Array = []

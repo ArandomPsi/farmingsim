@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccnw0jgtrq1gt"]
+
+[ext_resource type="Texture2D" uid="uid://cdopshirgln7h" path="res://assets/chickens/sparkle.png" id="1_u6bey"]
+
+[sub_resource type="Gradient" id="Gradient_vp7ui"]
+offsets = PackedFloat32Array(0.807778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xsieq"]
+gradient = SubResource("Gradient_vp7ui")
+
+[sub_resource type="Curve" id="Curve_wsf3p"]
+_data = [Vector2(0, 0.585666), 0.0, 0.0, 0, 0, Vector2(0.328092, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_01t00"]
+curve = SubResource("Curve_wsf3p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_37sqj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 31.1
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 57.45
+initial_velocity_max = 57.45
+angular_velocity_min = -205.28
+angular_velocity_max = 205.28
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_01t00")
+color = Color(1, 0.99, 0.8, 0.513726)
+color_ramp = SubResource("GradientTexture1D_xsieq")
+
+[node name="goldenmutation" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_u6bey")
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_37sqj")

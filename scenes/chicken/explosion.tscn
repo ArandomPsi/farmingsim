@@ -55,28 +55,28 @@ region = Rect2(448, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_503mg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_h15h6")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_gx24n")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_7wi0p")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_n0p4h")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_2o8ky")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_jxdn1")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_vb2f5")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_88b28")
 }, {
 "duration": 1.0,
@@ -96,11 +96,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 30.0
+"speed": 40.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8hny"]
-radius = 18.0278
+radius = 21.0038
 
 [node name="explosion" type="AnimatedSprite2D"]
 texture_filter = 1
@@ -112,8 +112,13 @@ frame_progress = 1.0
 script = ExtResource("2_q1olu")
 
 [node name="attackbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 262
 script = ExtResource("3_q1olu")
+damage = 40
 metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
 shape = SubResource("CircleShape2D_c8hny")
+
+[connection signal="body_entered" from="attackbox" to="attackbox" method="_on_body_entered"]
