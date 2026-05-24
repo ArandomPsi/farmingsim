@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=90 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Texture2D" uid="uid://bmp8hkg6g3e1e" path="res://assets/creatures/Minifantasy_Creatures_v3.3_Free_Version/Minifantasy_Creatures_Assets/Base_Humanoids/Human/Base_Human/HumanIdle.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
@@ -278,6 +278,14 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm80t"]
 bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qxvo"]
+bg_color = Color(0, 0, 0, 0.541176)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -583,11 +591,11 @@ value = 100.0
 show_percentage = false
 
 [node name="text" type="Panel" parent="hud"]
-visible = false
 offset_left = 712.0
 offset_top = 483.0
 offset_right = 1154.0
 offset_bottom = 651.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qxvo")
 
 [node name="text" type="Label" parent="hud/text"]
 layout_mode = 1
@@ -599,7 +607,14 @@ offset_top = 34.0
 offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hello Bro"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("11_je7p5")
+text = "Hello Bro
+wsg"
 
 [node name="name" type="Label" parent="hud/text"]
 layout_mode = 0
@@ -607,7 +622,14 @@ offset_left = 11.0
 offset_top = 9.0
 offset_right = 147.0
 offset_bottom = 32.0
-text = "Joe Mama"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("11_je7p5")
+text = "Hello Bro
+"
 
 [node name="shop" type="NinePatchRect" parent="hud"]
 visible = false

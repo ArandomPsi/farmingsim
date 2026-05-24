@@ -1,0 +1,215 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpijs4rkfavks"]
+
+[ext_resource type="Script" uid="uid://dhjtd6hq8ojua" path="res://script/chicken/quirios.gd" id="1_pjw7s"]
+[ext_resource type="Texture2D" uid="uid://bumc5c17fbprh" path="res://assets/chickens/qurio.png" id="2_dpcde"]
+[ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="3_fncyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fncyw"]
+atlas = ExtResource("2_dpcde")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aomd"]
+atlas = ExtResource("2_dpcde")
+region = Rect2(9, 0, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_geyja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fncyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7aomd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpcde"]
+radius = 107.787
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7aomd"]
+
+[node name="quiro" type="Node"]
+
+[node name="quirio1" type="Node2D" parent="."]
+script = ExtResource("1_pjw7s")
+
+[node name="sprite" type="AnimatedSprite2D" parent="quirio1"]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_geyja")
+autoplay = "default"
+frame_progress = 0.388243
+
+[node name="Area2D" type="Area2D" parent="quirio1"]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio1/Area2D"]
+shape = SubResource("CircleShape2D_dpcde")
+
+[node name="attackbox" type="Area2D" parent="quirio1"]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_fncyw")
+damage = 1
+hitstop = 0.01
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio1/attackbox"]
+shape = SubResource("CircleShape2D_7aomd")
+
+[node name="quirio2" type="Node2D" parent="."]
+script = ExtResource("1_pjw7s")
+
+[node name="sprite" type="AnimatedSprite2D" parent="quirio2"]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_geyja")
+autoplay = "default"
+frame_progress = 0.519683
+
+[node name="Area2D" type="Area2D" parent="quirio2"]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio2/Area2D"]
+shape = SubResource("CircleShape2D_dpcde")
+
+[node name="attackbox" type="Area2D" parent="quirio2"]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_fncyw")
+damage = 1
+hitstop = 0.01
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio2/attackbox"]
+shape = SubResource("CircleShape2D_7aomd")
+
+[node name="quirio3" type="Node2D" parent="."]
+script = ExtResource("1_pjw7s")
+
+[node name="sprite" type="AnimatedSprite2D" parent="quirio3"]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_geyja")
+autoplay = "default"
+frame_progress = 0.519683
+
+[node name="Area2D" type="Area2D" parent="quirio3"]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio3/Area2D"]
+shape = SubResource("CircleShape2D_dpcde")
+
+[node name="attackbox" type="Area2D" parent="quirio3"]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_fncyw")
+damage = 1
+hitstop = 0.01
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio3/attackbox"]
+shape = SubResource("CircleShape2D_7aomd")
+
+[node name="quirio4" type="Node2D" parent="."]
+script = ExtResource("1_pjw7s")
+
+[node name="sprite" type="AnimatedSprite2D" parent="quirio4"]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_geyja")
+autoplay = "default"
+frame_progress = 0.519683
+
+[node name="Area2D" type="Area2D" parent="quirio4"]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio4/Area2D"]
+shape = SubResource("CircleShape2D_dpcde")
+
+[node name="attackbox" type="Area2D" parent="quirio4"]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_fncyw")
+damage = 1
+hitstop = 0.01
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio4/attackbox"]
+shape = SubResource("CircleShape2D_7aomd")
+
+[node name="quirio5" type="Node2D" parent="."]
+script = ExtResource("1_pjw7s")
+
+[node name="sprite" type="AnimatedSprite2D" parent="quirio5"]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_geyja")
+autoplay = "default"
+frame_progress = 0.519683
+
+[node name="Area2D" type="Area2D" parent="quirio5"]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio5/Area2D"]
+shape = SubResource("CircleShape2D_dpcde")
+
+[node name="attackbox" type="Area2D" parent="quirio5"]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_fncyw")
+damage = 1
+hitstop = 0.01
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio5/attackbox"]
+shape = SubResource("CircleShape2D_7aomd")
+
+[node name="quirio6" type="Node2D" parent="."]
+script = ExtResource("1_pjw7s")
+
+[node name="sprite" type="AnimatedSprite2D" parent="quirio6"]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_geyja")
+autoplay = "default"
+frame_progress = 0.519683
+
+[node name="Area2D" type="Area2D" parent="quirio6"]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio6/Area2D"]
+shape = SubResource("CircleShape2D_dpcde")
+
+[node name="attackbox" type="Area2D" parent="quirio6"]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_fncyw")
+damage = 1
+hitstop = 0.01
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quirio6/attackbox"]
+shape = SubResource("CircleShape2D_7aomd")
+
+[connection signal="body_entered" from="quirio1/attackbox" to="quirio1" method="attackboxentered"]
+[connection signal="body_entered" from="quirio1/attackbox" to="quirio1/attackbox" method="_on_body_entered"]
+[connection signal="body_entered" from="quirio2/attackbox" to="quirio2" method="attackboxentered"]
+[connection signal="body_entered" from="quirio2/attackbox" to="quirio2/attackbox" method="_on_body_entered"]
+[connection signal="body_entered" from="quirio3/attackbox" to="quirio3" method="attackboxentered"]
+[connection signal="body_entered" from="quirio3/attackbox" to="quirio3/attackbox" method="_on_body_entered"]
+[connection signal="body_entered" from="quirio4/attackbox" to="quirio4" method="attackboxentered"]
+[connection signal="body_entered" from="quirio4/attackbox" to="quirio4/attackbox" method="_on_body_entered"]
+[connection signal="body_entered" from="quirio5/attackbox" to="quirio5" method="attackboxentered"]
+[connection signal="body_entered" from="quirio5/attackbox" to="quirio5/attackbox" method="_on_body_entered"]
+[connection signal="body_entered" from="quirio6/attackbox" to="quirio6" method="attackboxentered"]
+[connection signal="body_entered" from="quirio6/attackbox" to="quirio6/attackbox" method="_on_body_entered"]

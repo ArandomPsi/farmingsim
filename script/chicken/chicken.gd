@@ -56,7 +56,7 @@ var chickenstats : Dictionary = {
 #tentacles - that one mhanwa :) 
 #hellfire - counters
 #divinity - immortality
-
+#qurio - parasitic immortality
 
 
 var partnerchickenstats : Dictionary = {}
@@ -124,6 +124,10 @@ func addmutations():
 				hp *= 6
 			"divinity":
 				hp = 50
+			"qurio":
+				hp /= 2
+				var b = load("res://scenes/chicken/quiro.tscn").instantiate()
+				add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)
