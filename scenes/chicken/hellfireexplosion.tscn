@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://coaifcnfc2hlr"]
+
+[ext_resource type="Texture2D" uid="uid://dft75feaexxsc" path="res://assets/chickens/explosion.png" id="1_fgeb0"]
+[ext_resource type="Script" uid="uid://bl88oioi340xc" path="res://script/vfx/sprites.gd" id="2_ggtss"]
+[ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="3_ggtss"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_djqld"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djqld"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggtss"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfghw"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms7s3"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu2n8"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlfnr"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nydo"]
+atlas = ExtResource("1_fgeb0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dufro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djqld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggtss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfghw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms7s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu2n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlfnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nydo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggtss"]
+radius = 14.6
+
+[node name="hellfireexplosion" type="AnimatedSprite2D"]
+modulate = Color(0.883333, 0, 1, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_djqld")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_dufro")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("2_ggtss")
+
+[node name="attackbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("3_ggtss")
+damage = 8
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
+shape = SubResource("CircleShape2D_ggtss")
+
+[connection signal="body_entered" from="attackbox" to="attackbox" method="_on_body_entered"]

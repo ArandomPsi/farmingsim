@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc1font0k1tmj"]
+
+[ext_resource type="Texture2D" uid="uid://ctfoe7nxvm4xj" path="res://assets/chickens/hellfireblight.png" id="1_4ijvf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kr5gu"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_4ijvf"]
+offsets = PackedFloat32Array(0, 0.0833333, 0.272222, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kr5gu"]
+gradient = SubResource("Gradient_4ijvf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17fj6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 34.65
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 140.43
+initial_velocity_max = 140.43
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 6.0
+color = Color(0.533333, 0, 1, 1)
+color_ramp = SubResource("GradientTexture1D_kr5gu")
+anim_speed_min = 0.62
+anim_speed_max = 0.62
+anim_offset_max = 1.0
+
+[node name="hellfirecloak" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_kr5gu")
+amount = 30
+texture = ExtResource("1_4ijvf")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_17fj6")

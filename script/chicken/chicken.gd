@@ -54,6 +54,8 @@ var chickenstats : Dictionary = {
 #alpaca - hawctua spit on that thing
 #dagger feathers - put it in me daddy
 #tentacles - that one mhanwa :) 
+#hellfire - counters
+#divinity - immortality
 
 
 
@@ -115,6 +117,13 @@ func addmutations():
 				$flip/sprite.modulate = Color("f9ff4a")
 				var b = load("res://scenes/chicken/goldenmutation.tscn").instantiate()
 				add_child(b)
+			"hellfire":
+				var b = load("res://scenes/chicken/hellfirecloak.tscn").instantiate()
+				add_child(b)
+				speed *= 1.2
+				hp *= 6
+			"divinity":
+				hp = 50
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)
@@ -137,8 +146,6 @@ func layegg():
 	)
 	egg.mutations = combine_arrays(chickenmutations,partnerchickenmutations)
 	
-	
-	egg.mutations = chickenmutations.duplicate() #only the dominant chicken's genes survive
 	
 	get_parent().add_child(egg)
 	
@@ -179,10 +186,27 @@ func damage(damage):
 	state = reactionstate
 	print(state)
 	statetime = 300
+	if chickenmutations.has("hellfire"):
+		hellfirecounter()
 	if hp <= 0:
 		die()
 	else:
 		spawn_blood()
+
+func hellfirecounter():
+	var e = preload("res://scenes/chicken/hellfirechargeup.tscn").instantiate()
+	get_parent().add_child(e)
+	e.position = position
+	global.player.shakeframes += 10
+	var timer = get_tree().create_timer(0.4)
+	await timer.timeout
+	for i in range(30):
+		var b = preload("res://scenes/chicken/hellfireexplosion.tscn").instantiate()
+		get_parent().add_child(b)
+		var maxrandompos : int = 100
+		b.position = position + Vector2(randi_range(-maxrandompos,maxrandompos),randi_range(-maxrandompos,maxrandompos))
+		b.rotation = randf_range(0,2 * PI)
+		await get_tree().process_frame
 
 
 func spawn_blood():
@@ -194,25 +218,45 @@ func spawn_blood():
 
 
 func die():
-	var body = DEAD_SCENE.instantiate()
-
-	body.chickenstats = chickenstats.duplicate()
-
-	if is_instance_valid(ropecrash):
-		ropecrash.queue_free()
-
-	get_parent().add_child(body)
-
-	body.position = position
-	body.scale.x = $flip.scale.x
-
-	# optional value scaling
-	body.chickenvalue *= max(chickenstats["size"] - 2, 1)
-	body.modulate = $flip/sprite.modulate
-	if chickenmutations.has("golden"):
-		body.chickenvalue *= 67
-
+	
+	if not chickenmutations.has("divinity"):
+		var body = DEAD_SCENE.instantiate()
+		
+		body.chickenstats = chickenstats.duplicate()
+		
+		if is_instance_valid(ropecrash):
+			ropecrash.queue_free()
+		
+		get_parent().add_child(body)
+		
+		body.position = position
+		body.scale.x = $flip.scale.x
+		
+		# optional value scaling
+		body.chickenvalue *= max(chickenstats["size"] - 2, 1)
+		body.modulate = $flip/sprite.modulate
+		if chickenmutations.has("golden"):
+			body.chickenvalue *= 67
+		
+		
+	else: #creates a new chicken and stuff
+		var loading : String = "res://scenes/chicken/hostilechicken.tscn"
+		if randi_range(0,100) > 20: #20 percent chance to be hostile
+			loading = "res://scenes/chicken/chicken.tscn"
+		var b = load(loading).instantiate()
+		get_parent().add_child(b)
+		b.chickenstats = chickenstats.duplicate()
+		b.chickenmutations = chickenmutations.duplicate()
+		b.position = position
+		b.hp = 50
+		var c = load("res://scenes/chicken/rebirtheffect.tscn").instantiate()
+		get_parent().add_child(c)
+		c.position = b.position
+		queue_free()
+		
 	queue_free()
+	
+	
 
 
 #targeting

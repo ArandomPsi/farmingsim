@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0hoika77jqln"]
+
+[ext_resource type="Script" uid="uid://cwhx8ntph4htd" path="res://script/chicken/rebirtheffect.gd" id="1_5ygwl"]
+[ext_resource type="Texture2D" uid="uid://vynhmh8cc0ry" path="res://assets/chickens/wing.png" id="1_d3vc4"]
+[ext_resource type="Texture2D" uid="uid://byieqxs2xxjby" path="res://assets/chickens/Flame.png" id="3_s4v2p"]
+[ext_resource type="Script" uid="uid://can0xt4bkyknk" path="res://script/vfx/particles.gd" id="4_ow707"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ygwl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s4v2p"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_ow707"]
+offsets = PackedFloat32Array(0, 0.22, 0.47, 0.713333)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bfj61"]
+gradient = SubResource("Gradient_ow707")
+
+[sub_resource type="Curve" id="Curve_s4v2p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.951782, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ow707"]
+curve = SubResource("Curve_s4v2p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow707"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 417.02
+initial_velocity_max = 561.7
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_ow707")
+color = Color(1, 0.933333, 0, 1)
+color_ramp = SubResource("GradientTexture1D_bfj61")
+
+[node name="rebirtheffect" type="Node2D"]
+script = ExtResource("1_5ygwl")
+
+[node name="wing1" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_5ygwl")
+position = Vector2(31, 3)
+rotation = -2.27224
+scale = Vector2(8, 8)
+texture = ExtResource("1_d3vc4")
+offset = Vector2(4, -4)
+
+[node name="wing2" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_5ygwl")
+position = Vector2(-28, 3)
+rotation = 2.36181
+scale = Vector2(8, 8)
+texture = ExtResource("1_d3vc4")
+offset = Vector2(-4, -4)
+flip_h = true
+
+[node name="flame" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_s4v2p")
+position = Vector2(3, 28)
+emitting = false
+amount = 30
+texture = ExtResource("3_s4v2p")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ow707")
+script = ExtResource("4_ow707")
