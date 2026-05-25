@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=90 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cm6rei6au5vmn" path="res://script/shaders.gd" id="4_p47bc"]
 [ext_resource type="Texture2D" uid="uid://1kdj10dofrhj" path="res://assets/playerstuff/flashlighthing.svg" id="7_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://doqi2r4vfogw4" path="res://assets/inventoryicons/daggercolorpallate.png" id="7_iqsei"]
+[ext_resource type="Texture2D" uid="uid://c8nfuq16kup18" path="res://assets/playerstuff/chainsaw.png" id="9_4hvnv"]
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
@@ -22,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://ivt6x7j0a8cl" path="res://assets/inventoryresources/drumstick.tres" id="25_4hvnv"]
 [ext_resource type="Resource" uid="uid://g73g1d0xu330" path="res://assets/inventoryresources/uzi.tres" id="25_iqsei"]
 [ext_resource type="PackedScene" uid="uid://tdjc0nfwxtkw" path="res://scenes/ui/inventoryui.tscn" id="26_6cv16"]
+[ext_resource type="Resource" uid="uid://d0qbkvhifolj6" path="res://assets/inventoryresources/chainsaw.tres" id="26_bbmj2"]
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
 [ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="27_uniwh"]
 [ext_resource type="Script" uid="uid://cs3av03m2lixa" path="res://script/debug/fps.gd" id="29_4hvnv"]
@@ -219,6 +221,28 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fcs02"]
 gradient = SubResource("Gradient_ugbui")
 metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb1ce"]
+atlas = ExtResource("9_4hvnv")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ncpa"]
+atlas = ExtResource("9_4hvnv")
+region = Rect2(0, 9, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upxxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb1ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ncpa")
+}],
+"loop": true,
+"name": &"chainsaw",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 
@@ -464,6 +488,14 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_fcs02")
 offset = Vector2(50, 0)
 
+[node name="chainsaw" type="AnimatedSprite2D" parent="pivot"]
+visible = false
+texture_filter = 1
+position = Vector2(21, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_upxxc")
+animation = &"chainsaw"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dovo2")
 
@@ -627,7 +659,6 @@ text = "Hello Bro
 "
 
 [node name="shop" type="NinePatchRect" parent="hud"]
-visible = false
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -840,21 +871,24 @@ item = ExtResource("25_4hvnv")
 costs = 30
 description = "Yummy yummy yummy for your little bitty tummy"
 
-[node name="Button8" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="chainsaw" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "cfdgzsaf"
+text = "Chainsaw"
 alignment = 0
 script = ExtResource("17_uf5tr")
-item = ExtResource("27_uniwh")
+item = ExtResource("26_bbmj2")
+costs = 2300
+description = "rip through trees quickly
+"
 
 [node name="preview" type="Sprite2D" parent="hud/shop"]
 texture_filter = 1

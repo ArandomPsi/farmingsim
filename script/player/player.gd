@@ -76,7 +76,7 @@ func controls():
 	
 	var guntype : bool = false
 	
-	if currentweaponname == "uzi": #rapid guns
+	if currentweaponname in ["uzi", "chainsaw"]: #rapid guns
 		guntype = true
 	
 	if not consumables.has(currentweaponname) and not buildings.has(currentweaponname):
@@ -84,10 +84,15 @@ func controls():
 			
 			#brrrrrrrrrr
 			if Input.is_action_pressed("shoot") :
+				if currentweaponname == "chainsaw" and currentweaponcooldown < 1:
+					pewpew()
+					currentweaponcooldown = 7
 				if currentmagsize > 0 and reloadingframes < 1 and currentweaponcooldown < 1:
 					pewpew()
 					currentmagsize -= 1
 					currentweaponcooldown = 2
+			else:
+				$pivot/chainsaw.stop()
 		elif not currentweaponname == "flashlight":
 			
 			#pew pew
@@ -206,7 +211,8 @@ func updatepos(delta : float):
 
 func updatevisuals():
 	
-	
+	$pivot/chainsaw.visible = currentweaponname == "chainsaw"
+	$pivot/guns.visible = not $pivot/chainsaw.visible
 	flipstuff()
 	camerastuff()
 	playeranimstuff()
@@ -320,6 +326,10 @@ func pewpew():
 				b.visible = false
 		"pickaxe":
 			$pivot/guns.rotation_degrees += 80 * $pivot/guns.scale.y
+			if $orechecker.has_overlapping_areas():
+				mineore()
+		"chainsaw":
+			$pivot/chainsaw.play("chainsaw")
 			if $orechecker.has_overlapping_areas():
 				mineore()
 

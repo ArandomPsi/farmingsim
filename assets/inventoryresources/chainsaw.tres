@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=4 format=3 uid="uid://d0qbkvhifolj6"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_hltrc"]
+[ext_resource type="Texture2D" uid="uid://c8nfuq16kup18" path="res://assets/playerstuff/chainsaw.png" id="2_8k8vt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v07a"]
+atlas = ExtResource("2_8k8vt")
+region = Rect2(0, 1.15546, 9, 5.44307)
+filter_clip = true
+
+[resource]
+script = ExtResource("1_hltrc")
+name = "chainsaw"
+texture = SubResource("AtlasTexture_8v07a")
+stackable = false
+consumable = false
+building = false
+phantom_scale = Vector2(0, 0)
+weight_mult = 0.8
+metadata/_custom_type_script = "uid://crrj4roi22rhi"
