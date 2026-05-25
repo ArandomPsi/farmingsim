@@ -423,13 +423,13 @@ sources/1 = SubResource("TileSetAtlasSource_mxay4")
 offsets = PackedFloat32Array(0.74026, 0.779221, 0.810606, 0.900433, 0.928571)
 colors = PackedColorArray(0, 0.483333, 1, 1, 0.110815, 0.533301, 0.984923, 1, 0.147, 0.549616, 0.98, 1, 0.166357, 0.558748, 0.980915, 1, 0.57, 0.749167, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mrjnl"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cumk7"]
 gradient = SubResource("Gradient_mgs8m")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mgs8m"]
 noise_type = 2
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mrjnl"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mgs8m"]
 seamless = true
 seamless_blend_skirt = 0.602
 noise = SubResource("FastNoiseLite_mgs8m")
@@ -438,25 +438,25 @@ noise = SubResource("FastNoiseLite_mgs8m")
 noise_type = 2
 frequency = 0.0186
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e07uo"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mrjnl"]
 seamless = true
 seamless_blend_skirt = 0.722
 noise = SubResource("FastNoiseLite_rqo2c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mrjnl"]
 shader = ExtResource("4_cumk7")
-shader_parameter/iChannel0 = SubResource("NoiseTexture2D_mrjnl")
-shader_parameter/iChannel1 = SubResource("NoiseTexture2D_e07uo")
+shader_parameter/iChannel0 = SubResource("NoiseTexture2D_mgs8m")
+shader_parameter/iChannel1 = SubResource("NoiseTexture2D_mrjnl")
 shader_parameter/param1 = Vector2(0.3, 0.2)
 shader_parameter/param2 = Vector2(0.4, 0.7)
 shader_parameter/param3 = Vector2(0.3, 0.1)
-shader_parameter/gradient = SubResource("GradientTexture1D_mrjnl")
+shader_parameter/gradient = SubResource("GradientTexture1D_cumk7")
 shader_parameter/pixel_size = 174.3
 
-[sub_resource type="Gradient" id="Gradient_cumk7"]
+[sub_resource type="Gradient" id="Gradient_rqo2c"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mgs8m"]
-gradient = SubResource("Gradient_cumk7")
+gradient = SubResource("Gradient_rqo2c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8l4j"]
 shader = ExtResource("2_rqo2c")

@@ -1,0 +1,284 @@
+[gd_scene load_steps=31 format=3 uid="uid://cghpaqlgwcu6e"]
+
+[ext_resource type="Texture2D" uid="uid://coxgedo0ryy4u" path="res://assets/ui/sun.png" id="1_4v1qu"]
+[ext_resource type="Texture2D" uid="uid://ddp16gkononxi" path="res://assets/ui/chickenisland.png" id="1_t6us6"]
+[ext_resource type="Shader" uid="uid://chevx0mjcsegt" path="res://shaders/waterreflect.gdshader" id="2_4v1qu"]
+[ext_resource type="Shader" uid="uid://tdmfc3u7pyya" path="res://shaders/clouds.gdshader" id="2_s1drf"]
+[ext_resource type="Shader" uid="uid://btus7pjn3djmr" path="res://shaders/godray.gdshader" id="3_ve8eu"]
+[ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_yo48d"]
+
+[sub_resource type="Gradient" id="Gradient_g80e2"]
+offsets = PackedFloat32Array(0, 0.562753)
+colors = PackedColorArray(1, 0.8215, 0.49, 1, 0.31, 0.632, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4v1qu"]
+gradient = SubResource("Gradient_g80e2")
+fill_from = Vector2(0.5, 0.3)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4v1qu"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_4v1qu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s1drf"]
+gradient = SubResource("Gradient_4v1qu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ve8eu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yo48d"]
+seamless = true
+noise = SubResource("FastNoiseLite_ve8eu")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_woxfd"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q341w"]
+seamless = true
+noise = SubResource("FastNoiseLite_woxfd")
+
+[sub_resource type="Gradient" id="Gradient_n73pj"]
+offsets = PackedFloat32Array(0.566017, 0.780303)
+colors = PackedColorArray(0.79, 0.29467, 0.00789999, 0, 1, 0.373, 0.00999999, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ckdpy"]
+gradient = SubResource("Gradient_n73pj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7m88i"]
+shader = ExtResource("2_s1drf")
+shader_parameter/pixelation = Vector2(128, 128)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_yo48d")
+shader_parameter/scroll_speed1 = Vector2(0.04, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_q341w")
+shader_parameter/scroll_speed2 = Vector2(-0.03, -0.004)
+shader_parameter/center_pos = Vector2(0.5, -0.8)
+shader_parameter/position_impact = 0.68
+shader_parameter/color_gardient = SubResource("GradientTexture1D_ckdpy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo48d"]
+shader = ExtResource("3_ve8eu")
+shader_parameter/angle = 0.15
+shader_parameter/position = 0.2
+shader_parameter/spread = 0.05
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.403
+shader_parameter/edge_fade = 0.148
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.0
+shader_parameter/color = Color(1, 0.716667, 0, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s1drf"]
+noise_type = 2
+frequency = 0.026
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ve8eu"]
+seamless = true
+noise = SubResource("FastNoiseLite_s1drf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yo48d"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_woxfd"]
+seamless = true
+noise = SubResource("FastNoiseLite_yo48d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q341w"]
+shader = ExtResource("2_4v1qu")
+shader_parameter/pixel_size = 0.5
+shader_parameter/offSet = -0.01
+shader_parameter/YDistortion = 0.3
+shader_parameter/waterNoise = SubResource("NoiseTexture2D_woxfd")
+shader_parameter/waterDistortionNoise = SubResource("NoiseTexture2D_ve8eu")
+shader_parameter/waterColor = Color(0.78, 0.53014, 0.2964, 1)
+shader_parameter/colorCorection = 0.46
+shader_parameter/distortionForce = 0.043
+shader_parameter/WDBrightness = 3.0
+shader_parameter/WDFreq = 0.55
+shader_parameter/WDSize = 0.9
+shader_parameter/WDSpeed = 15.65
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offSetSpeed = Vector2(0.01, 0.01)
+shader_parameter/backGroundDirX = 0.01
+shader_parameter/backGroundDirY = 0.01
+
+[sub_resource type="Gradient" id="Gradient_cumk7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ckdpy"]
+gradient = SubResource("Gradient_cumk7")
+
+[sub_resource type="Environment" id="Environment_4v1qu"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.19
+glow_strength = 0.62
+glow_bloom = 0.13
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_contrast = 1.31
+adjustment_saturation = 1.16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo48d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_woxfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q341w"]
+
+[node name="title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sky" type="Sprite2D" parent="bg"]
+texture_filter = 1
+position = Vector2(591.996, 223)
+scale = Vector2(18.9064, 14.4062)
+texture = SubResource("GradientTexture2D_4v1qu")
+
+[node name="Sun" type="Sprite2D" parent="bg"]
+self_modulate = Color(1, 0.692, 0.44, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_4v1qu")
+position = Vector2(569, 294)
+scale = Vector2(2.34375, 2.34375)
+texture = ExtResource("1_4v1qu")
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/Sun"]
+modulate = Color(1, 0.766667, 0, 1)
+show_behind_parent = true
+scale = Vector2(2.29688, 2.29688)
+texture = SubResource("GradientTexture2D_s1drf")
+
+[node name="clouds" type="ColorRect" parent="bg"]
+material = SubResource("ShaderMaterial_7m88i")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="bg"]
+material = SubResource("ShaderMaterial_yo48d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 132.0
+offset_top = 621.0
+offset_right = 132.0
+offset_bottom = 621.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, -1)
+
+[node name="island" type="Sprite2D" parent="bg"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(393, 418)
+scale = Vector2(4, 4)
+texture = ExtResource("1_t6us6")
+flip_v = true
+
+[node name="water" type="Sprite2D" parent="bg"]
+material = SubResource("ShaderMaterial_q341w")
+position = Vector2(492, 524)
+scale = Vector2(62.5, 5.75)
+texture = SubResource("GradientTexture2D_ckdpy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4v1qu")
+
+[node name="title" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 640.0
+offset_top = -61.0
+offset_right = 1320.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.215686)
+theme_override_constants/line_spacing = 80
+theme_override_fonts/font = ExtResource("6_yo48d")
+text = "Buckapagos Island"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 463.0
+offset_right = 1125.0
+offset_bottom = 505.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yo48d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_woxfd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q341w")
+text = "play"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 518.0
+offset_right = 1125.0
+offset_bottom = 560.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yo48d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_woxfd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q341w")
+text = "settings"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 577.0
+offset_right = 1125.0
+offset_bottom = 619.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yo48d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_woxfd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q341w")
+text = "quit"
