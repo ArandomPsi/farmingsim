@@ -5,6 +5,8 @@ const STATE_WANDER = 1
 const STATE_EAT = 2
 const STATE_HOSTILE = 3
 
+@onready var randomlook = $randomlook as Node2D
+
 var animframes : int = 0
 
 var attackrange : float = 60

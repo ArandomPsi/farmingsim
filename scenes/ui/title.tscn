@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://cghpaqlgwcu6e"]
+[gd_scene load_steps=32 format=3 uid="uid://cghpaqlgwcu6e"]
 
 [ext_resource type="Texture2D" uid="uid://coxgedo0ryy4u" path="res://assets/ui/sun.png" id="1_4v1qu"]
 [ext_resource type="Texture2D" uid="uid://ddp16gkononxi" path="res://assets/ui/chickenisland.png" id="1_t6us6"]
+[ext_resource type="Script" uid="uid://d0ua2n80dt432" path="res://script/ui/title.gd" id="1_woxfd"]
 [ext_resource type="Shader" uid="uid://chevx0mjcsegt" path="res://shaders/waterreflect.gdshader" id="2_4v1qu"]
 [ext_resource type="Shader" uid="uid://tdmfc3u7pyya" path="res://shaders/clouds.gdshader" id="2_s1drf"]
 [ext_resource type="Shader" uid="uid://btus7pjn3djmr" path="res://shaders/godray.gdshader" id="3_ve8eu"]
@@ -149,6 +150,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_woxfd")
 
 [node name="bg" type="Control" parent="."]
 layout_mode = 1
@@ -282,3 +284,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yo48d")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_woxfd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q341w")
 text = "quit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(472, 301)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

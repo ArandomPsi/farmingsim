@@ -526,7 +526,7 @@ mouse_filter = 2
 position = Vector2(379, 448)
 
 [node name="chicken" parent="." instance=ExtResource("7_30ska")]
-position = Vector2(292, 283)
+position = Vector2(-690, 101)
 
 [node name="chicken2" parent="." instance=ExtResource("7_30ska")]
 position = Vector2(490, 224)

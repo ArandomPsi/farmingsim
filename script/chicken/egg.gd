@@ -22,9 +22,9 @@ func _ready() -> void:
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 	chickenstats["strength"] *= randf_range(0.8,1.5)
 	
-	if randi_range(1,3) == 1: #random chance to add a random mutation
+	if randi_range(1,5) == 1: #random chance to add a random mutation
 		mutations.push_back(global.allmutations[randi_range(0,global.allmutations.size()-1)])
-	if randi_range(1,10) == 1 and not mutations.is_empty():
+	if randi_range(1,4) == 1 and not mutations.is_empty():
 		mutations.pop_at(randi_range(0,mutations.size()-1)) #remove a random part
 	
 	chickenstats["color"].r *= randf_range(0.8,1.1)

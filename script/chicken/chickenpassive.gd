@@ -7,6 +7,8 @@ const STATE_MATE = 3
 const STATE_COOP = 4
 const STATE_RUN = 5
 
+@onready var randomlook = $randomlook as Node2D
+
 
 func _process(delta: float) -> void:
 	handle_states()

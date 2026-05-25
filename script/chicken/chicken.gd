@@ -57,6 +57,9 @@ var chickenstats : Dictionary = {
 #hellfire - counters
 #divinity - immortality
 #qurio - parasitic immortality
+#shrouded - smokescreen
+#lucent - invisible
+#redbull - redbull gives u wings :P
 
 
 var partnerchickenstats : Dictionary = {}
@@ -128,6 +131,23 @@ func addmutations():
 				hp /= 2
 				var b = load("res://scenes/chicken/quiro.tscn").instantiate()
 				add_child(b)
+			"shrouded":
+				var b = load("res://scenes/chicken/shrouded.tscn").instantiate()
+				add_child(b)
+			"lucent":
+				$flip/sprite.self_modulate.a = 0.01
+			"redbull": #redbull gives u wings
+				var b = load("res://scenes/chicken/redbull.tscn").instantiate()
+				$flip/sprite.add_child(b)
+				$flip/sprite.offset.y -= 8
+				b.position.y -= 8
+				$CollisionShape2D.position.y -= 8
+				speed *= 2
+				$flip/sprite.modulate = Color("ff3b93")
+				set_collision_mask_value(1,false)
+			"broodmind":
+				var b = load("res://scenes/chicken/broodmind.tscn").instantiate()
+				$flip/sprite.add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1yo8n70a2uqr"]
+
+[ext_resource type="Texture2D" uid="uid://dc5e5e52e2dgt" path="res://assets/chickens/broodmind.png" id="1_1q85p"]
+[ext_resource type="Script" uid="uid://c6sl06ncvc6yd" path="res://script/chicken/broodmind.gd" id="1_mj5gv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mj5gv"]
+radius = 24.0208
+
+[node name="broodmind" type="Node2D"]
+script = ExtResource("1_mj5gv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 1)
+texture = ExtResource("1_1q85p")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mj5gv")
