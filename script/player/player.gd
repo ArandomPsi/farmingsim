@@ -87,10 +87,12 @@ func controls():
 				if currentweaponname == "chainsaw" and currentweaponcooldown < 1:
 					pewpew()
 					currentweaponcooldown = 7
+					shakeframes += 2
 				if currentmagsize > 0 and reloadingframes < 1 and currentweaponcooldown < 1:
 					pewpew()
 					currentmagsize -= 1
 					currentweaponcooldown = 2
+			
 			
 		elif not currentweaponname == "flashlight":
 			
@@ -497,6 +499,9 @@ func playeranimstuff():
 func effectsandstuff():
 	$pivot/guns/light.visible = currentweaponname == "flashlight"
 	$nightlight.visible = global.isnight
+	$pivot/guns/chainsaweffect.emitting = currentweaponname == "chainsaw" and Input.is_action_pressed("shoot") #replaces all the spaghetti
+	
+	
 
 
 func flipstuff():
