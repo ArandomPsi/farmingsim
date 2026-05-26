@@ -129,6 +129,7 @@ func controls():
 		if not allareas.is_empty(): #for chickens and stuff
 			overlappingshopkeeper = allareas[0].get_parent()
 			textqueue = overlappingshopkeeper.textstuff
+			$hud/text/name.text = str(overlappingshopkeeper.displayname)
 		
 		
 	
@@ -229,6 +230,8 @@ func updatehud():
 		$hud/bulletamount.visible = false
 	
 	$hud/inventory/currentslotthing.position.x = currentweapon * 46.0
+	
+	$hud/daycounter.text = "Days - " + str(global.days)
 	
 	#terrible optimization lol
 	
@@ -512,14 +515,21 @@ func flipstuff():
 
 func camerastuff():
 	
-	var divisor : float = 4
+	var divisor : float = 8
 	
 	if currentweaponname == "sniper":
-		divisor = 3
+		divisor = 6
 	
 	camera.position = get_local_mouse_position()/divisor
 	
 	camera.offset = Vector2(randf_range(-5,5),randf_range(-5,5)) * shakeframes
+	
+	if $hud/shop.visible == true or $hud/text.visible:
+		camzoomtween(2)
+	elif not $hud/shop.visible or $hud/text.visible:
+		if $Camera2D.zoom.x > 1.5:
+			camzoomtween(1.2)
+	
 	
 
 func updateweapon():
@@ -555,8 +565,8 @@ func updateweapon():
 	pastweaponname = currentweaponname
 
 func camzoomtween(amount : float):
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(camera, "zoom", amount * Vector2.ONE, 0.2)
+	var tween = create_tween()#.set_ease(Tween.EASE_OUT)
+	tween.tween_property(camera, "zoom", amount * Vector2.ONE, 0.1).set_trans(Tween.TRANS_CUBIC)
 	#(camera.zoom)
 	await tween.finished
 

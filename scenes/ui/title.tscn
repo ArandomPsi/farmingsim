@@ -14,7 +14,7 @@ colors = PackedColorArray(1, 0.8215, 0.49, 1, 0.31, 0.632, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4v1qu"]
 gradient = SubResource("Gradient_g80e2")
-fill_from = Vector2(0.5, 0.3)
+fill_from = Vector2(0.6, 0)
 fill_to = Vector2(0.5, 1)
 metadata/_snap_enabled = true
 
@@ -31,6 +31,22 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.1)
 metadata/_snap_enabled = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo48d"]
+shader = ExtResource("3_ve8eu")
+shader_parameter/angle = 0.15
+shader_parameter/position = 0.2
+shader_parameter/spread = 0.876
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.403
+shader_parameter/edge_fade = 0.148
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.0
+shader_parameter/color = Color(1, 0.716667, 0, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ve8eu"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yo48d"]
@@ -44,8 +60,8 @@ seamless = true
 noise = SubResource("FastNoiseLite_woxfd")
 
 [sub_resource type="Gradient" id="Gradient_n73pj"]
-offsets = PackedFloat32Array(0.566017, 0.780303)
-colors = PackedColorArray(0.79, 0.29467, 0.00789999, 0, 1, 0.373, 0.00999999, 1)
+offsets = PackedFloat32Array(0.598485, 0.701299)
+colors = PackedColorArray(0.79, 0.79, 0.79, 0.164706, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ckdpy"]
 gradient = SubResource("Gradient_n73pj")
@@ -58,24 +74,8 @@ shader_parameter/scroll_speed1 = Vector2(0.04, 0.007)
 shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_q341w")
 shader_parameter/scroll_speed2 = Vector2(-0.03, -0.004)
 shader_parameter/center_pos = Vector2(0.5, -0.8)
-shader_parameter/position_impact = 0.68
+shader_parameter/position_impact = 0.3
 shader_parameter/color_gardient = SubResource("GradientTexture1D_ckdpy")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo48d"]
-shader = ExtResource("3_ve8eu")
-shader_parameter/angle = 0.15
-shader_parameter/position = 0.2
-shader_parameter/spread = 0.05
-shader_parameter/cutoff = 0.1
-shader_parameter/falloff = 0.403
-shader_parameter/edge_fade = 0.148
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.0
-shader_parameter/color = Color(1, 0.716667, 0, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s1drf"]
 noise_type = 2
@@ -99,7 +99,7 @@ shader_parameter/offSet = -0.01
 shader_parameter/YDistortion = 0.3
 shader_parameter/waterNoise = SubResource("NoiseTexture2D_woxfd")
 shader_parameter/waterDistortionNoise = SubResource("NoiseTexture2D_ve8eu")
-shader_parameter/waterColor = Color(0.78, 0.53014, 0.2964, 1)
+shader_parameter/waterColor = Color(0, 0.468, 0.78, 1)
 shader_parameter/colorCorection = 0.46
 shader_parameter/distortionForce = 0.043
 shader_parameter/WDBrightness = 3.0
@@ -170,8 +170,8 @@ texture = SubResource("GradientTexture2D_4v1qu")
 self_modulate = Color(1, 0.692, 0.44, 1)
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_4v1qu")
-position = Vector2(569, 294)
-scale = Vector2(2.34375, 2.34375)
+position = Vector2(279, 142)
+scale = Vector2(0.90625, 0.90625)
 texture = ExtResource("1_4v1qu")
 
 [node name="Sprite2D" type="Sprite2D" parent="bg/Sun"]
@@ -179,6 +179,29 @@ modulate = Color(1, 0.766667, 0, 1)
 show_behind_parent = true
 scale = Vector2(2.29688, 2.29688)
 texture = SubResource("GradientTexture2D_s1drf")
+
+[node name="ColorRect" type="ColorRect" parent="bg"]
+material = SubResource("ShaderMaterial_yo48d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1002.0
+offset_top = -220.0
+offset_right = 1002.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.00305
+scale = Vector2(1, -1)
+
+[node name="island" type="Sprite2D" parent="bg"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(393, 418)
+scale = Vector2(4, 4)
+texture = ExtResource("1_t6us6")
+flip_v = true
 
 [node name="clouds" type="ColorRect" parent="bg"]
 material = SubResource("ShaderMaterial_7m88i")
@@ -190,28 +213,6 @@ offset_left = -19.0
 offset_right = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="bg"]
-material = SubResource("ShaderMaterial_yo48d")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 132.0
-offset_top = 621.0
-offset_right = 132.0
-offset_bottom = 621.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, -1)
-
-[node name="island" type="Sprite2D" parent="bg"]
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-position = Vector2(393, 418)
-scale = Vector2(4, 4)
-texture = ExtResource("1_t6us6")
-flip_v = true
 
 [node name="water" type="Sprite2D" parent="bg"]
 material = SubResource("ShaderMaterial_q341w")

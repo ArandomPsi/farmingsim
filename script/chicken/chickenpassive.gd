@@ -36,7 +36,8 @@ func handle_behavior(delta):
 			goonstate(delta)
 	
 		STATE_COOP:
-			chasestate(nearestcoop.global_position, delta)
+			if is_instance_valid(nearestcoop):
+				chasestate(nearestcoop.global_position, delta)
 		
 		STATE_RUN:
 			corre(delta)

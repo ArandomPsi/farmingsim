@@ -16,14 +16,14 @@ var slotnum : int = 0
 var phantomitem : invslot = null
 var phantomowner : Control = null
 
-var allmutations : PackedStringArray = ["exploding","bigpeck","alpaca","covid","daggers", "tentacles", "golden", "hellfire", "divinity", "qurio", "shrouded", "lucent"]
+var allmutations : PackedStringArray = ["exploding","bigpeck","alpaca","covid","daggers", "tentacles", "golden", "hellfire", "divinity", "qurio", "shrouded", "lucent","redbull","broodmind"]
 
 var time = 0
 var prevtime = time
 const MINUTES_PER_DAY = 1440
 const MINUTES_PER_HOUR = 60
 const ingame_to_real_minute_duration = (2*PI) / MINUTES_PER_DAY
-var INGAME_SPEED = 20
+var INGAME_SPEED = 40
 var INITIAL_HOUR = 5:
 	set(h):
 		INITIAL_HOUR = h

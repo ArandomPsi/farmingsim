@@ -22,14 +22,17 @@ func _ready() -> void:
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 	chickenstats["strength"] *= randf_range(0.8,1.5)
 	
-	if randi_range(1,5) == 1: #random chance to add a random mutation
+	if randi_range(1,8) == 1: #random chance to add a random mutation
 		mutations.push_back(global.allmutations[randi_range(0,global.allmutations.size()-1)])
-	if randi_range(1,4) == 1 and not mutations.is_empty():
+	if randi_range(1,2) == 1 and not mutations.is_empty():
 		mutations.pop_at(randi_range(0,mutations.size()-1)) #remove a random part
 	
 	chickenstats["color"].r *= randf_range(0.8,1.1)
 	chickenstats["color"].g *= randf_range(0.8,1.1)
 	chickenstats["color"].b *= randf_range(0.8,1.1)
+	
+	modulate = chickenstats["color"]
+	
 	
 
 func _process(delta: float) -> void:
@@ -47,7 +50,7 @@ func _process(delta: float) -> void:
 
 func hatch():
 	#random stuff
-	var rabidchance : int = 4 #change later
+	var rabidchance : int = 3 #change later
 	var currentchicken = "res://scenes/chicken/chicken.tscn"
 	if randi_range(0,100) <= rabidchance:
 		currentchicken = "res://scenes/chicken/hostilechicken.tscn"

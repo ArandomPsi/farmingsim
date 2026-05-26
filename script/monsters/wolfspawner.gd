@@ -9,7 +9,7 @@ func _on_timer_timeout() -> void:
 		$Timer.start(randi_range(2,5))
 		return
 	else:
-		$Timer.start(randi_range(20,60))
+		$Timer.start(randi_range(80,200))
 	
 	for i in range(randi_range(2,20)):
 		var b = preload("res://scenes/monsters/wolf.tscn").instantiate()

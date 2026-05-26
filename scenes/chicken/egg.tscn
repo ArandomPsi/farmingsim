@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx5kmhttxo7vg"]
+[gd_scene load_steps=8 format=3 uid="uid://dx5kmhttxo7vg"]
 
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_maxla"]
 [ext_resource type="Script" uid="uid://cajwck3x4nmlo" path="res://script/chicken/egg.gd" id="1_qlus4"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_34461"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="4_ifgqj"]
+[ext_resource type="Texture2D" uid="uid://yx6ej2v1n7id" path="res://assets/inventoryicons/egginventory.png" id="4_t2npu"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="5_wtalx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_34461"]
 font_size = 20
@@ -24,7 +26,18 @@ region_enabled = true
 region_rect = Rect2(49, 10, 6, 5)
 
 [node name="shadow" parent="Sprite2D" instance=ExtResource("3_34461")]
+visible = false
 position = Vector2(0, -0.6)
+
+[node name="shadow2" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+texture_filter = 1
+position = Vector2(-3.55271e-15, 2.4)
+scale = Vector2(1, -1)
+texture = ExtResource("4_t2npu")
+offset = Vector2(0, -3)
+script = ExtResource("5_wtalx")
 
 [node name="Popup" type="Node2D" parent="."]
 visible = false

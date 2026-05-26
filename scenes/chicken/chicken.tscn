@@ -299,7 +299,7 @@ radius = 351.07
 
 [node name="chicken" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 4
+collision_layer = 260
 script = ExtResource("1_pep2a")
 reactionstate = 5
 
