@@ -91,8 +91,7 @@ func controls():
 					pewpew()
 					currentmagsize -= 1
 					currentweaponcooldown = 2
-			else:
-				$pivot/chainsaw.stop()
+			
 		elif not currentweaponname == "flashlight":
 			
 			#pew pew
@@ -210,9 +209,6 @@ func updatepos(delta : float):
 	move_and_slide()
 
 func updatevisuals():
-	
-	$pivot/chainsaw.visible = currentweaponname == "chainsaw"
-	$pivot/guns.visible = not $pivot/chainsaw.visible
 	flipstuff()
 	camerastuff()
 	playeranimstuff()
@@ -329,7 +325,7 @@ func pewpew():
 			if $orechecker.has_overlapping_areas():
 				mineore()
 		"chainsaw":
-			$pivot/chainsaw.play("chainsaw")
+			
 			if $orechecker.has_overlapping_areas():
 				mineore()
 
