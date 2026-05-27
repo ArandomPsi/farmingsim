@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bia6p1os6alxx"]
+[gd_scene load_steps=12 format=3 uid="uid://bia6p1os6alxx"]
 
 [ext_resource type="Texture2D" uid="uid://ckjrx04n7acpd" path="res://assets/buildings/torch.png" id="1_ja6qo"]
 [ext_resource type="Script" uid="uid://ba1dku1l2vixb" path="res://script/vfx/minable.gd" id="1_kbc1o"]
@@ -37,6 +37,9 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.2)
 metadata/_snap_enabled = true
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_du31o"]
+radius = 22.0907
+
 [node name="torch" type="Node2D"]
 script = ExtResource("1_kbc1o")
 helditem = ExtResource("2_du31o")
@@ -61,3 +64,15 @@ energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_du31o")
 texture_scale = 6.2
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 3)
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_du31o")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(40.6, 45.4916)
