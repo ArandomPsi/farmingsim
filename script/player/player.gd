@@ -49,6 +49,7 @@ func _ready() -> void:
 	global.player = self
 	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
 	$hud/shop/ExitShop.pressed.connect(_exit_shop)
+	global.instance_created.emit("player", position)
 
 
 func _process(delta: float) -> void:
@@ -556,6 +557,8 @@ func updateweapon():
 			currentmagsize = magsizes[4]
 		"flashlight":
 			a = 1.2
+		"chainsaw":
+			a = 1.5
 		_:
 			a = 1.2
 	$hud/bulletamount.visible = not h

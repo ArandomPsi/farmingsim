@@ -28,4 +28,4 @@ func createtree(pos : Vector2):
 	add_child(b)
 	b.position = pos
 	b.position += Vector2(randf_range(-randomoffset,randomoffset),randf_range(-randomoffset * 1.5,randomoffset * 1.5))
-	
+	global.instance_created.emit("tree", b.position)

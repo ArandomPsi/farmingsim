@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=33 format=4 uid="uid://cjf2as4jtjrgf"]
 
+[ext_resource type="Script" uid="uid://2xiyuhxc0xi2" path="res://script/ui/mini_map.gd" id="1_mgs8m"]
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_mrjnl"]
 [ext_resource type="Shader" uid="uid://b5pwkw2ryewj2" path="res://shaders/grasswind.gdshader" id="2_rqo2c"]
 [ext_resource type="Shader" uid="uid://b780aaswdvqml" path="res://shaders/grass.gdshader" id="4_58ndj"]
@@ -480,6 +481,36 @@ adjustment_saturation = 1.2
 
 [node name="map" type="Node2D"]
 y_sort_enabled = true
+
+[node name="OtherUI" type="CanvasLayer" parent="."]
+
+[node name="Offset" type="Control" parent="OtherUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1073.0
+offset_top = 70.0
+offset_right = 1113.0
+offset_bottom = 110.0
+
+[node name="Rim" type="Polygon2D" parent="OtherUI/Offset"]
+scale = Vector2(0.015375, 0.015375)
+color = Color(0.281355, 0.18376, 4.81308e-08, 1)
+polygon = PackedVector2Array(3617, -2808, 3611, -2725, 3691, -2719, 3687, -2456, 3725, -2455, 3724, -2438, 4008, -2437, 4011, -1921, 3780, -1895, 3776, -1800, 3696, -1792, 3692, -1663, 4080, -1640, 4091, -858, 3768, -866, 3768, -771, 3730, -774, 3723, -493, 3765, -493, 3765, -474, 4125, -478, 4125, 84, 3692, 99, 3689, 517, 3761, 521, 3768, 817, 3799, 821, 3806, 836, 4239, 840, 4254, 969, 3776, 976, 3768, 1010, 3692, 1018, 3692, 1394, 4232, 1402, 4243, 2362, 3692, 2378, 3685, 2678, 3616, 2697, 3613, 3008, 3563, 3016, 3571, 3057, 3256, 3057, 3244, 3885, 1896, 3893, 1889, 4086, 628, 4094, 624, 3817, -458, 3809, -458, 3524, -2015, 3532, -2015, 3460, -3204, 3452, -3204, 3095, -3299, 3099, -3295, 2829, -3857, 2810, -3853, 1386, -3781, 1394, -3770, 171, -4172, 179, -4172, -1819, -4134, -1845, -4134, -1917, -4039, -1925, -4043, -2760, -3268, -2757, -3249, -2798)
+
+[node name="Island" type="Polygon2D" parent="OtherUI/Offset"]
+scale = Vector2(0.015, 0.015)
+color = Color(0, 0.964706, 0.290196, 1)
+polygon = PackedVector2Array(3617, -2808, 3611, -2725, 3691, -2719, 3687, -2456, 3725, -2455, 3724, -2438, 4008, -2437, 4011, -1921, 3780, -1895, 3776, -1800, 3696, -1792, 3692, -1663, 4080, -1640, 4091, -858, 3768, -866, 3768, -771, 3730, -774, 3723, -493, 3765, -493, 3765, -474, 4125, -478, 4125, 84, 3692, 99, 3689, 517, 3761, 521, 3768, 817, 3799, 821, 3806, 836, 4239, 840, 4254, 969, 3776, 976, 3768, 1010, 3692, 1018, 3692, 1394, 4232, 1402, 4243, 2362, 3692, 2378, 3685, 2678, 3616, 2697, 3613, 3008, 3563, 3016, 3571, 3057, 3256, 3057, 3244, 3885, 1896, 3893, 1889, 4086, 628, 4094, 624, 3817, -458, 3809, -458, 3524, -2015, 3532, -2015, 3460, -3204, 3452, -3204, 3095, -3299, 3099, -3295, 2829, -3857, 2810, -3853, 1386, -3781, 1394, -3770, 171, -4172, 179, -4172, -1819, -4134, -1845, -4134, -1917, -4039, -1925, -4043, -2760, -3268, -2757, -3249, -2798)
+
+[node name="MiniMap" type="Control" parent="OtherUI/Offset"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -51.0
+offset_top = -42.0
+offset_right = -11.0
+offset_bottom = -2.0
+scale = Vector2(0.015, 0.015)
+script = ExtResource("1_mgs8m")
 
 [node name="tiles" type="Node2D" parent="."]
 y_sort_enabled = true

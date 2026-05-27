@@ -1,9 +1,14 @@
 extends Node
+
+signal instance_created(instance, pos) # for mini map
+
 var player : Node #for convenience
 var playerpos : Vector2
 
 var editing : bool = true
 var current_edit : Node
+
+var mini_map : Control
 
 var scanner : bool = false
 
