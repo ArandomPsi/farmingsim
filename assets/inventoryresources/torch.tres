@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://cbrbsqph88a35"]
+
+[ext_resource type="Texture2D" uid="uid://ckjrx04n7acpd" path="res://assets/buildings/torch.png" id="1_olnxy"]
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="2_m20p7"]
+
+[resource]
+script = ExtResource("2_m20p7")
+name = "torch"
+texture = ExtResource("1_olnxy")
+stackable = true
+consumable = false
+building = true
+phantom_texture = ExtResource("1_olnxy")
+phantom_scale = Vector2(0, 0)
+weight_mult = 1.0
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

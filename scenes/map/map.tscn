@@ -483,6 +483,8 @@ adjustment_saturation = 1.2
 y_sort_enabled = true
 
 [node name="OtherUI" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
 
 [node name="Offset" type="Control" parent="OtherUI"]
 layout_mode = 3

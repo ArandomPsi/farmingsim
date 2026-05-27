@@ -60,6 +60,8 @@ var chickenstats : Dictionary = {
 #shrouded - smokescreen
 #lucent - invisible
 #redbull - redbull gives u wings :P
+#broodmind - states sync
+#supersaiyan - spikes
 
 
 var partnerchickenstats : Dictionary = {}
@@ -148,6 +150,9 @@ func addmutations():
 			"broodmind":
 				var b = load("res://scenes/chicken/broodmind.tscn").instantiate()
 				$flip/sprite.add_child(b)
+			"supersaiyan":
+				var b = load("res://scenes/chicken/spike.tscn").instantiate()
+				$flip.add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)

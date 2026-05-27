@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsr7ajonpx7vg"]
+
+[ext_resource type="Texture2D" uid="uid://c0a4biehfca0k" path="res://assets/chickens/spike.png" id="1_ta7nr"]
+[ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="2_btyll"]
+
+[sub_resource type="Curve" id="Curve_7a7y0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.538784, 1), 0.0, 0.0, 0, 0, Vector2(0.897275, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d2mqm"]
+curve = SubResource("Curve_7a7y0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cx2lw"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 5.0
+emission_ring_cone_angle = 90.0
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -125.62
+angular_velocity_max = -82.72
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_d2mqm")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qnrpt"]
+radius = 19.0
+
+[node name="spike" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ta7nr")
+lifetime = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_cx2lw")
+
+[node name="attackbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+script = ExtResource("2_btyll")
+damage = 15
+metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
+shape = SubResource("CircleShape2D_qnrpt")
+
+[connection signal="body_entered" from="attackbox" to="attackbox" method="_on_body_entered"]
