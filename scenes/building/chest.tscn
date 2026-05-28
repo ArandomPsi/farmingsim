@@ -1,0 +1,178 @@
+[gd_scene load_steps=13 format=3 uid="uid://c14o44fl7hm83"]
+
+[ext_resource type="Texture2D" uid="uid://c5pdd4vn52bns" path="res://assets/chickens/chest.png" id="1_8fqiq"]
+[ext_resource type="Script" uid="uid://dwp8v4lah7vin" path="res://script/buildings/chest.gd" id="1_rmk30"]
+[ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="2_quedg"]
+[ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_3upka"]
+[ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="7_v0scg"]
+[ext_resource type="PackedScene" uid="uid://cgrttobxg53a1" path="res://scenes/ui/slot.tscn" id="8_kurv1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quedg"]
+atlas = ExtResource("1_8fqiq")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmk30"]
+atlas = ExtResource("1_8fqiq")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpmvr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quedg")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmk30")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_quedg"]
+radius = 22.0227
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1cflg"]
+radius = 114.07
+
+[sub_resource type="LabelSettings" id="LabelSettings_l1vjb"]
+font_size = 20
+outline_size = 10
+outline_color = Color(0.42, 0.42, 0.42, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.745098)
+shadow_offset = Vector2(0, 5)
+
+[node name="chest" type="Node2D"]
+script = ExtResource("1_rmk30")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kpmvr")
+animation = &"open"
+frame_progress = 0.460635
+
+[node name="shadow" type="Sprite2D" parent="sprite"]
+modulate = Color(0, 0, 0, 0.568627)
+z_index = -1
+position = Vector2(1.19209e-07, 4)
+scale = Vector2(1, -1)
+skew = 1.30202
+texture = ExtResource("1_8fqiq")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+script = ExtResource("2_quedg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_quedg")
+
+[node name="chest" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chest"]
+shape = SubResource("CircleShape2D_1cflg")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -14.0
+offset_top = -67.0
+offset_right = 18.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("6_3upka")
+text = "E"
+label_settings = SubResource("LabelSettings_l1vjb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inventory" type="NinePatchRect" parent="."]
+self_modulate = Color(0.109804, 0.109804, 0.109804, 1)
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -211.0
+offset_right = -38.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("7_v0scg")
+region_rect = Rect2(3760, 160, 48, 48)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="GridContainer" type="Control" parent="inventory"]
+layout_mode = 1
+anchor_left = 0.006
+anchor_top = 0.033
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.004
+offset_top = 3.218
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="slot" parent="inventory/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("8_kurv1")]
+layout_mode = 2
+offset_top = 20.7723
+offset_right = 0.0
+offset_bottom = 20.7723
+parent = NodePath("../../../../../../../../../../../../../../../../../DockHSplitRight/DockVSplitRightL/DockSlotRightUL/Inspector/@EditorInspector@6495/@VBoxContainer@6481/@VBoxContainer@6494/@EditorInspectorSection@98456/@VBoxContainer@98457/@EditorPropertyEnum@98465/@OptionButton@98464/@PopupMenu@98463/@PanelContainer@98458/@ScrollContainer@98459/@Control@98460")
+
+[node name="slot2" parent="inventory/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("8_kurv1")]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 20.7723
+offset_right = 25.0
+offset_bottom = 20.7723
+parent = NodePath("../../../../../../../../../../../../../../../../../DockHSplitRight/DockVSplitRightL/DockSlotRightUL/Inspector/@EditorInspector@6495/@VBoxContainer@6481/@VBoxContainer@6494/@EditorInspectorSection@98456/@VBoxContainer@98457/@EditorPropertyEnum@98465/@OptionButton@98464/@PopupMenu@98463/@PanelContainer@98458/@ScrollContainer@98459/@Control@98460")
+
+[node name="slot3" parent="inventory/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("8_kurv1")]
+layout_mode = 2
+offset_left = 50.0
+offset_top = 20.7723
+offset_right = 50.0
+offset_bottom = 20.7723
+parent = NodePath("../../../../../../../../../../../../../../../../../DockHSplitRight/DockVSplitRightL/DockSlotRightUL/Inspector/@EditorInspector@6495/@VBoxContainer@6481/@VBoxContainer@6494/@EditorInspectorSection@98456/@VBoxContainer@98457/@EditorPropertyEnum@98465/@OptionButton@98464/@PopupMenu@98463/@PanelContainer@98458/@ScrollContainer@98459/@Control@98460")
+
+[node name="slot4" parent="inventory/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("8_kurv1")]
+layout_mode = 2
+offset_left = -0.222
+offset_top = -3.193
+offset_right = -0.222
+offset_bottom = -3.193
+parent = NodePath("../../../../../../../../../../../../../../../../../DockHSplitRight/DockVSplitRightL/DockSlotRightUL/Inspector/@EditorInspector@6495/@VBoxContainer@6481/@VBoxContainer@6494/@EditorInspectorSection@98456/@VBoxContainer@98457/@EditorPropertyEnum@98465/@OptionButton@98464/@PopupMenu@98463/@PanelContainer@98458/@ScrollContainer@98459/@Control@98460")
+
+[node name="slot5" parent="inventory/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("8_kurv1")]
+layout_mode = 2
+offset_left = 24.778
+offset_top = -3.193
+offset_right = 24.778
+offset_bottom = -3.193
+parent = NodePath("../../../../../../../../../../../../../../../../../DockHSplitRight/DockVSplitRightL/DockSlotRightUL/Inspector/@EditorInspector@6495/@VBoxContainer@6481/@VBoxContainer@6494/@EditorInspectorSection@98456/@VBoxContainer@98457/@EditorPropertyEnum@98465/@OptionButton@98464/@PopupMenu@98463/@PanelContainer@98458/@ScrollContainer@98459/@Control@98460")
+
+[node name="slot6" parent="inventory/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("8_kurv1")]
+layout_mode = 2
+offset_left = 49.778
+offset_top = -3.193
+offset_right = 49.778
+offset_bottom = -3.193
+parent = NodePath("../../../../../../../../../../../../../../../../../DockHSplitRight/DockVSplitRightL/DockSlotRightUL/Inspector/@EditorInspector@6495/@VBoxContainer@6481/@VBoxContainer@6494/@EditorInspectorSection@98456/@VBoxContainer@98457/@EditorPropertyEnum@98465/@OptionButton@98464/@PopupMenu@98463/@PanelContainer@98458/@ScrollContainer@98459/@Control@98460")

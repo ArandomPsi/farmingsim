@@ -68,7 +68,7 @@ func handle_states():
 			state = STATE_MATE
 			statetime = 600
 		else:
-			lust = randi_range(10, 30)
+			lust = randi_range(40, 60)
 	
 	
 	

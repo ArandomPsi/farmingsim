@@ -1086,7 +1086,6 @@ theme_override_fonts/font = ExtResource("11_je7p5")
 text = "5/5"
 
 [node name="inventoryui" parent="hud" instance=ExtResource("26_6cv16")]
-visible = false
 
 [node name="craftingmenu" parent="hud/inventoryui" instance=ExtResource("33_5mf0n")]
 layout_mode = 1

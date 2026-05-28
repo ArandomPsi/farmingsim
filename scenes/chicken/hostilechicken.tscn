@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bv14ycm77qnl5"]
+[gd_scene load_steps=43 format=3 uid="uid://bv14ycm77qnl5"]
 
 [ext_resource type="Script" uid="uid://c0g50xerqp7fy" path="res://script/chicken/chickenhostile.gd" id="1_ngpdv"]
 [ext_resource type="Texture2D" uid="uid://bc3nqyjcc8o8y" path="res://assets/chickens/chickenfight.png" id="2_io7f4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bgyil6c51oxl6" path="res://assets/chickens/bo.png" id="5_gly68"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_4cr1r"]
 [ext_resource type="Texture2D" uid="uid://bhdmgbli1pm5b" path="res://assets/playerstuff/heart.png" id="7_6ap6w"]
+[ext_resource type="Script" uid="uid://b1cug7m63l5co" path="res://script/vfx/trail.gd" id="7_phx1t"]
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="9_io7f4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phx1t"]
@@ -186,6 +187,16 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_phx1t"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_phx1t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.568935), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gly68"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8lku0"]
 
@@ -437,6 +448,19 @@ sprite_frames = SubResource("SpriteFrames_fkuyw")
 animation = &"idle"
 offset = Vector2(0, -3)
 script = ExtResource("9_io7f4")
+
+[node name="trailtarget" type="Node2D" parent="flip"]
+position = Vector2(3, -7)
+
+[node name="trail" type="Line2D" parent="flip/trailtarget"]
+material = SubResource("CanvasItemMaterial_phx1t")
+width = 5.0
+width_curve = SubResource("Curve_phx1t")
+default_color = Color(1, 0, 0, 1)
+gradient = SubResource("Gradient_gly68")
+joint_mode = 2
+script = ExtResource("7_phx1t")
+maxsize = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8lku0")
