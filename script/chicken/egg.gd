@@ -22,9 +22,19 @@ func _ready() -> void:
 	chickenstats["tenderness"] *= randf_range(0.8,1.5)
 	chickenstats["strength"] *= randf_range(0.8,1.5)
 	
-	if randi_range(1,8) == 1: #random chance to add a random mutation
+	var chance = 0
+	
+	if global.days == 1:
+		chance = 0
+	elif global.days >= 30:
+		chance = 1
+	else:
+		chance = 20 - int((global.days - 2) * 19 / 28)
+
+	
+	if chance > 0 and randi_range(1, chance) == 1: #random chance to add a random mutation. after day 30, it happens everytime
 		mutations.push_back(global.allmutations[randi_range(0,global.allmutations.size()-1)])
-	if randi_range(1,2) == 1 and not mutations.is_empty():
+	if randi_range(1,6) == 1 and not mutations.is_empty():
 		mutations.pop_at(randi_range(0,mutations.size()-1)) #remove a random part
 	
 	chickenstats["color"].r *= randf_range(0.8,1.1)

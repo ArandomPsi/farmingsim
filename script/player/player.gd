@@ -24,7 +24,7 @@ var guns : Array = ["glock", "shotgun", "sniper","uzi"]
 
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
 var consumables : Array = ["drumstick"]
-var buildings : Array = ["fence", "coop", "torch"]
+var buildings : Array = ["fence", "coop", "torch", "turret"]
 
 
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
@@ -61,6 +61,9 @@ func _process(delta: float) -> void:
 			controls()
 		updatepos(delta)
 		updatevisuals()
+	else:
+		if Input.is_action_just_pressed("menu"):
+			get_tree().change_scene_to_file("res://scenes/ui/title.tscn")
 	updatehud()
 	global.playerpos = position
 	
@@ -444,7 +447,35 @@ func handle_building(place : bool):
 				phantom.global_position = global_position + offset
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 				phantom.modulate.a = 0.5
+		"turret":
+			if place:
+				var b = load("res://scenes/building/turret.tscn").instantiate()
+				b.global_position = $phantom.global_position
+				playerinventory.removeitem(weapons[currentweapon],1)
+				get_parent().add_child(b)
+				print("placed")
+			else:
 				
+				var phantom = $phantom as Sprite2D
+				phantom.visible = true
+				phantom.texture = load("res://assets/buildings/turret.png")
+				
+				phantom.rotation = 0
+				
+				
+				
+				phantom.scale = Vector2(5,5)
+				phantom.global_position = round(get_global_mouse_position() / 14) * 14
+				var maxdist : float = 180
+				var offset = phantom.global_position - global_position
+				
+				if offset.length() > maxdist:
+					offset = offset.normalized() * maxdist
+				
+				phantom.global_position = global_position + offset
+				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+				phantom.modulate.a = 0.5
+		
 
 
 
@@ -636,7 +667,7 @@ func die():
 	await timer.timeout
 	$youdied.visible = true
 	var deathmessages : PackedStringArray = ["holy shit you fucking suck at this", "you stupid fucking looser", "l bozo", "your dumbass couldn't handle it", "suck my fucking cock pussy", "yo yo yo. u suck", "awwww a little bitch died... who the fuck cares?"]
-	$youdied/Label2.text = deathmessages[randi_range(0,deathmessages.size()-1)]
+	$youdied/Label2.text = deathmessages[randi_range(0,deathmessages.size()-1)] + "\n press esc"
 	$youdied/Label2.visible_ratio = 0.0
 	var tween2 = create_tween()
 	tween2.tween_property($youdied/Label2,"visible_ratio",1.0,0.8).set_delay(0.8)

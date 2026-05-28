@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=4 format=3 uid="uid://btpwu1742uluo"]
+
+[ext_resource type="Texture2D" uid="uid://de8ww2gn85va5" path="res://assets/buildings/turret.png" id="1_in1ry"]
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="2_wrb68"]
+[ext_resource type="Texture2D" uid="uid://b0rpb7a6yfc1n" path="res://assets/buildings/turreticon.png" id="3_3fmpk"]
+
+[resource]
+script = ExtResource("2_wrb68")
+name = "turret"
+texture = ExtResource("3_3fmpk")
+stackable = true
+consumable = false
+building = true
+phantom_texture = ExtResource("1_in1ry")
+phantom_scale = Vector2(0, 0)
+weight_mult = 0.4
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

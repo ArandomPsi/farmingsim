@@ -31,6 +31,8 @@ func createore(pos : Vector2):
 	add_child(b)
 	b.position = pos
 	b.position += Vector2(randf_range(-randomoffset,randomoffset),randf_range(-randomoffset * 1.5,randomoffset * 1.5))
+	b.position.x = clamp(b.position.x,0,mapsize.x)
+	b.position.y = clamp(b.position.y, 0,mapsize.y)
 	
 
 func creatediamond(pos : Vector2):
@@ -39,3 +41,5 @@ func creatediamond(pos : Vector2):
 	b.position = pos
 	b.position += Vector2(randf_range(-randomoffset,randomoffset),randf_range(-randomoffset * 1.5,randomoffset * 1.5))
 	global.instance_created.emit("ore", b.position)
+	b.position.x = clamp(b.position.x,0,mapsize.x)
+	b.position.y = clamp(b.position.y, 0,mapsize.y)

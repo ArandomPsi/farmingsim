@@ -4,17 +4,21 @@ class_name mineable
 @export var helditem : invitem
 
 
+
 func getmined():
 	hp -= 1
 	var b = preload("res://scenes/vfx/breakpar.tscn").instantiate()
 	b.texture = helditem.texture
 	get_parent().add_child(b)
 	b.position = position
-	if hp < 0:
+	if hp <= 0:
 		queue_free()
 
 func _process(delta: float) -> void:
 	$sprite.position.x = lerpf($sprite.position.x, 0, 0.18)
+	if $Area2D.has_overlapping_bodies():
+		queue_free()
+	
 	
 
 func shake():
