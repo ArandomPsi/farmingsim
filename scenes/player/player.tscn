@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
 [ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
 [ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="23_28m0y"]
+[ext_resource type="Resource" uid="uid://cbrbsqph88a35" path="res://assets/inventoryresources/torch.tres" id="23_kxw46"]
 [ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="23_pk8ii"]
 [ext_resource type="Resource" uid="uid://p8rs6c7eiqtd" path="res://assets/inventoryresources/round.tres" id="24_5mf0n"]
 [ext_resource type="Resource" uid="uid://bibsero8cr4u1" path="res://assets/inventoryresources/shotgun.tres" id="24_uniwh"]
@@ -26,7 +27,6 @@
 [ext_resource type="Resource" uid="uid://d0qbkvhifolj6" path="res://assets/inventoryresources/chainsaw.tres" id="26_bbmj2"]
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
 [ext_resource type="Resource" uid="uid://btpwu1742uluo" path="res://assets/inventoryresources/turret.tres" id="27_kxw46"]
-[ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="27_uniwh"]
 [ext_resource type="Script" uid="uid://cs3av03m2lixa" path="res://script/debug/fps.gd" id="29_4hvnv"]
 [ext_resource type="Shader" uid="uid://cnt43oe6ws5ac" path="res://shaders/outline.gdshader" id="31_wva7c"]
 [ext_resource type="PackedScene" uid="uid://cglt3v5bjm13" path="res://scenes/ui/craftingmenu.tscn" id="33_5mf0n"]
@@ -880,8 +880,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "torch"
 alignment = 0
 script = ExtResource("17_uf5tr")
-item = ExtResource("27_uniwh")
-costs = 8
+item = ExtResource("23_kxw46")
+costs = 2
 description = "good for lighting things up at night."
 
 [node name="ammo" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
