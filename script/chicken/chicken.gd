@@ -277,6 +277,7 @@ func die():
 		b.chickenstats = chickenstats.duplicate()
 		b.chickenmutations = chickenmutations.duplicate()
 		b.position = position
+		b.chickenmutations.pop_at(randi_range(0,chickenmutations.size()-1)) #remove a mutation
 		b.hp = 50
 		var c = load("res://scenes/chicken/rebirtheffect.tscn").instantiate()
 		get_parent().add_child(c)
