@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://c14o44fl7hm83"]
+[gd_scene load_steps=24 format=3 uid="uid://c14o44fl7hm83"]
 
 [ext_resource type="Texture2D" uid="uid://c5pdd4vn52bns" path="res://assets/chickens/chest.png" id="1_8fqiq"]
 [ext_resource type="Script" uid="uid://dwp8v4lah7vin" path="res://script/buildings/chest.gd" id="1_rmk30"]
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="2_quedg"]
 [ext_resource type="Script" uid="uid://f3f1c1nx8mu7" path="res://script/inventory/inventoryslot.gd" id="2_v0scg"]
 [ext_resource type="Script" uid="uid://hbo17umc4rvp" path="res://script/inventory/inventory.gd" id="3_kurv1"]
+[ext_resource type="Resource" uid="uid://cvbcr4ky03w5i" path="res://assets/inventoryresources/chest.tres" id="4_ef4jh"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_3upka"]
 [ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="7_v0scg"]
 [ext_resource type="Script" uid="uid://b1liuqhql1avd" path="res://script/ui/inventorygrid.gd" id="8_ef4jh"]
@@ -89,6 +90,8 @@ shadow_offset = Vector2(0, 5)
 [node name="chest" type="Node2D"]
 script = ExtResource("1_rmk30")
 inv = SubResource("Resource_r4pyk")
+hp = 1
+helditem = ExtResource("4_ef4jh")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -960,6 +960,26 @@ costs = 1000
 description = "pov: when ur to lazy to shoot wolves
 "
 
+[node name="chest" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "turret
+"
+alignment = 0
+script = ExtResource("17_uf5tr")
+item = ExtResource("27_kxw46")
+costs = 1000
+description = "pov: when ur to lazy to shoot wolves
+"
+
 [node name="preview" type="Sprite2D" parent="hud/shop"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_7obkq")

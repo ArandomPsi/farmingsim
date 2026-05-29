@@ -24,7 +24,7 @@ var guns : Array = ["glock", "shotgun", "sniper","uzi"]
 
 var weapons : Array = ["dagger", "glock", "uzi"] #uzi
 var consumables : Array = ["drumstick"]
-var buildings : Array = ["fence", "coop", "torch", "turret"]
+var buildings : Array = ["fence", "coop", "torch", "turret", "chest"]
 
 
 var magsizes : Array = [6,2,1,60,100] #sniper,glock,shotgun, uzi, dagger
@@ -475,7 +475,34 @@ func handle_building(place : bool):
 				phantom.global_position = global_position + offset
 				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 				phantom.modulate.a = 0.5
-		
+		"chest":
+			if place:
+				var b = load("res://scenes/building/chest.tscn").instantiate()
+				b.global_position = $phantom.global_position
+				playerinventory.removeitem(weapons[currentweapon],1)
+				get_parent().add_child(b)
+				print("placed")
+			else:
+				
+				var phantom = $phantom as Sprite2D
+				phantom.visible = true
+				phantom.texture = load("res://assets/chickens/chestbuild.png")
+				
+				phantom.rotation = 0
+				
+				
+				
+				phantom.scale = Vector2(5,5)
+				phantom.global_position = round(get_global_mouse_position() / 14) * 14
+				var maxdist : float = 180
+				var offset = phantom.global_position - global_position
+				
+				if offset.length() > maxdist:
+					offset = offset.normalized() * maxdist
+				
+				phantom.global_position = global_position + offset
+				phantom.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+				phantom.modulate.a = 0.5
 
 
 
