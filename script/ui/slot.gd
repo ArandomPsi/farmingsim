@@ -3,7 +3,7 @@ extends Panel
 @onready var display : Sprite2D = $display
 @onready var amount : Label = $amount
 
-@export var parent : Control
+@export var parent : Node
 @export var slot_index : int = 0
 
 var currentitem : invitem
@@ -29,7 +29,7 @@ func update(item: invslot):
 
 #bru so much simplier
 func _on_button_pressed() -> void:
-	var inventory = parent.playerinventory.items
+	var inventory = parent.inv.items
 	var temp = inventory[slot_index]
 	inventory[slot_index] = global.phantomitem
 	global.phantomitem = temp

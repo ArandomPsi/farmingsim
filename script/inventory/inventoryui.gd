@@ -10,11 +10,14 @@ var open : bool = false
 @onready var hotbarslot1 = $NinePatchRect/GridContainer/slot
 @onready var hotbarslot2 = $NinePatchRect/GridContainer/slot2
 @onready var hotbarslot3 = $NinePatchRect/GridContainer/slot3
+var inv
 
 func _ready() -> void:
 	playerinventory.update.connect(updateslots)
+	inv = playerinventory
 	updateslots()
 	close()
+	$NinePatchRect/GridContainer.inv = playerinventory
 
 func updateslots():
 

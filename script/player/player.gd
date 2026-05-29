@@ -632,6 +632,10 @@ func camzoomtween(amount : float):
 	#(camera.zoom)
 	await tween.finished
 
+func showinventory():
+	$hud/inventoryui.visible = true
+	print("yes")
+
 
 func _exit_shop():
 	textqueue.clear()

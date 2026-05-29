@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://tdjc0nfwxtkw"]
+[gd_scene load_steps=6 format=3 uid="uid://tdjc0nfwxtkw"]
 
 [ext_resource type="Script" uid="uid://dgdyuomuq06f" path="res://script/inventory/inventoryui.gd" id="1_jrxbu"]
 [ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="2_lgvsm"]
+[ext_resource type="Script" uid="uid://b1liuqhql1avd" path="res://script/ui/inventorygrid.gd" id="3_rox6p"]
 [ext_resource type="PackedScene" uid="uid://cgrttobxg53a1" path="res://scenes/ui/slot.tscn" id="3_xqbms"]
 [ext_resource type="Script" uid="uid://3pvf2rw6c4nm" path="res://script/ui/phantomitemthingy.gd" id="4_vheev"]
 
@@ -47,6 +48,7 @@ offset_left = 4.004
 offset_top = 3.218
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_rox6p")
 
 [node name="slot" parent="NinePatchRect/GridContainer" node_paths=PackedStringArray("parent") instance=ExtResource("3_xqbms")]
 layout_mode = 2
