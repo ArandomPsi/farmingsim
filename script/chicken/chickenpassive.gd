@@ -68,7 +68,7 @@ func handle_states():
 			state = STATE_MATE
 			statetime = 600
 		else:
-			lust = randi_range(40, 60)
+			lust = randi_range(60, 80)
 	
 	
 	
@@ -149,6 +149,8 @@ func handle_visuals():
 	
 	# hide in grass
 	visible = not $hider.has_overlapping_areas()
+	$flip/sprite.material.set_shader_parameter("col",$flip/sprite.modulate)
+	
 
 
 func handle_ui():

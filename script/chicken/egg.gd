@@ -30,7 +30,8 @@ func _ready() -> void:
 		chance = 1
 	else:
 		chance = 20 - int((global.days - 2) * 19 / 28)
-
+	
+	mutations = remove_duplicates(mutations) #removes duplicates
 	
 	if chance > 0 and randi_range(1, chance) == 1: #random chance to add a random mutation. after day 30, it happens everytime
 		mutations.push_back(global.allmutations[randi_range(0,global.allmutations.size()-1)])
@@ -84,3 +85,13 @@ func egg_popup(status : bool): # open = true, close = false, not in use rn
 	#global.the_egg = e
 	#popup.visible = status
 	
+	
+
+func remove_duplicates(arr: Array) -> Array:
+	var result = []
+	
+	for item in arr:
+		if not result.has(item):
+			result.append(item)
+	
+	return result
