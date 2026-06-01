@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="invitem" load_steps=3 format=3 uid="uid://bq7donkpco1n5"]
+
+[ext_resource type="Script" uid="uid://crrj4roi22rhi" path="res://script/inventory/inventoryitem.gd" id="1_ejxpo"]
+[ext_resource type="Texture2D" uid="uid://cl7w8vv3ky8j7" path="res://assets/inventoryicons/scouter.png" id="2_dwtj7"]
+
+[resource]
+script = ExtResource("1_ejxpo")
+name = "scouter"
+texture = ExtResource("2_dwtj7")
+stackable = false
+consumable = false
+building = false
+phantom_scale = Vector2(0, 0)
+weight_mult = 1.0
+metadata/_custom_type_script = "uid://crrj4roi22rhi"

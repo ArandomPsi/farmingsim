@@ -136,12 +136,9 @@ func handle_visuals():
 func handle_ui():
 	updatestats()
 
-	if (
-		global_position.distance_squared_to(get_global_mouse_position())
-		<= 30 * 30
-		and global.scanner
-	):
+	if (global.scanner):
 		$stats.visible = true
+		$stats/Label.position = get_viewport().get_canvas_transform() * global_position - $stats/Label.size/2 + Vector2(0,-40)
 	else:
 		$stats.visible = false
 
@@ -229,3 +226,16 @@ func createhiteffect(pos):
 	b.scale.x  *= 1.5
 	b.look_at(pos)
 	
+
+
+
+
+func _on_buck_1_finished() -> void:
+	var buck = randi_range(0,2)
+	match buck:
+		0:
+			$buck1.play()
+		2:
+			$buck2.play()
+		3:
+			$buck3.play()

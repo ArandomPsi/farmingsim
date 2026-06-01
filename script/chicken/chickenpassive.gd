@@ -10,6 +10,9 @@ const STATE_RUN = 5
 @onready var randomlook = $randomlook as Node2D
 
 
+
+
+
 func _process(delta: float) -> void:
 	handle_states()
 	handle_behavior(delta)
@@ -60,6 +63,7 @@ func handle_states():
 		if state != STATE_MATE:
 			state = STATE_MATE
 			statetime = 600
+			
 	
 	#THe dark urge :p
 	elif lust < 0:
@@ -73,7 +77,7 @@ func handle_states():
 	
 	
 	if statetime < 1:
-	
+		chickennoises()
 		#euphoria stuff
 		if state == STATE_MATE:
 			if not partnerchickenstats.is_empty():
@@ -156,12 +160,14 @@ func handle_visuals():
 func handle_ui():
 	updatestats()
 
-	if (
-		global_position.distance_squared_to(get_global_mouse_position())
-		<= 30 * 30
-		and global.scanner
-	):
+	if (global.scanner):
 		$stats.visible = true
+		$stats/Label.position = get_viewport().get_canvas_transform() * global_position - $stats/Label.size/2 + Vector2(0,-40)
+		if debug:
+			print("-----------")
+			print(str(global_position))
+			print(str(global.playerpos))
+			print(str($stats/Label.position))
 	else:
 		$stats.visible = false
 
@@ -202,6 +208,12 @@ func goonstate(delta):
 		
 	else:
 		velocity += $suslook.transform.x * speed * delta * 1.5
+	
+	#buck buck buck
+	if not $buck1.playing and not $buck2.playing and not $buck3.playing:
+		chickennoises() #uuuuh 
+	
+	
 
 func corre(delta):
 	if not chickenmutations.has("exploding"):
@@ -235,3 +247,13 @@ func get_nearest_area(areas):
 			nearest = area
 
 	return nearest
+
+func chickennoises():
+	var buck = randi_range(0,2)
+	match buck:
+		0:
+			$buck1.play()
+		2:
+			$buck2.play()
+		3:
+			$buck3.play()

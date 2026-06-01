@@ -1,15 +1,23 @@
-[gd_scene load_steps=43 format=3 uid="uid://bv14ycm77qnl5"]
+[gd_scene load_steps=47 format=3 uid="uid://bv14ycm77qnl5"]
 
+[ext_resource type="Shader" uid="uid://b254cq776ae0e" path="res://shaders/chickens.gdshader" id="1_4cr1r"]
 [ext_resource type="Script" uid="uid://c0g50xerqp7fy" path="res://script/chicken/chickenhostile.gd" id="1_ngpdv"]
 [ext_resource type="Texture2D" uid="uid://bc3nqyjcc8o8y" path="res://assets/chickens/chickenfight.png" id="2_io7f4"]
 [ext_resource type="Texture2D" uid="uid://cy03b22bqkgv2" path="res://assets/chickens/chickenonly.png" id="2_m8m8r"]
 [ext_resource type="PackedScene" uid="uid://dgyn5vkoxjq6c" path="res://scenes/vfx/shadow.tscn" id="3_io7f4"]
 [ext_resource type="Texture2D" uid="uid://cjndiqs8o3c0w" path="res://assets/chickens/hearthingy.png" id="4_phx1t"]
-[ext_resource type="Texture2D" uid="uid://bgyil6c51oxl6" path="res://assets/chickens/bo.png" id="5_gly68"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_4cr1r"]
 [ext_resource type="Texture2D" uid="uid://bhdmgbli1pm5b" path="res://assets/playerstuff/heart.png" id="7_6ap6w"]
 [ext_resource type="Script" uid="uid://b1cug7m63l5co" path="res://script/vfx/trail.gd" id="7_phx1t"]
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="9_io7f4"]
+[ext_resource type="AudioStream" uid="uid://b1qubbginsou1" path="res://assets/sounds/sfx/minecraftchickensounds/say1.ogg" id="11_6ap6w"]
+[ext_resource type="AudioStream" uid="uid://bushnq7uub2wo" path="res://assets/sounds/sfx/minecraftchickensounds/say2.ogg" id="12_0wk1t"]
+[ext_resource type="AudioStream" uid="uid://chpjsn5801dj5" path="res://assets/sounds/sfx/minecraftchickensounds/say3.ogg" id="13_700ja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ap6w"]
+shader = ExtResource("1_4cr1r")
+shader_parameter/col = Color(1, 0, 0, 1)
+shader_parameter/tolerance = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phx1t"]
 atlas = ExtResource("2_io7f4")
@@ -402,6 +410,7 @@ radius = 27.074
 
 [node name="chicken" type="CharacterBody2D"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_6ap6w")
 collision_layer = 260
 script = ExtResource("1_ngpdv")
 reactionstate = 3
@@ -465,29 +474,30 @@ maxsize = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8lku0")
 
-[node name="randomlook" type="Node2D" parent="."]
-
-[node name="stats" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(3.8147e-06, -57)
-scale = Vector2(5, 5)
-texture = ExtResource("5_gly68")
+[node name="stats" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="Label" type="Label" parent="stats"]
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 133.0
-offset_bottom = 131.0
-scale = Vector2(0.1, 0.1)
-theme_override_colors/font_color = Color(0.494118, 0.145098, 0.32549, 1)
+texture_filter = 1
+offset_left = -171.0
+offset_top = -145.0
+offset_right = 171.0
+offset_bottom = -25.0
+pivot_offset = Vector2(171, 60)
+theme_override_colors/font_color = Color(1, 0, 0.2, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_4cr1r")
 theme_override_font_sizes/font_size = 12
 text = "chicken stats:
 weight
 blah 
 blah"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="randomlook" type="Node2D" parent="."]
 
 [node name="chickendetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -539,5 +549,17 @@ collision_mask = 262
 [node name="CollisionShape2D" type="CollisionShape2D" parent="peck"]
 shape = SubResource("CircleShape2D_m8m8r")
 
+[node name="buck1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_6ap6w")
+
+[node name="buck2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_0wk1t")
+
+[node name="buck3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_700ja")
+
 [connection signal="body_entered" from="bouncearea" to="." method="bounce"]
 [connection signal="body_entered" from="peck" to="." method="_on_peck_body_entered"]
+[connection signal="finished" from="buck1" to="." method="_on_buck_1_finished"]
+[connection signal="finished" from="buck2" to="." method="_on_buck_1_finished"]
+[connection signal="finished" from="buck3" to="." method="_on_buck_1_finished"]

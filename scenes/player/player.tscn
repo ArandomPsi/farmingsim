@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=99 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="10_h17s1"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="11_je7p5"]
 [ext_resource type="Texture2D" uid="uid://c3xvr8hucoj4i" path="res://assets/Icons/Backpackicon.png" id="12_fcs02"]
+[ext_resource type="Shader" uid="uid://cwaqrfcewtvkr" path="res://shaders/scouter.gdshader" id="12_wva7c"]
 [ext_resource type="Script" uid="uid://bk51ksnned7wa" path="res://script/ui/slots.gd" id="13_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
@@ -27,9 +28,11 @@
 [ext_resource type="Resource" uid="uid://d0qbkvhifolj6" path="res://assets/inventoryresources/chainsaw.tres" id="26_bbmj2"]
 [ext_resource type="Resource" uid="uid://cytgpausw2a27" path="res://assets/inventoryresources/sniper.tres" id="26_tffgl"]
 [ext_resource type="Resource" uid="uid://btpwu1742uluo" path="res://assets/inventoryresources/turret.tres" id="27_kxw46"]
+[ext_resource type="Resource" uid="uid://bq7donkpco1n5" path="res://assets/inventoryresources/scouter.tres" id="28_5q8fn"]
 [ext_resource type="Script" uid="uid://cs3av03m2lixa" path="res://script/debug/fps.gd" id="29_4hvnv"]
 [ext_resource type="Shader" uid="uid://cnt43oe6ws5ac" path="res://shaders/outline.gdshader" id="31_wva7c"]
 [ext_resource type="PackedScene" uid="uid://cglt3v5bjm13" path="res://scenes/ui/craftingmenu.tscn" id="33_5mf0n"]
+[ext_resource type="AudioStream" uid="uid://lm6xgrria4ah" path="res://assets/sounds/music/piano riff1.mp3" id="33_8qxvo"]
 [ext_resource type="AudioStream" uid="uid://b8aqqixfhbn3u" path="res://assets/sounds/music/wind.wav" id="34_4hvnv"]
 [ext_resource type="AudioStream" uid="uid://bt5oxugfmo7b0" path="res://assets/sounds/sfx/break.wav" id="35_bbmj2"]
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="35_kxw46"]
@@ -308,6 +311,12 @@ radius = 20.025
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uniwh"]
 radius = 50.04
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo27k"]
+shader = ExtResource("12_wva7c")
+shader_parameter/amount = 0.426
+shader_parameter/speed = 0.4
+shader_parameter/color = Color(0.793333, 1, 0.38, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_fcs02"]
 device = -1
@@ -603,6 +612,15 @@ collision_mask = 512
 shape = SubResource("CircleShape2D_uniwh")
 
 [node name="hud" type="CanvasLayer" parent="."]
+
+[node name="scouterstuff" type="ColorRect" parent="hud"]
+material = SubResource("ShaderMaterial_vo27k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.181333, 0.68, 0, 0.219608)
 
 [node name="Backpack" type="TextureButton" parent="hud"]
 visible = false
@@ -960,7 +978,7 @@ costs = 1000
 description = "pov: when ur to lazy to shoot wolves
 "
 
-[node name="chest" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+[node name="scouter" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -971,13 +989,13 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "turret
+text = "scouter
 "
 alignment = 0
 script = ExtResource("17_uf5tr")
-item = ExtResource("27_kxw46")
-costs = 1000
-description = "pov: when ur to lazy to shoot wolves
+item = ExtResource("28_5q8fn")
+costs = 6000
+description = "scans chickens and stuff
 "
 
 [node name="preview" type="Sprite2D" parent="hud/shop"]
@@ -1184,11 +1202,21 @@ volume_db = -10.0
 autoplay = true
 bus = &"reverb"
 
+[node name="ambience1" type="AudioStreamPlayer" parent="globalaudio"]
+stream = ExtResource("33_8qxvo")
+volume_db = -25.0
+mix_target = 1
+
+[node name="musictimer" type="Timer" parent="globalaudio"]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
 [node name="localaudio" type="Node2D" parent="."]
 
 [node name="break" type="AudioStreamPlayer2D" parent="localaudio"]
 stream = ExtResource("35_bbmj2")
-volume_db = 8.0
+volume_db = 4.0
 
 [node name="hit" type="AudioStreamPlayer2D" parent="localaudio"]
 stream = ExtResource("36_5q8fn")
@@ -1215,3 +1243,4 @@ shape = SubResource("RectangleShape2D_5mf0n")
 
 [connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]
+[connection signal="timeout" from="globalaudio/musictimer" to="." method="_on_musictimer_timeout"]

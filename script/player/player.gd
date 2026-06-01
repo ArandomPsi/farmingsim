@@ -227,6 +227,7 @@ func updatehud():
 	$hud/hpbar.value = hp
 	$hud/Panel/coinlabel.text = str(currency)
 	$hud/text.visible = textqueue.size() > 0
+	$hud/scouterstuff.visible = global.scanner
 	if currentweaponname in guns:
 		$hud/bulletamount.text = str(currentmagsize) + "/" + str(rounds)
 		$hud/bulletamount.visible = true
@@ -257,6 +258,7 @@ func updateconstantvariables():
 	weapons[0] = $hud/inventoryui.hotbarslot1.currentitem
 	weapons[1] = $hud/inventoryui.hotbarslot2.currentitem
 	weapons[2] = $hud/inventoryui.hotbarslot3.currentitem
+	global.scanner = currentweaponname == "scouter"
 	if weapons[currentweapon] != null:
 		currentweaponname = weapons[currentweapon].name
 	else:
@@ -368,7 +370,6 @@ func handle_building(place : bool):
 				phantom.visible = true
 				phantom.rotation_degrees = clampedangle #trying to fix something
 				phantom.rotation_degrees = snapped(wrapf($pivot.rotation_degrees, 0.0, 360.0), 90.0) #snapping
-				print(str(phantom.rotation_degrees))
 				#if the rotation is 90 or 270, then make the texture the vertical texture
 				#else make it the original texture
 				if phantom.rotation_degrees == 180 or phantom.rotation_degrees == 0 or phantom.rotation_degrees == 360:
@@ -728,3 +729,8 @@ func _on_sprite_frame_changed() -> void:
 	if $flip/sprite.animation == "walk":
 		if $flip/sprite.frame == 0 or $flip/sprite.frame == 2:
 			$localaudio/step.play()
+
+
+func _on_musictimer_timeout() -> void:
+	$globalaudio/ambience1.play()
+	$globalaudio/musictimer.start(randi_range(30,80))

@@ -70,6 +70,7 @@ var partnerchickenmutations : Array = []
 
 
 func _ready() -> void:
+	$flip/sprite.material = $flip/sprite.material.duplicate()
 	randomize_stats()
 	addmutations()
 	
@@ -95,6 +96,9 @@ func randomize_stats():
 	
 	$flip/sprite.modulate = chickenstats["color"]
 	
+	$buck1.pitch_scale *= randf_range(0.9,1.2)
+	$buck2.pitch_scale *= randf_range(0.9,1.2)
+	$buck3.pitch_scale *= randf_range(0.9,1.2)
 
 
 func addmutations():
@@ -327,13 +331,9 @@ func createrope(rope):
 
 func updatestats():
 	$stats/Label.text = (
-		"chicken stats:\n"
-		+ "size - "
-		+ str(round(chickenstats["size"]))
-		+ "\n"
-		+ "tenderness - "
+		str(round(chickenstats["size"]))
+		+ ", "
 		+ str(round(chickenstats["tenderness"]))
 		+ "\n"
-		+ "mutations - "
 		+ str(chickenmutations)
 	)
