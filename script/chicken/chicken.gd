@@ -157,6 +157,9 @@ func addmutations():
 			"supersaiyan":
 				var b = load("res://scenes/chicken/spike.tscn").instantiate()
 				$flip.add_child(b)
+			"eclipse":
+				var b = load("res://scenes/chicken/eclipsemutation.tscn").instantiate()
+				add_child(b)
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)
@@ -319,7 +322,10 @@ func get_closest_chicken() -> Node2D:
 
 func bounce(body: Node2D) -> void:
 	$suslook.look_at(body.global_position)
-	velocity = $suslook.transform.x * -400 * speed/1500 #for bouncing and stuff
+	if chickenmutations.has("eclipse"):
+		velocity = $suslook.transform.x * -100 * speed/1500
+	else:
+		velocity = $suslook.transform.x * -400 * speed/1500 #for bouncing and stuff
 
 
 
