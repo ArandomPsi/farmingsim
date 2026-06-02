@@ -732,5 +732,13 @@ func _on_sprite_frame_changed() -> void:
 
 
 func _on_musictimer_timeout() -> void:
-	$globalaudio/ambience1.play()
-	$globalaudio/musictimer.start(randi_range(30,80))
+	if not $globalaudio/ambience1.playing and not $globalaudio/ambience2.playing:
+		if randi_range(0,1) == 1:
+			$globalaudio/ambience1.play()
+		else:
+			$globalaudio/ambience2.play()
+		
+		$globalaudio/musictimer.start(randi_range(30,80))
+	else:
+		$globalaudio/musictimer.start(randi_range(20,50))
+	

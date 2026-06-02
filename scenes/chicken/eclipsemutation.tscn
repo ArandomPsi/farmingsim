@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://djauownneyvb7"]
+
+[ext_resource type="Script" uid="uid://c46djekcj3qcb" path="res://script/chicken/eclipsemutation.gd" id="1_akd7v"]
+[ext_resource type="Shader" uid="uid://if45ubei2x5n" path="res://shaders/blackholefromsoulslikegame.gdshader" id="1_q4hyi"]
+[ext_resource type="Texture2D" uid="uid://b4l21tu8qbucs" path="res://icon.svg" id="2_akd7v"]
+
+[sub_resource type="Gradient" id="Gradient_benwf"]
+offsets = PackedFloat32Array(0.522727)
+colors = PackedColorArray(1, 0.65, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_atuea"]
+gradient = SubResource("Gradient_benwf")
+
+[sub_resource type="Gradient" id="Gradient_nfic1"]
+offsets = PackedFloat32Array(0.616883, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.7, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p7l5u"]
+gradient = SubResource("Gradient_nfic1")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2yxfe"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yso6e"]
+seamless = true
+noise = SubResource("FastNoiseLite_2yxfe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wt15"]
+shader = ExtResource("1_q4hyi")
+shader_parameter/resolution = Vector2(96, 96)
+shader_parameter/colorResolution = 13.0
+shader_parameter/distortionIntensity = 6.6
+shader_parameter/spiralDistortionIntensity = 7.1
+shader_parameter/holeSize = 0.19
+shader_parameter/holeColor = SubResource("GradientTexture1D_p7l5u")
+shader_parameter/image = SubResource("NoiseTexture2D_yso6e")
+shader_parameter/rotations = 0.0
+shader_parameter/depth = 0.5
+shader_parameter/spiralIntensity = 1.0
+shader_parameter/shrinkSpeed = 0.2
+shader_parameter/roationSpeed = -0.2
+shader_parameter/haloColor = SubResource("GradientTexture1D_atuea")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4hyi"]
+radius = 682.036
+
+[node name="eclipsemutation" type="Node2D"]
+script = ExtResource("1_akd7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_3wt15")
+scale = Vector2(12, 12)
+texture = ExtResource("2_akd7v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_q4hyi")

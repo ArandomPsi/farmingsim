@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=100 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -37,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://bt5oxugfmo7b0" path="res://assets/sounds/sfx/break.wav" id="35_bbmj2"]
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="35_kxw46"]
 [ext_resource type="AudioStream" uid="uid://c0woog3fdplnc" path="res://assets/sounds/sfx/hit2.wav" id="36_5q8fn"]
+[ext_resource type="AudioStream" uid="uid://c8osrd6twi2v" path="res://assets/sounds/music/fa.mp3" id="36_7obkq"]
 [ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
 [ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
 
@@ -614,6 +615,7 @@ shape = SubResource("CircleShape2D_uniwh")
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="scouterstuff" type="ColorRect" parent="hud"]
+visible = false
 material = SubResource("ShaderMaterial_vo27k")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1204,6 +1206,11 @@ bus = &"reverb"
 
 [node name="ambience1" type="AudioStreamPlayer" parent="globalaudio"]
 stream = ExtResource("33_8qxvo")
+volume_db = -25.0
+mix_target = 1
+
+[node name="ambience2" type="AudioStreamPlayer" parent="globalaudio"]
+stream = ExtResource("36_7obkq")
 volume_db = -25.0
 mix_target = 1
 
