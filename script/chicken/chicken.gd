@@ -161,6 +161,10 @@ func addmutations():
 			"eclipse":
 				var b = load("res://scenes/chicken/eclipsemutation.tscn").instantiate()
 				add_child(b)
+			"shikigami":
+				var b = load("res://scenes/chicken/shikigami.tscn").instantiate()
+				get_parent().add_child(b)
+				b.guarding = self
 			_:
 				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)

@@ -41,6 +41,10 @@ func die():
 
 func idle():
 	$sprite.play("idle")
+	if guarding.position.x > position.x:
+		$sprite.scale.x = 5
+	else:
+		$sprite.scale.x = -5
 
 
 func chase(node : Node2D):
@@ -49,7 +53,7 @@ func chase(node : Node2D):
 	velocity += $looker.transform.x * 20
 
 func assault(node : Node2D):
-	if position.distance_to(node.global_position) > 20 and attackframes < 1:
+	if position.distance_to(node.global_position) > 20 and attackframes < 10:
 		$sprite.play("walk")
 		$looker.look_at(node.position)
 		velocity += $looker.transform.x * 40
@@ -57,4 +61,11 @@ func assault(node : Node2D):
 		$looker.look_at(node.position)
 		velocity += $looker.transform.x * 10
 		$sprite.play("attack")
-		attackframes = 10
+		attackframes = 20
+
+
+func _on_attackbox_body_entered(body: Node2D) -> void:
+	var b = preload("res://scenes/vfx/hiteffects.tscn").instantiate()
+	b.position = position
+	b.look_at(body.position)
+	get_parent().add_child(b)

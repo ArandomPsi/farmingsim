@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cghpaqlgwcu6e"]
+[gd_scene load_steps=33 format=3 uid="uid://cghpaqlgwcu6e"]
 
 [ext_resource type="Texture2D" uid="uid://coxgedo0ryy4u" path="res://assets/ui/sun.png" id="1_4v1qu"]
 [ext_resource type="Texture2D" uid="uid://ddp16gkononxi" path="res://assets/ui/chickenisland.png" id="1_t6us6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://tdmfc3u7pyya" path="res://shaders/clouds.gdshader" id="2_s1drf"]
 [ext_resource type="Shader" uid="uid://btus7pjn3djmr" path="res://shaders/godray.gdshader" id="3_ve8eu"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_yo48d"]
+[ext_resource type="Texture2D" uid="uid://beyf38ol87mso" path="res://assets/_Keyboard_And_Mouse.png" id="8_q341w"]
 
 [sub_resource type="Gradient" id="Gradient_g80e2"]
 offsets = PackedFloat32Array(0, 0.562753)
@@ -226,15 +227,31 @@ environment = SubResource("Environment_4v1qu")
 [node name="title" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 640.0
-offset_top = -61.0
-offset_right = 1320.0
-offset_bottom = 177.0
+offset_left = 542.0
+offset_top = -57.0
+offset_right = 1222.0
+offset_bottom = 181.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.215686)
 theme_override_constants/line_spacing = 80
 theme_override_fonts/font = ExtResource("6_yo48d")
-text = "Buckapagos Island"
+text = "Alpha gooner rizzler  (working title)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="title2" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 630.0
+offset_top = -4.0
+offset_right = 1310.0
+offset_bottom = 234.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.215686)
+theme_override_constants/line_spacing = 80
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 10
+text = "Move ur mouse to the very left I dare u"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -292,5 +309,127 @@ limit_left = 0
 limit_top = 0
 limit_right = 1152
 limit_bottom = 648
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="idiotpanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -430.0
+offset_top = 4.0
+offset_right = -34.0
+offset_bottom = 610.0
+
+[node name="Sprite2D" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(88, 65)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(40, 24, 7, 8)
+
+[node name="Sprite2D2" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(50, 102)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(32, 32, 7, 8)
+
+[node name="Sprite2D3" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(127, 102)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(48, 32, 7, 8)
+
+[node name="Sprite2D4" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(88, 102)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(40, 32, 7, 8)
+
+[node name="Label" type="Label" parent="idiotpanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 13.0
+offset_right = 167.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 12
+text = "Movement and stuff"
+
+[node name="Label2" type="Label" parent="idiotpanel"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 118.0
+offset_right = 345.0
+offset_bottom = 141.0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 12
+text = "Open ur inventory"
+
+[node name="Label3" type="Label" parent="idiotpanel"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 242.0
+offset_right = 432.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 12
+text = "place building/attack/
+mine... it does a lot"
+
+[node name="Label4" type="Label" parent="idiotpanel"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 369.0
+offset_right = 349.0
+offset_bottom = 392.0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 12
+text = "lead chickens"
+
+[node name="Sprite2D5" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(301, 87)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(88, 24, 7, 8)
+
+[node name="Sprite2D6" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(235, 87)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(16, 16, 15, 8)
+
+[node name="Sprite2D7" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(90, 258)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(34, 368, 12, 16)
+
+[node name="Sprite2D8" type="Sprite2D" parent="idiotpanel"]
+texture_filter = 1
+position = Vector2(91, 384)
+scale = Vector2(5, 5)
+texture = ExtResource("8_q341w")
+region_enabled = true
+region_rect = Rect2(50, 368, 12, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="idiotpanel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 459.0
+offset_right = 384.0
+offset_bottom = 596.0
+text = "Alrighty bozos, here's how to play this not very complicated game. KEEP YOUR GODDAMN CHICKENS ALIVE. How might one do that? It's quite easy because of the existence of fences. Just mine 5 wood, open your inventory and craft fences. Do that to trap chickens. You may ask yourself \"Is that it?\" nope because chickens can get mutated and stuff. So good luck trying to keep them alive"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
