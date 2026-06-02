@@ -18,6 +18,7 @@
 shader = ExtResource("1_4cr1r")
 shader_parameter/col = Color(1, 0, 0, 1)
 shader_parameter/tolerance = 0.01
+shader_parameter/transparency = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phx1t"]
 atlas = ExtResource("2_io7f4")

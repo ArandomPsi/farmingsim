@@ -141,7 +141,8 @@ func addmutations():
 				var b = load("res://scenes/chicken/shrouded.tscn").instantiate()
 				add_child(b)
 			"lucent":
-				$flip/sprite.self_modulate.a = 0.01
+				chickenstats["color"].a = 0.01
+				$flip/sprite.material.set_shader_parameter("transparency",0.0)
 			"redbull": #redbull gives u wings
 				var b = load("res://scenes/chicken/redbull.tscn").instantiate()
 				$flip/sprite.add_child(b)

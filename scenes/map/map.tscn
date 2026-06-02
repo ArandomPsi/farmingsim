@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=35 format=4 uid="uid://cjf2as4jtjrgf"]
 
 [ext_resource type="Script" uid="uid://2xiyuhxc0xi2" path="res://script/ui/mini_map.gd" id="1_mgs8m"]
 [ext_resource type="Texture2D" uid="uid://c631lwf82fxbs" path="res://assets/chickens/chickenmap.png" id="1_mrjnl"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://cp53xbuuxscoe" path="res://script/stonegenerator.gd" id="12_x2kg6"]
 [ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
 [ext_resource type="Script" uid="uid://chhr0j0015t7o" path="res://script/monsters/wolfspawner.gd" id="14_mgs8m"]
+[ext_resource type="PackedScene" uid="uid://nckxqd571x6i" path="res://scenes/chicken/shikigami.tscn" id="15_mrjnl"]
+[ext_resource type="PackedScene" uid="uid://bp563f1vvhj8e" path="res://scenes/monsters/wolf.tscn" id="16_rqo2c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrjnl"]
 texture = ExtResource("1_mrjnl")
@@ -613,5 +615,38 @@ autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mgs8m")
+
+[node name="shikigami" parent="." node_paths=PackedStringArray("guarding") instance=ExtResource("15_mrjnl")]
+guarding = NodePath("../chicken")
+
+[node name="wolf" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(379, 1929)
+
+[node name="wolf2" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(955, 1840)
+
+[node name="wolf3" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(551, 1653)
+
+[node name="wolf4" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(1196, 1520)
+
+[node name="wolf5" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(748, 1500)
+
+[node name="wolf6" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(14, 1554)
+
+[node name="wolf7" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(-60, 1928)
+
+[node name="wolf8" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(521, 1293)
+
+[node name="wolf9" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(1196, 1066)
+
+[node name="wolf10" parent="." instance=ExtResource("16_rqo2c")]
+position = Vector2(113, 1214)
 
 [connection signal="timeout" from="wolfspawner/Timer" to="wolfspawner" method="_on_timer_timeout"]
