@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=101 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -364,6 +364,14 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_kvlxm"]
 events = [SubResource("InputEventKey_myrg7")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7obkq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk8ii"]
 bg_color = Color(0.51, 0.328525, 0.1989, 1)
 border_width_left = 5
@@ -507,11 +515,22 @@ scale = Vector2(5, 5)
 texture = ExtResource("7_iqsei")
 
 [node name="light" type="PointLight2D" parent="pivot/guns"]
+visible = false
 position = Vector2(-22.3588, -0.4)
 scale = Vector2(2.97059, 2.29412)
 color = Color(1, 0.915667, 0.54, 1)
 energy = 0.5
 shadow_enabled = true
+texture = ExtResource("7_5gtgg")
+offset = Vector2(15, 0)
+texture_scale = 0.2
+
+[node name="light2" type="PointLight2D" parent="pivot/guns"]
+visible = false
+position = Vector2(-22.3588, -0.4)
+scale = Vector2(2.97059, 2.29412)
+color = Color(1, 0.915667, 0.54, 1)
+energy = 0.5
 texture = ExtResource("7_5gtgg")
 offset = Vector2(15, 0)
 texture_scale = 0.2
@@ -585,8 +604,14 @@ shape = SubResource("CircleShape2D_75vfm")
 
 [node name="nightlight" type="PointLight2D" parent="."]
 color = Color(1, 0.950667, 0.63, 1)
-energy = 0.2
+energy = 0.1
 shadow_enabled = true
+texture = SubResource("GradientTexture2D_h17s1")
+texture_scale = 2.61
+
+[node name="nightlight2" type="PointLight2D" parent="."]
+color = Color(1, 0.950667, 0.63, 1)
+energy = 0.1
 texture = SubResource("GradientTexture2D_h17s1")
 texture_scale = 2.61
 
@@ -694,6 +719,7 @@ offset_bottom = 651.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qxvo")
 
 [node name="text" type="Label" parent="hud/text"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -711,8 +737,10 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("11_je7p5")
 text = "Hello Bro
 wsg"
+autowrap_mode = 3
 
 [node name="name" type="Label" parent="hud/text"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 11.0
 offset_top = 9.0
@@ -733,9 +761,9 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 708.0
+offset_left = 660.0
 offset_top = -6.0
-offset_right = -355.0
+offset_right = -393.0
 offset_bottom = -527.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -750,9 +778,9 @@ script = ExtResource("16_kvlxm")
 
 [node name="ExitShop" type="Button" parent="hud/shop"]
 layout_mode = 0
-offset_left = 72.0
+offset_left = 84.8
 offset_top = 6.0
-offset_right = 114.0
+offset_right = 126.8
 offset_bottom = 48.0
 scale = Vector2(0.2, 0.2)
 focus_mode = 0
@@ -779,9 +807,9 @@ region_rect = Rect2(228, 20, 8, 8)
 
 [node name="Label" type="Label" parent="hud/shop"]
 layout_mode = 0
-offset_left = 2.8
+offset_left = 17.8
 offset_top = 7.8
-offset_right = 430.8
+offset_right = 445.8
 offset_bottom = 30.8
 scale = Vector2(0.2, 0.2)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -796,194 +824,44 @@ anchors_preset = -1
 anchor_top = 0.074
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -55.0
-offset_top = 4.602
-offset_right = 585.0
-offset_bottom = 426.0
+offset_left = 5.0
+offset_top = -3.398
+offset_right = 62.0
+offset_bottom = 462.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7obkq")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="GridContainer" parent="hud/shop/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme_override_constants/v_separation = 50
+size_flags_horizontal = 3
+theme_override_constants/v_separation = 40
 
 [node name="pistol" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "pistol
 "
-alignment = 0
 script = ExtResource("17_uf5tr")
 item = ExtResource("23_28m0y")
 costs = 800
 description = "your basic ahh gun that go pew pew. BRRRR skrrrrt lol. WELCOME TO AMERICA. FREEDOM BITCH"
 
-[node name="shotgun" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "shotgun"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("24_uniwh")
-costs = 1200
-childcount = 1
-description = "shotguns are a well rounded high burst damage gun. BANG BANG ha ha ha I just 200 pumped u b*tch"
-
-[node name="rifle" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "uzi"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("25_iqsei")
-costs = 8000
-childcount = 2
-description = "you're a fucking war criminal"
-
-[node name="sniper" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "sniper"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("26_tffgl")
-costs = 4000
-description = "one shot stopper with the longest range out of all weapons. 360 no scope blah blah blah. are you now camping outside the homeless shelters?"
-
-[node name="torch" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "torch"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("23_kxw46")
-costs = 2
-description = "good for lighting things up at night."
-
-[node name="ammo" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "ammo"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("24_5mf0n")
-costs = 1
-description = "one round of multipurpose bullets. how are they multipurpose you may ask? well i don't know, they're probably like multispike shoes, they are a fucking abomination"
-
-[node name="drumsticks" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "vegan 
-food"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("25_4hvnv")
-costs = 30
-description = "Yummy yummy yummy for your little bitty tummy"
-
-[node name="chainsaw" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "Chainsaw"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("26_bbmj2")
-costs = 2300
-description = "rip through trees quickly
-"
-
-[node name="turret" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-focus_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_je7p5")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "turret
-"
-alignment = 0
-script = ExtResource("17_uf5tr")
-item = ExtResource("27_kxw46")
-costs = 1000
-description = "pov: when ur to lazy to shoot wolves
-"
-
 [node name="scouter" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_je7p5")
@@ -993,11 +871,152 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
 text = "scouter
 "
-alignment = 0
 script = ExtResource("17_uf5tr")
 item = ExtResource("28_5q8fn")
 costs = 6000
 description = "scans chickens and stuff
+"
+
+[node name="shotgun" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "shotgun"
+script = ExtResource("17_uf5tr")
+item = ExtResource("24_uniwh")
+costs = 1200
+childcount = 1
+description = "shotguns are a well rounded high burst damage gun. BANG BANG ha ha ha I just 200 pumped u b*tch"
+
+[node name="rifle" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "uzi"
+script = ExtResource("17_uf5tr")
+item = ExtResource("25_iqsei")
+costs = 8000
+childcount = 2
+description = "you're a fucking war criminal"
+
+[node name="sniper" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "sniper"
+script = ExtResource("17_uf5tr")
+item = ExtResource("26_tffgl")
+costs = 4000
+description = "one shot stopper with the longest range out of all weapons. 360 no scope blah blah blah. are you now camping outside the homeless shelters?"
+
+[node name="torch" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "torch"
+script = ExtResource("17_uf5tr")
+item = ExtResource("23_kxw46")
+costs = 2
+description = "good for lighting things up at night."
+
+[node name="ammo" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "ammo"
+script = ExtResource("17_uf5tr")
+item = ExtResource("24_5mf0n")
+costs = 1
+description = "one round of multipurpose bullets. how are they multipurpose you may ask? well i don't know, they're probably like multispike shoes, they are a fucking abomination"
+
+[node name="drumsticks" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "vegan 
+food"
+script = ExtResource("17_uf5tr")
+item = ExtResource("25_4hvnv")
+costs = 30
+description = "Yummy yummy yummy for your little bitty tummy"
+
+[node name="chainsaw" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "Chainsaw"
+script = ExtResource("17_uf5tr")
+item = ExtResource("26_bbmj2")
+costs = 2300
+description = "rip through trees quickly
+"
+
+[node name="turret" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "turret
+"
+script = ExtResource("17_uf5tr")
+item = ExtResource("27_kxw46")
+costs = 1000
+description = "pov: when ur to lazy to shoot wolves
 "
 
 [node name="preview" type="Sprite2D" parent="hud/shop"]
@@ -1011,11 +1030,13 @@ texture = ExtResource("10_h17s1")
 [node name="info" type="RichTextLabel" parent="hud/shop"]
 clip_contents = false
 layout_mode = 0
-offset_left = 31.0
+offset_left = 42.2
 offset_top = 65.0
-offset_right = 301.0
+offset_right = 312.2
 offset_bottom = 270.0
 scale = Vector2(0.2, 0.2)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_constants/line_separation = 5
 theme_override_fonts/normal_font = ExtResource("11_je7p5")
 text = "select something to buy"
@@ -1035,9 +1056,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4hvnv")
 
 [node name="cost" type="Label" parent="hud/shop"]
 layout_mode = 0
-offset_left = 56.2
+offset_left = 67.2
 offset_top = 116.0
-offset_right = 193.2
+offset_right = 204.2
 offset_bottom = 139.0
 scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("11_je7p5")
@@ -1048,9 +1069,9 @@ vertical_alignment = 1
 
 [node name="buy" type="Button" parent="hud/shop"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 43.0
 offset_top = 114.8
-offset_right = 142.0
+offset_right = 153.0
 offset_bottom = 145.8
 scale = Vector2(0.2, 0.2)
 focus_mode = 0
@@ -1126,6 +1147,7 @@ theme_override_fonts/font = ExtResource("11_je7p5")
 text = "5/5"
 
 [node name="inventoryui" parent="hud" instance=ExtResource("26_6cv16")]
+visible = false
 
 [node name="craftingmenu" parent="hud/inventoryui" instance=ExtResource("33_5mf0n")]
 layout_mode = 1
@@ -1166,8 +1188,9 @@ offset_top = 34.0
 offset_right = 219.0
 offset_bottom = 57.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.9, 0, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("11_je7p5")
 theme_override_font_sizes/font_size = 12
 text = "get wood"

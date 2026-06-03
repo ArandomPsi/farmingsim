@@ -46,6 +46,7 @@ var quests : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	time = ingame_to_real_minute_duration * INITIAL_HOUR * 60
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

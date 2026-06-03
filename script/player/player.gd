@@ -144,8 +144,12 @@ func controls():
 		var allareas : Array = $textarea.get_overlapping_areas()
 		if not allareas.is_empty(): #for chickens and stuff
 			overlappingshopkeeper = allareas[0].get_parent()
+			
 			textqueue = overlappingshopkeeper.textstuff
+			textqueue.insert(1,overlappingshopkeeper.secondlist[currentgoal]) #add additional dialouge
+			
 			$hud/text/name.text = str(overlappingshopkeeper.displayname)
+			print("opened")
 		
 		
 	
@@ -567,7 +571,7 @@ func mineore():
 	#checks all the ores
 	#stuff array holds all the minables
 	var stuff = [mineable]
-	shakeframes += 5
+	shakeframes += 4
 	stuff = $orechecker.get_overlapping_areas()
 	for i in range(stuff.size()):
 		var thingy = stuff[i].get_parent() as mineable #blah blah blah

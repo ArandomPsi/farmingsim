@@ -61,8 +61,15 @@ process_material = SubResource("ParticleProcessMaterial_8egjb")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(2, -4)
 color = Color(1, 0.881, 0.49, 1)
-energy = 0.5
+energy = 0.25
 shadow_enabled = true
+texture = SubResource("GradientTexture2D_du31o")
+texture_scale = 6.2
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(2, -4)
+color = Color(1, 0.881, 0.49, 1)
+energy = 0.25
 texture = SubResource("GradientTexture2D_du31o")
 texture_scale = 6.2
 
