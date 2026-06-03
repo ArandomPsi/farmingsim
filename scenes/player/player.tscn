@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=104 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -290,6 +290,17 @@ shader = ExtResource("3_gmlin")
 shader_parameter/dir = Vector2(0, 0)
 shader_parameter/quality = 10
 
+[sub_resource type="Gradient" id="Gradient_vo27k"]
+offsets = PackedFloat32Array(0.569474, 0.998947)
+colors = PackedColorArray(0.6, 0, 0, 0, 0.6, 0, 0, 0.784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_genst"]
+gradient = SubResource("Gradient_vo27k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_75vfm"]
 radius = 23.0217
 
@@ -528,7 +539,6 @@ texture_scale = 0.2
 
 [node name="light2" type="PointLight2D" parent="pivot/guns/light"]
 visible = false
-scale = Vector2(1, 1)
 color = Color(1, 0.915667, 0.54, 1)
 energy = 0.5
 texture = ExtResource("7_5gtgg")
@@ -591,6 +601,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="reddeath" type="Sprite2D" parent="shaders"]
+position = Vector2(576, 324.5)
+scale = Vector2(18, 10.1406)
+texture = SubResource("GradientTexture2D_genst")
 
 [node name="ropearea" type="Area2D" parent="."]
 collision_layer = 0

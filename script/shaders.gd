@@ -16,3 +16,5 @@ func _process(delta: float) -> void:
 	$motionblur.material.set_shader_parameter("dir", blur_dir)
 	
 	prevcampos = cam_pos
+	
+	$reddeath.modulate.a = 1 - float(get_parent().hp) / 100.0 #red lines

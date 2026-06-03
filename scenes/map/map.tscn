@@ -608,7 +608,7 @@ script = ExtResource("14_mgs8m")
 presetlocations = PackedVector2Array(99, 1456, 2661, 647, 4970, 784, 7101, 1598, 6092, 3145, 6528, 4496, 5065, 4348, 2967, 4343, 1017, 4900, 4292, 6121)
 
 [node name="Timer" type="Timer" parent="wolfspawner"]
-wait_time = 30.0
+wait_time = 540.0
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
