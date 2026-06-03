@@ -79,6 +79,13 @@ func _ready() -> void:
 	scale *= max(chickenstats["size"] / 100.0, 1.0)
 	
 	partnerchickenstats.clear()
+	
+	if global.chickenskilled >= 15 and not global.shikigamispawned:
+		global.shikigamispawned = true
+		var b = load("res://scenes/chicken/shikigami.tscn").instantiate()
+		get_tree().current_scene.add_child(b)
+		b.guarding = self
+		
 
 
 func randomize_stats():

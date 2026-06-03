@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=102 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="35_kxw46"]
 [ext_resource type="AudioStream" uid="uid://c0woog3fdplnc" path="res://assets/sounds/sfx/hit2.wav" id="36_5q8fn"]
 [ext_resource type="AudioStream" uid="uid://c8osrd6twi2v" path="res://assets/sounds/music/fa.mp3" id="36_7obkq"]
+[ext_resource type="AudioStream" uid="uid://dkjeutcavdmyu" path="res://assets/sounds/music/gada.mp3" id="37_vo27k"]
 [ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
 [ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
 
@@ -290,7 +291,7 @@ shader_parameter/dir = Vector2(0, 0)
 shader_parameter/quality = 10
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75vfm"]
-radius = 16.0
+radius = 23.0217
 
 [sub_resource type="Gradient" id="Gradient_5gtgg"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -525,10 +526,9 @@ texture = ExtResource("7_5gtgg")
 offset = Vector2(15, 0)
 texture_scale = 0.2
 
-[node name="light2" type="PointLight2D" parent="pivot/guns"]
+[node name="light2" type="PointLight2D" parent="pivot/guns/light"]
 visible = false
-position = Vector2(-22.3588, -0.4)
-scale = Vector2(2.97059, 2.29412)
+scale = Vector2(1, 1)
 color = Color(1, 0.915667, 0.54, 1)
 energy = 0.5
 texture = ExtResource("7_5gtgg")
@@ -609,7 +609,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_h17s1")
 texture_scale = 2.61
 
-[node name="nightlight2" type="PointLight2D" parent="."]
+[node name="nightlight2" type="PointLight2D" parent="nightlight"]
 color = Color(1, 0.950667, 0.63, 1)
 energy = 0.1
 texture = SubResource("GradientTexture2D_h17s1")
@@ -620,6 +620,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="textarea"]
+visible = false
 shape = SubResource("CircleShape2D_je7p5")
 
 [node name="coopchecker" type="Area2D" parent="."]
@@ -627,6 +628,7 @@ collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coopchecker"]
+visible = false
 shape = SubResource("CircleShape2D_ioxgp")
 
 [node name="orechecker" type="Area2D" parent="."]
@@ -635,6 +637,7 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="orechecker"]
+visible = false
 shape = SubResource("CircleShape2D_uniwh")
 
 [node name="hud" type="CanvasLayer" parent="."]
@@ -1188,7 +1191,7 @@ offset_top = 34.0
 offset_right = 219.0
 offset_bottom = 57.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0.964, 0.28, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("11_je7p5")
@@ -1255,6 +1258,11 @@ stream = ExtResource("36_7obkq")
 volume_db = -25.0
 mix_target = 1
 
+[node name="ambience3" type="AudioStreamPlayer" parent="globalaudio"]
+stream = ExtResource("37_vo27k")
+volume_db = -15.0
+mix_target = 1
+
 [node name="musictimer" type="Timer" parent="globalaudio"]
 wait_time = 20.0
 one_shot = true
@@ -1287,6 +1295,7 @@ modulate = Color(1, 1, 1, 0.490196)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="phantom/buildingchecker"]
+visible = false
 shape = SubResource("RectangleShape2D_5mf0n")
 
 [connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]

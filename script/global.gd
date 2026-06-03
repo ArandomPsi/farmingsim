@@ -42,6 +42,7 @@ var chickenskilled : int = 0
 var mutationskilled : Array
 var quests : bool = true
 
+var shikigamispawned : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

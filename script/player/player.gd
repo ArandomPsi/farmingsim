@@ -137,8 +137,11 @@ func controls():
 	
 	
 	if Input.is_action_just_pressed("addrope"):
-		$ropearea.global_position = get_global_mouse_position()
+		
 		createrope()
+	
+	$ropearea.global_position = get_global_mouse_position()
+	
 	
 	if Input.is_action_just_pressed("interact"):
 		var allareas : Array = $textarea.get_overlapping_areas()
@@ -586,8 +589,8 @@ func createshoteffect(pos):
 
 func createrope():
 	if $ropearea.has_overlapping_bodies():
-		var thingy : Array = $ropearea.get_overlapping_bodies()
-		var thing = thingy[0]
+		
+		var thing = get_closest_body($ropearea)
 		
 		for i in range($ropes.get_child_count()):
 			if $ropes.get_child(i).tetheredbody == thing: #if rope is connected to the body
@@ -595,15 +598,34 @@ func createrope():
 				$ropes.get_child(i).queue_free()
 				return
 		
-		if $ropes.get_child_count() > ropeamount:
-			return
+		#if $ropes.get_child_count() > ropeamount:
+			#return
 		var b = preload("res://scenes/player/rope.tscn").instantiate()
 		$ropes.add_child(b)
 		 #its an array
-		b.tetheredbody = thingy[0]
-		thingy[0].tethered = true
+		b.tetheredbody = thing
+		thing.tethered = true
 		thing.createrope(b) #to prevent a bug
 		
+
+func get_closest_body(area:Area2D) -> Node2D:
+	var bodies = area.get_overlapping_bodies()
+
+	var closest : Node2D = null
+	var closest_dist := INF
+
+	for body in bodies:
+		if body == self:
+			continue
+		var dist = global_position.distance_squared_to(
+			body.global_position
+		)
+
+		if dist < closest_dist:
+			closest_dist = dist
+			closest = body
+
+	return closest
 
 
 func selectionmode():
@@ -791,10 +813,12 @@ func _on_sprite_frame_changed() -> void:
 
 func _on_musictimer_timeout() -> void:
 	if not $globalaudio/ambience1.playing and not $globalaudio/ambience2.playing:
-		if randi_range(0,1) == 1:
+		if randi_range(0,2) == 1:
 			$globalaudio/ambience1.play()
-		else:
+		elif randi_range(1,2) == 1:
 			$globalaudio/ambience2.play()
+		else:
+			$globalaudio/ambience3.play()
 		
 		$globalaudio/musictimer.start(randi_range(30,80))
 	else:
