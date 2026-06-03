@@ -279,6 +279,9 @@ func die():
 		if chickenmutations.has("golden"):
 			body.chickenvalue *= 67
 		
+		global.chickenskilled += 1
+		global.mutationskilled += chickenmutations
+		
 		
 	else: #creates a new chicken and stuff
 		var loading : String = "res://scenes/chicken/hostilechicken.tscn"
@@ -295,6 +298,8 @@ func die():
 		get_parent().add_child(c)
 		c.position = b.position
 		queue_free()
+		chickenmutations.remove_at(-1) #removes a mutation each time
+		global.mutationskilled += chickenmutations
 		
 	queue_free()
 	

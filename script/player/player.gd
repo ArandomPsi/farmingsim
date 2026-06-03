@@ -45,6 +45,11 @@ var currency : int = 0
 var overlappingshopkeeper = null
 var textqueue : Array = []
 
+
+var currentgoal : int = 0
+var goals : PackedStringArray = ["get wood", "make a fence", "make a dagger", "kill your chicken", "buy a glock", "craft a chest", "kill a mutated chicken", "kill 10 mutated chickens", "survive 30 days", "fucking sweat"]
+
+
 func _ready() -> void:
 	global.player = self
 	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
@@ -53,7 +58,13 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	#blah blahb blah
 	updateconstantvariables()
+	#pros can disable quests
+	if global.quests:
+		updatequests()
+	
+	#if hp less than one
 	if hp > 0:
 		if textqueue.size() > 0 or $hud/shop.visible or $hud/inventoryui.visible:
 			talkingcontrols()
@@ -64,6 +75,7 @@ func _process(delta: float) -> void:
 	else:
 		if Input.is_action_just_pressed("menu"):
 			get_tree().change_scene_to_file("res://scenes/ui/title.tscn")
+	#always update hud an position
 	updatehud()
 	global.playerpos = position
 	
@@ -264,6 +276,48 @@ func updateconstantvariables():
 	else:
 		currentweaponname = ""
 	
+
+
+func updatequests():
+	#["get wood", "make a fence", "make a dagger", "kill your chicken", "buy a glock", "craft a chest", "kill a mutated chicken", "kill 10 mutated chickens", "survive 30 days", "fucking sweat"]
+	match currentgoal:
+		0:
+			if playerinventory.inventoryhasname("wood"):
+				updategoal()
+		1:
+			if playerinventory.inventoryhasname("fence"):
+				updategoal()
+		2:
+			if playerinventory.inventoryhasname("dagger"):
+				updategoal()
+		3:
+			if global.chickenskilled > 0:
+				updategoal()
+		4:
+			if playerinventory.inventoryhasname("glock"):
+				updategoal()
+		5:
+			if playerinventory.inventoryhasname("chest"):
+				updategoal()
+		6:
+			if global.mutationskilled.size() >= 1:
+				updategoal()
+		7:
+			if global.mutationskilled.size() >= 10:
+				updategoal()
+		8:
+			if global.days >= 30:
+				updategoal()
+	
+	
+
+func updategoal():
+	currentgoal += 1
+	$hud/currentobjective.text = goals[currentgoal]
+	
+
+
+
 
 func pewpew():
 	match currentweaponname:

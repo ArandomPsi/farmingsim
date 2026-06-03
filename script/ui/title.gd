@@ -2,8 +2,11 @@ extends Control
 
 
 func _on_button_pressed() -> void: #play button
+	#reset everything
 	global.time = global.ingame_to_real_minute_duration * global.INITIAL_HOUR * 60
 	global.days = 0
+	global.chickenskilled = 0
+	global.mutationskilled = []
 	var tween = create_tween()
 	tween.tween_property($Camera2D,"zoom",Vector2(25,25),0.6).set_trans(Tween.TRANS_CUBIC)
 	await tween.finished

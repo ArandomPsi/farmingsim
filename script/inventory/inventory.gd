@@ -61,7 +61,29 @@ func inventoryhas(item : invitem, amount : int = 1, returnamount : bool = false)
 		return 0 #yeah ur broke
 	else:
 		return false #broke boi
-	
+
+
+func inventoryhasname(item : String, amount : int = 1, returnamount : bool = false):
+	if amount == 0:
+		return true #for redundant items bc i'm a bad coder
+	for slot in items:
+		if slot == null:
+			continue #the slot dies
+		
+		#if the slot has the item
+		if slot.item != null:
+			if slot.item.name == item:
+				if slot.amount >= amount: #check if the slot has the amount
+					
+					if returnamount:
+						return slot.amount
+					else:
+						return true #return ture :D
+	if returnamount:
+		return 0 #yeah ur broke
+	else:
+		return false #broke boi
+
 
 func removeitem(item : invitem, amount : int = 0): #basically the same as the checker, but it takes away items
 	update.emit()

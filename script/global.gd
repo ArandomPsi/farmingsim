@@ -38,6 +38,11 @@ var days = 0
 var truetime : float = 0
 var isnight : bool = false
 
+var chickenskilled : int = 0
+var mutationskilled : Array
+var quests : bool = true
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	time = ingame_to_real_minute_duration * INITIAL_HOUR * 60
