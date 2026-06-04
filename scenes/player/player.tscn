@@ -603,6 +603,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="reddeath" type="Sprite2D" parent="shaders"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(576, 324.5)
 scale = Vector2(18, 10.1406)
 texture = SubResource("GradientTexture2D_genst")

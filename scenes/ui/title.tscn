@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cghpaqlgwcu6e"]
+[gd_scene load_steps=34 format=3 uid="uid://cghpaqlgwcu6e"]
 
 [ext_resource type="Texture2D" uid="uid://coxgedo0ryy4u" path="res://assets/ui/sun.png" id="1_4v1qu"]
 [ext_resource type="Texture2D" uid="uid://ddp16gkononxi" path="res://assets/ui/chickenisland.png" id="1_t6us6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://btus7pjn3djmr" path="res://shaders/godray.gdshader" id="3_ve8eu"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="6_yo48d"]
 [ext_resource type="Texture2D" uid="uid://beyf38ol87mso" path="res://assets/_Keyboard_And_Mouse.png" id="8_q341w"]
+[ext_resource type="AudioStream" uid="uid://b8aqqixfhbn3u" path="res://assets/sounds/music/wind.wav" id="9_n73pj"]
 
 [sub_resource type="Gradient" id="Gradient_g80e2"]
 offsets = PackedFloat32Array(0, 0.562753)
@@ -182,6 +183,7 @@ scale = Vector2(2.29688, 2.29688)
 texture = SubResource("GradientTexture2D_s1drf")
 
 [node name="ColorRect" type="ColorRect" parent="bg"]
+visible = false
 material = SubResource("ShaderMaterial_yo48d")
 layout_mode = 1
 anchors_preset = 15
@@ -258,9 +260,9 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 941.0
-offset_top = 463.0
+offset_top = 389.0
 offset_right = 1125.0
-offset_bottom = 505.0
+offset_bottom = 431.0
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -270,6 +272,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yo48d")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_woxfd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q341w")
 text = "play"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 455.0
+offset_right = 1125.0
+offset_bottom = 497.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yo48d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_woxfd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q341w")
+text = "tutorial"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
@@ -316,7 +334,7 @@ position_smoothing_enabled = true
 layout_mode = 0
 offset_left = -430.0
 offset_top = 4.0
-offset_right = -34.0
+offset_right = -22.0
 offset_bottom = 610.0
 
 [node name="Sprite2D" type="Sprite2D" parent="idiotpanel"]
@@ -432,4 +450,113 @@ offset_right = 384.0
 offset_bottom = 596.0
 text = "Alrighty bozos, here's how to play this not very complicated game. KEEP YOUR GODDAMN CHICKENS ALIVE. How might one do that? It's quite easy because of the existence of fences. Just mine 5 wood, open your inventory and craft fences. Do that to trap chickens. You may ask yourself \"Is that it?\" nope because chickens can get mutated and stuff. So good luck trying to keep them alive"
 
+[node name="brokeboipanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = 6.0
+offset_right = 171.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="brokeboipanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_top = 8.0
+offset_right = 60.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_yo48d")
+text = "settings"
+horizontal_alignment = 1
+
+[node name="rtx" type="CheckButton" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 198.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 10
+text = "rtx"
+
+[node name="bloom" type="CheckButton" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 98.0
+offset_right = 198.0
+offset_bottom = 129.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 10
+text = "bloom
+"
+
+[node name="fps" type="CheckButton" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 156.0
+offset_right = 198.0
+offset_bottom = 187.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 10
+text = "fps counter
+"
+
+[node name="motion" type="CheckButton" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 216.0
+offset_right = 198.0
+offset_bottom = 247.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 10
+text = "motion blur"
+
+[node name="quests" type="CheckButton" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 271.0
+offset_right = 198.0
+offset_bottom = 302.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_yo48d")
+theme_override_font_sizes/font_size = 10
+text = "no quests"
+
+[node name="mastervolumeslider" type="VSlider" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 100.0
+offset_right = 283.0
+offset_bottom = 261.0
+value = 100.0
+
+[node name="Label2" type="Label" parent="brokeboipanel"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 46.0
+offset_right = 330.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("6_yo48d")
+text = "volume"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_n73pj")
+autoplay = true
+mix_target = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

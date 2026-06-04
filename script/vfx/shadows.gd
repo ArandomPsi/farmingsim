@@ -6,5 +6,8 @@ func _process(delta: float) -> void:
 	# shadow skew
 	if not vertshadow:
 		global_skew = sin(angle) * deg_to_rad(74.6)
+		visible = global.rtx
 	
 	self_modulate.a = max(cos(angle - PI), 0.0)
+	
+	

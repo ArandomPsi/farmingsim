@@ -4,7 +4,7 @@ extends CanvasLayer
 var prevcampos : Vector2
 
 func _ready() -> void:
-	$motionblur.visible = false
+	$motionblur.visible = global.motion
 	
 
 func _process(delta: float) -> void:

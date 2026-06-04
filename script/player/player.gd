@@ -63,6 +63,8 @@ func _process(delta: float) -> void:
 	#pros can disable quests
 	if global.quests:
 		updatequests()
+	else:
+		$hud/currentobjective.visible = false
 	
 	#if hp less than one
 	if hp > 0:

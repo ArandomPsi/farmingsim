@@ -40,9 +40,18 @@ var isnight : bool = false
 
 var chickenskilled : int = 0
 var mutationskilled : Array
-var quests : bool = true
+
 
 var shikigamispawned : bool = false
+
+
+#settings and stuff
+var rtx : bool = true
+var bloom : bool = true
+var fps : bool = false
+var motion : bool = false
+var quests : bool = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,6 +76,7 @@ func _process(delta):
 	#for night detection
 	isnight = (truetime > 20 or truetime < 4)
 	stopfuncinvloop = 0
+	
 	
 	
 	
