@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cp53xbuuxscoe" path="res://script/stonegenerator.gd" id="12_x2kg6"]
 [ext_resource type="PackedScene" uid="uid://dnl2fymqbuwo3" path="res://scenes/building/shop.tscn" id="13_2kc6l"]
 [ext_resource type="Script" uid="uid://chhr0j0015t7o" path="res://script/monsters/wolfspawner.gd" id="14_mgs8m"]
-[ext_resource type="Script" uid="uid://b8h3726v85rsu" path="res://script/worldinvsettings.gd" id="15_mrjnl"]
+[ext_resource type="Script" path="res://script/worldinvsettings.gd" id="15_mrjnl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrjnl"]
 texture = ExtResource("1_mrjnl")
@@ -507,10 +507,11 @@ visible = false
 [node name="Offset" type="Control" parent="OtherUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1073.0
-offset_top = 70.0
-offset_right = 1113.0
-offset_bottom = 110.0
+offset_left = 999.0
+offset_top = 127.0
+offset_right = 1039.0
+offset_bottom = 167.0
+scale = Vector2(2.3, 2.3)
 
 [node name="Rim" type="Polygon2D" parent="OtherUI/Offset"]
 scale = Vector2(0.015375, 0.015375)
@@ -522,7 +523,7 @@ scale = Vector2(0.015, 0.015)
 color = Color(0, 0.964706, 0.290196, 1)
 polygon = PackedVector2Array(3617, -2808, 3611, -2725, 3691, -2719, 3687, -2456, 3725, -2455, 3724, -2438, 4008, -2437, 4011, -1921, 3780, -1895, 3776, -1800, 3696, -1792, 3692, -1663, 4080, -1640, 4091, -858, 3768, -866, 3768, -771, 3730, -774, 3723, -493, 3765, -493, 3765, -474, 4125, -478, 4125, 84, 3692, 99, 3689, 517, 3761, 521, 3768, 817, 3799, 821, 3806, 836, 4239, 840, 4254, 969, 3776, 976, 3768, 1010, 3692, 1018, 3692, 1394, 4232, 1402, 4243, 2362, 3692, 2378, 3685, 2678, 3616, 2697, 3613, 3008, 3563, 3016, 3571, 3057, 3256, 3057, 3244, 3885, 1896, 3893, 1889, 4086, 628, 4094, 624, 3817, -458, 3809, -458, 3524, -2015, 3532, -2015, 3460, -3204, 3452, -3204, 3095, -3299, 3099, -3295, 2829, -3857, 2810, -3853, 1386, -3781, 1394, -3770, 171, -4172, 179, -4172, -1819, -4134, -1845, -4134, -1917, -4039, -1925, -4043, -2760, -3268, -2757, -3249, -2798)
 
-[node name="MiniMap" type="Control" parent="OtherUI/Offset"]
+[node name="MiniMap" type="Control" parent="OtherUI/Offset" node_paths=PackedStringArray("megaparent")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -51.0
@@ -531,6 +532,7 @@ offset_right = -11.0
 offset_bottom = -2.0
 scale = Vector2(0.015, 0.015)
 script = ExtResource("1_mgs8m")
+megaparent = NodePath("../..")
 
 [node name="tiles" type="Node2D" parent="."]
 y_sort_enabled = true

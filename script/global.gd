@@ -1,6 +1,8 @@
 extends Node
 
 signal instance_created(instance, pos) # for mini map
+signal new_day()
+signal instance_removed(instance, pos) # also for mini map
 
 var player : Node #for convenience
 var playerpos : Vector2
@@ -9,6 +11,7 @@ var editing : bool = true
 var current_edit : Node
 
 var mini_map : Control
+var map_open : bool = false
 
 var scanner : bool = false
 
@@ -64,6 +67,7 @@ func _process(delta):
 	
 	if time >= 5.5 and prevtime < 5.5:
 		days += 1
+		new_day.emit()
 	
 	prevtime = time
 	#time stuff

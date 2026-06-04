@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="inventory" load_steps=17 format=3 uid="uid://d0s8ix1acjygb"]
+[gd_resource type="Resource" script_class="inventory" load_steps=18 format=3 uid="uid://d0s8ix1acjygb"]
 
 [ext_resource type="Script" uid="uid://f3f1c1nx8mu7" path="res://script/inventory/inventoryslot.gd" id="1_467vf"]
 [ext_resource type="Resource" uid="uid://cj2kbvbg0l4qu" path="res://assets/inventoryresources/pickaxe.tres" id="2_wx8oq"]
 [ext_resource type="Resource" uid="uid://k287gt68b62u" path="res://assets/inventoryresources/fence.tres" id="3_e1hjy"]
+[ext_resource type="Resource" uid="uid://dsemkxrnx0qk3" path="res://assets/inventoryresources/minimap.tres" id="4_wx8oq"]
 [ext_resource type="Script" uid="uid://hbo17umc4rvp" path="res://script/inventory/inventory.gd" id="5_qnkbh"]
 
 [sub_resource type="Resource" id="Resource_e1hjy"]
@@ -19,6 +20,7 @@ metadata/_custom_type_script = "uid://f3f1c1nx8mu7"
 
 [sub_resource type="Resource" id="Resource_fyvoc"]
 script = ExtResource("1_467vf")
+item = ExtResource("4_wx8oq")
 amount = 1
 metadata/_custom_type_script = "uid://f3f1c1nx8mu7"
 

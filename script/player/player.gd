@@ -94,8 +94,8 @@ func controls():
 	
 	var guntype : bool = false
 	
-	if currentweaponname in ["uzi", "chainsaw"]: #rapid guns
-		guntype = true
+	global.map_open = currentweaponname == "minimap"
+	guntype = currentweaponname in ["uzi", "chainsaw"]
 	
 	if not consumables.has(currentweaponname) and not buildings.has(currentweaponname):
 		if guntype and not currentweaponname == "flashlight":
