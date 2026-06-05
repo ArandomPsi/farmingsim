@@ -1,11 +1,18 @@
 [gd_scene load_steps=7 format=3 uid="uid://brskmhpippkmj"]
 
 [ext_resource type="Script" uid="uid://bjdpvf3fnsvrk" path="res://script/ui/craftingoption.gd" id="1_3ga0o"]
-[ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="1_7ckvp"]
 [ext_resource type="Texture2D" uid="uid://cisrtwb7d3fwm" path="res://assets/playerstuff/coin.png" id="2_3ga0o"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="2_y0qtg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hteyp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0qtg"]
+bg_color = Color(0, 0, 0, 0.32549)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ga0o"]
 
@@ -18,7 +25,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hteyp")
 script = ExtResource("1_3ga0o")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="Panel" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -31,12 +38,7 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture = ExtResource("1_7ckvp")
-region_rect = Rect2(80, 496, 48, 16)
-patch_margin_left = 10
-patch_margin_top = 8
-patch_margin_right = 10
-patch_margin_bottom = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_y0qtg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

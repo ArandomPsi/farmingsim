@@ -20,6 +20,10 @@ func _process(delta: float) -> void:
 	selected = $Button.is_hovered()
 	$prerequisites.visible = selected
 	
+	if selected:
+		offset_left = lerpf(offset_left,-50,0.2)
+	else:
+		offset_left = lerpf(offset_left,0,0.2)
 
 
 func pressed() -> void:

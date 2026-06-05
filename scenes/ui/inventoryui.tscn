@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://tdjc0nfwxtkw"]
+[gd_scene load_steps=8 format=3 uid="uid://tdjc0nfwxtkw"]
 
 [ext_resource type="Script" uid="uid://dgdyuomuq06f" path="res://script/inventory/inventoryui.gd" id="1_jrxbu"]
-[ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="2_lgvsm"]
 [ext_resource type="Script" uid="uid://b1liuqhql1avd" path="res://script/ui/inventorygrid.gd" id="3_rox6p"]
 [ext_resource type="PackedScene" uid="uid://cgrttobxg53a1" path="res://scenes/ui/slot.tscn" id="3_xqbms"]
+[ext_resource type="Shader" uid="uid://bsfi4sfma4p63" path="res://shaders/blur.gdshader" id="4_rox6p"]
 [ext_resource type="Script" uid="uid://3pvf2rw6c4nm" path="res://script/ui/phantomitemthingy.gd" id="4_vheev"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kor5q"]
+bg_color = Color(0, 0, 0, 0.678431)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1wqx"]
+shader = ExtResource("4_rox6p")
+shader_parameter/samples = 35
+shader_parameter/lod = 2
+shader_parameter/tint_color = Color(0, 0, 0, 0)
 
 [node name="inventoryui" type="Control"]
 layout_mode = 3
@@ -15,8 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jrxbu")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-self_modulate = Color(0.109804, 0.109804, 0.109804, 1)
+[node name="NinePatchRect" type="Panel" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -31,12 +44,7 @@ offset_bottom = -247.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture = ExtResource("2_lgvsm")
-region_rect = Rect2(3760, 160, 48, 48)
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_kor5q")
 
 [node name="GridContainer" type="Control" parent="NinePatchRect"]
 layout_mode = 1
@@ -144,6 +152,17 @@ offset_top = 40.807
 offset_right = 49.778
 offset_bottom = 40.807
 parent = NodePath("../../..")
+
+[node name="blur" type="ColorRect" parent="NinePatchRect"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_t1wqx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="phantomitemthingy" type="Sprite2D" parent="."]
 texture_filter = 1

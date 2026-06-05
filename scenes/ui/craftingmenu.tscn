@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cglt3v5bjm13"]
+[gd_scene load_steps=16 format=3 uid="uid://cglt3v5bjm13"]
 
 [ext_resource type="PackedScene" uid="uid://brskmhpippkmj" path="res://scenes/ui/craftingoption.tscn" id="1_qfvej"]
+[ext_resource type="Script" uid="uid://bk5gk86qexeff" path="res://script/ui/craftingmenu.gd" id="1_u3t4m"]
 [ext_resource type="Resource" uid="uid://o1y0gtjj2j4e" path="res://assets/inventoryresources/dagger.tres" id="2_kjdnd"]
 [ext_resource type="FontFile" uid="uid://gb42dov6aoa5" path="res://assets/pico-8.ttf" id="2_ph73f"]
 [ext_resource type="Resource" uid="uid://c6aynamh88je7" path="res://assets/inventoryresources/wood.tres" id="3_27mhi"]
@@ -12,6 +13,34 @@
 [ext_resource type="Resource" uid="uid://bhl0eob83h2ta" path="res://assets/inventoryresources/coop.tres" id="9_qvyfr"]
 [ext_resource type="Resource" uid="uid://cvbcr4ky03w5i" path="res://assets/inventoryresources/chest.tres" id="10_wumx5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdjr8"]
+bg_color = Color(0, 0, 0, 0.47451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3t4m"]
+bg_color = Color(0, 0, 0, 0.47451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp6lo"]
+bg_color = Color(0, 0, 0, 0.47451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
 [node name="craftingmenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -20,17 +49,19 @@ anchor_bottom = 1.0
 offset_left = 783.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u3t4m")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 56.0
+offset_left = -12.0
 offset_top = 64.0
-offset_right = 488.0
+offset_right = 379.0
 offset_bottom = 652.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 size_flags_vertical = 3
 theme_override_constants/separation = 40
 
@@ -88,15 +119,18 @@ prerequisite1amount = 15
 prerequisite2 = ExtResource("8_qvyfr")
 desc = "15 wood and 1 diamond. You can delete items by destroying the chest"
 
-[node name="Label" type="Label" parent="."]
+[node name="button" type="Button" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 83.0
-offset_top = 10.0
-offset_right = 424.0
-offset_bottom = 73.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.529412)
-theme_override_constants/shadow_offset_x = 4
+offset_left = 73.0
+offset_top = 18.0
+offset_right = 344.0
+offset_bottom = 59.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_ph73f")
-text = "Crafting lol"
-horizontal_alignment = 1
+theme_override_styles/hover = SubResource("StyleBoxFlat_vdjr8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u3t4m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tp6lo")
+text = "crafting menu"
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]

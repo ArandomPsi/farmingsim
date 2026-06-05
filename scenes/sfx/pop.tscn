@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dljl4yyrovurr"]
+
+[ext_resource type="AudioStream" uid="uid://r8km4hp26k73" path="res://assets/sounds/sfx/osu-hit-sound.mp3" id="1_yep4e"]
+[ext_resource type="Script" uid="uid://cvw6f3x5c56td" path="res://script/sfx/pop.gd" id="2_xnvtu"]
+
+[node name="pop" type="AudioStreamPlayer"]
+stream = ExtResource("1_yep4e")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("2_xnvtu")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

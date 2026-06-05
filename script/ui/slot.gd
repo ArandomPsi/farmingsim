@@ -24,7 +24,16 @@ func update(item: invslot):
 	
 	$amount.visible = item.item.stackable
 	
-
+	
+	
+	
+func _process(delta: float) -> void:
+	if $Button.is_hovered():
+		scale.x = lerpf(scale.x,1.2,0.3)
+		scale.y = lerpf(scale.y,1.2,0.3)
+	else:
+		scale.x = lerpf(scale.x,1.0,0.3)
+		scale.y = lerpf(scale.y,1.0,0.3)
 
 
 #bru so much simplier
@@ -34,3 +43,8 @@ func _on_button_pressed() -> void:
 	inventory[slot_index] = global.phantomitem
 	global.phantomitem = temp
 	parent.updateslots()
+	scale = Vector2(1.5,1.5)
+	var b = load("res://scenes/sfx/pop.tscn").instantiate()
+	get_tree().current_scene.add_child(b)
+	
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://cjf2as4jtjrgf"]
+[gd_scene load_steps=47 format=4 uid="uid://cjf2as4jtjrgf"]
 
 [ext_resource type="Texture2D" uid="uid://cspq7joxa747x" path="res://assets/ui/dragonradar.png" id="1_e07uo"]
 [ext_resource type="Script" uid="uid://2xiyuhxc0xi2" path="res://script/ui/mini_map.gd" id="1_mgs8m"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://s4cdwxyjuohb" path="res://script/ui/minimapshowerorgrower.gd" id="7_3xi6f"]
 [ext_resource type="PackedScene" uid="uid://by4pvoj44uikr" path="res://scenes/chicken/chicken.tscn" id="7_30ska"]
 [ext_resource type="Script" uid="uid://bwjbbs85nv451" path="res://script/ui/minimap2.gd" id="7_tmgcv"]
+[ext_resource type="Texture2D" uid="uid://cxmk2y032fswe" path="res://assets/ui/outline.png" id="7_xks3a"]
 [ext_resource type="Shader" uid="uid://bagx1eknmueej" path="res://shaders/mapoutline.gdshader" id="8_tmgcv"]
 [ext_resource type="Script" uid="uid://dqd2p0b331q6t" path="res://script/ui/grid.gd" id="9_omedl"]
 [ext_resource type="Script" uid="uid://pqo26ppgrw5n" path="res://script/vfx/daynightmodu.gd" id="10_3xi6f"]
@@ -579,7 +580,7 @@ offset_left = 958.0
 offset_top = 23.0
 offset_right = 1132.0
 offset_bottom = 197.0
-texture = ExtResource("1_e07uo")
+texture = ExtResource("7_xks3a")
 script = ExtResource("7_3xi6f")
 
 [node name="PanelContainer" type="PanelContainer" parent="OtherUI/minimap"]

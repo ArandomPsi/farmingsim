@@ -1,9 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4o3ovwrpucd7"]
 
 [ext_resource type="Script" uid="uid://dgdyuomuq06f" path="res://script/inventory/inventoryui.gd" id="1_qi0fj"]
-[ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="2_r44s7"]
 [ext_resource type="PackedScene" uid="uid://cgrttobxg53a1" path="res://scenes/ui/slot.tscn" id="3_4qb8t"]
 [ext_resource type="Script" uid="uid://3pvf2rw6c4nm" path="res://script/ui/phantomitemthingy.gd" id="4_hlauj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o736"]
+bg_color = Color(0, 0, 0, 0.517647)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [node name="inventoryui" type="Control"]
 layout_mode = 3
@@ -14,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qi0fj")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="Panel" parent="."]
 self_modulate = Color(0.109804, 0.109804, 0.109804, 1)
 texture_filter = 1
 layout_mode = 1
@@ -30,12 +37,7 @@ offset_bottom = -247.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture = ExtResource("2_r44s7")
-region_rect = Rect2(3760, 160, 48, 48)
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_5o736")
 
 [node name="GridContainer" type="Control" parent="NinePatchRect"]
 layout_mode = 1

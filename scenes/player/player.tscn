@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=109 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
 [ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
+[ext_resource type="Shader" uid="uid://bsfi4sfma4p63" path="res://shaders/blur.gdshader" id="18_ttakn"]
 [ext_resource type="Resource" uid="uid://dsemkxrnx0qk3" path="res://assets/inventoryresources/minimap.tres" id="22_niom3"]
 [ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="23_28m0y"]
 [ext_resource type="Resource" uid="uid://cbrbsqph88a35" path="res://assets/inventoryresources/torch.tres" id="23_kxw46"]
@@ -369,6 +370,20 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rw8a5"]
+shader = ExtResource("18_ttakn")
+shader_parameter/samples = 35
+shader_parameter/lod = 2
+shader_parameter/tint_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_niom3"]
+bg_color = Color(0, 0, 0, 0.427451)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mf0n"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_myrg7"]
@@ -387,7 +402,7 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk8ii"]
-bg_color = Color(0.51, 0.328525, 0.1989, 1)
+bg_color = Color(0.59, 0.59, 0.59, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -399,7 +414,7 @@ expand_margin_right = 5.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mf0n"]
-bg_color = Color(0.33, 0.212575, 0.1287, 1)
+bg_color = Color(0.33, 0.212575, 0.1287, 0)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -456,12 +471,12 @@ expand_margin_bottom = 3.0
 bg_color = Color(0.27, 0.27, 0.27, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx1jg"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.529412)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.43, 0.43, 0.43, 1)
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcs02"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -776,7 +791,17 @@ theme_override_fonts/font = ExtResource("11_je7p5")
 text = "Hello Bro
 "
 
-[node name="shop" type="NinePatchRect" parent="hud"]
+[node name="blur" type="ColorRect" parent="hud/text"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_rw8a5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shop" type="Panel" parent="hud"]
 visible = false
 texture_filter = 1
 anchors_preset = 15
@@ -789,20 +814,25 @@ offset_bottom = -527.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
-texture = ExtResource("23_pk8ii")
-region_rect = Rect2(112, 160, 48, 48)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
+theme_override_styles/panel = SubResource("StyleBoxFlat_niom3")
 script = ExtResource("16_kvlxm")
+
+[node name="blur" type="ColorRect" parent="hud/shop"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_rw8a5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ExitShop" type="Button" parent="hud/shop"]
 layout_mode = 0
-offset_left = 84.8
-offset_top = 6.0
-offset_right = 126.8
-offset_bottom = 48.0
+offset_left = 87.8
+offset_top = 2.4
+offset_right = 129.8
+offset_bottom = 44.4
 scale = Vector2(0.2, 0.2)
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
@@ -820,11 +850,11 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_5mf0n")
 shortcut = SubResource("Shortcut_kvlxm")
 
 [node name="Sprite2D" type="Sprite2D" parent="hud/shop/ExitShop"]
-position = Vector2(21, 21)
+position = Vector2(22, 17)
 scale = Vector2(5, 5)
 texture = ExtResource("23_pk8ii")
 region_enabled = true
-region_rect = Rect2(228, 20, 8, 8)
+region_rect = Rect2(3876, 20, 8, 8)
 
 [node name="Label" type="Label" parent="hud/shop"]
 layout_mode = 0
@@ -909,8 +939,7 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
-text = "scouter
-"
+text = "radar"
 script = ExtResource("17_uf5tr")
 item = ExtResource("22_niom3")
 costs = 7000

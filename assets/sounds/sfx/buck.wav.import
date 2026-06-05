@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dwkt7gnphyoe0"
-path="res://.godot/imported/buck.wav-9b5318024e4297054e2b02c8fb803e71.sample"
+path="res://.godot/imported/buck.wav-514f0897fca492fa1117a7411271d74a.sample"
 
 [deps]
 
-source_file="res://assets/sounds/buck.wav"
-dest_files=["res://.godot/imported/buck.wav-9b5318024e4297054e2b02c8fb803e71.sample"]
+source_file="res://assets/sounds/sfx/buck.wav"
+dest_files=["res://.godot/imported/buck.wav-514f0897fca492fa1117a7411271d74a.sample"]
 
 [params]
 
