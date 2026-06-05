@@ -56,6 +56,9 @@ var motion : bool = false
 var quests : bool = true
 
 
+var minimapthingy : SubViewport
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	time = ingame_to_real_minute_duration * INITIAL_HOUR * 60

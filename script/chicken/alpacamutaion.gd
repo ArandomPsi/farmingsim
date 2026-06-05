@@ -2,14 +2,16 @@ extends Node2D
 
 
 
-func _ready() -> void:
-	get_parent().hp *= randf_range(1,5)
+
 
 func _process(delta: float) -> void:
 	if not $Area2D.has_overlapping_bodies():
 		$Timer.stop()
 	elif $Timer.is_stopped():
 		$Timer.start(0.2)
+	
+	if $Timer.time_left < 0.1 and not $AudioStreamPlayer2D.playing:
+		$AudioStreamPlayer2D.play()
 	
 
 

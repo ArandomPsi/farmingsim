@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://coaifcnfc2hlr"]
+[gd_scene load_steps=15 format=3 uid="uid://coaifcnfc2hlr"]
 
 [ext_resource type="Texture2D" uid="uid://dft75feaexxsc" path="res://assets/chickens/explosion.png" id="1_fgeb0"]
 [ext_resource type="Script" uid="uid://bl88oioi340xc" path="res://script/vfx/sprites.gd" id="2_ggtss"]
 [ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="3_ggtss"]
+[ext_resource type="AudioStream" uid="uid://btlwk17eyo5ts" path="res://assets/sounds/sfx/minecraftchickensounds/Large.wav" id="4_kfghw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_djqld"]
 blend_mode = 1
@@ -87,5 +88,10 @@ metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
 shape = SubResource("CircleShape2D_ggtss")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kfghw")
+pitch_scale = 3.0
+autoplay = true
 
 [connection signal="body_entered" from="attackbox" to="attackbox" method="_on_body_entered"]

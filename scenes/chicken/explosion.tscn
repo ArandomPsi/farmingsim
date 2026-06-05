@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://brsw7t7qf0p8l"]
+[gd_scene load_steps=19 format=3 uid="uid://brsw7t7qf0p8l"]
 
 [ext_resource type="Texture2D" uid="uid://imgl1wtuc6v2" path="res://assets/chickens/Burst_Fire.png" id="1_q1olu"]
 [ext_resource type="Script" uid="uid://bl88oioi340xc" path="res://script/vfx/sprites.gd" id="2_q1olu"]
 [ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="3_q1olu"]
+[ext_resource type="AudioStream" uid="uid://g1irmv0v2q7y" path="res://assets/sounds/sfx/minecraftchickensounds/getdown.wav" id="4_c8hny"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h15h6"]
 atlas = ExtResource("1_q1olu")
@@ -120,5 +121,10 @@ metadata/_custom_type_script = "uid://ds1cmy2ajptcj"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox"]
 shape = SubResource("CircleShape2D_c8hny")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_c8hny")
+volume_db = 5.0
+autoplay = true
 
 [connection signal="body_entered" from="attackbox" to="attackbox" method="_on_body_entered"]

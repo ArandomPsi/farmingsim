@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnl2fymqbuwo3"]
+[gd_scene load_steps=18 format=3 uid="uid://dnl2fymqbuwo3"]
 
 [ext_resource type="Script" uid="uid://cec7nd6vyw2sq" path="res://script/shop.gd" id="1_032fp"]
 [ext_resource type="Texture2D" uid="uid://dw07h57flj1bv" path="res://assets/chickens/shops.png" id="1_lx5au"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bwc40011tqolg" path="res://assets/sounds/sfx/npc/HoHoHo.wav" id="6_435d4"]
 [ext_resource type="AudioStream" uid="uid://cnqihyrn3cyrf" path="res://assets/sounds/sfx/npc/Baba.wav" id="7_fa5c4"]
 [ext_resource type="AudioStream" uid="uid://bk2pe6y0xbbo4" path="res://assets/sounds/sfx/npc/Hey.wav" id="8_bla5q"]
+[ext_resource type="PackedScene" uid="uid://da1ecgchxtnp5" path="res://scenes/ui/minimapicon.tscn" id="9_fa5c4"]
+[ext_resource type="Texture2D" uid="uid://5jm7t3qt42os" path="res://assets/ui/minimapicons/shopkeepericon.png" id="10_bla5q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hotd0"]
 atlas = ExtResource("2_fimbb")
@@ -173,5 +175,8 @@ stream = ExtResource("7_fa5c4")
 
 [node name="sound3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_bla5q")
+
+[node name="minimapicon" parent="." instance=ExtResource("9_fa5c4")]
+texture = ExtResource("10_bla5q")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

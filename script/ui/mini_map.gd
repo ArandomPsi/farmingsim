@@ -1,6 +1,6 @@
 extends Control
 
-@export var megaparent : CanvasLayer
+@export var megaparent : Node
 var pname : String = ""
 var player_pixel = null
 
@@ -23,15 +23,15 @@ func _process(delta: float) -> void:
 func _add_pixel(instance : String, pos : Vector2):
 	var new_pixel := ColorRect.new()
 	new_pixel.name = instance + "Pixel" + str(pos)
-	new_pixel.size = Vector2(104, 85) * 1.5
+	new_pixel.size = Vector2(60, 60) * 1
 	var c : Color
 	match instance:
 		"wood":
-			c = Color("#009113")
+			c = Color("149900")
 		"rock":
-			c = Color("#3b3b3b")
+			c = Color("0c5900")
 		"player":
-			new_pixel.size *= 5 / 1.5
+			new_pixel.size *= 3 / 1.5
 			c = Color("#4a1d00")
 			pname = new_pixel.name
 		"shop":

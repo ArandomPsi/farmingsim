@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://of7qbfeb4c26"]
+
+[ext_resource type="Script" uid="uid://b8slqe57cwbu7" path="res://script/ui/minimapiconicon.gd" id="1_huwuw"]
+[ext_resource type="Texture2D" uid="uid://byebxtvddawnt" path="res://assets/ui/minimapicons/playericon.png" id="1_v1m33"]
+
+[node name="minimapiconicon" type="Sprite2D"]
+light_mask = 0
+visibility_layer = 2
+z_index = -40
+texture_filter = 1
+scale = Vector2(40, 40)
+texture = ExtResource("1_v1m33")
+script = ExtResource("1_huwuw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://nckxqd571x6i"]
+[gd_scene load_steps=34 format=3 uid="uid://nckxqd571x6i"]
 
 [ext_resource type="Script" uid="uid://c1ogou5gv2g7c" path="res://script/chicken/shikigami.gd" id="1_s7e8m"]
 [ext_resource type="Texture2D" uid="uid://82kxbhx0kyms" path="res://assets/chickens/shikigami/AngelOfDeathAttack.png" id="1_tsxbu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b7si66tluahpn" path="res://script/vfx/shadows.gd" id="5_g2jb1"]
 [ext_resource type="Script" uid="uid://ds1cmy2ajptcj" path="res://script/attacks/attackbox.gd" id="6_6gox4"]
 [ext_resource type="Texture2D" uid="uid://byieqxs2xxjby" path="res://assets/chickens/Flame.png" id="7_ycja8"]
+[ext_resource type="AudioStream" uid="uid://bli73633wtunh" path="res://assets/sounds/sfx/minecraftchickensounds/darkangeltheme.mp3" id="8_0eprt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gox4"]
 atlas = ExtResource("1_tsxbu")
@@ -227,6 +228,10 @@ position = Vector2(6, 5)
 texture = ExtResource("7_ycja8")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_2kxik")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_0eprt")
+autoplay = true
 
 [connection signal="body_entered" from="attackbox" to="." method="_on_attackbox_body_entered"]
 [connection signal="body_entered" from="attackbox" to="attackbox" method="_on_body_entered"]

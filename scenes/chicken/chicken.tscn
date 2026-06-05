@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://by4pvoj44uikr"]
+[gd_scene load_steps=34 format=3 uid="uid://by4pvoj44uikr"]
 
 [ext_resource type="Script" uid="uid://dxufyb60wjikc" path="res://script/chicken/chickenpassive.gd" id="1_pep2a"]
 [ext_resource type="Shader" uid="uid://b254cq776ae0e" path="res://shaders/chickens.gdshader" id="2_xgs3m"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://b1qubbginsou1" path="res://assets/sounds/sfx/minecraftchickensounds/say1.ogg" id="9_xgs3m"]
 [ext_resource type="AudioStream" uid="uid://bushnq7uub2wo" path="res://assets/sounds/sfx/minecraftchickensounds/say2.ogg" id="10_j07wq"]
 [ext_resource type="AudioStream" uid="uid://chpjsn5801dj5" path="res://assets/sounds/sfx/minecraftchickensounds/say3.ogg" id="11_2q7ov"]
+[ext_resource type="PackedScene" uid="uid://da1ecgchxtnp5" path="res://scenes/ui/minimapicon.tscn" id="12_hbrnc"]
+[ext_resource type="Texture2D" uid="uid://c43nq43axej7b" path="res://assets/ui/minimapicons/chickenicon.png" id="13_27v36"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2fb0c"]
 shader = ExtResource("2_xgs3m")
@@ -446,5 +448,8 @@ stream = ExtResource("10_j07wq")
 
 [node name="buck3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_2q7ov")
+
+[node name="minimapicon" parent="." instance=ExtResource("12_hbrnc")]
+texture = ExtResource("13_27v36")
 
 [connection signal="body_entered" from="bouncearea" to="." method="bounce"]

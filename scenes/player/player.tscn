@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=106 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cs725yk3n3gvc" path="res://assets/Icons/backpackopenicon.png" id="13_myrg7"]
 [ext_resource type="Script" uid="uid://b6mr4lxxhel7m" path="res://script/ui/shop.gd" id="16_kvlxm"]
 [ext_resource type="Script" uid="uid://cd1sk0wr8swx1" path="res://script/ui/shopbutton.gd" id="17_uf5tr"]
+[ext_resource type="Resource" uid="uid://dsemkxrnx0qk3" path="res://assets/inventoryresources/minimap.tres" id="22_niom3"]
 [ext_resource type="Resource" uid="uid://cn588ma2hxp5c" path="res://assets/inventoryresources/glock.tres" id="23_28m0y"]
 [ext_resource type="Resource" uid="uid://cbrbsqph88a35" path="res://assets/inventoryresources/torch.tres" id="23_kxw46"]
 [ext_resource type="Texture2D" uid="uid://brbbidtxbdsxy" path="res://assets/playerstuff/Stylized_UI.png" id="23_pk8ii"]
@@ -41,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://dkjeutcavdmyu" path="res://assets/sounds/music/gada.mp3" id="37_vo27k"]
 [ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
 [ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
+[ext_resource type="PackedScene" uid="uid://da1ecgchxtnp5" path="res://scenes/ui/minimapicon.tscn" id="42_niom3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
 atlas = ExtResource("3_5mf0n")
@@ -896,6 +898,24 @@ costs = 6000
 description = "scans chickens and stuff
 "
 
+[node name="map" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_je7p5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8ii")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5mf0n")
+text = "scouter
+"
+script = ExtResource("17_uf5tr")
+item = ExtResource("22_niom3")
+costs = 7000
+description = "allows you to see a tiny bit more than you normally would. convinient, right?"
+
 [node name="shotgun" type="Button" parent="hud/shop/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1313,6 +1333,8 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="phantom/buildingchecker"]
 visible = false
 shape = SubResource("RectangleShape2D_5mf0n")
+
+[node name="minimapicon" parent="." instance=ExtResource("42_niom3")]
 
 [connection signal="frame_changed" from="flip/sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="hud/shop/buy" to="hud/shop" method="_on_buy_pressed"]

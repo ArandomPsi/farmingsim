@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxxd4uufd2jqj"
+path="res://.godot/imported/Vine Boom - Sound Effect (SFX).mp3-3ccd6e335d44a88375fd10c30d4082ea.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/minecraftchickensounds/Vine Boom - Sound Effect (SFX).mp3"
+dest_files=["res://.godot/imported/Vine Boom - Sound Effect (SFX).mp3-3ccd6e335d44a88375fd10c30d4082ea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

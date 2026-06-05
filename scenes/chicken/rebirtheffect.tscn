@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0hoika77jqln"]
+[gd_scene load_steps=13 format=3 uid="uid://b0hoika77jqln"]
 
 [ext_resource type="Script" uid="uid://cwhx8ntph4htd" path="res://script/chicken/rebirtheffect.gd" id="1_5ygwl"]
 [ext_resource type="Texture2D" uid="uid://vynhmh8cc0ry" path="res://assets/chickens/wing.png" id="1_d3vc4"]
 [ext_resource type="Texture2D" uid="uid://byieqxs2xxjby" path="res://assets/chickens/Flame.png" id="3_s4v2p"]
 [ext_resource type="Script" uid="uid://can0xt4bkyknk" path="res://script/vfx/particles.gd" id="4_ow707"]
+[ext_resource type="AudioStream" uid="uid://cfvithkj2tvnr" path="res://assets/sounds/sfx/minecraftchickensounds/voltvessels_spear_water_reaction_one_shot_2d.wav" id="5_bfj61"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ygwl"]
 blend_mode = 1
@@ -69,3 +70,7 @@ texture = ExtResource("3_s4v2p")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_ow707")
 script = ExtResource("4_ow707")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_bfj61")
+autoplay = true
