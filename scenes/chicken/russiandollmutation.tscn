@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb1tk8e7kdl6j"]
+
+[ext_resource type="Script" uid="uid://doc7tgs3jj6ug" path="res://script/chicken/russiandollmutation.gd" id="1_2awbl"]
+
+[node name="russiandollmutation" type="Node2D"]
+script = ExtResource("1_2awbl")

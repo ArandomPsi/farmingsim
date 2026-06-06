@@ -173,7 +173,13 @@ func addmutations():
 				get_parent().add_child(b)
 				b.guarding = self
 			_:
-				var b = load("res://scenes/chicken/explosion.tscn").instantiate()
+				var b
+				if "russiandoll" in chickenmutations[i]:
+					var num : int = int(chickenmutations[i][len(chickenmutations[i]) - 1])
+					b = load("res://scenes/chicken/russiandollmutation.tscn").instantiate()
+					b.childnum = clamp(num + 1, 1, 5)
+				else:
+					b = load("res://scenes/chicken/explosion.tscn").instantiate()
 				add_child(b)
 	
 

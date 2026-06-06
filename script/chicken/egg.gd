@@ -32,12 +32,17 @@ func _ready() -> void:
 		chance = 20 - int((global.days - 2) * 19 / 28)
 	
 	mutations = remove_duplicates(mutations) #removes duplicates
-	
 	if chance > 0 and randi_range(1, chance) == 1: #random chance to add a random mutation. after day 30, it happens everytime
-		mutations.push_back(global.allmutations[randi_range(0,global.allmutations.size()-1)])
+		var rand = global.allmutations[randi_range(0,global.allmutations.size()-1)]
+		for i in range(mutations.size()-1):
+			if "russiandoll" in mutations[i]:
+				while rand == "russiandoll1":
+					rand = global.allmutations[randi_range(0,global.allmutations.size()-1)]
+				break
+		mutations.push_back(rand)
 	if randi_range(1,6) == 1 and not mutations.is_empty():
 		mutations.pop_at(randi_range(0,mutations.size()-1)) #remove a random part
-	
+	print(str(mutations))
 	chickenstats["color"].r *= randf_range(0.8,1.1)
 	chickenstats["color"].g *= randf_range(0.8,1.1)
 	chickenstats["color"].b *= randf_range(0.8,1.1)
@@ -67,7 +72,7 @@ func hatch():
 		currentchicken = "res://scenes/chicken/hostilechicken.tscn"
 	
 	#gg ez
-	print(str(mutations))
+	
 	var b = load(currentchicken).instantiate() #so for some reason it was loading circularly. Egg preload then chicken and stuff. Since chicken is a complex scene, you need load. This problem occured because chickenpassive was based on chicken class yada yada yada.
 	b.chickenstats = chickenstats
 	b.chickenmutations = mutations.duplicate()
@@ -91,7 +96,14 @@ func remove_duplicates(arr: Array) -> Array:
 	var result = []
 	
 	for item in arr:
+		if "russiandoll" in item:
+			for mu in result:
+				if "russiandoll" in mu:
+					continue
+				else:
+					break
 		if not result.has(item):
 			result.append(item)
+		
 	
 	return result
