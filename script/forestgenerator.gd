@@ -24,14 +24,15 @@ func _ready() -> void:
 			
 	
 func _create_more_trees(noisetexture):
-	noisetexture.seed = randi()
-	noisetexture.frequency = 0.05
-	for x in range(0, 512, density * 5):
-		for y in range(0, 512, density * 5):
-			var n = noisetexture.get_noise_2d(x, y)
-			if n > 0.4:
-				var pos = Vector2(float(x) / 512.0 * mapsize.x, float(y) / 512.0 * mapsize.y)
-				createtree(pos)
+	#noisetexture.seed = randi()
+	#noisetexture.frequency = 0.05
+	#for x in range(0, 512, density * 5):
+		#for y in range(0, 512, density * 5):
+			#var n = noisetexture.get_noise_2d(x, y)
+			#if n > 0.4:
+				#var pos = Vector2(float(x) / 512.0 * mapsize.x, float(y) / 512.0 * mapsize.y)
+				#createtree(pos)
+	pass
 
 func createtree(pos : Vector2):
 	var b = preload("res://scenes/building/tree.tscn").instantiate()

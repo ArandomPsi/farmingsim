@@ -49,17 +49,24 @@ var textqueue : Array = []
 var currentgoal : int = 0
 var goals : PackedStringArray = ["get wood", "make a fence", "make a dagger", "kill your chicken", "buy a glock", "craft a chest", "kill a mutated chicken", "kill 10 mutated chickens", "survive 30 days", "fucking sweat"]
 
+var t : float = 0 #the time thingy
 
 func _ready() -> void:
 	global.player = self
 	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
 	$hud/shop/ExitShop.pressed.connect(_exit_shop)
 	global.instance_created.emit("player", position)
+	var tween = create_tween()
+	$Camera2D.zoom = Vector2(0.2,0.2)
+	tween.tween_property($Camera2D,"zoom",Vector2(1.2,1.2),0.8).set_trans(Tween.TRANS_CUBIC)
+	tween.parallel().tween_property($hud/transitionrect,"color",Color(0,0,0,0),0.6)
+	await tween.finished
+	$hud/transitionrect.visible = false
 
 
 func _process(delta: float) -> void:
 	#blah blahb blah
-	updateconstantvariables()
+	updateconstantvariables(delta)
 	#pros can disable quests
 	if global.quests:
 		updatequests()
@@ -87,10 +94,11 @@ func controls():
 	movedir = Input.get_vector("left","right","up","down")
 	
 	$pivot.look_at(get_global_mouse_position())
-	if get_global_mouse_position().x > position.x:
-		$pivot/guns.scale.y = 5
-	else:
-		$pivot/guns.scale.y = -5
+	if not consumingframes > 1:
+		if get_global_mouse_position().x > position.x:
+			$pivot/guns.scale.y = 5
+		else:
+			$pivot/guns.scale.y = -5
 	
 	var guntype : bool = false
 	
@@ -131,6 +139,9 @@ func controls():
 			if consumingframes > 80:
 				omnomnom()
 				consumingframes = 0
+				$globalaudio/heal.play()
+				shakeframes += 5
+			
 	
 	if not Input.is_action_pressed("shoot"):
 		consumingframes = 0
@@ -269,8 +280,8 @@ func updatehotbar():
 	pass
 
 
-func updateconstantvariables():
-	
+func updateconstantvariables(delta):
+	t += delta
 	rounds = playerinventory.inventoryhas(load("res://assets/inventoryresources/round.tres"),1,true)
 	shakeframes -= 1
 	shakeframes = clamp(shakeframes,0,20)
@@ -659,12 +670,20 @@ func playeranimstuff():
 	$pivot/guns/scope.visible = currentweaponname == "sniper" and not reloadingframes > 1
 	
 	if consumingframes > 1:
-		$pivot/guns.position = Vector2(2 * $flip.scale.x,14)
+		$pivot/guns.position = lerp($pivot/guns.position,Vector2(2 * $flip.scale.x,14 + (sin(t * 20) * 4) ),0.2)
 		$pivot.rotation = 0
-		$pivot/guns.scale.x = $flip.scale.x * 5
+		if get_global_mouse_position().x > position.x:
+			$pivot/guns.scale.x = 5
+			$pivot/guns.scale.y = 5
+		else:
+			$pivot/guns.scale.x = -5
+			$pivot/guns.scale.y = 5
+		
+		
 	else:
 		$pivot/guns.scale.x = 5
 		$pivot/guns.position = Vector2(21,0)
+	
 	
 	
 	

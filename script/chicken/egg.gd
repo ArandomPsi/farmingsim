@@ -29,7 +29,7 @@ func _ready() -> void:
 	elif global.days >= 30:
 		chance = 1
 	else:
-		chance = 20 - int((global.days - 2) * 19 / 28)
+		chance = 10 - int((global.days - 2) * 9 / 28)
 	
 	mutations = remove_duplicates(mutations) #removes duplicates
 	if chance > 0 and randi_range(1, chance) == 1: #random chance to add a random mutation. after day 30, it happens everytime
@@ -40,7 +40,7 @@ func _ready() -> void:
 					rand = global.allmutations[randi_range(0,global.allmutations.size()-1)]
 				break
 		mutations.push_back(rand)
-	if randi_range(1,6) == 1 and not mutations.is_empty():
+	if randi_range(1,10) == 1 and not mutations.is_empty():
 		mutations.pop_at(randi_range(0,mutations.size()-1)) #remove a random part
 	print(str(mutations))
 	chickenstats["color"].r *= randf_range(0.8,1.1)
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 
 func hatch():
 	#random stuff
-	var rabidchance : int = 3 #change later
+	var rabidchance : int = 2 #change later
 	var currentchicken = "res://scenes/chicken/chicken.tscn"
 	if randi_range(0,100) <= rabidchance:
 		currentchicken = "res://scenes/chicken/hostilechicken.tscn"

@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
-config/name="farminggame"
+config/name="plumage"
+config/description="bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk bawk "
+config/version="bawk bawk bawk bawk bawk "
 run/main_scene="uid://cghpaqlgwcu6e"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="res://icon.svg"
+config/icon="uid://cvh0vpfks4hmd"
 
 [autoload]
 
@@ -148,3 +150,4 @@ menu={
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

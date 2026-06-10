@@ -576,9 +576,9 @@ megaparent = NodePath("../Sprite2D3/Island")
 
 [node name="minimap" type="TextureRect" parent="OtherUI"]
 texture_filter = 1
-offset_left = 958.0
+offset_left = 1155.0
 offset_top = 23.0
-offset_right = 1132.0
+offset_right = 1329.0
 offset_bottom = 197.0
 texture = ExtResource("7_xks3a")
 script = ExtResource("7_3xi6f")

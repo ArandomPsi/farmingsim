@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://belfiknsknubu"]
+[gd_scene load_steps=110 format=3 uid="uid://belfiknsknubu"]
 
 [ext_resource type="Script" uid="uid://c13vftpyqjbbo" path="res://script/player/player.gd" id="1_lvxji"]
 [ext_resource type="Resource" uid="uid://d0s8ix1acjygb" path="res://assets/inventoryresources/playerinventory.tres" id="2_yj68g"]
@@ -43,6 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://dkjeutcavdmyu" path="res://assets/sounds/music/gada.mp3" id="37_vo27k"]
 [ext_resource type="AudioStream" uid="uid://bdws5txjeldku" path="res://assets/sounds/sfx/reload.wav" id="37_wva7c"]
 [ext_resource type="AudioStream" uid="uid://bahtihoysvthi" path="res://assets/sounds/sfx/step.wav" id="38_7obkq"]
+[ext_resource type="AudioStream" uid="uid://bp2yy0etc87ey" path="res://assets/sounds/sfx/heal.wav" id="40_rw8a5"]
 [ext_resource type="PackedScene" uid="uid://da1ecgchxtnp5" path="res://scenes/ui/minimapicon.tscn" id="42_niom3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
@@ -605,7 +606,7 @@ animation = &"chainsaw"
 shape = SubResource("RectangleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(0.5, 0.5)
 
 [node name="shaders" type="CanvasLayer" parent="."]
 script = ExtResource("4_p47bc")
@@ -748,6 +749,7 @@ value = 100.0
 show_percentage = false
 
 [node name="text" type="Panel" parent="hud"]
+visible = false
 offset_left = 712.0
 offset_top = 483.0
 offset_right = 1154.0
@@ -1265,6 +1267,15 @@ text = "get wood"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="transitionrect" type="ColorRect" parent="hud"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="youdied" type="CanvasLayer" parent="."]
 visible = false
 
@@ -1332,6 +1343,10 @@ mix_target = 1
 wait_time = 20.0
 one_shot = true
 autostart = true
+
+[node name="heal" type="AudioStreamPlayer" parent="globalaudio"]
+stream = ExtResource("40_rw8a5")
+max_polyphony = 5
 
 [node name="localaudio" type="Node2D" parent="."]
 

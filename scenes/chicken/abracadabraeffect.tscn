@@ -1,0 +1,130 @@
+[gd_scene load_steps=20 format=3 uid="uid://chujg760hlvhb"]
+
+[ext_resource type="Texture2D" uid="uid://bssaxcnb3tahh" path="res://assets/playerstuff/iaislash.svg" id="1_0m58i"]
+[ext_resource type="Texture2D" uid="uid://cdopshirgln7h" path="res://assets/chickens/sparkle.png" id="2_vhx2n"]
+[ext_resource type="Script" uid="uid://can0xt4bkyknk" path="res://script/vfx/particles.gd" id="2_x874h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x874h"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_ioey8"]
+offsets = PackedFloat32Array(0.457041, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qr48a"]
+gradient = SubResource("Gradient_ioey8")
+
+[sub_resource type="Curve" id="Curve_yqgcu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502242, 0.830978), 0.630299, 0.630299, 0, 0, Vector2(0.994395, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r4oq0"]
+curve = SubResource("Curve_yqgcu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ijlry"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_r4oq0")
+color = Color(0.783333, 0, 1, 1)
+color_ramp = SubResource("GradientTexture1D_qr48a")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kr78r"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_oqnuh"]
+offsets = PackedFloat32Array(0, 0.299523, 0.479714, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1lt37"]
+gradient = SubResource("Gradient_oqnuh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q1me0"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 82.0
+emission_ring_inner_radius = 82.11
+emission_ring_cone_angle = 90.0
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+angular_velocity_min = -209.93
+angular_velocity_max = 144.33
+radial_velocity_min = -182.24
+radial_velocity_max = -86.57
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+color = Color(0.816667, 0, 1, 1)
+color_ramp = SubResource("GradientTexture1D_1lt37")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vhx2n"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_x874h"]
+offsets = PackedFloat32Array(0, 0.169451, 0.551313, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ioey8"]
+gradient = SubResource("Gradient_x874h")
+
+[sub_resource type="Curve" id="Curve_qr48a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.499058), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yqgcu"]
+curve = SubResource("Curve_qr48a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r4oq0"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(250, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(250, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 18.23
+initial_velocity_max = 91.12
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_yqgcu")
+color = Color(0.8, 0, 1, 1)
+color_ramp = SubResource("GradientTexture1D_ioey8")
+
+[node name="abracadabraeffect" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_x874h")
+emitting = false
+amount = 1
+texture = ExtResource("1_0m58i")
+lifetime = 0.6
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ijlry")
+script = ExtResource("2_x874h")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_kr78r")
+emitting = false
+amount = 14
+texture = ExtResource("2_vhx2n")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 48
+process_material = SubResource("ParticleProcessMaterial_q1me0")
+script = ExtResource("2_x874h")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vhx2n")
+emitting = false
+amount = 40
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_r4oq0")
+script = ExtResource("2_x874h")

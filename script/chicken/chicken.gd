@@ -172,6 +172,12 @@ func addmutations():
 				var b = load("res://scenes/chicken/shikigami.tscn").instantiate()
 				get_parent().add_child(b)
 				b.guarding = self
+			"redoofhealer":
+				var b = load("res://scenes/chicken/healingcircle.tscn").instantiate()
+				add_child(b)
+			"abracadabra":
+				var b = load("res://scenes/chicken/abracadabra.tscn").instantiate()
+				add_child(b)
 			_:
 				var b
 				if "russiandoll" in chickenmutations[i]:

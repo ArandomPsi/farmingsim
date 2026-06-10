@@ -24,7 +24,9 @@ var slotnum : int = 0
 var phantomitem : invslot = null
 var phantomowner : Control = null
 
-var allmutations : PackedStringArray = ["exploding","bigpeck","alpaca","covid","daggers", "tentacles", "golden", "hellfire", "divinity", "qurio", "shrouded", "lucent","redbull","broodmind", "supersaiyan", "eclipse", "russiandoll1"]
+var allmutations : PackedStringArray = ["exploding","bigpeck","alpaca","covid","daggers", "tentacles", 
+"golden", "hellfire", "divinity", "qurio", "shrouded", "lucent","redbull","broodmind", "supersaiyan",
+ "eclipse", "russiandoll1","redoofhealer","abracadabra"]
 
 var time = 0
 var prevtime = time

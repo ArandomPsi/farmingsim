@@ -229,19 +229,21 @@ environment = SubResource("Environment_4v1qu")
 [node name="title" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 542.0
-offset_top = -57.0
-offset_right = 1222.0
-offset_bottom = 181.0
+offset_left = 651.0
+offset_top = -66.0
+offset_right = 1331.0
+offset_bottom = 172.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.215686)
 theme_override_constants/line_spacing = 80
 theme_override_fonts/font = ExtResource("6_yo48d")
-text = "Alpha gooner rizzler  (working title)"
+theme_override_font_sizes/font_size = 32
+text = "Plumage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="title2" type="Label" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 630.0

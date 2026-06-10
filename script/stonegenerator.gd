@@ -27,16 +27,17 @@ func _ready() -> void:
 			
 	
 
-func _create_more_ores(noisetexture):
-	noisetexture.seed = randi()
-	noisetexture.frequency = 0.04
-	for x in range(0, 512, density * 6):
-		for y in range(0, 512, density * 6):
-			var n = noisetexture.get_noise_2d(x, y)
-			if n > 0.4:
-				var pos = Vector2(float(x) / 512.0 * mapsize.x, float(y) / 512.0 * mapsize.y)
-				if randi_range(0,10) == 0: creatediamond(pos)
-				else: createore(pos)
+func _create_more_ores(noisetexture): #too jarring
+	#noisetexture.seed = randi()
+	#noisetexture.frequency = 0.04
+	#for x in range(0, 512, density * 6):
+		#for y in range(0, 512, density * 6):
+			#var n = noisetexture.get_noise_2d(x, y)
+			#if n > 0.4:
+				#var pos = Vector2(float(x) / 512.0 * mapsize.x, float(y) / 512.0 * mapsize.y)
+				#if randi_range(0,10) == 0: creatediamond(pos)
+				#else: createore(pos)
+	pass
 
 func createore(pos : Vector2):
 	var b = preload("res://scenes/building/ironore.tscn").instantiate()
