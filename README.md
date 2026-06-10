@@ -60,6 +60,7 @@ git clone https://github.com/ArandomPsi/farmingsim.git
 
 ## Credits
 
-Created by ArandomPsi.
+Created by ArandomPsi and Kosm0-O.
 
-If you enjoy the game, consider checking out the itch.io release and sharing feedback.
+And the art is by the minifantasy guy. Check him out ig
+
