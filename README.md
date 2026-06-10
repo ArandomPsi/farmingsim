@@ -35,8 +35,7 @@ https://arandompsi.itch.io/plumage
 | Weapon Slot 3 | 3 |
 | Cycle Weapons | Mouse Wheel |
 | Open Inventory | Tab / I |
-| Toggle Edit Mode | ` |
-| Menu | Escape |
+| exit menu | Escape |
 
 ## Development
 
